@@ -1,0 +1,48 @@
+\documentclass{amsart}
+
+\newcommand{\SR}[1]{\Delta({#1})}
+\newcommand{\SA}{\tilde{\mathcal S}}
+\newcommand{\VA}{\tilde{\mathcal V}}
+\newcommand{\XA}{\tilde{\mathcal X}}
+\renewcommand{\S}{{\mathcal S}}
+\newcommand{\V}{{\mathcal V}}
+\newcommand{\X}{{\mathcal X}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\Pic}{{\bf P}}
+
+\begin{document}
+
+We study configuration varieties parametrizing plane pictures $\Pic$ of a given graph $G$,
+with vertices $v$ and edges $e$ represented respectively by points $\Pic(v) \in \PP^{2}$ and
+lines $\Pic(e)$ connecting them in pairs.  Three such varieties naturally arise: the {\it
+picture space} $\X(G)$ of all pictures of $G$; the {\it picture variety} $\V(G)$, an
+irreducible component of $\X(G)$; and the {\it slope variety} $\S(G)$, essentially the
+projection of $\V(G)$ on coordinates $m_{e}$ giving the slopes of the lines $\Pic(e)$.  In
+practice, we most often work with affine open subvarieties $\XA(G)$, $\VA(G)$, $\SA(G)$, in
+which the points $\Pic(v)$ lie in an affine plane and the lines $\Pic(e)$ are nonvertical.
+
+We prove that the algebraic dependence matroid of the slopes is in fact the {\it generic
+rigidity matroid} ${\mathcal M}(G)$ studied by Laman {\it et.\ al.} \cite{Lam70},
+\cite{GSS93}.  For each set of edges forming a circuit in ${\mathcal M}(G)$, we give an
+explicit determinantal formula for the polynomial relation among the corresponding slopes
+$m_e$.  This polynomial enumerates decompositions of the given circuit into complementary
+spanning trees. We prove that precisely these ``tree polynomials'' cut out $\V(G)$ in
+$\X(G)$ set-theoretically.  We also show how the full component structure of $\X(G)$ can be
+economically described in terms of the rigidity matroid, and show that when $\X(G)=\V(G)$,
+this variety has Cohen-Macaulay singularities.
+
+We study intensively the case that $G$ is the complete graph $K_n$. Describing
+$\S(K_n)$ corresponds to the classical problem of determining all relations among
+the slopes of the $\binom{n}{2}$ lines connecting $n$ general points in the plane.
+We prove that the tree polynomials form a Gr\"obner basis for the affine variety
+$\SA(K_n)$ (with respect to a particular term order). Moreover, the facets of the
+associated Stanley-Reisner simplicial complex $\SR{n}$ can be described explicitly
+in terms of the combinatorics of decreasing planar trees.  Using this description,
+we prove that $\SR{n}$ is shellable, implying that $\S(K_n)$ is Cohen-Macaulay for
+all $n$. Moreover, the Hilbert series of $\SA(K_n)$ appears to have a combinatorial
+interpretation in terms of perfect matchings.
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}

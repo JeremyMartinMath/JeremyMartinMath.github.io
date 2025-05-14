@@ -1,0 +1,159 @@
+kernelopts(printbytes=false):
+with(networks): with(plots):
+cis := theta -> cos(theta) + I*sin(theta):
+FF := L -> (z->mul(z-cis(theta),theta=L)):
+
+############################## ############################## 
+############################## ############################## 
+############################## ############################## 
+
+ExtractBasketball := proc(theta,f,NumPts,VERBOSE)
+  global cis,x,y,z,n,r,arg,i,j,C,Unmatched,pair,count,
+  RealCurve,RealPts,RealEndPts,RealN,RealV,RealE,RealG,RealC,RealComponents,RealMatching,
+    RealLo,RealHi,RealDelta,RealDSquared,
+  ImagCurve,ImagPts,ImagEndPts,ImagN,ImagV,ImagE,ImagG,ImagC,ImagComponents,ImagMatching,
+    ImagLo,ImagHi,ImagDelta,ImagDSquared,
+  ii:  ## "imaginary indexing"
+
+  assume(x,real): assume(y,real):
+  forget(RealDSquared):
+  forget(ImagDSquared):
+  n := degree(f(z),z):
+  r := 5/4 * max(op(map(abs,[fsolve(f(z)=0,z,complex)]))):  ## this may need to be adjusted
+  if VERBOSE then printf("r=%a\n",r) fi;
+  arg := proc(Z)  ## argument function of Z=[X,Y] with range [0,2*Pi)
+    if Z[2]>=0 then argument(Z[1]+I*Z[2])
+    else 2*Pi+argument(Z[1]+I*Z[2]) fi:
+  end:
+
+############################## real part ##############################
+  if VERBOSE then printf("Starting real phase....\n") fi:
+
+  RealCurve := Re(expand(cis(theta)*f(x+I*y))):
+  RealPts := ListTools[Flatten]( [op(op(1,implicitplot(RealCurve=0, x=-r..r, y=-r..r, numpoints=NumPts)))], 1 ):
+  RealPts := subsop(nops(RealPts)=NULL,RealPts):  ## to get rid of garbage from the PLOTS data structure
+
+  RealEndPts := [RootFinding[BivariatePolynomial]({evalf(RealCurve),x^2+y^2-r^2}, [x,y])]:
+  RealEndPts := map( Z->map(Re,Z), RealEndPts);
+  RealEndPts := sort( RealEndPts, (a,b) -> evalb(evalf(arg(a))<evalf(arg(b))) ):
+
+  RealPts := [op(RealEndPts), op(RealPts)]:
+  RealN := nops(RealPts):
+  RealV := [seq(i,i=1..RealN)]:
+  if VERBOSE then printf("Number of vertices = %d\n",RealN) fi;
+  RealLo := 0.:
+  RealHi := evalf(r):
+  RealC := 0:
+  count := 0:
+  RealDSquared := proc(i,j) option remember:
+    (RealPts[i][1]-RealPts[j][1])^2 + (RealPts[i][2]-RealPts[j][2])^2
+  end:
+
+  while RealC <> n do
+    count := count+1:
+    RealDelta := (RealLo+RealHi)/2:
+    RealE := {}:
+    for i from 1 to RealN-1 do for j from i+1 to RealN do
+      if RealDSquared(i,j) < RealDelta^2 then RealE := RealE union {{i,j}}
+    fi od od:
+    RealG := graph(RealV,RealE):
+    RealC := nops(components(RealG)):
+    if VERBOSE then printf("  Iteration %d: delta = %a..%a, cpts=%d\n",
+         count, RealLo,RealHi,RealC) fi:
+    if RealC > n then RealLo := RealDelta
+    elif RealC < n then RealHi := RealDelta
+    fi:
+  od:
+
+  RealComponents := components(RealG):
+  RealMatching := {}:
+  Unmatched := {seq(j,j=1..2*n)}:
+  for C in RealComponents do
+    pair := {}:
+    for i in Unmatched do if member(i,C) then pair := pair union {2*(i-1)} fi od:
+    RealMatching := RealMatching union {pair}
+  od:
+
+############################## imaginary part ##############################
+  if VERBOSE then printf("Starting imaginary phase....\n") fi:
+
+  ImagCurve := Im(expand(cis(theta)*f(x+I*y))):
+  ImagPts := ListTools[Flatten]( [op(op(1,implicitplot(ImagCurve=0, x=-r..r, y=-r..r, numpoints=NumPts)))], 1 ):
+  ImagPts := subsop(nops(ImagPts)=NULL,ImagPts):  ## to get rid of garbage from the PLOTS data structure
+
+  ImagEndPts := [RootFinding[BivariatePolynomial]({evalf(ImagCurve),x^2+y^2-r^2}, [x,y])]:
+  ImagEndPts := map( Z->map(Re,Z), ImagEndPts);
+  ImagEndPts := sort( ImagEndPts, (a,b) -> evalb(evalf(arg(a))<evalf(arg(b))) ):
+  ImagPts := [op(ImagEndPts), op(ImagPts)]:
+  ImagN := nops(ImagPts):
+  ImagV := [seq(i,i=1..ImagN)]:
+  if VERBOSE then printf("Number of vertices = %d\n",ImagN) fi;
+  ImagLo := 0.:
+  ImagHi := evalf(r):
+  ImagC := 0:
+  count := 0:
+  ImagDSquared := proc(i,j) option remember:
+    (ImagPts[i][1]-ImagPts[j][1])^2 + (ImagPts[i][2]-ImagPts[j][2])^2
+  end:
+
+  while ImagC <> n do
+    count := count+1:
+    ImagDelta := (ImagLo+ImagHi)/2:
+    ImagE := {}:
+    for i from 1 to ImagN-1 do for j from i+1 to ImagN do
+      if ImagDSquared(i,j) < ImagDelta^2 then ImagE := ImagE union {{i,j}}
+    fi od od:
+    ImagG := graph(ImagV,ImagE):
+    ImagC := nops(components(ImagG)):
+    if VERBOSE then printf("  Iteration %d: delta = %a..%a, cpts=%d\n",
+         count, ImagLo,ImagHi,ImagC) fi:
+    if ImagC > n then ImagLo := ImagDelta
+    elif ImagC < n then ImagHi := ImagDelta
+    fi:
+  od:
+
+  ImagComponents := components(ImagG):
+  ImagMatching := {}:
+  Unmatched := {seq(j,j=1..2*n)}:
+
+  ## set up the indexing correctly
+  if arg(RealEndPts[1]) < arg(ImagEndPts[1]) then
+    ii := j->(2*j-1)
+  else
+    ii := j->((2*j-3) mod (4*n)) fi:
+  for C in ImagComponents do
+    pair := {}:
+    for i in Unmatched do if member(i,C) then pair := pair union {ii(i)} fi od:
+    ImagMatching := ImagMatching union {pair}
+  od:
+
+  [RealMatching, ImagMatching]:
+end:
+
+############################## ##############################
+############################## ##############################
+############################## ############################## 
+
+BB := ExtractBasketball(0.5, FF([0, Pi/7, 5*Pi/7, 6*Pi/7]), 500, false);  ## type B
+
+NNN := 2000:
+ 
+## this works
+BA := ExtractBasketball(0.5, FF([0, Pi/7, 6*Pi/7, Pi]), 2000, false);  ## type A
+BG := ExtractBasketball(0.2, FF([0, Pi/8, 2*Pi/8, 3*Pi/8]), 2000, false);  ## type G
+
+## these don't
+BE := ExtractBasketball(0.1, FF([0, 0.3, 0.4, 3.0]), NNN, true);  ## type E
+BD := ExtractBasketball(0.1, FF([0, 0.9, 1, 3.0]), NNN, true);  ## type D
+BF := ExtractBasketball(1.5, FF([0, Pi/8, 2*Pi/8, 3*Pi/8]), NNN, true);  ## type F
+BH := ExtractBasketball(0.1, FF([0, 0.1, 0.2, 0.3]), NNN, true);  ## type H
+
+## The basketballs should be as follows:
+
+## BB: {{0,2}, {4,6}, {8,10}, {12,14}}, {{1,11}, {3,5}, {7,9}, {13,15}}
+## BA: {{0,2}, {4,6}, {8,10}, {12,14}}, {{1,3}, {5,7}, {9,11}, {13,15}}
+## BE: {{0,14}, {2,12}, {4,6}, {8,10}}, {{1,7}, {3,5}, {9,11}, {13,15}}
+## BH: {{0,10}, {2,8}, {4,6}, {12,14}}, {{1,11}, {3,5}, {7,9}, {13,15}}
+## BD: {{0,14}, {2,12}, {4,6}, {8,10}}, {{1,15}, {3,13}, {5,7}, {9,11}}
+## BG: {{0,14}, {2,12}, {4,10}, {6,8}}, {{1,11}, {3,5}, {7,9}, {13,15}}
+## BF: {{0,10}, {2,4}, {6,8}, {12,14}}, {{1,15}, {3,9}, {5,7}, {11,13}}
