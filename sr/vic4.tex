@@ -1,0 +1,482 @@
+%%%%%%%%%% the following setup maximizes number of characters per page---
+%%%%%%%%%% good for solution sets, etc.  Don't use for articles.
+
+\documentclass{amsart}
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\topmargin=0in
+\headheight=0in
+\headsep=0in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+%\footheight=0in
+\pagestyle{empty}
+\usepackage{amsfonts,amssymb}
+\usepackage[dvips]{graphicx}
+
+\newtheorem{defn}{Definition}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+
+\newcommand{\BS}{\blacksquare}
+\newcommand{\ini}{\mathop{\rm in}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\Hilb}{\mathop{\rm Hilb}\nolimits}
+\newcommand{\link}{\mathop{\rm lk}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Sd}{\mathop{\rm Sd}\nolimits}
+\newcommand{\supp}{\mathop{\rm supp}\nolimits}
+\newcommand{\extpow}[1]{{\textstyle\bigwedge^{#1}\:}}
+%\newcommand{\extpow}{\bigwedge\nolimits}
+
+\newcommand{\fld}{{\bf k}}
+\newcommand{\isom}{\cong}
+\newcommand{\mm}{{\mathfrak m}}
+\newcommand{\NN}{{\mathbb N}}
+\renewcommand{\SS}{{\mathbb S}}
+\newcommand{\ZZ}{{\mathbb Z}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\xx}{{\bf x}}
+\newcommand{\defterm}[1] {{\it #1\/}}
+\newcommand{\puttext}[2] {\put(#1){\makebox(0,0){#2}}}
+\newcommand{\putdot}[1]  {\put(#1){\makebox(0,0){$\bullet$}}}
+\newcommand{\putline}[3] {\put(#1){\line(#2){#3}}}
+
+\begin{document}
+
+Informal Seminar on Stanley-Reisner Theory, UMN, Fall 2002 \\
+21 November 2002
+
+{\bf Minimal free resolutions of Stanley-Reisner rings} \\
+Speaker: Vic Reiner
+
+Scribe notes by Sandra Di Rocco, LaTeX'ed by Jeremy Martin \\
+
+\begin{tabbing}
+{\bf Outline:} \= I. (Minimal) free resolutions and $\Tor^S_\cdot(\fld[\Delta],\fld)$ \\
+\> II. Theorem for $\fld[\Delta]$ \\
+\> III. Proof \\
+\end{tabbing}
+
+\hrule
+
+For more details, see especially section~5.5 of~\cite{BH}.
+
+Let $\Delta$ be the simplicial complex
+        \begin{equation} \label{delta-ex}
+        \begin{picture}(110,60)
+	\putdot{10,10}  \puttext{10, 2}{$1$}
+	\putdot{40,50}  \puttext{40,58}{$2$}
+	\putdot{70,10}  \puttext{70, 2}{$3$}
+	\putdot{100,40}  \puttext{100,32}{$4$}
+        \putline{10,10}{3,4}{30}	% 12
+        \putline{10,10}{1,0}{60}	% 13
+        \putline{70,10}{-3,4}{30}	% 23
+        \putline{70,10}{1,1}{30}	% 34
+        \end{picture}
+        \end{equation}
+so that
+	$$I_\Delta = (x_1x_2x_3, \; x_1x_4, \; x_2x_4)$$
+and
+	$$\fld[\Delta] = \underbrace{\fld[x_1,\dots,x_4]}_S / I_\Delta.$$
+
+The $S$-module $\fld[\Delta]$ is $\ZZ^n$-graded; for $\alpha \in \ZZ^n$, the corresponding
+graded piece is the linear span of the monomial $\xx^\alpha = x_1^{\alpha_1} \dots
+x_n^{\alpha_n}$.  $\fld[\Delta]$ has the following $\ZZ^n$-graded free resolution as an
+$S$-module:
+
+	\begin{equation} \label{freeres1}
+	0 \to S^1 \xrightarrow[
+		\begin{array}{cc} & g \\
+			\begin{matrix} f_1 \\ f_2 \\ f_3 \end{matrix} &
+			\begin{bmatrix} x_3 \\ 1 \\ -1 \end{bmatrix}
+		\end{array}
+	]{} S^3 \xrightarrow[
+		\begin{array}{cc} & \begin{matrix} f_1 &&& f_2 &&& f_3 \end{matrix} \\
+			\begin{matrix} e_1 \\ e_2 \\ e_3 \end{matrix} &
+			\begin{bmatrix}
+				0    & x_4     & x_4 \\
+				x_2  & -x_2x_3 & 0 \\
+				-x_1 & 0       & -x_1x_3
+			\end{bmatrix}
+		\end{array}
+	]{} S^3 \xrightarrow[
+		\begin{array}{ccc}
+			    e_1       & e_2    & e_3    \\
+			{[} x_1x_2x_3 & x_1x_4 & x_2x_4 {]} \\
+		\end{array}
+	]{} S \to S/I_\Delta \to 0.
+	\end{equation}
+
+Here the first copy of $S^1$ has basis element $g$ of degree $x_1x_2x_3x_4$; the first copy of
+$S^3$ has basis $\{f_1,f_2,f_3\}$ of degrees $x_1x_2x_4$, $x_1x_2x_3x_4$, $x_1x_2x_3x_4$
+respectively; and the second copy of $S^3$ has basis $\{e_1,e_2,e_3\}$ of degrees $x_1x_2x_3$,
+$x_1x_4$, $x_2x_4$ respectively.
+
+The resolution (\ref{freeres1}) is not minimal.  In a \underline{minimal} free resolution
+(henceforth MFR), we want at each stage that the columns give a minimal generating set of the
+kernel.  The following is an MFR of $S/I_\Delta$:
+
+	\begin{equation} \label{freeres2}
+	0 \to S^2 \xrightarrow[
+		\begin{array}{cc} & \begin{matrix} f_1 &&& f_2 \end{matrix} \\
+			\begin{matrix} e_1 \\ e_2 \\ e_3 \end{matrix} &
+			\begin{bmatrix} 0 & x_4 \\ x_2 & -x_2x_3 \\ -x_1 & 0 \end{bmatrix}
+		\end{array}
+	]{} S^3 \xrightarrow[
+		\begin{array}{ccc}
+			    e_1       & e_2    & e_3    \\
+			{[} x_1x_2x_3 & x_1x_4 & x_2x_4 {]} \\
+		\end{array}
+	]{} S \to S/I_\Delta \to 0.
+	\end{equation}
+
+\begin{prop} Let $R$ be a graded $\fld$-algebra and $M$ a graded $R$-module.  Then a graded 
+$R$-free resolution
+	$$\dots \to R^{\beta_1} \to R^{\beta_0} \to M \to 0$$
+is minimal if and only if the matrices only contain elements of
+	$$\mm := \bigoplus_{n>0} R_n$$
+where $R_n$ denotes the $n$th graded piece of $R$.  (Note: $\mm$ is also denoted $R_+$ and 
+often called the \defterm{irrelevant ideal} of $R$.)
+\end{prop}
+
+For instance, the resolution (\ref{freeres1}) is not minimal because of the $1$ and $-1$ 
+appearing in the leftmost map.
+
+Note that in this MFR, the free module $S^2$ has $S$-basis $\{f_1,f_2\}$ of
+degrees $x_1 x_2 x_4, x_1 x_2 x_3 x_4$.  It can be shown that the degrees of
+the basis elements in the terms of an MFR are uniquely determined, even though
+the maps are not unique.
+
+\begin{cor} The number of basis elements of $R^{\beta_i}$ of degree $\xx^\alpha$ in any MFR is
+	$$\dim_\fld \Tor^S_i(M,\fld)_{\xx^\alpha},$$
+where $\fld = R/\mm = R/R_+$.
+\end{cor}
+
+\begin{proof}
+To compute $\Tor^S_i(M,\fld)$, we first write down an MFR of $M$ as an $S$-module:
+	\begin{equation} \label{mfr1}
+	\dots \to R^{\beta_i} \xrightarrow[\phi]{} R^{\beta_{i-1}} \to \dots 
+	\to R^{\beta_0} \to M \to 0.
+	\end{equation}
+Here the matrix $\phi$ has all entries in $\mm$.  Therefore, tensoring the complex 
+(\ref{mfr1}) with $\fld$ over $R$ produces
+	\begin{equation} \label{mfr2}
+	\dots \to \fld^{\beta_i} \xrightarrow{0} R^{\beta_{i-1}} \xrightarrow{0} \dots 
+	\xrightarrow{0} R^{\beta_0} \to 0.
+	\end{equation}
+The $i$th homology of this complex is by definition $\Tor^S_i(M,\fld)$; since all the maps are 
+zero, we have $\Tor^S_i(M,\fld) = \fld^{\beta_i}$.  Note that $\fld^{\beta_i}$
+still carries a grading, and the $\fld$-basis vectors for
+$\fld^{\beta_i}=\Tor^S_i(M,\fld)$ have the same degrees as
+the $R$-basis elements for $R^{\beta_i}$.
+\end{proof}
+
+Let $\Delta$ be a simplicial complex on vertices $[n]$.  Recall that the \defterm{link} of a
+face is defined as
+	$$\link_\Delta F := \{G \in \Delta ~:~ G \cup F \in \Delta ~\text{and}~ G \cap F 
+	= \emptyset\}.$$
+
+For $S \subset [n]$, we define
+	$$\Delta|_S := \{F \in \Delta ~:~ F \subset S\}.$$
+
+The \defterm{dual complex} of $\Delta$ is
+	$$\Delta^\vee := \{F \in [n] ~:~ [n]-F \not\in \Delta\}$$
+
+For instance, if $\Delta$ is the simplicial complex of (\ref{delta-ex}), then $\Delta^\vee$ is
+        \begin{equation} \label{alex}
+        \begin{picture}(110,80)
+	\putdot{10,20}  \puttext{10, 2}{$1$}
+	\putdot{40,60}  \puttext{40,58}{$2$}
+	\putdot{70,20}  \puttext{70, 2}{$3$}
+	\putdot{100,50}  \puttext{100,32}{$4$}
+        \putline{10,20}{3,4}{30}	% 12
+        \putline{10,20}{1,0}{60}	% 13
+        \end{picture}
+        \end{equation}
+
+One way to picture this is as follows.  Draw the full Boolean algebra on $[4]$ (I'm not going 
+to bother to put in all the edges):
+
+        \begin{equation} \label{boolalg}
+        \begin{picture}(200,120)
+	\puttext{100,100}{$1234$}
+	\puttext{ 55,75}{$123$}
+	\puttext{ 85,75}{$124$}
+	\puttext{115,75}{$134$}
+	\puttext{145,75}{$234$}
+	\puttext{ 50,50}{\fbox{$12$}}
+	\puttext{ 70,50}{\fbox{$13$}}
+	\puttext{ 90,50}{$14$}
+	\puttext{110,50}{\fbox{$23$}}
+	\puttext{130,50}{$24$}
+	\puttext{150,50}{\fbox{$34$}}
+	\puttext{ 55,25}{\fbox{$1$}}
+	\puttext{ 85,25}{\fbox{$2$}}
+	\puttext{115,25}{\fbox{$3$}}
+	\puttext{145,25}{\fbox{$4$}}
+	\puttext{100, 0}{\fbox{$\emptyset$}}
+        \end{picture}
+        \end{equation}
+
+The boxes indicate faces of $\Delta$.  The unboxed faces are the complements of faces in the
+dual complex.
+
+We will also need the notion of the \defterm{barycentric subdivision} $\Sd(\Delta)$ of a
+simplicial complex $\Delta$.  Abstractly, this is the simplicial complex whose vertices are
+the nonempty faces of $\Delta$ and whose faces are the \defterm{flags} in $\Delta$, that is,
+strictly increasing sequences
+	$$\emptyset \neq F_0 \subsetneq F_1 \subsetneq \dots \subsetneq F_r$$
+where $F_i \in \Delta$ for all $i$.  (For those familiar with posets, the barycentric
+subdivision of $\Delta$ is the same thing as the order complex of the poset of
+faces of $\Delta$.)
+
+For example, if $\Delta$ is the $2$-dimensional simplex on vertices $\{a,b,c\}$, then 
+$\Sd(\Delta)$ has six facets, namely the flags
+	\begin{equation*}
+	\begin{array}{ccccc}
+	\{a\} \subset \{a,b\} \subset \{a,b,c\}, & \qquad &
+	\{b\} \subset \{a,b\} \subset \{a,b,c\}, & \qquad &
+	\{c\} \subset \{a,c\} \subset \{a,b,c\}, \\
+	\{a\} \subset \{a,c\} \subset \{a,b,c\}, & \qquad &
+	\{b\} \subset \{b,c\} \subset \{a,b,c\}, & \qquad &
+	\{c\} \subset \{b,c\} \subset \{a,b,c\}.
+	\end{array}
+	\end{equation*}
+
+\begin{center}
+\begin{picture}(430,220)
+
+\puttext{80,10}{$\Delta$}
+\putdot{  0, 40}  \puttext{  0, 32}{$a$}
+\putdot{160, 40}  \puttext{160, 32}{$b$}
+\putdot{ 80,200}  \puttext{ 80,208}{$c$}
+\putline{  0,40}{1,2}{80}	% a,c
+\putline{  0,40}{1,0}{160}	% a,b
+\putline{160,40}{-1,2}{80}	% b,c
+
+\puttext{350,10}{$\Sd(\Delta)$}
+\putdot{270, 40}  \puttext{270, 32}{$a$}
+\putdot{350, 40}  \puttext{350, 32}{$ab$}
+\putdot{430, 40}  \puttext{430, 32}{$b$}
+\putdot{310,120}  \puttext{300,120}{$ac$}
+\putdot{390,120}  \puttext{400,120}{$bc$}
+\putdot{350, 93}  \puttext{365, 93}{$abc$}
+\putdot{350,200}  \puttext{350,208}{$c$}
+\putline{270,40}{3,2}{120}	% a,bc
+\putline{270,40}{1,2}{80}	% a,c
+\putline{270,40}{1,0}{160}	% a,b
+\putline{350,40}{0,1}{160}	% ab,c
+\putline{430,40}{-3,2}{120}	% b,ac
+\putline{430,40}{-1,2}{80}	% b,c
+
+\end{picture}
+\end{center}
+
+\begin{prop}
+Each of $\Delta$ and $\Delta^\vee$ is homotopy equivalent to the complement of the other in
+$\partial\Delta^{n-1} \isom \SS^{n-2}$.  Consequently, their (co-)homology groups
+are related by \defterm{Alexander duality}:
+$$
+\tilde{H}_i(\Delta^\vee) \cong \tilde{H}^{n-3-i}(\Delta^\vee).
+$$
+\end{prop}
+
+{\it Idea of proof:} It is possible to embed both barycentric subdivisions
+$\Sd(\Delta)$ and $\Sd(\Delta^\vee)$ simultaneously and disjointly inside 
+$\Sd(\partial\Delta^{n-1})$.  For $\Sd(\Delta^\vee)$ one must apply the
+antipodal map on the barycentric subdivison before embedding it in the usual
+way.   (This is unLaTeXable, but try it yourself with the complex 
+$\Delta$ of (\ref{delta-ex}).) \qed
+
+For this reason, the complex $\Delta^\vee$ may be called the \defterm{canonical Alexander 
+dual} of $\Delta$.
+
+
+We now state and prove the main result.
+
+\begin{thm} \label{thetheorem} Let $\Delta$ be a simplicial complex on vertices $[n]$, $S = 
+\fld[x_1,\dots,x_n]$, and $\alpha \in \NN^n$.  Then
+	\begin{eqnarray*}
+	\Tor^S_i(\fld[\Delta],\fld)_{\xx^\alpha} &\isom& \begin{cases}
+		\tilde H_{|S|-i-1}(\Delta|_S; \; \fld) &
+		  \text{if}~ \xx^\alpha = \xx^S ~\text{for some}~ S \subset [n] \\
+		0 & \text{otherwise} \end{cases} \\
+	&\isom& \begin{cases}
+		\tilde H_{i-2}(\link_{\Delta^\vee}(F); \; \fld) &
+		  \text{if}~ \xx^\alpha = \xx^{[n]-F} ~\text{for some}~ F \in \Delta^\vee \\
+		0 & \text{otherwise.} \end{cases} \\
+	\end{eqnarray*}
+\end{thm}
+
+The first characterization of Tor is due to Hochster~\cite{Hoc} and the second to Eagon and
+Reiner~\cite{ER}.  The equivalence of the two comes from Alexander duality
+after one checks that 
+$(\Delta|_S)^\vee = \link_{\Delta^\vee}(F)$ if $S = [n]-F$.
+
+
+\begin{proof} By general homological nonsense we have
+	\begin{equation}
+	\Tor^S_i(\fld[\Delta],\fld) =
+        \Tor^S_i(S/I_\Delta,\fld) ~\isom~ 
+        \Tor^S_{i-1}(I_\Delta,\fld) ~\isom~ 
+	\Tor^S_{i-1}(\fld,I_\Delta).
+	\end{equation}
+We compute the last module via the Koszul resolution of $\fld$ as an $S$-module:
+	\begin{equation} \label{koszul}
+	0 \to S \otimes \extpow{n} \fld^n \to \dots \to S \otimes \extpow{2} \fld^n \to
+	S \otimes \extpow{1} \fld^n \to S \to \fld \to 0,
+	\end{equation}
+where the boundary maps are defined $S$-linearly by
+	\begin{equation}
+	e_{i_1} \wedge \dots \wedge e_{i_r} \quad\mapsto\quad
+	\sum_{j=1}^r (-1)^j x_r e_{i_1} \wedge \dots \wedge \widehat{e_{i_1}} \wedge \dots 
+	\wedge e_{i_r}
+	\end{equation}
+(the hat denoting removal).  Now, we tensor (\ref{koszul}) with $I_\Delta$ over $S$, obtaining
+	\begin{equation}
+        \label{tensored-complex}
+	\dots ~\to~ I_\Delta \otimes \extpow{r} \fld^n ~\to~ \extpow{r-1} \fld^n ~\to~ \dots
+	\end{equation}
+where the boundary maps are given by
+	\begin{equation}
+	\xx^\beta \otimes e_{i_1} \wedge \dots \wedge e_{i_r} \quad\mapsto\quad
+	\sum_{j=1}^r (-1)^j x_r e_{i_1} \wedge \dots \wedge \widehat{e_{i_1}} \wedge \dots 
+	\wedge e_{i_r}.
+	\end{equation}
+Denoting $e_{i_1} \wedge \dots \wedge e_{i_r}$ by $e_G$ if $G=\{i_1,\ldots,i_r\}$,
+we see that a $\fld$-basis in degree $\xx^\alpha$ for the complex 
+\eqref{tensored-complex} is
+	\begin{equation}
+	\left\{ \xx^\beta \otimes e_G ~:~ G \subset [n], ~  \xx^\beta \in I_\Delta, ~ \xx^\beta \xx^G = \xx^\alpha 
+	\right\}~.
+	\end{equation}
+This shows that in degree $\xx^\alpha$, this complex coincides (up to shift
+in homological degree by $1$) with the usual augmented chain complex for
+the simplicial complex
+	\begin{equation}
+	\Delta_\alpha := \left\{ G \subset [n] ~:~ \frac{\xx^\alpha}{\xx^G} \in I_\Delta 
+	\right\}
+        = \left\{ G \subset [n] ~:~ \supp\left( \frac{\xx^\alpha}{\xx^G} \right) 
+             \not\in \Delta 
+	\right\}.
+	\end{equation}
+Thus we have 
+	\begin{equation}
+	\Tor^S_i(\fld[\Delta],\fld)_{\xx^\alpha} ~\isom~
+	\Tor^S_{i-1}(\fld,I_\Delta)_{\xx^\alpha} ~\isom~
+	\tilde H_{i-2}(\Delta_\alpha; \fld).
+	\end{equation}
+Note that if $\xx^\alpha$ is divisible by $x_i^2$, then
+	$$\supp\left(\frac{\xx^\alpha}{\xx^G}\right) ~=~
+	\supp\left(\frac{\xx^\alpha}{\xx^{G\cup\{i\}}}\right)$$
+so $i$ will be a cone vertex for $\Delta_\alpha$.  Hence without loss of generality 
+$\xx^\alpha = \xx^S$ for some subset $S \subset [n]$.  Let $F = [n]-S$; then
+	\begin{eqnarray*}
+	\frac{\xx^S}{\xx^G} \in I_\Delta &\iff& G \subset S ~\text{and}~ S-G \not\in \Delta \\
+        &\iff& G \cap F = \emptyset ~\text{and}~ [n]-(G \cup F) \not\in \Delta \\
+	&\iff& G \in \link_{\Delta^\vee}(F).
+	\end{eqnarray*}
+Therefore $\Delta_\alpha = \link_{\Delta^\vee}(F)$.
+\end{proof}
+
+As an illustration, we can now go back and explain the degrees of the
+basis elements for the terms in the MFR:
+
+\vfill
+
+\begin{center}
+\begin{tabular}{c|c}
+Restricted complex & Homological observations \\ \hline
+        \begin{picture}(110,50)
+	\puttext{20,25}{$\Delta|_{1234} ~=$}
+	\putdot{55,10} \puttext{55, 2}{$1$}
+	\putdot{70,30} \puttext{70,38}{$2$}
+	\putdot{85,10} \puttext{85, 2}{$3$}
+	\putdot{100,25} \puttext{100,17}{$4$}
+        \putline{55,10}{3,4}{15}	% 12
+        \putline{55,10}{1,0}{30}	% 13
+        \putline{85,10}{-3,4}{15}	% 23
+        \putline{85,10}{1,1}{15}	% 34
+        \end{picture}
+	& \raisebox{15pt}[0pt]{$\tilde H_{1} \neq 0$} 
+\\ \hline
+        \begin{picture}(75,50)
+	\puttext{0,25}{$\Delta|_{123} ~\isom$}
+	\putdot{35,10}
+	\putdot{50,30}
+	\putdot{65,10}
+        \putline{35,10}{3,4}{15}	% 12
+        \putline{35,10}{1,0}{30}	% 13
+        \putline{65,10}{-3,4}{15}	% 23
+        \end{picture} &\raisebox{15pt}[0pt]{$\tilde H_{1} \neq 0$}
+\\ \hline
+        \begin{picture}(90,50)
+	\puttext{20,25}{$\Delta|_{14} \;\isom\; \Delta|_{23} \;\isom$}
+	\putdot{80,10}
+	\putdot{80,25}
+        \end{picture}
+	& \raisebox{15pt}[0pt]{$\tilde H_0 \neq 0$}
+\\ \hline
+        \begin{picture}(90,50)
+	\puttext{0,25}{$\Delta|_{124} ~\isom$}
+	\putdot{50,10}
+	\putdot{50,30}
+	\putdot{70,20}
+        \putline{50,10}{0,1}{20}	% 12
+        \end{picture}
+	& \raisebox{15pt}[0pt]{$\tilde H_0 \neq 0$}
+\end{tabular}
+
+\vfill
+
+\begin{tabular}{c|c}
+Link & Homological observations \\ \hline
+        \begin{picture}(150,50)
+	\puttext{40,25}{$\Delta^\vee = \link_{\Delta^\vee}(\emptyset) ~=$}
+	\putdot{95,10} \puttext{95, 2}{$1$}
+	\putdot{110,30} \puttext{110,38}{$2$}
+	\putdot{125,10} \puttext{125, 2}{$3$}
+	\putdot{140,25} \puttext{140,17}{$4$}
+        \putline{95,10}{1,0}{30}	% 13
+        \putline{125,10}{-3,4}{15}	% 23
+        \end{picture}
+	& \raisebox{15pt}[0pt]{$\tilde H_0 \neq 0$} 
+\\ \hline
+        \begin{picture}(75,50)
+	\puttext{0,25}{$\link_{\Delta^\vee}(3) ~\isom$}
+	\putdot{80,10}
+	\putdot{80,25}
+	\end{picture}
+	& \raisebox{15pt}[0pt]{$\tilde H_0 \neq 0$}
+\\ \hline
+        \begin{picture}(75,50)
+	\puttext{0,25}{$\link_{\Delta^\vee}(4),
+                        \link_{\Delta^\vee}(23),
+                        \link_{\Delta^\vee}(13) = \{ \emptyset \}$}
+	\end{picture}
+	& \raisebox{15pt}[0pt]{$\tilde H_{-1} \neq 0$}
+\end{tabular}
+\end{center}
+
+\vfill
+
+\begin{thebibliography}{99}
+
+\bibitem{BH} W. Bruns and J. Herzog.  \textsl{Cohen-Macaulay rings}.  Cambridge U. Press, 1993
+
+\bibitem{ER} J. Eagon and V. Reiner.  \textsl{Resolutions of Stanley-Reisner rings and 
+Alexander duality}.  J. of Pure and Applied Algebra {\bf 130} (1998), 265--275.
+
+\bibitem{Hoc} M. Hochster.  \textsl{Cohen-Macaulay rings, combintorics, and simplicial 
+complexes}.  In B.R. McDonald and R.A. Morris, eds. \textsl{Ring theory II}, Lecture Notes in 
+Pure and Applied Mathematics {\bf 26}, M. Dekker, 1977, pp.~171--223.
+
+\end{thebibliography}
+\end{document}
+

@@ -1,0 +1,270 @@
+%%%%%%%%%% the following setup maximizes number of characters per page---
+%%%%%%%%%% good for solution sets, etc.  Don't use for articles.
+
+\documentclass{amsart}
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\topmargin=0in
+\headheight=0in
+\headsep=0in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+%\footheight=0in
+\pagestyle{empty}
+\usepackage{amsfonts,amssymb}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+
+\renewcommand{\star}{\mathop{\rm st}\nolimits}
+\newcommand{\link}{\mathop{\rm lk}\nolimits}
+\newcommand{\sm}{\setminus}
+\newcommand{\st}{~\mid~}
+\newcommand{\0}{\emptyset}
+\newcommand{\ini}{\mathop{\rm in}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\Hilb}{\mathop{\rm Hilb}\nolimits}
+\newcommand{\supp}{\mathop{\rm supp}\nolimits}
+\newcommand{\depth}{\mathop{\rm depth}\nolimits}
+\newcommand{\Ann}{\mathop{\rm Ann}\nolimits}
+\newcommand{\Ass}{\mathop{\rm Ass}\nolimits}
+\newcommand{\fld}{{\bf k}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\ZZ}{{\mathbb Z}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\defterm}[1] {{\bf #1}}
+\newcommand{\puttext}[2] {\put(#1){\makebox(0,0){#2}}}
+\newcommand{\putdot}[1]  {\put(#1){\makebox(0,0){$\bullet$}}}
+\newcommand{\putline}[3] {\put(#1){\line(#2){#3}}}
+
+\begin{document}
+
+Informal Seminar on Stanley-Reisner Theory, UMN, Fall 2002 \\
+5 December 2002
+
+{\bf Local cohomology} \\
+Speaker: Anton Leykin
+
+Scribe notes by Jeremy Martin \\
+
+\hrule
+
+We work with the following objects throughout.  Let $\fld$ be a field and $R$ a finitely
+generated, $\NN^n$-graded $\fld$-algebra, i.e., $R = \bigoplus_{\alpha \in \NN^n} R_\alpha$
+with $R_\alpha R_\beta \subset R_{\alpha+\beta}$.  The motivating example is $R = 
+\fld[\Delta]$, the Stanley-Reisner ring of a simplicial complex $\Delta$.  Define
+	$$R_+ := \bigoplus_{\alpha \neq 0} R_\alpha$$
+the so-called \defterm{irrelevant ideal}.  Finally, $M$ will be a $\ZZ^n$-graded $R$-module, 
+i.e., $M = \bigoplus_{\alpha \in \ZZ^n} M_\alpha$ with $R_\alpha M_\beta \subset 
+M_{\alpha+\beta}$.
+
+\section{Depth and Cohen-Macaulayness}
+
+\begin{defn} An element $a \in R$ is called a \defterm{nonzerodivisor} (or NZD) on $M$ if $m 
+\in M$, $am=0$ implies $m=0$.  Equivalently, the map
+	$$M \xrightarrow{\cdot a} M$$
+given by multiplication by $r$ is one-to-one.
+\end{defn}
+
+\begin{defn}
+A sequence of homogeneous elements $\theta_1, \dots, \theta_s$ is a \defterm{regular
+$M$-sequence}, or \defterm{$M$-sequence} for short, if $\theta_{i+1}$ is a NZD
+on $M/(\theta_1, \dots, \theta_i)M$ for $i=0, \dots, s-1$.
+\end{defn}
+
+\begin{defn}
+The \defterm{dimension} of $M$, denoted $\dim_R M$ or $\dim M$, is the Krull dimension of 
+$R/\Ann_R M$.  The \defterm{depth} of $M$, denoted $\depth_R M$ or $\depth M$, is the length 
+of a maximal $M$-sequence.  It can be shown that every maximal $M$-sequence has the same
+length.
+\end{defn}
+
+In general $\depth_R M \leq \dim_R M$ (since any $M$-sequence of length $s$ generates a 
+height-$s$ ideal of $R/\Ann M$).  Equality is an important ``niceness'' condition which gets 
+its own name:
+
+\begin{defn}
+$M$ is \defterm{Cohen-Macaulay} if $\depth_R M = \dim_R M$.
+\end{defn}
+
+\section{Local Cohomology}
+
+Define the \defterm{torsion functor} $\Gamma$ by
+	$$\Gamma(M) := \left\{u \in M \st R_+^n u = 0 ~\text{for}~ n \gg 0 \right\}.$$
+It is routine to check that $\Gamma$ is a covariant, left-exact functor.  That is, a map $f: M 
+\to N$ of graded $R$-modules induces a map $\Gamma(f): \Gamma(M) \to \Gamma(N)$, and if $f$ is 
+injective then $\Gamma(f)$ is injective.
+
+The $i$th local cohomology functor $H^i$ (more precisely, $H^i_{R_+}$) can now be defined as 
+the $i$th right derived functor of $\Gamma$:
+	$$H^i(M) = R^i \Gamma (M).$$
+That is, one may calculate $H^i(M)$ by taking an injective resolution
+	$$I^\bullet: \quad 0 ~\to~ M ~\to~ I^0 ~\to~ I^1 ~\to~ \dots,$$
+applying $\Gamma$, and defining $H^i(M) := H^i(\Gamma I^\bullet)$.
+(See a textbook on homological algebra for more details.)
+
+\begin{lemma} \label{torsion}
+For all $i$, the modules $H^i(M)$ are \defterm{$R_+$-torsion}, i.e., they are killed by some 
+power of $R_+$.
+\end{lemma}
+
+\begin{proof}
+By definition of $\Gamma$, every module of the form $\Gamma(N)$ is $R_+$-torsion.  In 
+particular, if $I^\bullet$ is an injective resolution, then every $\Gamma(I^i)$ is $R_+$-torsion, 
+so the same is true of the cohomology modules of $\Gamma(I^\bullet)$.
+\end{proof}
+
+The local cohomology functors are useful because they detect depth and dimension.  
+Specifically, we have the following fact.
+
+\begin{thm} Let $e = \depth_R M$ and $d = \dim_R M$.  Then:
+
+\noindent (1) \quad $H^i(M)=0$ unless $e \leq i \leq d$.
+
+\noindent (2) \quad $H^e(M) \neq 0$ and $H^d(M) \neq 0$.
+
+\end{thm}
+
+\begin{proof} We'll prove only (1), which is the case we really need.  We proceed by induction 
+on $e$.
+
+If $H^0(M) \neq 0$, then every element of $R_+$ is a zerodivisor on $M$, which is exactly the 
+statement that $e=0$.
+
+If $e=0$, then
+	$$R_+ \subset \bigcup_{P \in \Ass M} P,$$
+so $R_+$ is itself an associated prime.  It is immediate that $\Gamma(M) = H^0(M) \neq 0$ as 
+desired.
+
+For the inductive step, assume that (1) is true for all $R$-modules $N$ with $\depth N < e$.  
+Let $a \in R_+$ be a homogeneous NZD on $M$ and let $N = M/aM$.  Then $\depth_R N = e-1$, so 
+by induction $H^i(N)=0$ for $i<e-1$ and $H^{e-1}(N) \neq 0$.
+
+By general homological nonsense, the short exact sequence of $R$-modules
+	\begin{equation}
+	0 ~\to~ M ~\xrightarrow{\cdot a}~ M ~\to~ N ~\to~ 0
+	\end{equation}
+induces a long exact sequence on cohomology 
+	\begin{equation} \label{lexact}
+	\dots ~\to~ H^{i-1}(M) ~\to~ H^{i-1}(N) ~\to~ H^i(M) ~\xrightarrow{\cdot a}~ H^i(M) 
+	~\to~ \dots
+	\end{equation}
+
+If $i<e$, then $H^{i-1}(N)=0$, so $a$ is a NZD on $H^i(M)$.  But $H^i(M)$ is $R_+$-torsion and 
+so has depth $0$.  It follows that $H^i(M)=0$.
+
+On the other hand, if $i=e$ then the first three terms displayed in (\ref{lexact}) are
+	$$0 ~\to~ H^{e-1}(N) ~\to~ H^e(M),$$
+and $H^e(M) \neq 0$ since $H^{e-1}(N) \neq 0$.
+\end{proof}
+
+The local cohomology functors can be computed using the \defterm{\v{C}ech complex}
+$C^\bullet(x_1, \dots, x_n ;\; M)$, which is defined as
+	\begin{equation} \label{cech1}
+	C^\bullet(x_1, \dots, x_n ;\; M) := \bigotimes_{i=1}^n \big( (0 \to R \to R_{x_i} \to 
+	0) \otimes M \big).
+	\end{equation}
+where $R_+ = \sqrt{(x_1, \dots, x_n)}$ and $R_{x_i} = R[x_i^{-1}]$.  The $i$th term $C^i(x_1,
+\dots, x_n ;\; M)$ of the \v{C}ech complex may be described explicitly as follows.  For $F
+\subset [n]$, define
+	$$x_F = \prod_{i \in F} x_i$$
+and let
+	$$R_F = R[x_F^{-1}].$$
+Then
+	\begin{equation}
+	C^\bullet_i(x_1, \dots, x_n ;\; M) = \bigoplus_{\substack{F \subset [n] \\ |F|=i}} M_F
+	\end{equation}
+where $M_F = M \otimes R_F$ and the maps between adjacent terms in the \v{C}ech complex are
+given by the usual Koszul maps (just like simplicial cohomology.)
+
+\section{Hochster's Theorem}
+
+Let $\Delta$ be a simplicial complex on vertices $x_1, \dots, x_n$, and
+$R=\fld[\Delta]=\fld[x_1, \dots, x_n]/I_\Delta$ its Stanley-Reisner ring.  With respect to the
+obvious $\NN^n$-grading, we have $R_+ = (x_1, \dots, x_n)$.
+
+\begin{defn} Let $F \in \Delta$.  The \defterm{star} of $F$ with respect to $\Delta$ is
+	$$\star_\Delta F := \{ G \in \Delta \st G \cup F \in \Delta \}$$
+and the \defterm{link} of $F$ with respect to $\Delta$ is
+        $$\link_\Delta F := \{ G \in \Delta \st G \cup F \in \Delta, ~ G \cap F = \0\}.$$
+We suppress the subscript when possible.
+\end{defn}
+
+Note that both $\star F$ and $\link F$ are simplicial complexes, and that $\star F = \langle F
+\rangle * \link F$. For instance, if $\Delta = \langle 123, 14, 24 \rangle$ and $F = 12$, then
+$\link F = \langle 3 \rangle$ and $\star F = \langle 123 \rangle$.
+
+Let $q_1, \dots, q_n$ be indeterminates.  Denote by $\Hilb(M;\;q)$ the finely graded Hilbert
+series of $M$, i.e.,
+	$$\Hilb(M;\;q) := \sum_{\alpha \in \ZZ^n} q^\alpha \dim_\fld M_\alpha,$$
+where $q^\alpha = q_1^{\alpha_1} \dots q_n^{\alpha_n}$.  Also, let $\tilde H_i(\Delta;\;\fld)$ 
+denote the $i$th reduced simplicial homology of a simplicial
+complex $\Delta$ with coefficients in $\fld$.
+
+For $\alpha \in \ZZ^n$, define
+	\begin{eqnarray*}
+	F(\alpha) &=& \{x_i \st \alpha_i < 0\}, \qquad j = |F|,\\
+	G(\alpha) &=& \{x_i \st \alpha_i > 0\}, \\
+	\supp(\alpha) &=& F(\alpha) \cup G(\alpha) = \{x_i \st \alpha_i \neq 0\}.
+	\end{eqnarray*}
+
+\begin{thm}[Hochster] We have
+	$$\Hilb(H^i(\fld[\Delta]);\;q) ~=~ \sum_{F \in \Delta} \dim \tilde
+	H_{i-|F|-1}(\link_\Delta F;\;\fld) \prod_{x_i \in F} \frac{q_i^{-1}}{1-q_i^{-1}}.$$
+\end{thm}
+
+\begin{proof} Let $\alpha \in \ZZ^n$.  We will explicitly compute $H^i(R)$ by computing
+$\v{C}^\bullet_\alpha$, the $\alpha$th graded piece of the \v{C}ech complex.  Define
+	\begin{eqnarray*}
+	F &=& \{x_i \st \alpha_i < 0\}, \qquad j = |F|,\\
+	G &=& \{x_i \st \alpha_i > 0\}, \\
+	\supp(\alpha) &=& F \cup G = \{x_i \st \alpha_i \neq 0\}.
+	\end{eqnarray*}
+If $\supp(\alpha) \not\in \Delta$, then $C^\bullet_\alpha = 0$, because $R_\alpha=0$ and 
+adjoining inverses doesn't change this.  Also,
+
+So suppose that $\supp(\alpha) \in \Delta$.  
+Let
+
+
+
+We compute $H^i(R)$ explicitly as the $i$th cohomology of the \v{C}ech complex
+$C^\bullet = C^\bullet(x_1, \dots, x_n ;\; M)$.  If $F \not\in \Delta$, then the
+ring $R_F$ is zero, because $x_F=0$ in $R$.  On the other hand, if $F \in \Delta$, then the
+variables in $F$ become units in $R_F$, and those not in $\star F$ get killed (since
+they annihilate the unit $x_F$).  That is,
+	$$R_F ~=~ \fld\left[ \left\{x_i,x_i^{-1} ~:~ i \in F\right\} ~\cup~
+	\left\{x_i ~:~ j \in \link F \right\} \right] \otimes R.$$
+As a $\fld$-vector space, this has 
+
+Let $\alpha \in \ZZ^n$.  We will compute the $\alpha$th graded piece $C^\bullet_\alpha$ of the 
+\v{C}ech complex.  Define
+	$$\supp(\alpha) = \{x_i \st \alpha_i \neq 0\}.$$
+If $\supp(\alpha) \not\in \Delta$, then $C^\bullet_\alpha = 0$, because $R_\alpha=0$ and 
+adjoining inverses doesn't change this.  So suppose that $\supp(\alpha) \in \Delta$.  Let
+	$$\begin{array}{ll}
+	F = \{x_i \st \alpha_i < 0\}, \qquad j = |F|,\\
+	G = \{x_i \st \alpha_i > 0\}. \\
+	\end{array}$$
+A priori, we have
+	\begin{equation}
+	C^r_\alpha ~=~ \left[ \bigoplus_{|F'|=r} R_{F'} \right]_\alpha
+	~=~ \bigoplus_{|F'|=r} [R_{F'}]_\alpha.
+	\end{equation}
+A whole bunch of these summands are zero.  Specifically, for $R_{F'}$ to be nonzero, we must
+have $F' \in \Delta$ (as previously noted), $F' \supset F$ (since the variables in $F$ must be
+units in the $\alpha$th graded piece of the \v{C}ech complex), and $F' \cup G \in \Delta$ (so
+that $x^\alpha$ itself is nonzero).  This is all equivalent to the condition that
+$F'' = F' \sm F$ belong to $\link_{\star G} F$, so we may write
+	\begin{equation}
+	C^r_\alpha ~=~ \left[ \bigoplus_{\substack{F'' \in \link_{\star G} F \\ 
+	|F''|=r}} R_{F \cup F''} \right]_\alpha.
+	\end{equation}
+(To be continued.)
+\end{proof}
+\end{document}

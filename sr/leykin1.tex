@@ -1,0 +1,396 @@
+%%%%%%%%%% the following setup maximizes number of characters per page---
+%%%%%%%%%% good for solution sets, etc.  Don't use for articles.
+
+\documentclass{amsart}
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\topmargin=0in
+\headheight=0in
+\headsep=0in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+%\footheight=0in
+\pagestyle{empty}
+\usepackage{amsfonts,amssymb}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+
+\renewcommand{\star}{\mathop{\rm st}\nolimits}
+\newcommand{\link}{\mathop{\rm 
+lk}\nolimits}
+\newcommand{\sm}{\setminus}
+\newcommand{\st}{~\mid~}
+\newcommand{\0}{\emptyset}
+\newcommand{\ini}{\mathop{\rm in}\nolimits}
+\newcommand{\CE}{\check{C}}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\Hilb}{\mathop{\rm Hilb}\nolimits}
+\newcommand{\supp}{\mathop{\rm supp}\nolimits}
+\newcommand{\depth}{\mathop{\rm depth}\nolimits}
+\newcommand{\Ann}{\mathop{\rm Ann}\nolimits}
+\newcommand{\Ass}{\mathop{\rm Ass}\nolimits}
+\newcommand{\fld}{{\bf k}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\ZZ}{{\mathbb Z}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\isom}{\cong}
+\newcommand{\defterm}[1] {{\bf #1}}
+\newcommand{\puttext}[2] {\put(#1){\makebox(0,0){#2}}}
+\newcommand{\putdot}[1]  {\put(#1){\makebox(0,0){$\bullet$}}}
+\newcommand{\putline}[3] {\put(#1){\line(#2){#3}}}
+
+\begin{document}
+
+Informal Seminar on Stanley-Reisner Theory, UMN, Fall 2002 \\
+5 December 2002
+
+{\bf Local cohomology} \\
+Speaker: Anton Leykin
+
+Scribe notes by Jeremy Martin \\
+
+\hrule
+
+We work with the following objects throughout.  Let $\fld$ be a field and $R$ a finitely
+generated, $\NN^n$-graded $\fld$-algebra, i.e., $R = \bigoplus_{\alpha \in \NN^n} R_\alpha$
+with $R_\alpha R_\beta \subset R_{\alpha+\beta}$.  The motivating example is $R = 
+\fld[\Delta]$, the Stanley-Reisner ring of a simplicial complex $\Delta$.  Define
+	$$R_+ := \bigoplus_{\alpha \neq 0} R_\alpha$$
+the so-called \defterm{irrelevant ideal}.  Finally, $M$ will be a $\ZZ^n$-graded $R$-module, 
+i.e., $M = \bigoplus_{\alpha \in \ZZ^n} M_\alpha$ with $R_\alpha M_\beta \subset 
+M_{\alpha+\beta}$.
+
+%--------------------------------------------------------------------------------------
+\section{Depth and Cohen-Macaulayness}
+
+\begin{defn} An element $a \in R$ is called a \defterm{nonzerodivisor} (or NZD) on $M$ if $m 
+\in M$, $am=0$ implies $m=0$.  Equivalently, the map
+	$$M \xrightarrow{\cdot a} M$$
+given by multiplication by $r$ is one-to-one.
+\end{defn}
+
+\begin{defn}
+A sequence of homogeneous elements $\theta_1, \dots, \theta_s$ is a \defterm{regular
+$M$-sequence}, or \defterm{$M$-sequence} for short, if $\theta_{i+1}$ is a NZD
+on $M/(\theta_1, \dots, \theta_i)M$ for $i=0, \dots, s-1$.
+\end{defn}
+
+\begin{defn}
+The \defterm{dimension} of $M$, denoted $\dim_R M$ or $\dim M$, is the Krull dimension of 
+$R/\Ann_R M$.  The \defterm{depth} of $M$, denoted $\depth_R M$ or $\depth M$, is the length 
+of a maximal $M$-sequence.  It can be shown that every maximal $M$-sequence has the same
+length.
+\end{defn}
+
+In general $\depth_R M \leq \dim_R M$ (since any $M$-sequence of length $s$ generates a 
+height-$s$ ideal of $R/\Ann M$).  Equality is an important ``niceness'' condition which gets 
+its own name:
+
+\begin{defn}
+$M$ is \defterm{Cohen-Macaulay} if $\depth_R M = \dim_R M$.
+\end{defn}
+
+%--------------------------------------------------------------------------------------
+\section{Local Cohomology}
+
+Define the \defterm{torsion functor} $\Gamma$ by
+	$$\Gamma(M) := \left\{u \in M \st R_+^n u = 0 ~\text{for}~ n \gg 0 \right\}.$$
+It is routine to check that $\Gamma$ is a covariant, left-exact functor.  That is, a map $f: M 
+\to N$ of graded $R$-modules induces a map $\Gamma(f): \Gamma(M) \to \Gamma(N)$, and if $f$ is 
+injective then $\Gamma(f)$ is injective.
+
+The $i$th local cohomology functor $H^i$ (more precisely, $H^i_{R_+}$) can now be defined as 
+the $i$th right derived functor of $\Gamma$:
+	$$H^i(M) = R^i \Gamma (M).$$
+That is, one may calculate $H^i(M)$ by taking an injective resolution
+	$$I^\bullet: \quad 0 ~\to~ M ~\to~ I^0 ~\to~ I^1 ~\to~ \dots,$$
+applying $\Gamma$, and defining $H^i(M) := H^i(\Gamma I^\bullet)$.
+(See a textbook on homological algebra for more details.)
+
+\begin{lemma} \label{torsion}
+For all $i$, the modules $H^i(M)$ are \defterm{$R_+$-torsion}, i.e., they are killed by some 
+power of $R_+$.
+\end{lemma}
+
+\begin{proof}
+By definition of $\Gamma$, every module of the form $\Gamma(N)$ is $R_+$-torsion.  In 
+particular, if $I^\bullet$ is an injective resolution, then every $\Gamma(I^i)$ is $R_+$-torsion, 
+so the same is true of the cohomology modules of $\Gamma(I^\bullet)$.
+\end{proof}
+
+The local cohomology functors are useful because they detect depth and dimension.  
+Specifically, we have the following fact.
+
+\begin{thm} Let $e = \depth_R M$ and $d = \dim_R M$.  Then:
+
+\noindent (1) \quad $H^i(M)=0$ unless $e \leq i \leq d$.
+
+\noindent (2) \quad $H^e(M) \neq 0$ and $H^d(M) \neq 0$.
+
+\end{thm}
+
+\begin{proof} We'll prove only (1), which is the case we really need.  We proceed by induction 
+on $e$.
+
+If $H^0(M) \neq 0$, then every element of $R_+$ is a zerodivisor on $M$, which is exactly the 
+statement that $e=0$.
+
+If $e=0$, then
+	$$R_+ \subset \bigcup_{P \in \Ass M} P,$$
+so $R_+$ is itself an associated prime.  It is immediate that $\Gamma(M) = H^0(M) \neq 0$ as 
+desired.
+
+For the inductive step, assume that (1) is true for all $R$-modules $N$ with $\depth N < e$.  
+Let $a \in R_+$ be a homogeneous NZD on $M$ and let $N = M/aM$.  Then $\depth_R N = e-1$, so 
+by induction $H^i(N)=0$ for $i<e-1$ and $H^{e-1}(N) \neq 0$.
+
+By general homological nonsense, the short exact sequence of $R$-modules
+	\begin{equation}
+	0 ~\to~ M ~\xrightarrow{\cdot a}~ M ~\to~ N ~\to~ 0
+	\end{equation}
+induces a long exact sequence on cohomology 
+	\begin{equation} \label{lexact}
+	\dots ~\to~ H^{i-1}(M) ~\to~ H^{i-1}(N) ~\to~ H^i(M) ~\xrightarrow{\cdot a}~ H^i(M) 
+	~\to~ \dots
+	\end{equation}
+
+If $i<e$, then $H^{i-1}(N)=0$, so $a$ is a NZD on $H^i(M)$.  But $H^i(M)$ is $R_+$-torsion and 
+so has depth $0$.  It follows that $H^i(M)=0$.
+
+On the other hand, if $i=e$ then the first three terms displayed in (\ref{lexact}) are
+	$$0 ~\to~ H^{e-1}(N) ~\to~ H^e(M),$$
+and $H^e(M) \neq 0$ since $H^{e-1}(N) \neq 0$.
+\end{proof}
+
+The local cohomology functors can be computed using the \defterm{\v{C}ech complex}
+$\CE^\bullet(x_1, \dots, x_n ;\; M)$, which is defined as
+	\begin{equation} \label{cech1}
+	\CE^\bullet(x_1, \dots, x_n ;\; M) := \bigotimes_{i=1}^n \big( (0 \to R \to R_{x_i} 
+	\to 0) \otimes M \big).
+	\end{equation}
+where $R_+ = \sqrt{(x_1, \dots, x_n)}$ and $R_{x_i} = R[x_i^{-1}]$.  The $i$th \v{C}ech module
+$\CE^i(x_1, \dots, x_n;\; M)$ may be described explicitly as follows.  For $F \subset [n]$, 
+define
+	$$x_F = \prod_{i \in F} x_i$$
+and let
+	$$R_F = R[x_F^{-1}].$$
+Then
+	\begin{equation}
+	\CE^\bullet_i(x_1, \dots, x_n ;\; M) = \bigoplus_{\substack{F \subset [n] \\ |F|=i}} M_F
+	\end{equation}
+where $M_F = M \otimes R_F$ and the maps between adjacent terms in the \v{C}ech complex are
+given by the usual Koszul maps (just like simplicial cohomology.)
+
+%--------------------------------------------------------------------------------------
+\section{Hochster's Theorem}
+
+Let $\Delta$ be a simplicial complex on vertices $x_1, \dots, x_n$, and
+$R=\fld[\Delta]=\fld[x_1, \dots, x_n]/I_\Delta$ its Stanley-Reisner ring.  With respect to the
+obvious $\NN^n$-grading, we have $R_+ = (x_1, \dots, x_n)$.
+
+\begin{defn} Let $F \in \Delta$.  The \defterm{star} of $F$ with respect to $\Delta$ is
+	$$\star_\Delta F := \{ G \in \Delta \st G \cup F \in \Delta \}$$
+and the \defterm{link} of $F$ with respect to $\Delta$ is
+        $$\link_\Delta F := \{ G \in \Delta \st G \cup F \in \Delta, ~ G \cap F = \0\}.$$
+We suppress the subscript when possible.
+\end{defn}
+
+Note that both $\star F$ and $\link F$ are simplicial complexes, and that $\star F = \langle F
+\rangle * \link F$. For instance, if $\Delta = \langle 123, 14, 24 \rangle$ and $F = 12$, then
+$\link F = \langle 3 \rangle$ and $\star F = \langle 123 \rangle$.
+
+Let $q_1, \dots, q_n$ be indeterminates.  Denote by $\Hilb(M;\;q)$ the finely graded Hilbert
+series of $M$, i.e.,
+	$$\Hilb(M;\;q) := \sum_{\alpha \in \ZZ^n} q^\alpha \dim_\fld M_\alpha,$$
+where $q^\alpha = q_1^{\alpha_1} \dots q_n^{\alpha_n}$.  Also, let $\tilde H_i(\Delta;\;\fld)$ 
+denote the $i$th reduced simplicial homology of a simplicial
+complex $\Delta$ with coefficients in $\fld$.
+
+For $\alpha \in \ZZ^n$, define
+	\begin{eqnarray*}
+	F(\alpha) &=& \{x_i \st \alpha_i < 0\}, \\
+	G(\alpha) &=& \{x_i \st \alpha_i > 0\}, \\
+	\supp(\alpha) &=& F(\alpha) \;\cup\; G(\alpha) ~=~ \{x_i \st \alpha_i \neq 0\}.
+	\end{eqnarray*}
+
+\begin{thm}[Hochster] 
+We have
+	$$\Hilb(H^i(\fld[\Delta]);\;q) ~=~ \sum_{F \in \Delta} \dim_\fld \tilde
+	H_{i-|F|-1}(\link_\Delta F;\;\fld) \prod_{x_i \in F} \frac{q_i^{-1}}{1-q_i^{-1}}.$$
+\end{thm}
+
+\begin{proof}
+We compute $H^i(R)$ explicitly as the $i$th cohomology of the \v{C}ech complex $\CE^\bullet
+= \CE^\bullet(x_1, \dots, x_n ;\; M)$.  If $F \not\in \Delta$, then the ring $R_F$ is zero,
+because $x_F=0$ in $R$.  On the other hand, if $F \in \Delta$, then the variables in $F$
+become units in $R_F$, and those not in $\star_\Delta F$ get killed (since they annihilate the 
+unit
+$x_F$).  That is,
+	$$R_F ~=~ \fld\left[ \left\{x_i,x_i^{-1} ~:~ i \in F\right\} ~\cup~
+	\left\{x_j ~:~ x_j \in \link F \right\} \right] \otimes R.$$
+Let $\alpha \in \ZZ^n$.  We will compute the $\alpha$th graded piece $\CE^\bullet_\alpha$ of
+the \v{C}ech complex.  If $\supp(\alpha) \not\in \Delta$, then $\CE^\bullet_\alpha = 0$,
+because $R_\alpha=0$ and adjoining inverses doesn't change this.  So suppose that
+$\supp(\alpha) \in \Delta$.  Let $F = F(\alpha)$, $j=|F|$, and $G = G(\alpha)$.  A priori, we
+have
+	\begin{equation}
+	\CE^r_\alpha ~=~ \left[ \bigoplus_{|F'|=r} R_{F'} \right]_\alpha
+	~=~ \bigoplus_{|F'|=r} [R_{F'}]_\alpha.
+	\end{equation}
+A whole bunch of these summands are zero.  Specifically, for $R_{F'}$ to be nonzero, we must
+have $F' \in \Delta$ (as previously noted), $F' \supset F$ (since the variables in $F$ must be
+units in the $\alpha$th graded piece of the \v{C}ech complex), and $F' \cup G \in \Delta$ (so
+that $x^\alpha$ itself is nonzero).  This is all equivalent to the condition that
+$F'' = F' \sm F$ belong to $\link_{\star G} F$, so we may write
+	\begin{equation}
+	\CE^r_\alpha ~=~ \left[ \bigoplus_{\substack{F'' \in \link_{\star G} F \\ 
+	|F''|=r-j}} R_{F \cup F''} \right]_\alpha.
+	\end{equation}
+The maps in $\CE^r_\alpha$ correspond to the usual coboundary maps of the simplicial 
+cochain complex of $\link_{\star G} F$, shifted by $j+1$.  That is,
+	\begin{eqnarray}
+	\left[H^i(R)\right]_\alpha &=& \tilde H^{i-j-1}(\link_{\star G} F;\; \fld) \\
+	&\isom& \tilde H_{i-j-1}(\link_{\star G} F;\; \fld)
+	\end{eqnarray}
+since this is a finite-dimensional $\fld$-vector space, hence isomorphic to its dual.  (The 
+isomorphism is not canonical, but we don't care because we're really only interested in its 
+dimension.)
+
+If $G \neq \emptyset$, then $\link_{\star G} F$ is a cone over $G$.  In particular it is 
+contractible, so $\tilde H_\bullet(\link_{\star G} F;\; \fld)=0$.  Therefore we only have 
+nonzero terms when $G = \emptyset$, so $\link_{\star G} F = \link_\Delta F$ and the last 
+equation becomes
+	\begin{equation}
+	\left[H^i(R)\right]_\alpha ~\isom~ \tilde H_{i-j-1}(\link F;\; \fld).
+	\end{equation}
+Therefore
+	\begin{eqnarray}
+	\Hilb(H^i(\fld[\Delta]);\;q) &=& \sum_{F \in \Delta} 
+	\sum_{\substack{\alpha: \\ \supp(\alpha)=F(\alpha)=F}}
+	\dim_\fld \tilde H_{i-|F|-1}(\link F;\;\fld) q^\alpha \\
+	&=& \sum_{F \in \Delta} \dim_\fld \tilde H_{i-|F|-1}(\link F;\;\fld)
+	\sum_{\substack{\alpha: \\ \supp(\alpha)=F(\alpha)=F}} q^\alpha \\
+	&=& \sum_{F \in \Delta} \dim_\fld \tilde H_{i-|F|-1}(\link F;\;\fld)
+	\prod_{x_i \in F} \frac{q_i^{-1}}{1-q_i^{-1}}
+	\end{eqnarray}
+as desired.
+\end{proof}
+
+Here's an example (from Stanley) of computing a \v{C}ech complex.  Let $\Delta$ be the complex
+$\langle 12,13,23,4 \rangle =$
+        \begin{equation} \label{delta-ex}
+        \begin{picture}(110,60)
+        \putdot{10,10}  \puttext{10, 2}{$1$}
+        \putdot{40,50}  \puttext{40,58}{$2$}
+        \putdot{70,10}  \puttext{70, 2}{$3$}
+        \putdot{100,40}  \puttext{100,32}{$4$}
+        \putline{10,10}{3,4}{30}        % 12
+        \putline{10,10}{1,0}{60}        % 13
+        \putline{70,10}{-3,4}{30}       % 23
+        \end{picture}
+        \end{equation}
+
+and $R = \fld[\Delta] = \fld[x_1,x_2,x_3,x_4]/(x_1x_4,x_2x_4,x_3x_4,x_1x_2x_3)$.  Then the 
+\v{C}ech complex is
+	$$0 ~\to~ \underbrace{R}_{\CE^0} ~\to~
+	\underbrace{R_1 \oplus R_2 \oplus R_2 \oplus R_3 \oplus R_4}_{\CE^1} ~\to~
+	\underbrace{R_{12} \oplus R_{13} \oplus R_{23}}_{\CE^2} ~\to~ 0,$$
+where $R_1 = R[x_1^{-1}]$, $R_{12} = R[x_1^{-1},x_2^{-1}]$, etc.
+
+$\bullet$ \quad For $\alpha=(0,0,0,0)$, so $F(\alpha)=G(\alpha)=\emptyset$, we have
+	$$\link_{\star G} F = \link_\Delta \emptyset = \Delta,$$
+\quad~ so $\left[ H^i(R) \right]_\alpha = \tilde H_{i-1}(\Delta;\;\fld)$.
+
+$\bullet$ \quad For $\alpha=(-2,3,0,0)$, we have
+	$$F = \{x_1\}, \qquad G = \{x_2\}, \qquad \link_{\star G} F = 
+	\langle x_2 \rangle ~~ \text{(i.e., a point)}$$
+\quad~ so $\left[ H^i(R) \right]_\alpha = \tilde H_{i-2}($point$) = 0$.
+
+%--------------------------------------------------------------------------------------
+\section{Reisner's Theorem}
+
+Let $\Delta$ be a simplicial complex and $R=-\fld[Delta]$.  Let $d = \dim R = 1+\dim \Delta$.
+We will say that $\Delta$ satisfies \defterm{Reisner's criterion} if for all $F \in \Delta$,
+and $i<\dim(\link F)$. we have
+	$$\tilde H_i(\link F;\;\fld)=0.$$
+
+\begin{thm}
+$\Delta$ is Cohen-Macaulay if and only if it satisfies Reisner's criterion.
+\end{thm}
+
+{\bf Remark:} $\Delta$ is \defterm{Gorenstein} (a stronger condition than Cohen-Macaulayness)  
+if in addition $\tilde H_i(\link F;\;\fld) \isom \fld$ for $i=\dim(\link F)$.
+
+\begin{proof} First, we show that a Cohen-Macaulay complex is pure (i.e., all maximal faces
+have the same dimension).  Indeed, if $\Delta$ is Cohen-Macaulay of dimension $d-1$ and $\dim
+F < d-1$, then $\tilde H_{-1}(\link F)=0$ by Hochster's theorem, so $\link F \neq 0$ and $F$
+is not maximal.  (This can also be shown without Hochster's theorem; see Bruns and Herzog,
+p.~210.)
+
+Next, we show that a complex $\Delta$ satisfying Reisner's criterion is pure.  If $\dim F = 0$
+then there is nothing to show.  Otherwise, we induct on dimension.  Reisner's criterion gives
+$\tilde H_0(\Delta) = \tilde H_0(\link \emptyset) = 0$, so $\Delta$ is connected. Moreover,
+for every vertex $v$, the subcomplex $\link\{v\}$ of $\Delta$ satisfies Reisner's criterion
+and has dimension less than that of $\Delta$, so it is pure by induction.  Now, for any
+maximal face $F$, let $v,w \in F$; we have
+	$$\dim \link\{v\} = |F-v|-1 = |F-w|-1 = \dim \link\{w\};$$
+by connectedness all links of vertices must have the same dimension, and the same equation 
+implies that $\Delta$ is pure.
+
+By these two observations together, we may assume that $\Delta$ is pure, so $|F|=d$ for all 
+maximal faces and $\dim(\link F)=d-|F|-1$ for all faces.  So Cohen-Macaulayness
+	\begin{eqnarray*}
+	F~\text{is Cohen-Macaulay} &\iff& \fld[\Delta]~\text{is Cohen-Macaulay} \\
+	&\iff& \tilde H_{j-|F|-1}(\link F;\;\fld)=0 ~\text{for}~ j<d, ~ F \in \Delta \\
+	\end{eqnarray*}
+which is exactly Reisner's criterion (set $j = i+|F|+1$).
+\end{proof}
+
+By the way, a pure connected simplicial complex $\Delta$ certainly need not be Cohen-Macaulay
+(unless $\dim\Delta \leq 1$). The ``minimal'' example is the complex
+$\langle 123,345 \rangle =$
+	\begin{center}
+	\begin{picture}(110,70)
+	\putdot{10,10}  \puttext{ 2,10}{$1$}
+	\putdot{10,70}  \puttext{ 2,70}{$2$}
+	\putdot{50,40}  \puttext{50,32}{$3$}
+	\putdot{90,10}  \puttext{98,10}{$4$}
+	\putdot{90,70}  \puttext{98,70}{$5$}
+	\putline{10,10}{4,3}{80}
+	\putline{90,10}{-4,3}{80}
+	\putline{10,10}{0,1}{60}
+	\putline{90,10}{0,1}{60}
+	\putline{14,13}{0,1}{54}
+	\putline{18,16}{0,1}{48}
+	\putline{22,19}{0,1}{42}
+	\putline{26,22}{0,1}{36}
+	\putline{30,25}{0,1}{30}
+	\putline{34,28}{0,1}{24}
+	\putline{38,31}{0,1}{18}
+	\putline{42,34}{0,1}{12}
+	\putline{46,37}{0,1}{6}
+
+	\putline{90,64}{-1,0}{8}
+	\putline{90,58}{-1,0}{16}
+	\putline{90,52}{-1,0}{24}
+	\putline{90,46}{-1,0}{32}
+	\putline{90,40}{-1,0}{40}
+	\putline{90,34}{-1,0}{32}
+	\putline{90,28}{-1,0}{24}
+	\putline{90,22}{-1,0}{16}
+	\putline{90,16}{-1,0}{8}
+
+        \end{picture}
+        \end{center}
+
+which is not Cohen-Macaulay because $\link(3) = \langle 12,45 \rangle$ is disconnected, so has
+$\tilde H_0 \neq 0$.  (Also, the $h$-vector of this complex can be computed as $(1,2,-1)$. In
+a Cohen-Macaulay complex, every entry of the $h$-vector is nonnegative.)
+
+\end{document}
