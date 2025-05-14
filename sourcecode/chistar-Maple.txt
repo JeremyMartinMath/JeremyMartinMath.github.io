@@ -1,0 +1,73 @@
+## Maple code to calculate the modular chromatic and
+## flow polynomials of an arbitrary cell complex.
+## Jeremy L. Martin 9/16/2012
+
+    ##
+    ## Execute this stuff first.
+    ##
+with(LinearAlgebra): with(combinat):
+
+torsionFactors := A -> `if`(ColumnDimension(A)=0, [], select(x->evalb(x>1),convert(Diagonal(SmithForm(A)),list))):
+
+chiStar := proc(bd)
+local m,n,J,bdJ:
+  m := ColumnDimension(bd):
+  n := RowDimension(bd):
+  bdJ := proc(J) option remember: return SubMatrix(bd, 1..n, J): end:
+  return add(
+    (-1)^nops(J) * 'k'^(n-Rank(bdJ(J))) * mul('G'(a), a=torsionFactors(bdJ(J))),
+    J = powerset([seq(1..m)])):
+end:
+
+phiStar := proc(bd)
+local m,n,J,ch,bdJ,invFactors:
+  m := ColumnDimension(bd):
+  n := RowDimension(bd):
+  bdJ := proc(J) option remember: return SubMatrix(bd, 1..n, J): end:
+  return add(
+    (-1)^(m-nops(J)) * 'k'^(nops(J)-Rank(bdJ(J))) * mul('G'(a), a=torsionFactors(bdJ(J))),
+    J = powerset([seq(1..m)])):
+end:
+
+chiStarK := proc(bd,k)
+local m,n,J,bdJ:
+  m := ColumnDimension(bd):
+  n := RowDimension(bd):
+  bdJ := proc(J) option remember: return SubMatrix(bd, 1..n, J): end:
+  return add(
+    (-1)^nops(J) * k^(n-Rank(bdJ(J))) * mul(gcd(k,a), a=torsionFactors(bdJ(J))),
+    J = powerset([seq(1..m)])):
+end:
+
+phiStarK := proc(bd,k)
+local m,n,J,ch,bdJ,invFactors:
+  m := ColumnDimension(bd):
+  n := RowDimension(bd):
+  bdJ := proc(J) option remember: return SubMatrix(bd, 1..n, J): end:
+  return add(
+    (-1)^(m-nops(J)) * k^(nops(J)-Rank(bdJ(J))) * mul(gcd(k,a), a=torsionFactors(bdJ(J))),
+    J = powerset([seq(1..m)])):
+end:
+    ##
+    ## Now enter your matrix.  The Maple syntax is different
+    ## depending on whether you want to list rows or columns.
+    ## For example:
+    ##
+bd1 := <<1,4,9,2>|<1,7,2,9>|<1,2,5,14>>;              ## listed by columns
+bd2 := Matrix([[1,4,9,2],[1,7,2,9],[1,2,5,14]]);      ## listed by rows
+bd3 := Transpose(bd2); 
+    ##
+    ## Use chiStar and phiStar if you want to see the chromatic and
+    ## flow functions as quasipolynomials in k.  Here G(a) means gcd(k,a).
+    ##
+factor(chiStar(bd2));
+factor(phiStar(bd2));
+
+    ##
+    ## Use chiStarK and phiStarK if you want to evaluate the chromatic and
+    ## flow functions at specific values of k.
+    ##
+seq( chiStarK(bd2,k), k = -2 .. 6);
+seq( phiStarK(bd2,k), k = -2 .. 6);
+
+

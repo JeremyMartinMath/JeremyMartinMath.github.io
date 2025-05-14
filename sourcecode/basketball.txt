@@ -1,0 +1,81 @@
+##################################################################
+###
+### basketball.txt -- Jeremy L. Martin, 11/20/05
+### Requires a graphical version of Maple 9
+###
+##################################################################
+
+## RotatedBasketball(theta,f,N,NP)
+##   draws the pair of curves
+##     R = {z: Re(exp(-i*theta)*f(z)) = 0}
+##     I = {z: Im(exp(-i*theta)*f(z)) = 0}
+##   in the window |x| <= N, |y| <= N, plotting >= NP points on each curve.
+
+## RotatedHalfBasketball(theta,f,N,NP)
+##   same as RotatedBasketball, but draws only I
+
+## NecklaceOfBasketballs(f,N,NP,K)
+##   produces an animation of the pairs of curves RotatedBasketball(theta,f,N,NP)
+##   for theta in {0, Pi/K, 2*Pi/K, ..., Pi}
+
+# Notes:
+# 1. The argument f must be specified as a function, not an expression; e.g.,
+#         z -> z^3+z+I
+#    rather than
+#         z^3+z+I.
+#
+# 2. The parameter N should be large enough to include all roots of f (which can be
+#    approximated in Maple using fsolve).  Increasing NP will produce better output
+#    but slow down the computation.
+#
+# 3. When playing the animation produced by NecklaceOfBasketballs, I recommend
+#    that you turn cycling on, since theta really should be viewed as a parameter
+#    in {\mathbb R}/pi rather than [0,pi].  Larger values of K will produce a more
+#    accurate representation of the necklace, but slow things down considerably.
+#    For example, computing the necklace for the quintic below, with K=100, takes
+#    ~15 minutes on my iBook G4.
+
+
+############################################
+###  Maple code 
+############################################
+
+
+interface(showassumed=0):
+with(plots):
+RotatedBasketball := proc(theta,f,N,NP)
+  local x,y,RE,IM,RealPlot,ImagPlot:
+  assume(x,real): assume(y,real):
+  RE := Re(expand((cos(theta)+I*sin(theta))*f(x+I*y))):
+  IM := Im(expand((cos(theta)+I*sin(theta))*f(x+I*y))):
+  RealPlot := implicitplot(RE=0, x=-N..N, y=-N..N, color=blue,
+    axes=NONE, numpoints=NP, thickness=2, scaling=constrained):
+  ImagPlot := implicitplot(IM=0, x=-N..N, y=-N..N, color=red,
+    axes=NONE, numpoints=NP, thickness=2, scaling=constrained):
+  display(RealPlot,ImagPlot):
+end:
+
+RotatedHalfBasketball := proc(theta,f,N,NP)
+  local x,y,IM,ImagPlot:
+  assume(x,real): assume(y,real):
+  IM := Im(expand((cos(theta)+I*sin(theta))*f(x+I*y))):
+  ImagPlot := implicitplot(IM=0, x=-N..N, y=-N..N, color=red,
+    axes=NONE, numpoints=NP, thickness=1, scaling=constrained):
+  display(ImagPlot):
+end:
+
+NecklaceOfBasketballs := (f,N,NP,K) -> animate(
+  alpha -> RotatedBasketball(alpha, f, N, NP),
+  [theta], theta=0..Pi, frames=K);
+
+############################################
+###   Examples
+############################################
+
+f := z -> z^5+I*z^2+(1-2*I)*z-3:
+RotatedBasketball(0,f,2,100);
+RotatedBasketball(0,f,2,1000);
+RotatedBasketball(0,f,2,10000);
+NecklaceOfBasketballs(f,2,10000,25);
+NecklaceOfBasketballs(f,2,10000,100);
+

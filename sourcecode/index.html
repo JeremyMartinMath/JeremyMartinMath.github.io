@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Source Code and Data Archive -- Jeremy Martin</title>
+</head>
+<body>
+
+<h3>Jeremy L. Martin<br>
+Source Code and Data Archive</h3>
+
+<p>This is my master page for publicly available source code and data 
+(in Maple, <a href="http://www.math.uiuc.edu/Macaulay2/">Macaulay2</a>, 
+<a href="http://www.sagemath.org/">Sage</a>, C, ...) for some of my 
+research projects.  This code may be used freely for any noncommercial 
+purpose.
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="aspheric">
+<h4>Material related to the article
+&quot;Aspheric orientations, colorings, tensions and flows of cell complexes&quot;
+(which doesn't exist yet, but it will soon):
+</h4>
+
+<p>Compute the modular chromatic and flow polynomials of an arbitrary 
+cell complex using <a href="chistar-maple.txt">Maple</a> or <a 
+href="chistar-sage.txt">Sage</a>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="critical">
+<h4>Material related to the article
+<a href="../pubs.html#simplicialrooks">&quot;On the spectra of simplicial rook graphs&quot;</a>
+</h4>
+
+<ul>
+<li><a href="SimplicialRookGraphs.sws">Sage worksheet</a> to construct simplicial rook graphs and compute their spectra
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="critical">
+<h4>Material related to the article
+<a href="../pubs.html#critical">&quot;Critical groups of simplicial complexes&quot;</a>
+</h4>
+
+<ul>
+<li><a href="examples.m2">Annotated Macaulay2 code</a> for several calculations occurring in the article
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="harmonic">
+<h4>Material related to the article
+<a href="../pubs.html#chromatic">&quot;On distinguishing trees by their chromatic symmetric functions&quot;</a>
+</h4>
+
+<ul>
+<li><a href="CSF.html">Computing the chromatic symmetric function in Maple</a>
+<li>Lists of all trees up to isomorphism.  Reading the file <a href="./Trees1-11">Trees1-11</a>
+into a Maple session defines a global variable <i>TREES</i> and sets it to equal a list of 11
+lists of sets.  Each set in <i>TREES[n]</i> consists of <i>n-1</i> ordered pairs of integers in
+the range 1..n, regarded as edges of a graph on [n].  For every tree <i>T</i> on <i>n</i> vertices,
+there is exactly one set in <i>TREES[n]</i> that defines a tree isomorphic to <i>T</i>.  This list
+is enough for a lot of computations; however, if you want more, you can read in the files
+<a href="./Trees12">Trees12</a>, 
+<a href="./Trees13">Trees13</a>, 
+<a href="./Trees14">Trees14</a>, 
+<a href="./Trees15">Trees15</a>, 
+<a href="./Trees16">Trees16</a>
+(in that order!), each of which appends to <i>TREES</i> a list of trees on the indicated number
+of vertices.<br>
+
+<b>Note:</b> I did not construct this data, but merely translated into Maple the
+<a href="http://www.zis.agh.edu.pl/trees/">database of trees</a> created by S. Piec, K. Malarz, and K. Kulakowski as 
+described
+in their preprint &quot;How to count trees?&quot;, <a 
+href="http://www.arxiv.org/cond-mat/0501594">arXiv:cond-mat/0501594</a>.
+
+<li><a href="Conjectures.mw">Computational verification of Conjectures 6 
+and 7</a> (which assert that a certain symmetric function
+is h-positive and almost h-integral).  This is a Maple 
+worksheet 
+that uses John Stembridge's freely available <a 
+href="http://www.math.lsa.umich.edu/~jrs/maple.html#SF">SF package</a>.
+I was able to confirm both conjectures for all <i>n</i>&leq;20 before my 
+computer ran out of memory.
+
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="harmonic">
+<h4>Material related to the article
+<a href="../pubs.html#harmonic">&quot;Harmonic algebraic curves and noncrossing partitions&quot;</a>
+</h4>
+
+<ul>
+<li>Drawing basketballs and (as animations) necklaces of basketballs (Maple):
+<a href="basketball.txt">basketball.txt</a>
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a href="../">Jeremy Martin's home page<a>
+
+<p><img src="../email.jpg"><br>
+Last updated Mon 9/17/12 8:00 PM CDT
+
+</body>
+</html>

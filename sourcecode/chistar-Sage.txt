@@ -1,0 +1,41 @@
+##
+## Modular chromatic and flow quasipolynomials
+## This implements Theorem {coloring-inc-exc} (2.5 in the draft of 8/28/12)
+##
+## Usage: Let bd be the boundary matrix of a CW-complex X.
+##    chiStar(bd) = formal expression for modular chromatic qpolynomial
+##    chiStar(bd,k) = chi_* evaluated at k
+##    phiStar(bd) = formal expression for modular flow qpolynomial
+##    phiStar(bd,k) = phi_* evaluated at k
+##
+
+inv_factors = lambda M: M.smith_form()[0].diagonal()
+var('a,k')
+G = function('G',a)
+
+def chiStar(bd):
+    k = var('k')
+    m = bd.ncols()
+    n = bd.nrows()
+    bdJ = lambda J: bd.matrix_from_columns(J)
+    return factor(add( (-1)^len(J) * k^(n-bdJ(J).rank()) * mul(G(a) for a in inv_factors(bd) if a > 1) for J in powerset(range(m)) ))
+
+def chiStarK(bd,K):
+    m = bd.ncols()
+    n = bd.nrows()
+    bdJ = lambda J: bd.matrix_from_columns(J)
+    return add( (-1)^len(J) * K^(n-bdJ(J).rank()) * mul(gcd(a,K) for a in inv_factors(bd) if a > 1) for J in powerset(range(m)) )
+
+def phiStar(bd):
+    k = var('k')
+    m = bd.ncols()
+    n = bd.nrows()
+    bdJ = lambda J: bd.matrix_from_columns(J)
+    return factor(add( (-1)^(m-len(J)) * k^(len(J)-bdJ(J).rank()) * mul(G(a) for a in inv_factors(bd) if a > 1) for J in powerset(range(m)) ))
+
+def phiStarK(bd,K):
+    m = bd.ncols()
+    n = bd.nrows()
+    bdJ = lambda J: bd.matrix_from_columns(J)
+    return add( (-1)^(m-len(J)) * K^(len(J)-bdJ(J).rank()) * mul(gcd(a,K) for a in inv_factors(bd) if a > 1) for J in powerset(range(m)) )
+
