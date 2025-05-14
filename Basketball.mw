@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Worksheet><Version major="6" minor="1"/><View-Properties><Zoom percentage="150"/></View-Properties><Styles><Layout alignment="left" bullet="none" firstindent="0.0" leftmargin="0.0" linebreak="space" linespacing="0.0" name="Normal" rightmargin="0.0" spaceabove="0.0" spacebelow="0.0"/><Font background="[0,0,0]" bold="true" executable="true" family="Monospaced" foreground="[255,0,0]" name="Maple Input" opaque="false" size="12"/></Styles><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">with(plots):</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">u := x^3-3*x*y^2-4*x*y-x+y+3;
+v := 3*x^2*y-y^3+2*x^2-2*y^2-x-y;</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">window := -2..2:
+display(
+  implicitplot(u=0, x=window, y=window, thickness=2, numpoints=2000, color=blue),
+  implicitplot(v=0, x=window, y=window, thickness=2, numpoints=2000, color=red));</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">window := -10..10:
+display(
+  implicitplot(u=0, x=window, y=window, thickness=2, numpoints=2000, color=blue),
+  implicitplot(v=0, x=window, y=window, thickness=2, numpoints=2000, color=red));</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">window := -40..40:
+display(
+  implicitplot(u=0, x=window, y=window, thickness=2, numpoints=2000, color=blue),
+  implicitplot(v=0, x=window, y=window, thickness=2, numpoints=2000, color=red));</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input"/><Pagebreak/></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">restart:</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">interface(showassumed=0):
+with(plots):
+RotatedBasketball := proc(theta,f,N,NP)
+  local x,y,RE,IM,RealPlot,ImagPlot:
+  assume(x,real): assume(y,real):
+  RE := Re(expand((cos(theta)+I*sin(theta))*f(x+I*y))):
+  IM := Im(expand((cos(theta)+I*sin(theta))*f(x+I*y))):
+  RealPlot := implicitplot(RE=0, x=-N..N, y=-N..N, color=blue,
+    axes=none, numpoints=NP, thickness=2, scaling=constrained):
+  ImagPlot := implicitplot(IM=0, x=-N..N, y=-N..N, color=red,
+    axes=none, numpoints=NP, thickness=2, scaling=constrained):
+  display(RealPlot,ImagPlot):
+end:</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">f := z -&gt; z^5+I*z^2+(1-2*I)*z-3;</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">RotatedBasketball(0,f,3,2000);</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">f := z -&gt; z^5+z+1;
+RotatedBasketball(0,f,3,2000);</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">f := z -&gt; z^5+6*z^3+3*z^2+5*z-2;
+RotatedBasketball(0,f,3,2000);</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">f := z -&gt; z^5+z^4+I*z^3-z^2-(I+1)*z;
+RotatedBasketball(0,f,3,2000);</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">RB := theta -&gt; RotatedBasketball(theta,f,2,10000):</Text-field></Input><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input">animate( RB, [theta], theta=0..Pi, frames=100);</Text-field></Input></Group><Group><Input><Text-field layout="Normal" prompt="&gt; " style="Maple Input"/></Input></Group><Text-field/><Text-field/><Text-field/><Text-field/><Text-field/></Worksheet>
