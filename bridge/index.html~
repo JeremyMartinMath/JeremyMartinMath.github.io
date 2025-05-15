@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Jeremy's Bridge Page</title>
+</head>
+<body>
+
+<h2>Jeremy's Bridge Page</h2>
+
+<hr>
+
+<h4>Just bridge</h4>
+<ul>
+<li><a href="gnt.html">Tales from the 2005 Grand National Teams</a>
+<li><a href="HappyClub.html">The Happy Club</a>, a strong-club mini-notrump system I used to play with Eugene Hung.  Warning: I have completely forgotten what's in here.
+<li><a href="76.html">My favorite hand</a>
+</ul>
+
+<h4>Bridge and mathematics</h4>
+<ul>
+<li><a href="basics.pdf">Basic bridge math</a> (1/31/11)
+
+<li><a href="yarborough.pdf">What's the probability of getting yarboroughs 
+in consecutive sessions?</a> (1/31/11)
+
+<li><a href="rank-dist.pdf">Rank distributions</a> (10/10/11)
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a href="http://www.jlmartin.faculty.ku.edu/">Jeremy Martin's home page</a><br>
+<img src="../email.jpg"><br>
+Last updated Mon 10/10/11
+</body>
+</html>

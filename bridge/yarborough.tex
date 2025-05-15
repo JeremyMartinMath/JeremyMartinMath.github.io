@@ -1,0 +1,85 @@
+\include{bridge-header}
+
+\textbf{\LARGE Probabilities and Yarboroughs}
+
+\textbf{Question 1: What is the probability of being dealt a 
+Yarborough?}
+
+As so often in mathematics, in order to answer the original question, 
+we start by asking a different question.
+
+\textbf{Question 2: How many possible Yarboroughs are there?}
+
+If we know this, then we can divide the answer by the number of possible 
+bridge hands (which we now know is 635013559600) to get the answer to 
+the original Question~1.
+
+On the other hand, Question~2 can be answered by the same techniques 
+that we used to count all possible hands.  What is a Yarborough, after 
+all?  It's a hand with no card higher than a nine.  That is, it is a 
+hand of thirteen cards selected from a set of thirty-two cards (namely 
+the deuce through nine of each suit: 8 cards per suit $\x$ 4 suits = 32 
+cards.)  Therefore,
+ \boldmath
+ \begin{align*}
+ \textbf{number of possible Yarboroughs} &~=~ \binom{32}{13} = 
+ \frac{32!}{13!\x19!} = 347373600.
+ \end{align*}
+ \unboldmath
+
+That takes care of Question 1.  As for Question 2, the answer is
+ \boldmath
+ \begin{multline*}
+ \textbf{probability of being dealt a Yarborough} ~=~ 
+ \frac{\textbf{number of possible Yarboroughs}}{\textbf{number of 
+ possible hands}}\\\\
+ ~=~ \binom{32}{13} ~/~ \binom{52}{13} ~=~ 
+ \frac{347373600}{635013559600} ~\approx~ 0.00054703 = 0.054703\%
+ \end{multline*}
+ \unboldmath
+or about 1 in 1828.  So you can expect to be dealt a Yarborough about 
+one of every 1828 hands you play. But that doesn't mean you can't have 
+four Yarboroughs in a row, or go fifteen years without being dealt a 
+Yarborough (lucky you!).  It just means that \emph{on average}, one out 
+of every 1828 or so hands you get will be a Yarborough.
+
+\textbf{Question 3: What is the probability of being dealt at least one 
+Yarborough in a 24-board session?}
+
+The naive answer is to take the number 0.00054703 and multiply it by 24.  
+Actually, that's not mathematically precise (although you do happen, in 
+this case to get a number that is reasonably close to the correct 
+answer).  Here is an analogy.  You flip a coin.  The chance that it 
+comes up heads is 50\%.  Does that mean that if you flip it twice, the 
+chance of getting at least one heads is 2$\x$50\% = 100\%?  Of course 
+not!  The chance of getting tails twice is 25\%, so the chance of that 
+\emph{not} happening --- that is, of getting heads at least once --- is 
+75\%.
+
+The same reasoning can be used to answer Question~3.  The chance of 
+\emph{not} being dealt a Yarborough on any particular deal is 
+approximately
+  $$1 - 0.00054703 = 0.99945297$$
+and so the chance of not being dealt a Yarborough on any of 24 separate 
+deals is approximately
+  $$(0.99945297)^{24} \approx 0.9869535$$
+and so the chance of being dealt a Yarborough (i.e., not not being dealt 
+a Yarborough) on at least one of 24 deals is approximately
+  $$1-0.9869535=0.0130465=1.30465\%$$
+or about 1 in 77.
+
+\pagebreak
+
+\textbf{Question 4: What is the probability of being dealt at least one 
+Yarborough in each of two 24-board sessions?}
+
+(This was Virginia Seaver's question that led to this whole project!)
+
+Using the answer to Question 3, and the same logic, the answer is 
+  $$(0.0130465)^2\approx 0.0001702122=0.01702122\%$$
+or about 1 in 5875.  Hardly an everyday occurrence, but not that much 
+less frequent than being dealt a Yarborough in the first place (which, 
+remember, was about 1/1828, or roughly three times 1/5875.)
+
+\pagebreak
+\end{document}

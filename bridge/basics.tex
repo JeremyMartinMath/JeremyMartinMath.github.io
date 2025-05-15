@@ -1,0 +1,131 @@
+\documentclass{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathrsfs,graphics,hyperref,cancel}
+\numberwithin{equation}{section}
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\topmargin=0.25in
+\headheight=0in
+\headsep=0in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+\newcommand{\x}{\times}
+\newcommand{\C}{$\clubsuit$}
+\newcommand{\D}{$\diamondsuit$}
+\renewcommand{\H}{$\heartsuit$}
+\renewcommand{\S}{$\spadesuit$}
+\pagestyle{empty}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{\LARGE Basic Bridge Math}
+
+\textbf{Question 1: How many bridge hands are there?  That is, how many 
+ways are there of selecting 13 cards from a deck of 52?}
+
+No problem --- just start listing all the possible hands!  Just kidding. 
+That would require a ludicrously huge amount of time and scratch paper.  
+Even computers have better things to do with their time. There must be a 
+better way to count hands without listing every single one.
+
+Imagine dealing a single bridge hand.  For simplicity, we won't worry 
+about the other three players; we'll just deal North thirteen cards.
+
+\begin{itemize}
+\item There are 52 possibilities for the first card.  Let's say it's the \D7.
+\item There are 51 possibilities for the second card (because it can be anything \emph{except} the \D7).
+Let's say it's the \S K.
+\item There are 50 possibilities for the third card (because it can be anything \emph{except} the \D7 or \S K).
+Let's say it's the \C4.
+\item \dots
+\item There are 40 possibilities for the thirteenth card (because it can be anything except the \D7, \S K, \C4, or any of the
+nine other cards already dealt).%  Let's say it's the \H J.
+\end{itemize}
+
+That means that the number of possible hands is $52\x51\x50\x\cdots\x42\x41\x40 = 3954242643911239680000$.
+Right?
+
+Close, but wrong.  The reason is that \emph{the order in which the cards 
+were dealt is irrelevant.}  If, say, the \D7 and \S K had switched 
+places, or even if the first thirteen cards had been shuffled 
+arbitrarily while leaving the rest of the deck alone, then the hand we 
+dealt wouldn't have changed.
+
+How many ways are there to shuffle a thirteen-card hand?  (To put it 
+another way, if you accidentally drop your hand on the floor, then how 
+many different orders can the cards be in when you pick it up again)?
+The first card you pick up could be any of 13; the second card could be 
+any of 12; the third any of 11; and so on.  Therefore, the answer is
+  $$13\x12\x11\x10\x9\x8\x7\x6\x5\x4\x3\x2\x1 = 6,227,020,800 = 13!.$$
+
+That punctuation is not a typo.  These numbers come up so often that we 
+mathematicians use the notation ``13!'' (pronounced ``thirteen 
+factorial'') as a convenient shorthand rather than writing out all 
+thirteen factors on the left.
+
+Getting back to the original question, we need to divide
+the number 3954242643911239680000 by the number of ways to shuffle a 
+13-card hand in order to count the number of possible hands.  That is,
+
+\boldmath
+\begin{align*}
+\textbf{number of possible bridge hands} ~&=~ \frac{52\x51\x50\x\cdots\x42\x41\x40}{13\x12\x11\x\cdots\x3\x2\x1}\\\\
+&=~ \frac{3954242643911239680000}{6227020800}\\\\
+&=~ \mathbf{635013559600}.
+\end{align*}
+\unboldmath
+
+Also, by the way, observe that $52\x51\x\cdots\x40=52!/39!$ --- because if you wrote $52!/39!$ out in its full glory, then
+you'd be able to cancel 39/39 and 38/38 and 37/37 and a lot more stuff, and all that survived would be $52\x51\x\cdots\x40$.
+That means that we can write down a more concise formula:
+$$635013559600 =  \frac{52!}{39! \x 13!}.$$
+
+This kind of calculation (``How many ways are there to choose a subset of $k$ things from a set of $n$ things?'') is extremely
+common; common enough, in fact, that it has a special symbol: $\binom{n}{k}$.  (You might also see $C(n,k)$ or ${}_nC_k$,
+but the notation $\binom{n}{k}$ is what most mathematicians would use.)  By the same logic as above, these numbers can be
+calculated by the formula
+$$\binom{n}{k} = \frac{n(n-1)(n-2)\cdots(n-k+2)(n-k+1)}{k(k-1)(k-2)\cdots(2)(1)} = \frac{n!}{k!(n-k)!}$$
+
+So we can summarize: The number of possible bridge hands is
+$$\binom{52}{13} = 635013559600.$$
+
+\textbf{Question 2: How many bridge \underline{deals} are there?}
+
+Having answered Question 1, this is now a lot easier.  
+
+Should we just take the answer from Question 1 and raise it to the fourth power?  No --- once we know what one player's hand is, that tells us thirteen cards that none of the other players can have.  (That would only be the right method if we dealt each player's hand \textit{from a different deck}, which is not how bridge works!)
+Instead, what we are going to do is deal out four hands to the players in some order (say North--West--South--East; it doesn't matter) and determine the number of hands for each player \emph{taken from the cards not already dealt to earlier players}.
+
+1. Let's deal North's hand first.  As we just calculated, the number of possible North hands is $\binom{52}{13}$.
+
+2. Now deal West's hand.  There are $52-13=39$ cards that North does not hold.  West gets 13 of those cards.  By the same logic as in Question 1, the number of possible West hands is $\binom{39}{13}$.
+
+3, Similarly, there are now $52-26=26$ cards from which to choose South's hand, so $\binom{26}{13}$ possibilities.
+
+4. Finally, there are $\binom{13}{13}$ possibilities for East's hand.  Actually, $\binom{13}{13}=\frac{13!}{13!(13-13)!}=1$.  This makes sense, since if we already know the other three players' hands then there is only one possible East hand!  (Also, by the way, $0!=1$.  This might seem weird, but actually it makes sense --- if you are trying to put zero things in order, there is one way to do it.)
+
+Therefore,
+\boldmath\begin{align*}
+\textbf{number of bridge deals} ~&= \binom{52}{13}\binom{39}{13}\binom{26}{13}\binom{13}{13}\\
+&= 635013559600\x 8122425444\x 10400600\x 1\\
+&= 53644737765488792839237440000 \approx 5.36\x10^{28}
+ \end{align*}\unboldmath
+ That is a pretty impressive number.
+ 
+ Something interesting happens if we write out the formula in terms of binomial coefficients:
+\begin{align*}
+\binom{52}{13}\binom{39}{13}\binom{26}{13}\binom{13}{13}
+&= \frac{52!}{39!\,13!}\x\frac{39!}{26!\,13!}\x\frac{26!}{13!\,13!}\x\frac{13!}{13!\,0!}\\
+&= \frac{52!}{\cancel{39!}\,13!}\x\frac{\cancel{39!}}{\cancel{26!}\,13!}\x\frac{\cancel{26!}}{\cancel{13!}\,13!}\x\frac{\cancel{13!}}{13!\,0!}\\
+&= \frac{52!}{13!\,13!\,13!\,13!}.
+\end{align*}
+This formula is nice because it indicates a general principle --- if you want to separate a big set $S$ into $n$ little sets (where the order of the elements within each little set doesn't matter, but the order of the little sets themselves doesn't), you now know how to count the number of ways to do so.
+
+There's a good reason for this.  There are $52!$ ways to shuffle a deck of cards, and each way of shuffling produces a bridge deal.  But the number of shuffles is a \textbf{much} bigger number than the number of bridge deals:
+\[52! = 80658175170943878571660636856403766975289505440883277824000000000000 \approx 8.07\x10^{67}.\]
+The reason is that rearranging the 13 cards that go to each player doesn't change the outcome.  So the denominator in the formula $\frac{52!}{13!\,13!\,13!\,13!}$ is precisely the correction for this overcount.  (The underlying principle is that if you want to count how many sheep are in a flock, you can simply count the legs and divide by 4.)
+
+\end{document}

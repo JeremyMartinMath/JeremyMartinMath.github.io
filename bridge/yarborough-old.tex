@@ -1,0 +1,133 @@
+\documentclass{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathrsfs,graphics,hyperref}
+\numberwithin{equation}{section}
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\topmargin=0.25in
+\headheight=0in
+\headsep=0in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+\newcommand{\x}{\times}
+\newcommand{\C}{$\clubsuit$}
+\newcommand{\D}{$\diamondsuit$}
+\renewcommand{\H}{$\heartsuit$}
+\renewcommand{\S}{$\spadesuit$}
+\pagestyle{empty}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{1. How many bridge hands are there?  That is, how many ways are there
+of selecting 13 cards from a deck of 52?}
+
+No problem --- just start listing all the possible hands!  Just kidding.
+That would require a ludicrously huge amount of
+time and scratch paper.  Even computers have better things to do with their time.
+There must be a better way to count hands without listing every single one.
+
+Imagine dealing a single bridge hand.  For simplicity, we won't worry about the other 
+three players; we'll just deal North the top thirteen cards from the top of 
+the deck.
+
+\begin{itemize}
+\item There are 52 possibilities for the first card.  Let's say it's the \D7.
+\item There are 51 possibilities for the second card (because it can be anything \emph{except} the \D7).
+Let's say it's the \S K.
+\item There are 50 possibilities for the third card (because it can be anything \emph{except} the \D7 or \S K).
+Let's say it's the \C4.
+\item \dots
+\item There are 40 possibilities for the thirteenth card (because it can be anything except the \D7, \S K, \C4, or any of the
+nine other cards already dealt).%  Let's say it's the \H J.
+\end{itemize}
+
+That means that the number of possible hands is $52\x51\x50\x\cdots\x42\x41\x40 = 3954242643911239680000$.
+Right?
+
+Wrong.   The reason is that \emph{the order in which the cards were dealt is irrelevant.}  If, say, the \D7 and \S K had switched places,
+or even if the first thirteen cards had been shuffled arbitrarily while leaving the rest of the deck alone, then the hand we dealt
+wouldn't have changed.  Therefore, we need to divide 3954242643911239680000 by the number of ways to shuffle a 13-card hand,
+which is $13\x12\x11\x\cdots\x3\x2\x1$ (for the same logic as before).  This number, by the way, is written $13!$ (pronounced
+``thirteen factorial'') --- if you see an exclamation point in mathematics, that's almost certainly what it means.
+
+\boldmath
+\begin{align*}
+\textbf{number of possible bridge hands} ~&=~ \frac{52\x51\x50\x\cdots\x42\x41\x40}{13\x12\x11\x\cdots\x3\x2\x1}\\\\
+&=~ \frac{3954242643911239680000}{6227020800}\\\\
+&=~ \mathbf{635013559600}.
+\end{align*}
+\unboldmath
+Also, by the way, observe that $52\x51\x\cdots\x40=52!/39!$ --- because if you wrote $52!/39!$ out in its full glory, then
+you'd be able to cancel 39/39 and 38/38 and 37/37 and a lot more stuff, and all that survived would be $52\x51\x\cdots\x40$.
+That means that we can write down a more concise formula:
+$$635013559600 =  \frac{52!}{39! \x 13!}.$$
+
+This kind of calculation (``How many ways are there to choose a subset of $k$ things from a set of $n$ things?'') is extremely
+common; common enough, in fact, that it has a special symbol: $\binom{n}{k}$.  (You might also see $C(n,k)$ or ${}_nC_k$,
+but the notation $\binom{n}{k}$ is what most mathematicians would use.)  By the same logic as above, these numbers can be
+calculated by the formula
+$$\binom{n}{k} = \frac{n(n-1)(n-2)\cdots(n-k+2)(n-k+1)}{k(k-1)(k-2)\cdots(2)(1)} = \frac{n!}{k!(n-k)!}$$
+
+\pagebreak
+
+\textbf{2. What is the probability of being dealt a Yarborough?}
+
+To answer this, we first ask a different question:
+
+\textbf{2a. How many possible Yarboroughs are there?}
+
+If we know this, then we can divide the answer by the number of possible bridge hands (which, remember,
+we now know) to get the answer to the original question 2.
+
+On the other hand, Question~2a can be answered by simple counting.  What is a Yarborough, after all?  It's a hand
+with no card higher than a nine.  That is, it is a hand of thirteen cards selected from a set of thirty-two cards
+(namely the deuce through nine of each suit: 8 cards per suit $\x$ 4 suits = 32 cards.)  Therefore,
+\boldmath
+\begin{align*}
+\textbf{number of possible Yarboroughs} &~=~ \binom{32}{13} = \frac{32!}{13!\x19!} = 347373600.
+\end{align*}
+\unboldmath
+
+That takes care of Question 2a.  As for Question 2, the answer is
+\boldmath
+\begin{multline*}
+\textbf{probability of being dealt a Yarborough} ~=~ 
+\frac{\textbf{number of possible Yarboroughs}}{\textbf{number of possible hands}}\\\\
+~=~ \binom{32}{13} ~/~ \binom{52}{13} ~=~ \frac{347373600}{635013559600} ~\approx~ 0.00054703 = 0.054703\%
+\end{multline*}
+\unboldmath
+
+or about 1 in 1828.  So you can expect to be dealt a Yarborough about one of every 1828 hands you play.
+But that doesn't mean you can't have four Yarboroughs in a row, or go fifteen years without being dealt a Yarborough (lucky you!),
+just that \emph{on average} one out of every 1828 or so hands will be a Yarborough.
+
+\textbf{2b. What is the probability of being dealt at least one Yarborough in a 24-board session?}
+
+The naive answer is to take the number 0.00054703 and multiply it by 24.  Actually, that's not mathematically
+precise (although you do happen, in this case to get a number that is reasonably close
+to the correct answer).  Here is an analogy.  You flip a coin.  The chance that it comes up heads is 50\%.  Does
+that mean that if you flip it twice, the chance of getting at least one heads is 2$\x$50\% = 100\%?  Of course
+not!  The chance of getting tails twice is 25\%, so the chance of that \emph{not} happening --- that is,
+of getting heads at least once --- is 75\%.  
+
+The same reasoning can be used to answer Question~2b.  The chance of \emph{not} being dealt a Yarborough is
+approximately
+$$1 - 0.00054703 = 0.99945297$$
+and so the chance of not being dealt a Yarborough on any of 24 separate deals is approximately
+$$(0.99945297)^{24} \approx 0.9869535$$
+and so the chance of being dealt a Yarborough (i.e., not not being dealt a Yarborough) on at least one of 24 deals is approximately
+$$1-0.9869535=0.0130465=1.30465\%$$
+or about 1 in 77.
+
+\textbf{2c. What is the probability of being dealt at least one Yarborough in each of two 24-board sessions?}
+
+With what we know so far, this is now a relatively easy one: it's approximately $(0.0130465)^2\approx
+0.0001702122=0.01702122\%$, or about 1 in 5875.  Indeed, hardly an everyday occurrence, but
+not that much less frequent than being dealt a Yarborough in the first place (which, remember, was about
+1/1828, or roughly three times 1/5875.)
+
+\pagebreak
+\end{document}

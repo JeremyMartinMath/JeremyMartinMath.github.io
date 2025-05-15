@@ -1,0 +1,121 @@
+\include{bridge-header}
+
+\textbf{\LARGE Rank Distributions}
+
+I picked up this hand at the club yesterday (October 9, 2011):
+
+\hand{543}{853}{K43}{K854}
+
+For bridge, not so good (I believe the opponents bid 3NT and made five), 
+but boy, is that a nice hand for gin rummy.
+
+How rare is it to pick up a hand with cards of only five different ranks?
+
+Quick notation: Let's describe the \textbf{rank distribution} of a hand
+by listing the number of ranks that contribute four, three, two, and one
+card to the hand, respectively.  The hand I picked up had rank distribution $[0,3,2,0]$ --- three ``tripletons''
+(fives, fours and threes) and three ``doubletons'' (kings and eights).
+To get the total number of different ranks, you just add up these numbers.
+Notice that that total has to be at least 4 (because three ranks can together
+only account for twelve cards) and is at most 13.
+
+Let's try four different ranks (rather than five) first, since the calculation is easier.  
+The possibilities are $[3,0,0,1]$, $[2,1,1,0]$, and $[1,3,0,0]$.
+
+For $[3,0,0,1]$: we need to choose three ranks to have all four cards; then 
+choose a fourth rank (out of ten possibilities), then one card in it. 
+Total:
+  \[
+  \binom{13}{3}\cdot10\cdot4 = 286\cdot10\cdot4 = 11440.
+  \]
+
+For $[2,1,1,0]$: choose two ranks to have all four cards; choose a third rank 
+and three cards from it; choose a fourth rank and two cards from it. 
+Total:
+  \[
+  \binom{13}{2}\cdot11\binom{4}{3}\cdot10\binom{4}{2} =
+  78\cdot11\cdot4\cdot10\cdot6 = 205920.
+  \]
+
+For $[1,3,0,0]$: choose one rank to have all four cards; choose three other 
+ranks and three cards from each of them. Total:
+  \[
+  13\cdot\binom{12}{3}\cdot\binom{4}{3}^3
+  = 13\cdot220\cdot4^3 = 183040.
+  \]
+
+Grand total: 11440 + 205920 + 183040 = 400400 (a rather attractive 
+number, isn't it?)
+
+Remember that the number of bridge hands you could be dealt is 
+635013559600, so the probability of picking up a four-rank hand is 
+400400/635013559600, which is about .000000630537717, or about 1/1600000 
+(after rounding off rather crudely).  So on average, you'll pick 
+up one of these things every 1,600,000 deals.
+
+How about the original question?  I think it's time to automate this. I 
+wrote the following short computer program in Maple (a commercial 
+computer algebra package).
+
+\pagebreak
+
+\begin{verbatim}
+with(combinat):
+C := binomial:
+L := []:
+for four from 0 to 3 do
+for three from 0 to 4 do
+for two from 0 to 6 do
+for one from 0 to 13 do
+  if 4*four + 3*three + 2*two + one = 13 then
+    numranks := four+three+two+one:
+    numhands := C(13,four) * C(13-four,three)
+        * C(13-four-three,two) * C(13-four-three-two,one) 
+        * 4^three * 6^two * 4^one:
+    L := [op(L), [numranks, [four,three,two,one], numhands]]:
+fi od od od od:
+\end{verbatim}
+
+Here \texttt{four} is the number of ranks with four cards in the hand; 
+notice that four can be any number between 0 and 3.  The program looks 
+at all possible values for \texttt{four}, \texttt{three}, \texttt{two} 
+and \texttt{one}, but only considers a particular quadruple of values if 
+it accounts for exactly 13 cards.  Adding up those four variables gives 
+you the number of ranks in the hand; the longer calculation is the 
+number of hands with those rank numbers.
+
+The complete output, sorted by most frequent to least frequent, is on the next page.
+Some observations about it:
+\begin{itemize}
+\item The most common single hand-type is $[0,0,3,7]$, i.e., three doubletons and seven singletons,
+(so, ten ranks total) which happens about 19\% of the time.
+
+\item On the other hand, the most common number of ranks in a hand is nine,
+which is about a 37\% chance.
+
+\item It is interesting that $[0,1,1,8]$ and $[0,0,2,9]$ are exactly equally likely.
+There's probably no clever reason why this is the case; the numbers just happen
+to be equal.
+
+\item A hand ``without a singleton'' (i.e., \texttt{one} = 0) occurs about once every 
+1700 deals.
+
+\item A hand with one card of every suit (i.e., \texttt{one} = 13) occurs about once 
+every 10,000 deals.
+
+\item Five ranks (like the hand I was dealt), on the average, will happen once 
+in every 6600 deals.  If you play 30 deals of bridge a week on average
+then this is about four years.  Maybe I was due.
+\end{itemize}
+\pagebreak
+
+\begin{center}
+\begin{tabular}{c|cccc|c}
+\textbf{Ranks} & \texttt{one} & \texttt{two} & \texttt{three} & \texttt{four} & \textbf{Probability}\\ \hline
+10 & 0 & 0 & 3 & 7 & 0.191266086\\9 & 0 & 0 & 4 & 5 & 0.188277553\\9 & 0 & 1 & 2 & 6 & 0.167357825\\8 & 0 & 1 & 3 & 4 & 0.125518369\\10 & 0 & 1 & 1 & 8 & 0.063755362\\11 & 0 & 0 & 2 & 9 & 0.063755362\\8 & 0 & 0 & 5 & 3 & 0.056483266\\8 & 0 & 2 & 1 & 5 & 0.033471565\\7 & 0 & 1 & 4 & 2 & 0.023534694\\7 & 0 & 2 & 2 & 3 & 0.020919728\\8 & 1 & 0 & 2 & 5 & 0.012551837\\9 & 0 & 2 & 0 & 7 & 0.010625894\\9 & 1 & 0 & 1 & 7 & 0.00796942\\12 & 0 & 0 & 1 & 11 & 0.006182338\\11 & 0 & 1 & 0 & 10 & 0.005667143\\7 & 1 & 0 & 3 & 3 & 0.005229932\\7 & 0 & 0 & 6 & 1 & 0.003530204\\7 & 1 & 1 & 1 & 4 & 0.003486621\\6 & 0 & 2 & 3 & 1 & 0.002241399\\8 & 1 & 1 & 0 & 6 & 0.001859531\\7 & 0 & 3 & 0 & 4 & 0.001549609\\10 & 1 & 0 & 0 & 9 & 0.001180655\\6 & 1 & 1 & 2 & 2 & 0.0011207\\6 & 0 & 3 & 1 & 2 & 0.000996178\\6 & 0 & 1 & 5 & 0 & 0.000504315\\6 & 1 & 0 & 4 & 1 & 0.000420262\\6 & 1 & 2 & 0 & 3 & 0.00016603\\13 & 0 & 0 & 0 & 13 & 0.000105681\\6 & 2 & 0 & 1 & 3 & 6.22611E-05\\7 & 2 & 0 & 0 & 5 & 5.81104E-05\\5 & 0 & 3 & 2 & 0 & 4.66958E-05\\5 & 1 & 2 & 1 & 1 & 4.66958E-05\\5 & 1 & 1 & 3 & 0 & 3.50219E-05\\5 & 0 & 4 & 0 & 1 & 1.03768E-05\\5 & 2 & 0 & 2 & 1 & 8.75547E-06\\5 & 2 & 1 & 0 & 2 & 3.89132E-06\\4 & 2 & 1 & 1 & 0 & 3.24277E-07\\4 & 1 & 3 & 0 & 0 & 2.88246E-07\\4 & 3 & 0 & 0 & 1 & 1.80154E-08
+\end{tabular}
+\end{center}
+
+(The E's are scientific notation: e.g., 6.22611E-05 = $6.22611\x10^{-5}=.0000622611$.
+In this case, just think ``really small number.'')
+\end{document}

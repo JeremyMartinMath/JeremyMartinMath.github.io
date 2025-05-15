@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Frequency of Flannery vs. a Weak Two</title>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+
+<h2>Frequency of Flannery vs. Weak 2<img src="d.gif"></h2>
+<hr>
+
+<p>I played Flannery for the first time yesterday.  My <a 
+href="http://bridgewinners.com/profile/eugene-hung/">bridge guru</a> had 
+always loathed the convention, so I had naturally loathed it as well.  
+Recently I looked at his convention card for the US Team Trials and saw 
+it on there.  &quot;What's with this?&quot; I asked.  He responded with 
+<a href="http://bridgewinners.com/article/view/system-win/">this 
+story.</a>
+
+<p>So I decided to give it a try.  Guess what: the first time I played 
+it, it came up three times in 27 boards.  Many of the Flannery fans at 
+the club said things like, &quot;That's typical -- you'll get several 
+hands in a session and then it won't come up for months.&quot;
+
+<p>Mathematically speaking, that can't be literally true -- at least, not more so than any other convention.
+The reason is probably psychological: when you make an unusual or artificial bid, it sticks in your head, and so when it happens to come up a few times in a session, 
+that <i>really</i> sticks in your head.
+
+<p>Anyway, how often does Flannery actually come up?  It's easy to calculate the likelihood of being dealt
+a Flannery shape and a weak 2<img src="d.gif">.
+
+<ul>
+<li>Number of hands with 6 diamonds: \(\binom{13}{6}\binom{13}{7}=26,393,687,892\)
+<li>Chance of being dealt this shape: \(26,393,687,892/635,013,559,600\approx 4.16\%\)
+<li>Number of hands with 4 spades and 5-6 hearts: 
+\(\binom{13}{4}\binom{13}{5}\binom{26}{4} + \binom{13}{4}\binom{13}{6}\binom{26}{3} = 16,947,108,750\)
+<li>Chance of being dealt this shape: \(16,947,108,750/635,013,559,600\approx 2.67\%\)
+</ul>
+
+<p>In other words, you are about half again as likely to be dealt a weak-two shape as a Flannery shape.  
+Notice that I didn't consider point count -- that calculation would be MUCH more complicated. But I'm 
+guessing that restricting the weak-two to 5-9 HCP and Flannery to 11-15 HCP (or insert your own ranges 
+here), while it would reduce the number of possible hands, would have little effect on the relative 
+frequency of the two hand-types.  It should actually make Flannery relatively less likely, since 5-9 HCP 
+is more common than 11-15 (if it weren't, bridge players wouldn't complain so much about holding
+bad cards).
+
+<p>Let's do a quick and dirty approximation.  I don't want to work out the probabilities of being dealt 
+each possible number of HCP, so I'll Google it instead and hope that <a 
+href="http://www.bridgehands.com/P/Probability_HCP.htm">this table</a> is accurate.
+<ul>
+<li>Chance of being dealt 5-9 HCP: \(5.19+6.55+8.03+8.89+9.36 = 38.02\%\)
+<li>Chance of being dealt 11-15 HCP: \(8.94+8.03+6.91+5.69+4.42 = 33.99\%\)
+</ul>
+<p>Yep, as I suspected.  So your actual chance of being dealt a weak 2<img src="d.gif"> hand is closer to
+\(4.16\%\times 38.02\%=1.58\%\), while Flannery comes out to \(2.67\%\times 33.99\%=0.91\%\).  The ratio of these probabilities is more like 1.75 to 1.
+
+<p><b>Why did I write &quot;closer to&quot; just now?</b>  Because the point-count distribution of hands with six diamonds 
+is not the same as it is for all hands.  (In probability language, the events &quot;I hold six 
+diamonds&quot; and &quot;I have 5-9 HCP&quot; are not <b>independent</b>.)  To consider an extreme case, 
+the <a href="http://www.bridgehands.com/P/Probability_HCP.htm">table</a> says that the probability of being 
+dealt 10 HCP is 9.41%; is that still true if you know that the hand contains thirteen clubs? In the case 
+we're considering, the effect is likely much less drastic, but we should be aware that these last couple 
+of numbers are really approximations to avoid much more icky calculations.
+
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a href="http://www.jlmartin.faculty.ku.edu/">Jeremy Martin's home page</a><br>
+<img src="../email.jpg"><br>
+Last updated Tue 5/20/14
+</body>
+</html>
