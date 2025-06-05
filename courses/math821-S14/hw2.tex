@@ -1,0 +1,64 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2014\\
+Problem Set \#2\\
+Due date: Friday, February 14}
+
+\prob (Hatcher, p.19, \#12)
+Show that a homotopy equivalence $f:X\to Y$ induces a bijection 
+between the set of path-components of~$X$ and the set of path-components 
+of~$Y$, and that~$f$ restricts to a homotopy equivalence from each 
+path-component of~$X$ to the corresponding path-component of~$Y$. Prove 
+also the corresponding statements with components instead of 
+path-components. Deduce that if the components of a space~$X$ coincide 
+with its path-components, then the same holds for any space~$Y$ that is homotopy-equivalent to $X$.
+
+\prob Let $p$ and $q$ be two distinct points on $S^2$, and let $X$ be the space obtained by gluing
+them together.  Show that $X$ is homotopy-equivalent to a wedge of spheres, and determine its exact homotopy type.
+
+\prob For $n\geq 1$, let $T_n$ denote the $n$-holed torus.  Construct a cell complex structure on $T_n$.  (You can do this by a picture.)
+
+\prob (Hatcher, p.20, \#22) Let $X$ be a finite graph lying in a half-plane $P\subset\Rr^3$ and intersecting the
+edge $e$ of $P$ in a subset of its vertices.  (See example below.)  Describe the homotopy type of the ``surface of revolution''
+obtained by rotating $X$ about $e$.
+
+\includefigure{5in}{3in}{rotategraph}
+
+\pagebreak
+
+\prob Let $0\leq k\leq n$.
+Recall from class that the \emph{Grassmannian} $G(k,n)$
+is defined as the space of $k$-dimensional subspaces $V\subset\Rr^n$,
+so that in particular, $G(1,\Rr^n)=\Rr P^{n-1}$.  (Fact: Everything in
+this problem works the same way if you change $\Rr$ to $\Cc$, except
+that the dimensions of all the cells get doubled.)
+
+\probpart Work out an explicit cell decomposition for $G(2,4)$
+as a finite CW-complex.  That is,
+describe how to decompose the set $G(2,4)$ into pieces, each of which is
+isomorphic to a $\Rr$-vector space.
+If you do this correctly (hint: row-reduced echelon form),
+then the isomorphisms should be straightforward from the construction.
+
+\probpart Describe the attaching poset of $G(2,4)$.  (This
+is the partially ordered
+set whose elements are the cells $e_\alpha$, and whose order
+relation is given by $e_\alpha\geq e_\beta$ if
+$\overline{e_\alpha}\supseteq e_\beta$).
+
+\probpart Describe the attaching poset of $G(2,5)$.
+
+\probpart A \emph{Ferrers diagram} is a collection of square boxes that
+are top- and right-justified: for instance,
+\begin{center}
+\yng(6,6,4,3,1)
+\end{center}
+Write out the poset $P(2,3)$ of all Ferrers diagrams with at most two 
+rows and at most three columns, ordered by containment (as sets of 
+squares).  Compare it to your previous answer.
+
+\prob [{\bf Extra credit}]  [Hatcher p.19, \#20] Show that the subspace $X\subset\Rr^3$ formed by a Klein bottle intersecting itself in a circle, as shown in the figure on p.19 of Hatcher, is homotopy equivalent to $X^1\vee X^1\vee S^2$.  (Note: This is extra credit because currently I don't know how to do it.  I'm hoping someone can show me.)
+
+\end{document}

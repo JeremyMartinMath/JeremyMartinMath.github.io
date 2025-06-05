@@ -1,0 +1,83 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+\bf Math 824, Fall 2012\\
+Problem Set \#5\rm
+
+{\bf Instructions:} Type up your solutions using LaTeX; there is a
+\href{http://www.jlmartin.faculty.ku.edu/math824/header.tex}{header file}
+on the course website with macros that may be useful.
+E-mail me (\texttt{jmartin@math.ku.edu}) the PDF file under the name \textsl{$\{$your-name$\}$4.pdf}.  Deadline: {\bf 5:00 PM on Monday, December 3.}
+\smallskip\hrule
+
+%--------------------
+
+\prob Consider the permutation action of the symmetric group $\Sym_4$
+on the vertices of the complete graph $K_4$, whose corresponding
+representation is the defining representation $\rhodef$ (let's say
+over $\Cc$).  Let $\sigma$ be the 3-dimensional representation
+corresponding to the action of $\Sym_4$ on pairs of opposite edges of
+$K_4$.
+
+\probpart Compute the character of $\sigma$.
+
+\probpart Explicitly describe all $G$-equivariant linear transformations $\phi:\rhodef\to\sigma$.
+(Hint: Schur's lemma should be useful.)
+
+\bigskip%--------------------
+
+\prob Recall that the \emph{alternating group} $\Alt_n$ consists of the $n!/2$
+even permutations in $\Sym_n$, that is, those with an even number of even-length
+cycles.
+
+\probpart Show that the conjugacy classes in $\Alt_4$ are not simply the conjugacy classes
+in $\Sym_4$.  (Hint: Consider the possibilities for the dimensions of the irreducible characters
+of $\Alt_4$.)
+
+\probpart Determine the conjugacy classes in $\Alt_4$, and the complete list of irreducible characters.
+
+\probpart Use this information to determine $[\Alt_4,\Alt_4]$   
+without actually computing any commutators.
+
+\bigskip%--------------------
+
+\prob Supply the proofs for the identities (9.12) on p.108 of the lecture notes:
+$$\prod_{i,j\geq 1} (1+x_iy_j) ~=~ \sum_\lambda e_\lambda(\xx) m_\lambda(\yy)
+~=~ \sum_\lambda\varepsilon_\lambda \frac{p_\lambda(\xx) p_\lambda(\yy)}{z_\lambda}.$$
+
+\bigskip%--------------------
+
+\prob Prove parts (v) and (vi) of Theorem 9.25 on p.118 of the lecture notes,
+namely that $\ch(\Ind_{\Sym_\lambda}^{\Sym_n}\chitriv)=h_\lambda$
+and $\ch(\Ind_{\Sym_\lambda}^{\Sym_n}\chisign)=e_\lambda$.
+
+\bigskip%--------------------
+
+\prob
+\probpart For $w\in\Sym_n$, let $(P(w),Q(w))$ be the pair of tableaux produced by
+the RSK algorithm from $w$.  Denote by $w^*$ the reversal of $w$ in one-line notation
+(for instance, if $w=57214836$ then $w^*=63841275$).  Prove that $P(w^*)=P(w)^T$ (where ${}^T$ means transpose).
+Hint: Figure out how to describe the rows and columns of $P(w)$ in terms of
+subsequences of $w$.
+
+\probpart \emph{(Open problem; optional)} For which permutations does  $Q(w^*)=Q(w)$?
+Maple computation indicates that the number of such permutations is
+  $$\begin{cases}
+  \dfrac{2^{(n-1)/2}(n-1)!}{((n-1)/2)!^2} & \text{ if $n$ is odd,}\\
+  0 & \text{ if $n$ is even,}
+  \end{cases}$$
+but I don't know a combinatorial (or even an algebraic) reason.
+
+\probpart \emph{(Open problem; optional)} For which permutations does  $Q(w^*)=Q(w)^T$?  I have no idea what
+the answer is. The sequence $(q_1,q_2,\dots)=(1,2,2,12,24,136,344,2872,7108,\dots)$, where
+$q_n=\#\{w\in\Sym_n\st Q(w^*)=Q(w)^T\}$,
+does not seem to appear in the Online Encyclopedia of Integer Sequences.
+
+\prob (\emph{Open problem; optional}) Let $n\geq 2$ and for $\sigma\in\Sym_n$, let $f(\sigma)$ denote the number of fixed points.
+As a warmup, prove that $\sum_{\sigma\in\Sym_n} f(\sigma)^2=2\cdot n!$.
+Open problem (to the best of my knowledge): Prove that for any $n,k$,
+the number $\frac{1}{n!}\sum_{\sigma\in\Sym_n} f(\sigma)^k$ is an integer.
+It appears to be A203647 in OEIS.
+Find a formula and/or a representation-theoretic interpretation.
+
+\end{document}

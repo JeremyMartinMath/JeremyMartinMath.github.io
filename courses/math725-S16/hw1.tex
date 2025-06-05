@@ -1,0 +1,30 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty} % suppress page number at bottom
+{\bf Math 725, Spring 2016 \hfill Problem Set \#1}
+\smallskip\hrule
+
+{\bf Instructions:} Do all problems and typeset them in \LaTeX.  E-mail your final PDF file to Jeremy at \hrefurl{mailto:jlmartin@ku.edu}{\tt jlmartin@ku.edu} by {\bf Friday, January 29, 5:00pm.}
+You are encouraged to use the header file at
+\begin{center}\hrefurl{http://www.jlmartin.faculty.ku.edu/math725/header.tex}{http://www.math.ku.edu/$\sim$jmartin/math725/header.tex}.\end{center}
+\smallskip\hrule
+
+\prob Prove Theorem 1.5.1 in Diestel (equivalence of the various characterizations of trees).  You may use anything in Diestel that occurs before that theorem.
+
+\prob The \defterm{complement} of a simple graph $G=(V,E)$ is the simple graph $\overline{G}$ on the same vertex set, in which two vertices are adjacent in $\overline{G}$ if and only if they are \emph{not} adjacent in $G$.
+
+\probpart Describe $\overline{C_3}$, $\overline{C_4}$, $\overline{C_5}$ and $\overline{K_{m,n}}$.\\
+\probpart What is the smallest graph (other than $K_1$) that is isomorphic to its complement?\\
+\probpart Prove that for every simple graph $G$, at least one of $G$ or $\overline{G}$ is connected.
+
+\prob Let $Q_n$ be the $n$-dimensional cube.  (Recall that $V(Q_n)$ can be regarded as the set of bit strings of length $n$, with two bit strings adjacent iff they differ in exactly one bit.)  For $0\leq k\leq n$, how many different isomorphic copies of $Q_k$ are there in $Q_n$?  Give your answer as a general formula.  It may help to consider extreme cases first (e.g., $k=0,1,n-1,n$).
+
+\prob Let $R_n$ be the graph on the bit strings of length~$n$, in which two bit strings are adjacent if and only if they \emph{agree} in exactly one bit.  Show that $R_n\isom Q_n$ if and only if $n=1$ or $n$ is even.  (For odd~$n$, find some property that $Q_n$ has and $R_n$ lacks; it will help to draw $R_3$ explicitly and stare at the drawing for a few minutes.  For even~$n$, find an explicit isomorphism.)
+
+\prob The \defterm{odd graph} $O_n$ is defined as follows. The vertices are the subsets of $[2n+1]$ of size~$n$, with two vertices adjacent if and only if they are disjoint as sets.  How many edges does $O_n$ have?
+
+\prob Count the number of spanning trees of $K_n$ for all $n\leq 5$ by brute force.  (Hint: First figure out all the possible isomorphism classes of trees of each order $n$, then calculate how many copies of each tree occur as subgraphs of $K_n$.)
+
+\prob Prove that every set of six people contains either a set of three mutual acquaintances or a set of three mutual strangers.  (Begin by reformulating the problem in graph-theoretic language.)
+
+\end{document}

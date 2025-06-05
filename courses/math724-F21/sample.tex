@@ -1,0 +1,15 @@
+\include{header}
+\begin{document}
+\textbf{MATH 724, Fall 2021}\\
+\textbf{Homework \#0}\\
+\textbf{Your Name Here}
+\medskip\hrule
+
+\textbf{Problem \#0: Let $a(n)$ be the number of angels that can dance on the head of $n$ pins.  Prove that $a(n)=\frac{1}{n+1}\binom{2n}{n}n^{n-2}$.}
+
+\textit{Solution:} We prove the contrapositive directly by contradiction and induction.  The base case $n=0$ is left to the reader.  Assume inductively that the formula is true for all $m<n$.  Define
+\[\mathcal{S}_n=\{f:[n]\to[n] \mid f(i)>f(i-1) \ \forall i\leq\lfloor \frac{n}{2}\rfloor\}\]
+or actually, come to think of it, define
+\[\mathcal{S}_n=\left\{f:[n]\to[n] \mid f(i)>f(i-1) \ \forall i\leq\left\lfloor \frac{n}{2}\right\rfloor\right\}.\]
+Then the desired result obviously follows as an immediate corollary.  Also, do not write proofs like this.
+\end{document}

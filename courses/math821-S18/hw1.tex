@@ -1,0 +1,43 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2018\\
+Problem Set \#1\\
+Deadline: Friday, February 2, 5:00pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  You are encouraged to use the \hreftext{http://jlmartin.faculty.ku.edu/math821/header.tex}{Math 821 header file}. Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name and the problem set number (e.g., \underline{\tt Euler1.pdf}).  Collaboration is encouraged, but each student must write up his or her solutions independently and acknowledge all collaborators.
+\medskip
+\hrule
+
+As always, ``space'' means ``topological space'' and ``map'' means ``continuous function''.
+
+\prob (a) Let $X$ be a path-connected space. Prove that $X$ is connected.  (Recall that the converse is not true --- the topologists' sine curve is a counterexample.)
+
+(b) Prove that if $X$ is connected and every point has a path-connected neighborhood, then $X$ is path-connected.  (The hypothesis does hold for cell complexes.)
+
+\prob Let $X$ and $Y$ be spaces and let $f:X\surj Y$ be a map that is onto.  Prove that if $X$ is compact, then so is $Y$.  (This should not be hard.)
+
+\bigskip
+\bigskip
+These first two problems were intended as review of general topology; now onto algebraic topology!
+\bigskip
+
+\prob [Hatcher, Chapter 0, \#3, more or less]  (a) Show that the relation ``$X$ is homotopy equivalent to $Y$''
+is an equivalence relation.
+
+(b) Fix spaces $X,Y$ and let $f,g$ be maps $X\to Y$.  Show that the relation ``$f$ is homotopic to $g$'' is an equivalence relation.
+
+(c) Let $f:X\to Y$ be a homotopy equivalence.  Show that any map $g:X\to Y$ homotopic to $f$ is a homotopy equivalence.
+
+\prob [Hatcher, Chapter 0, \#1] Construct an explicit deformation retraction of the torus with one point deleted onto a graph consisting of two circles intersecting in a point.
+
+\prob [Hatcher, Chapter 0, \#14] Given nonnegative integers $v,e,f$ with $v>0$, $f>0$, and $v-e+f=2$, construct a cell structure on $S^2$ having $v$ 0-cells, $e$ 1-cells, 
+and $f$ 2-cells.  (Do not use any facts you may happen to know about spanning trees or Euler characteristic.)
+
+\prob [Hatcher, Chapter 0, \#21, expanded]
+Let $X$ be a connected space that is the union of a finite number of 2-spheres, any two of which intersect in at most one point.  Show that $X$ is homotopy equivalent to a wedge sum of $S^1$'s and $S^2$'s.
+
+More precisely, let $G=(V,E)$ be the graph whose vertices correspond to the 2-spheres comprising~$X$, with two vertices adjacent if the corresponding spheres intersect.  You should be able to show that 
+\[X\htop(S^1)^{|E|-|V|+1}\vee(S^2)^{|V|}.\]
+
+\end{document}

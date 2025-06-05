@@ -1,0 +1,145 @@
+\documentclass{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathrsfs,graphics,hyperref,ifthen,framed,cancel,fullpage,color,ytableau,tcolorbox,bm,tikz}
+\usepackage[enableskew]{youngtab}
+\raggedbottom
+\parskip=10bp
+\parindent=0bp
+\raggedbottom
+
+%%%%%%%%%%%%%%%%   Colors for TikZ and text  %%%%%%%%%%%%%%%%%
+
+\definecolor{light}{gray}{.75}
+\definecolor{med}{gray}{.5}
+\definecolor{dark}{gray}{.25}
+\newcommand{\Red}[1]{{\color{red}{#1}}}
+\newcommand{\RED}[1]{{\color{red}{\boldmath\textbf{#1}\unboldmath}}}
+\newcommand{\Blue}[1]{{\color{blue}{#1}}}
+\newcommand{\BLUE}[1]{{\color{blue}{\boldmath\textbf{#1}\unboldmath}}}
+
+% Hyperlinks
+\hypersetup{colorlinks, citecolor=red, filecolor=black, linkcolor=blue, urlcolor=blue}
+\newcommand{\hreftext}[2]{\href{#1}{\Blue{#2}}} % for text anchors
+\newcommand{\hrefurl}[2]{\href{#1}{\Blue{\tt #2}}} % if you want to actually write out the URL in text
+
+% Spacing and commands
+\newcommand{\bigpad}{\rule[-14mm]{0mm}{30mm}}
+\newcommand{\smallpad}{\rule[-1.5mm]{0mm}{5mm}}
+\newcommand{\pad}{\rule[-3mm]{0mm}{8mm}}
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\paddown}{\rule[-3mm]{0mm}{2mm}}
+\newcommand{\blank}{\rule{1.25in}{0.25mm}}
+\newcommand{\yell}[1]{\fbox{\rule[-1mm]{0mm}{4mm} \large\bf #1 }}
+\newcommand{\indnt}{\phantom{.}\qquad}
+\newcommand{\littleline}{\begin{center}\rule{4in}{0.5bp}\end{center}}
+
+% macros for inserting figures
+\newcommand{\includefigure}[3]{\begin{center}\resizebox{#1}{#2}{\includegraphics{#3}}\end{center}}
+\newcommand{\includefigurewithinmath}[3]{\resizebox{#1}{#2}{\includegraphics{#3}}}
+% E.g., to insert a standalone figure of width 3" and height 1.5", use
+% \includefigure{3in}{1.5in}{foo.pdf}
+
+% math operators
+\DeclareMathOperator{\Comp}{Comp}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Par}{Par}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\wt}{wt}
+
+% theorem environments, automatically numbered
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+
+\newcommand{\skpr}{\emph{Sketch of proof: }}
+\newcommand{\soln}{\textit{Solution:\ }}
+
+% Generally useful macros
+\newcommand{\excise}[1]{} % useful for commenting out large chunks
+\newcommand{\0}{\emptyset}
+\newcommand{\compn}{\models} % compositions
+\newcommand{\dju}{\mathaccent\cdot\cup} % disjoint union
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\fallfac}[2]{{#1}^{\underline{#2}}} % falling factorial
+\newcommand{\isom}{\cong} % isomorphism symbol
+\newcommand{\partn}{\vdash} % partition symbol
+\newcommand{\qqandqq}{\qquad\text{and}\qquad}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\qbin}[2]{{\begin{bmatrix}#1\\#2\end{bmatrix}_q}} % q-binomial coefficient
+\newcommand{\risefac}[2]{{#1}^{\overline{#2}}} % rising factorial
+\newcommand{\sd}{\triangle} % symmetric difference
+\newcommand{\sm}{\setminus} % don't use a minus sign for this
+\newcommand{\st}{\colon} % "such that"
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\x}{\times}
+
+% blackboard bold fonts for sets of numbers
+\newcommand{\Cc}{\mathbb{C}} % complex numbers
+\newcommand{\Ff}{\mathbb{F}} % finite field
+\newcommand{\Nn}{\mathbb{N}} % natural numbers
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Zz}{\mathbb{Z}}
+
+% miscellaneous
+\newcommand{\TwoCases}[4]{\begin{cases}{#1}&\text{ #2}\\{#3}&\text{ #4}\end{cases}}
+\newcommand{\ThreeCases}[6]{\begin{cases}{#1}&\text{ #2}\\{#3}&\text{ #4}\\{#5}&\text{ #6}\end{cases}}
+\newcommand{\bridgehand}[4]{\spadesuit\ {\textsf{#1}}\ \ \heartsuit\ {\textsf{#2}}\ \ \diamondsuit\ {\textsf{#3}}\ \ \clubsuit\ {\textsf{#4}}}
+
+% macros for automatic problem numbering --- students don't have to use these
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+%% versions that don't print the number of points
+\newcommand{\prob}{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}}\quad}
+
+% No initial whitespace to make framing look nicer
+\newcommand{\probns}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}}\quad}
+
+\newcommand{\probpart}{%
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\probcont}{%
+  {\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+\newcommand{\probo}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf (\#\arabic{probno}}\ \ }
+
+%% versions that do print the number of points
+\newcommand{\Prob}[1]{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+
+%no initial whitespace
+\newcommand{\Probns}[1]{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probpart}[1]{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }
+
+\newboolean{answers}
+\newcommand{\Answer}[1]{\ifthenelse{\boolean{answers}}{{\bf Answer:}\ #1}{}\bigskip}

@@ -1,0 +1,126 @@
+\documentclass{amsart}
+\usepackage{hyperref,fullpage,color,palatino,enumitem,soul}
+\hypersetup{colorlinks, citecolor=red, filecolor=black, linkcolor=blue, urlcolor=blue}
+\newcommand{\Blue}{\color{blue}}
+\newcommand{\Red}{\color{red}}
+\newcommand{\hreftext}[2]{\href{#1}{\Blue{#2}}}
+\newcommand{\hrefurl}[2]{\href{#1}{\Blue{\textsf{#2}}}}
+\parskip=10bp
+\parindent=0bp
+
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\yell}[1]{\textbf{\LARGE #1}}
+\newcommand{\indnt}{\phantom{\quad}}
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{\Large \bf Mathematics 724, Fall 2021\\
+\padup Enumerative Combinatorics (3 credits)}
+\end{center}
+
+\bigskip
+
+%-------------------------------------------------------------
+\yell{Essential Information}
+
+\textbf{Instructor:} \href{http://jlmartin.ku.edu}{Prof.\ Jeremy Martin} (you can call me ``Jeremy'')\\
+\indnt  Contact info: \href{mailto:jlmartin@ku.edu}{\sf jlmartin@ku.edu} (preferred), or (785) 864-7114\\
+\indnt  Office hours (618 Snow Hall): Mon 3-4pm and Thu 2:30-3:30pm, or by appointment
+
+\textbf{Meeting time:}
+  MWF 2:00--2:50pm, 152 Snow Hall
+
+\textbf{Course description:}
+Math 724 is an introduction to enumerative combinatorics.  Topics to be covered include basic counting principles, induction and recursion, a little graph theory, partitions and compositions, generating functions, inclusion/exclusion, and Poly\'a-Redfield theory.
+
+\textbf{Online resources:}
+I plan to post all course information on \hreftext{https://canvas.ku.edu/courses/12365}{Canvas}: problem sets, tests, extra notes, etc.  The detailed \hreftext{https://docs.google.com/spreadsheets/d/1gGr6jdtUm7uLovQ_wyxYCzQa-Ox_MJtVpIgT1zpWFSg/edit?usp=sharing}{schedule} is available as a Google Sheet.  You are responsible for all information posted in these two places.  We will use \hreftext{https://gather.town/invite?token=DlEM1vtI}{Gather} for online meetings (if necessary); the password is \textsf{ArtOfCounting}.
+
+Non-confidential course materials are also available at \hrefurl{https://jlmartin.ku.edu/courses/math724-F21}{https://jlmartin.ku.edu/courses/math724-F21}.
+
+\textbf{E-mail:}
+I will periodically send class information (announcements, homework hints, etc.) to all students' KU e-mail accounts.  You are responsible for checking your e-mail regularly so as to receive this information.
+
+\textbf{Textbook:}
+Kenneth P.\ Bogart, \href{https://bogart.openmathbooks.org/}{\textit{\Blue Combinatorics Through Guided Discovery}}, available online as a free PDF or for about \$9 as a paperback.  Bring the book to class every day (either in electronic or hard-copy form).
+
+\textbf{Prerequisites:}
+Math 290 (Elementary Linear Algebra) and at least one mathematics course numbered 450 or above.  You do not need any prior knowledge of combinatorics, but you should be comfortable with basic linear algebra and with reading and writing proofs.  Experience with computer programming will be helpful, but is not necessary.
+
+\textbf{Blatant shill:}
+  Please attend the \href{http://jlmartin.ku.edu/seminar.html}{\Blue Combinatorics Seminar}, which meets on Fridays, 3--4 PM, in Snow 408.
+
+\vfill\yell{Course Requirements}
+
+\textbf{Classes:}
+  Most class time will be spent on solving problems from Bogart, working in small groups (2--3 students).  I will focus on working with individual groups rather than lecturing, but now and then I will give a short summary of a topic we are about to start or just finished.
+
+\textbf{Homework:}
+Homework will be due approximately every two weeks, starting \textbf{Friday, September~3}.  I will post assignments on the course website at least a week before the due date.  I encourage collaboration on the problem sets, but \textbf{you must write up your own solutions independently and acknowledge all collaborators}.  There will be 6 or 7 problem sets.  The homework will be worth a total of 60\% of your grade.  Solutions must be written up in LaTeX and e-mailed to Jeremy (as a PDF file) by 5:00pm on the due date.  Name the file with your last name and the homework number (e.g., ``Euler2.pdf'', ``Noether6.pdf'').  Information about LaTeX, including header and sample files, is available on Canvas.
+
+\textbf{Tests:} 
+  There will be three take-home tests due on \textbf{Friday, September~24}, \textbf{Friday, November~5}, and \textbf{Wednesday, December~14} (in lieu of a final exam).  They will be worth 10\%, 15\% and 15\% of your grade, respectively.  Final versions of the tests will be available on the course website at least a week before the due date.  \textbf{No collaboration is allowed on the tests;} the only person you are allowed to consult is Jeremy.  There will be no in-class final exam.
+
+\vfill\pagebreak
+
+\yell{Additional Academic Information}
+
+\textbf{Other books:}  These may occasionally be helpful, but are not required.  All can be perused in Jeremy's office.
+
+\begin{tabular}{ll}
+(Easier) & B. Jackson and D. Thoro, \emph{Applied Combinatorics with Problem Solving}, Addison-Wesley, 1990\\
+(Same level) & M. B\'ona, \emph{A Walk Through Combinatorics}, World Scientific, 2002\padup\\
+& R. Brualdi, \emph{Introductory Combinatorics} 3rd edn., Prentice-Hall, 1999\\
+(Advanced) & J. Kung, G.-C. Rota and C. Yan, \emph{Combinatorics the Rota Way}, Cambridge U.\ Press, 2009\padup\\
+& R. Stanley, \emph{Enumerative Combinatorics, volume 1}, 2nd edn., Cambridge U.\ Press, 2011\\
+& (Visit \href{http://www-math.mit.edu/~rstan/ec/ec1/}{\Blue Stanley's website} for a free electronic version)
+\end{tabular}
+
+\textbf{Makeup work:}
+  Your enrollment in this course is a commitment to hand in all work on or before its announced due date.  If, for some legitimate and unavoidable reason, you are unable to turn in a homework assignment on its due date or to attend a scheduled test, midterm or final exam, you must notify the instructor \emph{in advance} to make appropriate arrangements.
+
+\textbf{Approximate time commitment:}
+  This is a 3-credit course, so I estimate that most students will need to spend about 6 (or more) hours per week outside of class to earn a decent grade.  In addition to spending time on homework, you should prepare for each day's class by looking at the problems scheduled for that day, and reading any relevant expository material in the textbook.
+
+\textbf{Incompletes:}
+  A grade of I is a rare occurrence and is reserved for cases in which a student has completed most of the course work at an acceptable level, but is prevented from completing the course due to \emph{extraordinary} circumstances.  If you think an I may be warranted, you must consult the instructor \emph{before} the final exam.  Note that a grade of I cannot be made up by taking the course again.
+
+\yell{Other Information}
+
+\textbf{\Red{COVID-19:}}
+ KU policies surrounding COVID-19 are posted at \hrefurl{https://protect.ku.edu}{protect.ku.edu}.  We will follow all those policies strictly.  At the time of this writing (August 17), masks are required in all KU buildings, including during class meetings. \hl{I strongly encourage you to get vaccinated if you have not done so already.} If you are sick and cannot attend class, please let me know ASAP!  I will make all reasonable accommodations. As noted above, we will use \hreftext{https://gather.town/invite?token=DlEM1vtI}{Gather} if we need to meet remotely or in hybrid format.
+
+\textbf{Dropping the course:} Through September 11, you may drop a course and have it removed from your record.  From September 12 through November 15, you may withdraw from a course (a grade of W will appear on your transcript).  After November 15, dropping is not permitted.  For complete details, consult the \href{http://www.registrar.ku.edu}{\Blue Registrar's office} (151 Strong Hall; 864-4423; \href{mailto:registrar@ku.edu}{\Blue registrar@ku.edu}).
+
+\textbf{Academic misconduct:}
+  \href{http://policy.ku.edu/governance/USRR#art2sect6}{\Blue KU policy} defines academic misconduct as follows: ``Academic misconduct by a student shall include, but not be limited to, disruption of classes; threatening an instructor or fellow student in an academic setting; giving or receiving of unauthorized aid on examinations or in the preparation of notebooks, themes, reports or other assignments; knowingly misrepresenting the source of any academic work; unauthorized changing of grades; unauthorized use of University approvals or forging of signatures; falsification of research results; plagiarizing of another's work; violation of regulations or ethical codes for the treatment of human and animal subjects; or otherwise acting dishonestly in research.''\\
+\indnt  In particular, while collaboration on the homework assignments is encouraged, \textbf{you must write up your own homework solutions by yourself and acknowledge all collaborators and sources}.  You are encouraged to collaborate with other students on the homework assignments.  However, intellectual honesty requires that each student write up his or her own solutions and acknowledge all collaborators.  \textbf{It is a violation of academic integrity to copy another student's solutions and submit them as your own; to let someone else copy yours; or to copy solutions verbatim from external sources, including websites}.  If you are unsure of the appropriate way to use or cite an external source, \textbf{ask Jeremy} before submitting work.
+
+\textbf{Disability accommodation:}
+  The \href{http://access.ku.edu/}{\Blue Student Access Center} (22 Strong Hall; 785-864-4064; \href{mailto:access@ku.edu}{\tt access@ku.edu}) coordinates accommodations and services for all students who are eligible.  If you have a disability for which you wish to request accommodations, please contact the SAC as soon as possible. Please also contact the instructor privately in regard to your needs in this
+course.
+
+\textbf{Religious holidays:}
+  If you plan to observe a religious holiday which conflicts in any way with the course schedule or requirements, contact the instructor at the beginning of the semester to discuss alternative accommodations.
+
+\textbf{Intellectual property:}
+  Course materials prepared by the instructor, together with the content of all lectures and review sessions, are the intellectual property of 
+the instructor and are solely for use by students enrolled in the course. Redistributing course materials in any form without the consent of the instructor is prohibited.  Likewise, video and audio recording of lectures and review sessions without the consent of the instructor is prohibited.  Upon reasonable request, the instructor will usually grant permission to record lectures, on the condition that such recording is used only as a study aid by the student making the recording, and is not modified or distributed in any way.
+
+\textbf{Commercial note-taking ventures:}
+  Pursuant to KU's \href{http://policy.ku.edu/provost/commercial-note-taking}{\Blue Policy on
+Commercial Note-Taking Ventures}, commercial note-taking is not permitted in Math 724. Lecture notes and course materials may be taken for personal use, for the purpose of mastering the course material, and may not be sold to any person or entity in any form. Any student engaged in or contributing to the commercial exchange of notes or course materials will be subject to discipline, including academic misconduct charges, in accordance with University policy.  Note-taking provided by a student volunteer for a student with a disability, as a reasonable accommodation under the ADA, is \emph{not} the same as commercial note-taking and is not covered under this policy. 
+
+\textbf{Weapons policy:}
+  Individuals who choose to carry concealed handguns are solely responsible for doing so in a safe and secure manner and in strict conformity with \href{http://concealedcarry.ku.edu/information}{\Blue state and federal laws} and \href{http://policy.ku.edu/provost/weapons-on-campus}{\Blue KU weapons policy}. Safety measures outlined in the KU weapons policy specify that a concealed handgun:
+\begin{itemize}
+\item Must be under the constant control of the carrier.
+\item Must be out of view, concealed either on the body of the carrier, or backpack, purse, or bag   that remains under the carrier's custody and control.   
+\item Must be in a holster that covers the trigger area and secures any external hammer in an un-cocked position
+\item Must have the safety on, and have no round in the chamber.
+\end{itemize}
+
+\vfill$\overline{\textit{Last update: 8/27/21\ }}$
+
+\end{document}

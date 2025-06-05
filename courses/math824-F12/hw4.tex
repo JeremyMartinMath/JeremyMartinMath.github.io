@@ -1,0 +1,79 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+\textheight=9in
+\parskip=9bp
+\bf Math 824, Fall 2012\\
+Problem Set \#4\rm
+
+{\bf Instructions:} Type up your solutions using LaTeX; there is a
+\href{http://www.jlmartin.faculty.ku.edu/math824/header.tex}{header file}
+on the course website with macros that may be useful.
+E-mail me (\texttt{jmartin@math.ku.edu}) the PDF file under the name \textsl{$\{$your-name$\}$4.pdf}.  Deadline: {\bf 3:00 PM on Friday, October 26.}
+\smallskip\hrule
+
+\prob (Stanley, EC1, 2nd ed., 3.119)  Prove the \emph{$q$-binomial theorem}:
+  $$\prod_{k=0}^{n-1}(x-q^k) ~=~
+    \sum_{k=0}^n \binom{\bf n}{\bf k} (-1)^k q^{\binom{k}{2}} x^{n-k}.$$
+Here $\binom{\bf n}{\bf k}$ denotes the \emph{$q$-binomial coefficient}:
+  $$\binom{\bf n}{\bf k} ~=~ \frac{(q^n-1)(q^n-q)\cdots(q^n-q^{k-1})}
+    {(q^k-1)(q^k-q)\cdots(q^k-q^{k-1})}.$$
+You may, with appropriate citation,
+use identities such as those on p.~55 of Stanley's EC1.
+(Hint: Let $V=\Ff_q^n$ and let $X$ be a vector
+space over $\Ff_q$ with $x$ elements.  Count the number of one-to-one
+linear transformations $V\to X$ in two ways.)  Derive the ordinary binomial
+theorem as a corollary.
+
+\prob (Stanley, EC1, 3.129) Here is a cute application of combinatorics to
+elementary number theory.  Let $P$ be a finite poset,
+and let $\mu$ be the M\"obius function of $\hat P=P\cup\{\hat0,\hat1\}$.
+Suppose that $P$ has a fixed-point-free automorphism $\sigma:P\to P$
+of prime order $p$; that is, $\sigma(x)\neq x$
+and $\sigma^p(x)=x$  for all $x\in P$.  Prove
+that $\mu_{\hat P}(\hat0,\hat1)\cong-1\pmod p$.  What does this say
+in the case that $\hat P=\Pi_p$?
+
+\prob (Stanley, HA, 2.5) Let $G$ be a graph on
+$n$ vertices, let $\A_G$ be its graphic arrangement in $\Rr^n$,
+and let $\B_G=\BB_n\cup\A_G$.  (That is, $\B$ consists of the
+coordinate hyperplanes $x_i=0$ in $\Rr^n$ together with the hyperplanes
+$x_i=x_j$ for all edges $ij$ of $G$.)  Calculate $\chi_{\B_G}(q)$
+in terms of $\chi_{\A_G}(q)$.
+
+\prob (Stanley, EC2, 3.115(d)]
+Calculate the characteristic polynomial and the number of regions
+of the \emph{type-B braid arrangement} $\mathcal{O}_n\subseteq\Rr^n$,
+with $n(n-1)$ hyperplanes $x_i=x_j$, $x_i=-x_j$ for $1\leq i<j\leq n$.
+
+\prob
+Recall that each permutation $w=(w_1,\dots,w_n)\in\Sym_n$ corresponds
+to a region of the braid arrangement $Br_n$, namely the open cone
+$C_w=\{(x_1,\dots,x_n)\in\Rr^n\st x_{w_1}<x_{w_2}<\dots<x_{w_n}\}$.
+Denote its closure by $\overline{C_w}$.  For any set
+$W\subseteq\Sym_n$, consider the closed fan
+  \[F(W) = \bigcup_{w\in W} \overline{C_w} = \{(x_1,\dots,x_n)\in\Rr^n\st
+  x_{w_1}\leq\dots\leq x_{w_n}\ \text{ for some } w\in W\}.\]
+Prove that $F(W)$ is a convex set if and only if
+$W$ is the set of linear extensions of some poset $P$ on $[n]$.
+(A \emph{linear extension} of $P$ is a total
+ordering $\prec$ consistent with the ordering of $P$, i.e., if $x<_Py$
+then $x\prec y$.)
+
+\prob The runners in a
+race are seeded $1,\dots,n$ (stronger runners are assigned
+higher numbers).  To even the playing field, the rules specify
+that you earn one point for each higher-ranked opponent you beat, and
+one point for each lower-ranked opponent you beat \emph{by at least
+one second}.  (If a higher-ranked runner beats a lower-ranked
+runner by less than 1 second, no one gets a the point for that
+matchup.)  Let $s_i$ be the number of points scored by the $i^{th}$
+player and let $s=(s_1,\dots,s_n)$ be the \emph{score vector}.
+
+\probpart Show that the possible score vectors are in
+bijection with the regions of the Shi arrangement.
+
+\probpart Work out all possible score vectors in the cases of 2 and 3 players.
+Conjecture a necessary and sufficient condition for $(s_1,\dots,s_n)$
+to be a possible score vector for $n$ players.  Prove it if you can.
+\end{document}

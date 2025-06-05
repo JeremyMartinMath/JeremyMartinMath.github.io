@@ -1,0 +1,68 @@
+\include{header}
+\begin{document}
+\bf Math 824, Fall 2012\\
+Problem Set \#2 (minor revisions 9/17/12, 9/20/12)\rm
+
+{\bf Instructions:} Type up your solutions using LaTeX.  There is a
+header file at\\
+\href{http://www.jlmartin.faculty.ku.edu/math824/header.tex}{\tt http://www.math.ku.edu/$\sim$jmartin/math824/header.tex} with macros that may be useful.
+E-mail me (\texttt{jmartin@math.ku.edu}) the PDF file under the name \textsl{$\{$your-name$\}$2.pdf}.
+
+Deadline: {\bf 3:00 PM on Friday, September 21.}
+\smallskip\hrule
+
+\prob Prove that the partition lattice $\Pi_n$ is a geometric lattice.  (Hint:
+Construct a collection of vectors $S=\{s_{ij} \st 1\leq i<j\leq n\}$
+in $\Rr^n$ such that $L(S)\isom\Pi_n$.)
+
+\prob Let $\Ff$ be a field, let $n\in\Nn$, and
+let $S$ be a finite subset of the vector space $\Ff^n$.
+Recall the definitions of the lattices $L(S)$ and $\Laff(S)$
+(lecture notes,\footnote{References to the lecture notes are to the version of 9/6/12 and may be off by a page or two if I make subsequent edits.} p.17).  For
+$s=(s_1,\dots,s_n)\in S$, let $\hat s=(1,s_1,\dots,s_n)\in\Ff^{n+1}$, and let
+$\hat S=\{\hat s\st s\in S\}$.
+Prove that $L(\hat S)=\Laff(S)$.  (This is useful because it saves us a dimension --- e.g., many geometric lattices of rank~3 can be represented conveniently as affine point configurations in $\Rr^2.$)
+
+\prob Prove the equivalence of the two forms of the basis exchange condition
+(lecture notes, p.24).
+(Hint: Consider $|B\sm B'|$.)
+
+\prob Prove Proposition 2.20 (lecture notes, p.25)
+which describes the equivalence between matroid independence systems
+and matroid circuit systems.
+
+\prob Let $M$ be a matroid on ground set $E$ with rank function $r:2^E\to\Nn$.
+Let $M^*$ be the dual matroid to $M$ and let $r^*:2^E\to\Nn$ be its rank function.
+Find a formula for $r^*$ in terms of $r$.  (I.e., if I know $r(A)$ for every $A\subseteq E$,
+how do I calculate $r(B)$ for a given $B\subseteq E$?)
+
+\prob Let $E$ be a finite set and let $\Delta$ be an \emph{abstract simplicial complex on $E$};
+that is, a family of subsets with the property that if $A\in\Delta$ and $B\subseteq A$, then
+$B\in\Delta$.  Let $w:E\to\Rr_{\geq 0}$ be any function; think of $w(A)$ as the ``weight'' of~$A$.
+For $A\subseteq E$, define $w(A)=\sum_{e\in A} w(e)$.
+Consider the problem of maximizing $w(A)$ over all maximal\footnote[2]{%
+  Recall that ``maximal'' means ``not contained in any other element of $\Delta$'',
+  which is logically weaker than ``of largest possible cardinality''.}
+elements $A\in\Delta$
+(also known as \emph{facets} of $\Delta$).  A naive approach
+to try to produce such a set $A$, which may or may
+not work for a given $\Delta$ and $w$, is the following \emph{greedy algorithm}:
+\begin{enumerate}
+\item Let $A=\0$.
+\item If $A$ is a facet of $\Delta$, stop.
+Otherwise, find $e\in E\sm A$ of maximal weight such that $A\cup\{e\}\in\Delta$
+   (if there are several such $e$, pick one at random), and replace $A$ with $A\cup\{e\}$.
+\item Repeat step 2 until $A$ is a facet of $\Delta$.
+\end{enumerate}
+
+\probpart Construct a simplicial complex and a weight function for which this
+  algorithm does not produce a facet of maximal weight.  (Hint: The smallest example 
+has $|E|=3$.)
+
+\probpart Prove that the following two conditions are equivalent:
+\begin{itemize}
+\item The greedy algorithm produces a facet of maximal weight for \emph{every} weight function~$w$.
+\item $\Delta$ is a matroid independence system.
+\end{itemize}
+
+\end{document}

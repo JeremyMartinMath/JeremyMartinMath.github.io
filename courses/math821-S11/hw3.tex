@@ -1,0 +1,62 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821 Problem Set \#3\\
+Posted: Friday 2/25/11\\
+Due date: Monday 3/7/11}
+
+\prob Let $p,q$ be distinct points on $S^2$, and let $X$ be the space obtained by gluing
+them together.  Determine the homotopy type of $X$.
+
+\prob For $k\geq 1$, let $T_n$ denote the $n$-holed torus.
+
+\probpart Construct a cell complex structure on $T_n$.
+
+\probpart Show that $T_n$ is homotopy-equivalent to the cell complex
+$S^1\x(\bigvee_{i=1}^n S^1)$ (that is, take $n$ circles and wedge them together
+at a point to get a ``bouquet'', then take the product with another circle).
+
+
+\prob (Hatcher, p.20, \#22) Let $X$ be a finite graph lying in a half-plane $P\subset\Rr^3$ and intersecting the
+edge $e$ of $P$ in a subset of its vertices.  (See figure below.)  Describe the homotopy type of the ``surface of revolution''
+obtained by rotating $X$ about $e$.
+
+\includefigure{5in}{3in}{rotategraph}
+
+\prob Recall that for a space $X$ and base point $x\in X$, we have defined $\pi_1(X,x)$ to be
+the set of homotopy classes of $x,x$-paths on $X$ --- or equivalently of continuous functions
+$S^1\to X$.  Accordingly, define $\pi_0(X,x)$ to be the set of homotopy classes of continuous functions $S^0\to X$.
+
+Describe $\pi_0(X,x)$ intrinsically in terms of $X$.
+
+\pagebreak
+
+\prob How generally does the lifting property
+(used in the proof of $\pi_1(S^1)\isom\Zz$) hold?
+That is, suppose that we have continuous functions $f:X\to Y$
+and $p:Z\surj Y$, and we want to find $\tilde f$ such that the following diagram is
+commutative.
+
+\begin{equation*}
+\xymatrix{
+&& Z\ar[dd]^p\\
+X\ar[urr]^{\tilde f} \ar[drr]_f\\
+&& Y
+}
+\end{equation*}
+
+What conditions on $X,Y,Z,p$ guarantee that such a lift exists?  (Whatever you come
+up with should include the case we needed for the calculation of $\pi_1(S^1)$,
+i.e., $X=I$, $Y=S^1$, $Z=\Rr$, $p(t)=e^{2\pi i t}$.)
+
+\prob (Hatcher, p.38, \#2) Show that the change-of-basepoint homomorphism $\beta_h$ (see p.28)
+depends only on the homotopy class of the path $h$.
+
+\prob (Hatcher, p.38, \#7) Define $f:S^1\x I\to S^1\x I$ by $f(\theta,s)=(\theta+2\pi s,s)$,
+so $f$ restricts to the identity on the two boundary circles of $S^1\x I$.   Show that $f$ is homotopic
+to the identity by a homotopy $f_t$ that is stationary on \emph{one} of the boundary circles, but not
+by any homotopy $f_t$ that is stationary on \emph{both} boundary circles.
+
+
+\end{document}

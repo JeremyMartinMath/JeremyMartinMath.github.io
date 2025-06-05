@@ -1,0 +1,169 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+{\bf\LARGE Simplicial Homology Computations Using Macaulay2}
+\end{center}
+\bigskip
+
+{\bf Macaulay2} is a free software system for computations in commutative algebra.  To use it, do one of the following:
+\begin{enumerate}
+\item Download and install it from the website:
+\item[] \href{http://www.math.uiuc.edu/Macaulay2}{\fbox{\tt http://www.math.uiuc.edu/Macaulay2/}}
+\item[]
+\item Use the online interface:
+\item[] \href{http://habanero.math.cornell.edu:3690}{\fbox{\tt http://habanero.math.cornell.edu:3690}}
+\item[]
+\item Log into your math account, open a terminal window, and type ``M2''.
+\end{enumerate}
+\bigskip
+
+When you start Macaulay2, you'll see something like this:
+\begin{framed}
+\begin{verbatim}
+Macaulay2, version 1.6
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases,
+               PrimaryDecomposition, ReesAlgebra, TangentCone
+i1 : 
+\end{verbatim}
+\end{framed}
+
+You can compute the kernel of a matrix directly:
+\begin{framed}
+\begin{verbatim}
+i1 : A=matrix{{1,2,3},{4,5,6}}
+
+o1 = | 1 2 3 |
+     | 4 5 6 |
+
+              2        3
+o1 : Matrix ZZ  <--- ZZ
+
+i2 : ker A
+
+o2 = image | -1 |
+           | 2  |
+           | -1 |
+
+                               3
+o2 : ZZ-module, submodule of ZZ
+\end{verbatim}
+\end{framed}
+
+By default, M2 works over $\Zz$ (that's what \texttt{ZZ} means).
+Here I have typed in a $2\x3$ matrix $A$ corresponding
+to a linear transformation $\Zz^3\to\Zz^2$ (for various reasons,
+Macaulay writes the arrows right to left) and computed
+its kernel, which Macaulay has described as the image (i.e.,
+column space) of the matrix $B=\begin{bmatrix}-1\\2\\-1\end{bmatrix}$.
+
+\pagebreak
+
+If you have a $\Zz$-module and you just want to know what it is
+up to isomorphism, you can use the \texttt{prune} command:
+\begin{framed}
+\begin{verbatim}
+i3 : prune ker A
+
+       1
+o3 = ZZ
+
+o3 : ZZ-module, free
+
+i4 : M = matrix{{4,2,6},{2,6,4},{6,2,4}}; prune coker M
+
+              3        3
+o4 : Matrix ZZ  <--- ZZ
+
+o5 = cokernel | 24 0 0 |
+              | 0  2 0 |
+              | 0  0 2 |
+
+                              3
+o5 : ZZ-module, quotient of ZZ
+
+i6 : N = matrix{{4,-4},{-4,4}}; prune coker N
+
+              2        2
+o6 : Matrix ZZ  <--- ZZ
+
+\end{verbatim}
+\end{framed}
+
+In these last two computations, Macaulay is actually producing the Smith normal form.  So $\coker M\isom\Zz_{24}\oplus\Zz_2\oplus\Zz_2$ and $\coker N\isom\Zz\oplus\Zz_4$.  (The zero row corresponds to the $\Zz$ summand.)
+
+Macaulay also has a package to work with simplicial complexes (although not $\Delta$-complexes, so far as I know).  First you have to define a polynomial ring in variables corresponding to vertices; then you can specify the complex by its facets.  Macaulay has built-in commands to compute the simplicial chain complex and homology groups.
+
+\begin{framed}
+\begin{verbatim}
+i7: load "SimplicialComplexes.m2";
+
+i8 : R = ZZ[a..d]; -- make a polynomial ring with variables a,b,c,d
+
+i9 : X1 = simplicialComplex{a*b, a*c, b*c};  -- the 1-skeleton of the 2-simplex
+
+i10 : X2 = simplicialComplex{a*b*c}; -- the full 2-simplex
+
+i11 : X3 = simplicialComplex{a*b*c, a*b*d};  -- two 2-simplices joined at an edge
+
+i12 : X4 = simplicialComplex{a*b*c, a*b*d, a*c*d, b*c*d}; -- a hollow tetrahedron
+
+i13 : C = chainComplex X3 -- compute the simplicial chain complex
+
+        1       4       5       2
+o13 = ZZ  <-- ZZ  <-- ZZ  <-- ZZ
+
+      -1      0       1       2
+
+o13 : ChainComplex
+\end{verbatim}
+\end{framed}
+
+
+The numbers on the bottom are dimensions.  So $X_3$ has one (-1)-simplex (of course),
+four 0-simplices, five 1-simplices and two 2-simplices.  Notice that the arrows point \emph{to the left}.
+Why this is a good idea is beyond the scope of Math 821; just be aware that Macaulay2 does use this convention.
+
+\begin{framed}
+\begin{verbatim}
+i14 : C.dd_2 -- extract the boundary map d2 (from 2-chains to 1-chains)
+
+o14 = | -1 -1 |
+      | 1  0  |
+      | 0  1  |
+      | -1 0  |
+      | 0  -1 |
+
+               5        2
+o14 : Matrix ZZ  <--- ZZ
+
+i15 : prune HH_2 X4 -- compute just one homology group
+
+        1
+o15 = ZZ
+
+o15 : ZZ-module, free
+
+i16 : prune HH X4 -- compute all the homology groups
+
+o16 = -1 : 0
+
+       0 : 0
+
+       1 : 0
+
+             1
+       2 : ZZ
+
+o16 : GradedModule
+
+i17 : C.dd_1 * C.dd_2 -- verify that boundary-squared = 0
+
+o17 = 0
+
+               4        2
+o17 : Matrix ZZ  <--- ZZ
+\end{verbatim}
+\end{framed}
+
+\end{document}

@@ -1,0 +1,315 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821 Problem Set \#6\\
+Due date: Friday, April 18}
+\bigskip
+
+\yellprob{[Hatcher p.131 \#11] Show that if $A\subset X$ and there is a retraction $X\to A$,
+then the map $H_n(A)\to H_n(X)$ induced by the inclusion $A\into X$ is
+injective.}
+
+\soln Call the inclusion $i$.  A retraction is by definition a function $r:X\to A$ with $r|_A=r\circ i=\IdMap_A$.
+By functoriality  we have a commutative diagram of spaces and continuous maps that induces a commutative diagram of homology groups and homomorphisms:
+\[\xymatrix{A \rto^-{i}  \ar@/_1.5pc/[rr]_{\IdMap_A} & X \rto^-{r} & H_n(A) &&
+H_n(A) \rto^-{i_*}  \ar@/_1.5pc/[rr]_{\IdMap} & H_n(X) \rto^-{r_*} & H_n(A)}\]
+From this we see that $i_*$ is injective (and that $r_*$ is surjective).
+
+%======================================================================
+
+\yellprob{(a) [Hatcher p.132 \#15]  A homological algebra warmup:
+Prove that if 
+\[A\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}D\xrightarrow{j}E\]
+is exact with $f$ surjective and $j$ injective, then $C=0$.}
+
+\soln We have $\im f=B=\ker g$, so $g$ is the zero map.  Similarly, $\ker j=\im h=0$, so $h$ is also the zero map.
+It follows that $\im g=0=\ker h=C$, so $c=0$.
+
+%======================================================================
+
+\yell{\bf\boldmath(b) Prove the \emph{Snake Lemma}: if the commutative diagram
+\[\xymatrix{
+0\ar@{-->}[r] & A\rto^d\dto_f & B\rto^e\dto_g & C\rto\dto_h & 0\\
+0\rto & A'\rto^{d'} & B'\rto^{e'} & C'\ar@{-->}[r] & 0
+}\]
+has exact rows, then there is an exact sequence
+\[0\dashrightarrow \ker f\xrightarrow{\alpha} \ker g\xrightarrow{\beta} \ker h\xrightarrow{\gamma} \coker f\xrightarrow{\delta}\coker g\xrightarrow{\varepsilon}\coker h\dashrightarrow 0.\]\unboldmath
+
+(The dashed arrows can be either included or omitted --- both versions are often referred to as the Snake Lemma.  In your solution, prove the version without the dashed arrows and then observe what happens if the arrows are included.)}
+
+\soln First, we construct the maps and check that they are well-defined.  Second, we check that the sequence is exact.
+
+\begin{enumerate}
+\item For $a\in\ker f$, define $\alpha(a)=da$.  We have $gda=d'fa=0$, so $\alpha(a)\in\ker g$.
+\\
+\item For $b\in\ker g$, define $\beta(b)=eb$.  We have $heb=e'gb=0$, so $\beta(b)\in\ker h$.
+\\
+\item For $c\in\ker h$, we can write $c=e(b+\tilde{b})$ for some $b\in B$ and $\tilde{b}\in\ker e$.  (All preimages of $c$ can be obtained in this way by fixing $b$ and letting $\tilde{b}$ vary over $\ker e$.)  Since $\ker e=\im d$ and $d$ is injective, there is a unique $a\in A$ such that $\tilde{b}=da$.  So
+\[c=e(b+\tilde{b})=e(b+da) \qqandqq
+e'g(b+da)=he(b+da)=hc=0\]
+so $g(b+da)\in\ker e'=\im d'$.  Since $d'$ is injective,
+there is a unique $a'\in A'$ such that $d'a'=g(b+da)$.  Since
+\[d'a'=g(b+da)=gb+gda=gb+d'fa \quad\therefore\qquad
+gb=d'a'-d'fa=d'(a'-fa).
+\]
+That is, $a'$ is determined by $c$ modulo $\im f$, which means that $[a']\in\coker f$ is uniquely determined by~$c$.  Therefore $\gamma(c)=[a']$ is a well-defined function $\ker h\to\coker f$, and the choice of $\tilde b$ was irrelevant (so we might as well have taken $\tilde b=0$ and hence $a=0$).  This lets us rewrite the construction of~$\gamma(c)$ more conveniently for future use:
+\begin{equation} \label{construct-gamma}
+\text{find $b\in B$ such that $c=eb$, find $a'\in A'$ such that $d'a'=gb$, and put $\gamma(c)=[a']\in\coker f$.}
+\end{equation}
+\\
+\item Let $[a']\in\coker f$, i.e., $[a']=a'+\im f$ for some $a'\in A'$.  Define
+\[\delta[a'] = [d'a']=d'a'+\im d'f=d'a'+\im gd=d'a'+g(\im d)\]
+which is a well-defined element of $\coker g=B'/\im g$.
+\\
+\item Let $[b']\in\coker g$, i.e., $[b']=b'+\im g$ for some $b'\in B'$.  Define
+\[\varepsilon[b'] = [e'b']=e'b'+\im e'g=e'b'+\im he=e'b'+h(\im e)\]
+which is a well-defined element of $\coker h=C'/\im h$.
+\end{enumerate}
+
+Now that we have all the maps defined, we check exactness.
+
+\begin{enumerate}
+\item Exactness at $\ker f$ (in the dashed-arrow case): If $d$ is injective then so is $\alpha$.
+\\
+\item Exactness at $\ker g$:
+\begin{align*}
+\im\alpha ~&=~ \alpha(\ker f) ~=~ d(\ker f) ~=~ \{da\st fa=0\}\\
+~&=~ \{da\st d'fa=0\} && \text{by injectivity of $d'$}\\
+~&=~ \{da\st gda=0\} && \text{by commutativity}\\
+~&=~ \ker g\cap \im d ~=~ \ker g\cap\ker e && \text{by exactness of the top row}\\
+~&=~ \ker\beta.
+\end{align*}
+\item Exactness at $\ker h$: observe that
+\begin{align}
+\im\beta ~&=~ \beta(\ker g) ~=~ e(\ker g) ~=~ \{eb:\ gb=0\} \label{imbeta} \\
+\intertext{and}
+\ker\gamma ~&=~ \{c\in\ker h\st \exists b\in B:\ c=eb, \exists a'\in A':\ d'a'=gb,\ \exists a\in A: a'=fa\}\notag\\
+~&=~ \{c\in\ker h\st \exists b\in B:\ c=eb, \exists a\in A:\ d'fa=gb\}\notag\\
+~&=~ \{eb\st b\in B,\ heb=0,\ \exists a\in A:\ gda=gb\}\label{kergamma}.
+\end{align}
+Comparing \eqref{imbeta} with \eqref{kergamma} shows that $\im\beta\subset\ker\gamma$, because if $c=eb\in\im\beta$,
+then $gb=0$ and we may take $a=0$ in \eqref{kergamma}.  On the other hand, if $c=eb\in\ker\gamma$, then let $\tilde b=b-da$.
+Then $c=e\tilde b$ (since $ed=0$) and $\tilde b\in\ker g$ by \eqref{kergamma}, which by \eqref{imbeta} says that $c\in\im\beta$.
+\\
+\item Exactness at $\coker f$: Let $c\in\ker h$.  Adopting the notation of the construction of $\gamma$ \eqref{construct-gamma}, we have 
+\[\delta\gamma(c)=\delta a'=[d'a']=[gb]=0\in\coker g\]
+so $\im\gamma\subseteq\ker\delta$.  On the other hand, if $[a']\in\ker\delta$ then $d'a'\in\im g$, i.e., there exists $b\in B$ such that $d'a'=gb$.  But then $\gamma(eb)=[a']$, so $[a']\in\im\gamma$.
+\\
+\item Exactness at $\coker g$: First, observe that
+\begin{align*}
+\im\delta ~&=~ \{\delta[a']\st a'\in A'\} ~=~ \{[d'a']\st a'\in A'\}\\
+~&=~ \{[b']\st b'\in\im d'\}\\
+~&=~ \{[b']\st b'\in\ker e'\} ~\subset~eq \ker\varepsilon.
+\end{align*}
+On the other hand, if $\varepsilon[b']=0$ then $e'b'=hc$ for some $c\in C$.  Since $e$ is surjective, there exists $b\in B$ such that $eb=c$,
+whence $e'b'=heb=e'gb$, i.e., $b'-gb\in\ker e'=\im d'$.  That is, there is some $a'\in A'$ such that
+\[b'-gb=d'a']\]
+whence $\delta[a']=[d'a']=[b'-gb]=[b']\in\coker g$.  So we have shown that $\ker\varepsilon\subseteq\im\delta$.
+\\
+\item Exactness at $\coker h$ (in the dashed-arrow case): Assume $e'$ is onto.  For every $[c']\in\coker h$, we can find $b'\in B'$ such that $e'b'=c'$, and then $\varepsilon[b']=[e'b']=[c']$.  So $\varepsilon$ is onto as well.
+\end{enumerate}
+
+%======================================================================
+
+\yellprob{Recall that the \emph{torsion subgroup} $T(G)$ of an abelian group is the subgroup consisting of all elements of finite order.  Let $0\to A\xrightarrow{f} B\xrightarrow{g} \Zz^n\to 0$ be a short exact sequence of finitely generated $\Zz$-modules.  Show that $T(A)\isom T(B)$.  In particular, if $A$ is free abelian then so is $B$.
+
+Let $0\to A\xrightarrow{f} B\xrightarrow{g} C\to 0$ be a short exact sequence of finitely generated $\Zz$-modules.  Show that if $C$ is free abelian, then $T(A)\isom T(B)$, but that $A$ free abelian does not necessarily imply that $T(B)=T(C)$.}
+
+\soln Suppose $C$ is free.  If $x\in A$, $k\in\Zz$, and $kx=0$, then $kf(x)=f(kx)=0$, so $f(x)$ is torsion.  Therefore, $f$ restricts to a one-to-one map $T(A)\to T(B)$.  On the other hand, if $b\in B$ is torsion then it is certainly in the kernel of $g$ (because its image is torsion in $C$, hence zero), hence in the image of $f$ by exactness.  So the map $T(A)\to T(B)$ is an isomorphism.
+
+For the other direction, the short exact sequence $0\to\Zz\xrightarrow{2}\Zz\to\Zz_2\to 0$ is a counterexample.
+
+\pagebreak
+%======================================================================
+
+\yellprob{[Hatcher p.132 \#17] (a) Compute the homology groups $H_n(X,A)$ when $X$ is $\Ss^2$ or $\Ss^1\x \Ss^1$ and $A$ is a set of $k$ points in $X$ with $k<\infty$.  You may use the computation of the homology groups of $X$ from \S2.1.
+
+(b) Compute the groups $H_n(X,A)$ and $H_n(X,B)$, where $X$ is a closed orientable surface of genus two with $A$ and $B$ the circles shown.  (What are $X/A$ and $X/B$?)
+\includefigure{2in}{0.75in}{Hatcher-p132-prob17.pdf}}
+
+\soln (a) Recall that
+\begin{align*}
+H_2(\Ss^2)&=\Zz, & 
+H_2(\Ss^1\x \Ss^1)&=\Zz, & 
+H_2(A)&=0, \\
+H_1(\Ss^2)&= 0, & 
+H_1(\Ss^1\x \Ss^1)&= \Zz^2, & 
+H_1(A)&= 0, \\ 
+H_0(\Ss^2)&=\Zz, & 
+H_0(\Ss^1\x \Ss^1)&=\Zz, & 
+H_0(A)&=\Zz^k
+\end{align*}
+with everything vanishing in dimension $\geq3$.
+So the long exact sequence for relative homology
+\[0\to H_2(A) \to H_2(X)\to H_2(X,A)\to H_1(A)\to H_1(X)\to H_1(X,A)\to H_0(A)\to H_0(X)\to H_0(X,A)\to 0\]
+becomes
+\[0\to \Zz\to H_2(X,A)\to 0\to H_1(X)\to H_1(X,A)\to \Zz^k\to \Zz=H_0(X)\to H_0(X,A)\to 0\]
+Split up the sequence at the 0.  The first piece tells us that \boldmath\underline{$H_2(X,A)=\Zz$.}\unboldmath
+
+Now focus on the second piece, which is
+\[0\to H_1(X)\xrightarrow{~j~} H_1(X,A)\xrightarrow{~\bd~} \Zz^k\xrightarrow{~i~} \Zz=H_0(X)\xrightarrow{~j'~} H_0(X,A)\to 0.\]
+The map $i$ is surjective (it maps the class of any point in $A$ to the class of a point in $X$).  Therefore
+$\im i=H_0(X)=\ker j'$, so $j'$ is the zero map.  It follows that  \boldmath\underline{$H_0(X,A)=0$. }\unboldmath
+
+Since $i$ is surjective, its kernel must be a copy of $\Zz^{k-1}$.  Replacing the target of $\bd$ with $\im\bd=\ker i$ gives a  short exact sequence
+\[0\to H_1(X)\xrightarrow{~j~} H_1(X,A)\xrightarrow{~\bd~} \Zz^{k-1}\to 0.\]
+If $X=\Ss^2$ then $j=0$ and so $\bd$ is an isomorphism, and we get  \boldmath\underline{$H_1(\Ss^2,A)=\Zz^{k-1}$. }\unboldmath
+
+If $X=\Ss^1\x \Ss^1$ then the exact sequence is
+\[0\to \Zz^2\xrightarrow{~j~} H_1(X,A)\xrightarrow{~\bd~} \Zz^{k-1}\to 0\]
+which by the result of a previous problem says that  \boldmath\underline{$H_1(\Ss^2,A)=\Zz^{k+1}$. }\unboldmath
+
+By the way, note that $\Ss^2/A$ is $\Rr^2$ with $k$ points removed, which is homotopy-equivalent to the wedge of $k-1$ circles.  In summary,
+
+\[\boxed{\begin{array}{l|cccc}
+& \multicolumn{4}{c}{H_k(X,A)}\paddown \\
+& k>2 & k=2 & k=1 & k=0 \\ \hline
+\pad X=\Ss^2 & 0 & \Zz & \Zz^{k-1} & 0\\
+X=\Ss^1\x\Ss^1 & 0 & \Zz & \Zz^{k+1} & 0
+\end{array}}\]
+
+\soln (b) These pairs are good, so $H_n(X,A)=\HH_n(X/A)$ and $H_n(X,B)=\HH_n(X/B)$.   
+Contracting $A$ gives $X/A\isom(\Ss^1\x\Ss^1)\wedge(\Ss^1\x\Ss^1)$ (with the contracted point as the wedge point).  Meanwhile, $X/B$ is homotopy-equivalent to $( \Ss^1\x\Ss^1)\wedge \Ss^1$ by the following figure.
+\includefigure{3in}{6in}{p132n17b.pdf}
+Therefore
+\yell{\begin{align*}
+H_2(X,A)&=\Zz^2, & H_1(X,A)&=\Zz^4, & H_n(X,A)&=0 \quad (n\neq 1,2),\\
+H_2(X,A)&=\Zz, & H_1(X,A)&=\Zz^3, & H_n(X,A)&=0 \quad (n\neq 1,2).
+\end{align*}}
+\pagebreak
+%======================================================================
+
+\yellprob{[Hatcher p.132 \#20] The \textbf{suspension} $SX$ of a space $X$ is obtained by taking two copies of the cone
+$CX=X\x[0,1]/X\x\{1\}$ and attaching them along their bases.  Equivalently, take a prism over $X$ and contract each of the top and bottom faces to points:
+\[SX = X \x [0,1] ~/~ X\x\{0\} ~/~ X\x\{1\}.\]
+For example, the suspension of $\Ss^n$ is $\Ss^{n+1}$.
+
+Prove that $\HH_n(SX)\isom \HH_{n-1}(X)$ for all $n>0$.  More generally, for any integer $k$, compute the reduced homology groups of the union of $k$ copies of $CX$ with their bases identified.  (The suspension is the case $k=2$.)}
+
+\soln First we handle the suspension $SX$.  Observe that $SX=CX/X\x\{0\}$, so the long exact sequence for the pair $(CX,X\x\{0\})$ is
+\[\cdots\to\HH_n(CX)\to\HH_n(CX,X\x\{0\})\to\HH_{n-1}(X\x\{0\})\to\HH_{n-1}(CX)\to\cdots\]
+but the two outer terms are zero because $CX$ is contractible (recall that it deformation-retracts onto the cone point).  So the middle arrow
+is the desired isomorphism.
+
+More generally, let $X^{[k]}$ denote the union of $k$ copies of $CX$ with their bases identified (so in particular $X^{(1)}=CX$ and $X^{(2)}=SX$).  For $k>1$, we can form $X^{[k]}$ from $X^{[k-1]}$ by a two-step process: first attach a cylinder $X\x I$ to the base of $X^{[k-1]}$ along $X\x\{0\}$ to get a space $Y$, then contract $X\x\{1\}$ to a point.  This identifies $X^{[k]}$ with $Y/X\x\{1\}$, and meanwhile $Y$ deformation-retracts to $X^{[k-1]}$ by shrinking $X\x[0,1]$ to $X\x\{0\}$.  Therefore, the inclusion and quotient
+\[X\x\{1\} \xrightarrow{~i~} Y \xrightarrow{~j~} Y/(X\x\{1\})\]
+gives rise to a long exact sequence
+\[\cdots\to H_n(X\x\{1\}) \xrightarrow{~i_*~} H_n(Y) \xrightarrow{~j_*~} H_n(Y/(X\x\{1\})) \xrightarrow{~\bd~} H_{n-1}(X\x\{1\})\to\cdots\]
+The map $i_*$ is zero, since any map $\Delta^n\to X\x\{1\}$ is homotopic in $Y$ to a map to the cone point.  Therefore the LES breaks up into short exact sequences
+\[0\to H_n(Y) \xrightarrow{~j_*~} H_n(Y/(X\x\{1\})) \xrightarrow{~\bd~} H_{n-1}(X\x\{1\})\to 0.\]
+Replacing these spaces with their homotopy equivalents, we can rewrite this as
+\begin{equation} \label{suspension-SES}
+\boxed{0 \to H_n(X^{[k-1]}) \xrightarrow{~j_*~} H_n(X^{[k]}) \xrightarrow{~\bd~} H_{n-1}(X)\to 0.}
+\end{equation}
+
+Note: There are other way to obtain \eqref{suspension-SES} is to consider the good pair $(X^{[k]},X^{[k-1]})$.  The quotient space $X^{[k]}/X^{[k-1]}$ can be identified with $SX$, and the long exact sequence for the pair, together with the isomorphism $\HH_n(SX)\isom \HH_{n-1}(X)$, consists of the sequences \eqref{suspension-SES}, spliced together (although one still has to argue that the connecting homomorphism is zero).  One can also use Corollary 2.24, or a Mayer-Vietoris sequence (which you will learn soon).
+
+\textbf{Obtaining \eqref{suspension-SES} was as far as you had to get to obtain full credit.}  To complete the problem, we show that the sequence \emph{splits}, i.e., that $H_n(X^{[k]}) \isom H_n(X^{[k-1]}) \oplus H_{n-1}(X)$.  By the Splitting Lemma (Hatcher, p.147), we can do this by constructing a homomorphism
+\[p: H_n(X^{[k]})\to H_n(X^{[k-1]})=:Q\]
+such that $p\circ j_*=\IdMap_Q$.
+
+Regard $X^{[k]}$ as the union of $k$ copies $Z_1,\dots,Z_k$ of the cone $CX$, identified along their bases $X_i\x\{0\}$, and let $U_i$ be an open deformation of $Z_i$ in $X^{[k]}$: e.g., $U_i=Z_i\cup\bigcup_{j\neq i}X_j\x[0,1/2)$.  Note that $U_2\cup\cdots\cup U_k$ deformation-retracts to $X^{[k-1]}$.  Let $\mathcal{U}=\{U_1,\dots,U_k\}$ and $\mathcal{U}'=\{U_2,\dots,U_k\}$.
+By the Subdivision Lemma (Hatcher, Prop.~2.21, p.119) we have
+\[C^{\mathcal{U}}_\bullet\htop C_\bullet(X^{[k]}) \qqandqq
+C^{\mathcal{U}'}_\bullet\htop C_\bullet(X^{[k-1]}). \]
+An element of $C^{\mathcal{U}}_n$ is a chain of the form $\tau=\sum_{i=1}^n\sigma_i$, where $\sigma_i\in C_n(U_i)$.  The obvious homeomorphism $U_1\to U_2$ induces an isomorphism $\phi:C_n(U_1)\to C_n(U_2)$, so replacing $\sigma_1$ with $\phi(\sigma_1)$ gives a map $C^{\mathcal{U}}_n\to C^{\mathcal{U}'}_n$, which induces a map on homology:
+\[p:H_n(X^{[k]})\to H_n(X^{[k-1]}).\]
+On the other hand, the image of $j_*$ consists of chains of the form $\tau$ with $\sigma_1=0$, so it follows that $p\circ j_*$ is the identity on $H_n(X^{[k-1]})$ as desired.  This completes the proof that the short exact sequence \eqref{suspension-SES} splits.  Therefore
+\[H_n(X^{[k]}) \isom H_n(X^{[k-1]}) \oplus H_{n-1}(X)\]
+and by induction we now know the homology groups of a generalized suspension:
+
+\boldmath\[\boxed{H_n(X^{[k]}) \isom H_{n-1}(X)^{\oplus(k-1)}.} \eqno(*)\]\unboldmath
+
+{\bf A better solution, submitted by Nick and others:}  Consider the effect of starting with the space $X^{[k]}$, regarded as the union of $k$ copies $Z_1,\dots,Z_k$ of the cone $CX$ identified along their bases, and then contracting $Z_k$.  This is a deformation retraction since $Z_k$ is contractible.  On the other hand, each $Z_i$ ($i<k$) turns into a copy of $SX$, and the $Z_i$'s are wedged together at the point coming from the base.  Therefore
+\[X^{[k]} \htop (SX)^{\wedge(k-1)}.\]
+Using the first part of the problem, together with there fact that  wedge sum is additive on reduced homology, we get the formula $(*)$
+%\[\HH_n(X^{[k]}) \isom]\HH_n((SX)^{\wedge(k-1)}) = \HH_n(SX)^{\oplus(k-1)} =  \HH_{n-1}(X)^{\oplus(k-1)}\]
+much more easily.
+
+\yellprob{Let $n\leq d\geq 0$ and let $X=\Delta^{n,d}$ denote the $d$-skeleton of the $n$-dimensional simplex (whose vertices are $v_0,v_1,\dots,v_n$).  Most of you conjectured last time that the reduced homology groups of $X$ are given by
+\[\HH_k(X) = \begin{cases}
+\Zz^{\binom{n}{d}} & \text{ if $k=d$,}\\
+0 & \text{ if $k<d$}.
+\end{cases}\]
+This conjecture is correct.  Prove it without writing down any explicit simplicial boundary matrices.}
+
+\soln If $k<d$, then $\HH_k(X)=\HH_k(\Delta^n)=0$ because $\Delta^n$ is contractible, hence acyclic.
+Otherwise, consider the subcomplex
+\[\Gamma=\langle\sigma\in X\st 0\in\sigma.\]
+This complex is contractible, because it is the cone with apex $v_0$ and base
+\[\Lambda=\left\{\sigma\in X\st 0\not\in\sigma,\ \sigma\cup\{v_0\}\in X\right\}.\]
+(The complex $\Gamma$ is known as the \emph{star} of $v_0$, and $\Lambda$ is its \emph{link}.)
+Since $\Gamma$ is contractible, we have $X\htop X/\Gamma$.  But this latter space is a CW-complex with a single vertex and $\binom{n}{d+1}$ cells of dimension $d$ (corresponding to the simplices supported on $d+1$ of the vertices $v_1,\dots,v_n)$.  That is, $X/\Gamma$ is the wedge of $\binom{n}{d+1}$ copies of $\Ss^n$, hence has the desired homology.
+
+\end{document}
+
+\vfill
+\pagebreak
+
+\textbf{\Large Some LaTeX tips}
+
+\textbf{1. Matrices with borders}
+
+The $\backslash$\texttt{bordermatrix} command
+can be used for matrices whose columns and rows
+you want to label.  This can be useful for bookkeeping
+in a simplicial homology calculation.
+For example, the boundary map $\bd_2$ of the standard 3-simplex
+is
+$$
+\bordermatrix{
+   & 123 & 124 & 134 & 234 \cr
+12 &  1  &  1  &  0  &  0\cr
+13 & -1  &  0  &  1  &  0\cr
+14 &  0  & -1  & -1  &  0\cr
+23 &  1  &  0  &  0  &  1\cr
+24 &  0  &  1  &  0  & -1\cr
+34 &  0  &  0  &  1  &  1
+}
+$$
+which can be produced as follows:
+\begin{verbatim}
+$$\bordermatrix{
+   & 123 & 124 & 134 & 234 \cr
+12 &  1  &  1  &  0  &  0\cr
+13 & -1  &  0  &  1  &  0\cr
+14 &  0  & -1  & -1  &  0\cr
+23 &  1  &  0  &  0  &  1\cr
+24 &  0  &  1  &  0  & -1\cr
+34 &  0  &  0  &  1  &  1}$$
+\end{verbatim}
+
+\textbf{2. Commutative diagrams}
+
+The \texttt{xypic} package provides a way to typeset commutative diagrams
+in LaTeX.  For instance, consider the following
+diagram, which arises in the proof of Theorem 2.10 in Hatcher:
+$$
+\xymatrix{
+\cdots\ar[r] & C_{n+1}(X) \ar[r]^{\bd}\ar[d]^{i_\#} & C_{n}(X) \ar[r]^{\bd} \ar[d]^{i_\#} \ar[dl]^{P} & C_{n-1}(X) \ar[r] \ar[d]^{i_\#} \ar[dl]^{P} &\cdots\\
+\cdots\ar[r] & C_{n+1}(Y) \ar[r]_{\bd} & C_{n}(Y) \ar[r]_{\bd} & C_{n-1}(Y)\ar[r] &\cdots\\
+}$$
+It can be typeset as follows:
+\begin{verbatim}
+$$\xymatrix{
+\cdots\ar[r]
+  & C_{n+1}(X) \ar[r]^{\bd} \ar[d]^{i_\#}
+  & C_{n}(X)   \ar[r]^{\bd} \ar[d]^{i_\#} \ar[dl]^{P}
+  & C_{n-1}(X) \ar[r]       \ar[d]^{i_\#} \ar[dl]^{P}
+  &\cdots\\
+\cdots\ar[r]
+  & C_{n+1}(Y) \ar[r]_{\bd}
+  & C_{n}(Y)   \ar[r]_{\bd}
+  & C_{n-1}(Y) \ar[r]
+  &\cdots}$$
+\end{verbatim}
+This is like a \texttt{tabular} or \texttt{array} environment:
+the \& symbols are delimiters between columns.  The $\backslash$\texttt{ar}
+commands create arrows emanating from the current cell in the table, with
+the code in [square brackets] specifying where the arrow should point;
+e.g., \texttt{$\backslash$ar[dl]} makes an arrow pointing towards the
+cell one row down and one column left of the current cell.
+
+\end{document}
+

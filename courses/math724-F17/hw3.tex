@@ -1,0 +1,55 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{Math 724, Fall 2017\\
+Homework \#3\\
+Deadline: Monday, October 2, 5:00pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name and the problem set number (e.g., {\tt Euler3.pdf}).  Collaboration is encouraged, but each student must write up his or her solutions independently and acknowledge all collaborators.
+
+\medskip\hrule
+
+\prob Bogart, Problem \#82.  (I know we did this in class, but I would like you to produce a careful writeup.)
+
+\vfill\prob   Bogart, Problem \#83.
+
+\vfill\prob   Bogart, Problem \#116.  (Ditto.  If necessary, review problems \#113--115 first.  If you didn't get to them in class, do them now; they should be relatively straightforward once you understand how the Pr\"ufer code works.)
+
+\vfill\prob Let $G=(V,E)$ be a simple graph with $n$ vertices ($n\geq 2$).  (``Simple'' means that every edge has two different vertices as its endpoints, and no two edges have the same pair of endpoints.  Therefore, the degree of a vertex is its number of neighbors.)  Prove that some two vertices of $G$ have the same degree.
+
+\vfill\prob Let $G=(V,E)$ be a simple graph.  Prove that the following conditions are equivalent.  (Some of the implications
+should follow from problems done in class, but you should still give complete proofs.  I.e., don't cite problems from Bogart in your answers.)
+\begin{enumerate}
+\item $G$ is connected and acyclic.
+\item $G$ is connected and $|E|=|V|-1$.
+\item $G$ is acyclic and $|E|=|V|-1$.
+\item Every two vertices in $G$ are joined by exactly one path.
+\end{enumerate}
+
+\vfill\prob Let $G=(V,E)$ be a connected simple graph, with vertex set $V=\{v_1,\dots,v_n\}$.  The \emph{Laplacian matrix} of $G$ is the $n\x n$ square matrix $L(G)=[\ell_{ij}]_{i,j=1}^n$ with entries
+\[\ell_{ij}=\ThreeCases{d_i}{if $i=j$,}{-1}{if $\{i,j\}\in E$,}{0}{if $\{i,j\}\not\in E$.}\]
+The \emph{reduced Laplacian} $L^i(G)$ is the $(n-1)\x(n-1)$ matrix obtained from $L(G)$ by crossing out the $i^{th}$ row and column.
+\begin{enumerate}
+\item[(a)] Prove that for a given graph $G$, the number $\det L^i(G)$ is independent of the choice of~$i$.  (This is really a matter of linear algebra rather than combinatorics.)  Henceforth, call that number $\tau(G)$.  
+\item[(b)] Calculate $\tau(G)$ for several different graphs, including trees, cycles, and complete graphs.  Feel free to do this with a computer system such as Sage.  What do you notice?  Can you prove your conjecture in any special cases?
+\end{enumerate}
+Here is Sage code to compute $\tau(K_4)$.  You can copy and paste it into the \hreftext{http://aleph.sagemath.org/}{Sage cell server} and click the Evaluate button.  Then change the second and third lines to play with different graphs.
+
+\pagebreak
+
+\color{blue}
+\begin{verbatim}
+G = graphs.CompleteGraph(4)
+L = G.laplacian_matrix()
+LRed = L.matrix_from_rows_and_columns([0,1,2],[0,1,2])
+det(LRed)
+\end{verbatim}
+\color{black}
+
+Some notes:
+\begin{itemize}
+\item Sage knows how to construct several ``standard'' graphs.  To see a list of them, type \color{blue}\verb+G = graphs.+\color{black}\ (including the period!) and then hit the Tab key.
+\item Sage numbers the rows and columns of lists, matrices, etc. starting at 0.  So the rows and columns of \color{blue}\verb+L+\color{black}\ are numbered 0,1,2,3, and the third line of code above defines the reduced Laplacian \color{blue}\verb+LRed+\color{black}\ by restricting to rows and columns 0,1,2, i.e., deleting rows and column~3.
+\end{itemize}
+\end{document}

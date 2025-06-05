@@ -1,0 +1,15 @@
+There is a subtle flaw with the given construction of a trisection.  The 
+points W,X,Y,Z have to be chosen more carefully than the problem 
+specifies; the danger is that there might not be a point D satisfying 
+the desired conditions (AE=AD and lines AW, DZ are parallel).  You can 
+test this by dragging E around and observing that the points B,C,D 
+sometimes disappear.  The fix (which will go in the next edition of the 
+problem list!) is to put an additional condition on the points W,X,Y,Z 
+that depends on A and E.  What this condition is, I will leave this as 
+part of the problem, but it's nothing too complicated.
+
+Another note: The quintasection you construct should work for any 
+arbitrary line segment.  That is, start by drawing two points A,F at 
+random and connecting them with a segment.  This is the segment that you 
+want to quintasect - everything else should ultimately be defined in 
+terms of these two points.

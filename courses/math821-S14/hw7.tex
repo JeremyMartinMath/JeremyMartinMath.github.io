@@ -1,0 +1,48 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2014\\
+Problem Set \#7\\
+Due date: Friday, May 2}
+\vfill
+
+\yell{{\bf Note:} In all cases, ``compute the homology groups'' means ``compute $H_n(X)$ for $n>0$'' --- you don't have to incessantly repeat that $H_0(X)=\Zz$ for path-connected spaces.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob [Hatcher p.156 \#9abc]  Compute the homology groups of the following spaces:
+
+(a) The quotient of $\Ss^2$ obtained by identifying the north and south poles to a point.
+
+(b) $\Ss^1\x(\Ss^1\vee \Ss^1)$.
+
+(c) The space obtained from $D^2$ by first deleting the interiors of two disjoint subdisks, and then identifying all three resulting circles together via homomorphisms preserving clockwise orientations of these circles.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob [Hatcher p.157 \#19] Compute $H_i(\Rr P^n/\Rr P^m)$ for $m<n$ by cellular homology, using the standard CW structure on $\Rr P^n$ with $\Rr P^m$ as its $m$-skeleton.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob [Hatcher p.156 \#11] Let $K$ be the 3-dimensional cell complex obtained from the cube $I^3$ by identifying each pair of opposite faces via a one-quarter twist.  (See exercise \#14 on p.54.)  Compute the homology groups $\HH_n(K;\Zz)$ and $\HH_n(K;\Zz_2)$ for $n>0$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob[Hatcher p.157 \#20,22]  In this problem $\rchi$ denotes Euler characteristic.
+
+(a) Let $X,Y$ be finite CW-complexes.  Show that $\rchi(X\x Y)=\rchi(X)\cdot\rchi(Y)$.
+
+(b) Let $X$ be a finite CW complex and let $\tilde X\xrightarrow{~p~} X$ be an $n$-sheeted covering space.  Show that
+$\rchi(\tilde X)=n\cdot\rchi(X)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob [Hatcher p.155 \#2, modified] Given a map $f:\Ss^{2n}\to \Ss^{2n}$, show that there is some point $x\in \Ss^{2n}$
+with either $f(x)=x$ or $f(x)=-x$.  Deduce that every map $\RP^{2n}\to\RP^{2n}$ has a fixed point.  (Hint: Use the fact that $\Ss^{2n}$ is a covering space of $\RP^{2n}$.)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob [Hatcher p.157 \#28(a), modified] (a) Use a Mayer-Vietoris sequence to compute the homology groups of the space $X$ obtained from a torus $T=\Ss^1\x \Ss^1$ by attaching a M\"obius band $M$ via a homeomorphism from the boundary circle $C$ of $M$ to the circle $\Ss^1\x\{x_0\}$ in the torus.
+
+(b) How does the answer change if $C$ is attached to a closed loop that wraps $k$ times around the first circle (i.e., via the path $f:I\to\Ss^1\x\Ss^1$ given by $f(t)=(e^{2\pi i kt},e^{2\pi it})$)?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\prob [Hatcher p.158 \#29] The surface $M_g$ of genus $g$, embedded in $\Rr^3$ in the standard way, bounds a compact region $R$.  Two copies of $R$, glued together by the identity map between their boundary surfaces $M_g$, form a compact closed 3-manifold $X$.  Compute the homology groups of $X$ using a Mayer-Vietoris sequence.  Also compute the relative groups  $H_i(R,M_g)$.
+
+
+\end{document}

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SageMathCell</title>
+    <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+    <script>
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+    </script>
+  </head>
+  <body>
+  <h1>Embedded Sage Cells</h1>
+
+    <div class="compute"><script type="text/x-sage">var('t'); parametric_plot3d([t,t^2,t^3], (t,-1.5,1.5), thickness=5)</script></div>
+    <div class="compute"><script type="text/x-sage">var('t'); parametric_plot3d([t,t^2,t^3], (t,-1.5,1.5), size=10, thickness=5)</script></div>
+    <div class="compute"><script type="text/x-sage">var('t'); parametric_plot3d([t,t^2,t^3], (t,-1.5,1.5), thickness=5, size=40)</script></div>
+</script></div>
+  </body>
+</html>

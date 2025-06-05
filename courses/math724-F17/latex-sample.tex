@@ -1,0 +1,41 @@
+\include{header}
+\begin{document}
+
+{\bf Math 724, Fall 2017\\
+Sample LaTeX File}
+
+\Red{For best results, download the .tex file and compare it to the .pdf output.}
+
+\begin{theorem}
+Let $n\in\Nn$.  Then
+\begin{equation} \label{summation-formula}
+\sum_{k=1}^n k=\frac{n(n+1)}{2}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+We proceed by induction on $n$.  The base case $n=1$ is obvious.\footnote{``Obvious'' is one of my least favorite words --- if you write that something is obvious, it had better be really, really obvious, like $1=1$ (as here)}
+
+For the inductive step, suppose that \eqref{summation-formula} holds for some $n\in\Nn$.  We want to show that it holds for $n+1$, i.e., that
+$\sum_{k=1}^{n+1} k=(n+1)(n+2)/2$.  To see this, note that
+\begin{align*}
+\sum_{k=1}^{n+1} k
+&= \left(\sum_{k=1}^nk\right)+(n+1)\\
+&= \frac{n(n+1)}{2}+(n+1) && \text{(by induction)}\\
+&= \frac{n^2+n}{2}+\frac{2n+2}{2}\\
+&= \frac{n^2+3n+2}{2} = \frac{(n+1)(n+2)}{2}
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{proof}[Alternate proof]
+Build a staircase of height $n$ with $k$ blocks in the $k^{th}$ row, so that the total number of blocks it contains is $\sum_{k=1}^nk$.  For example, if $n=5$ then the staircase looks like this:
+\[\ydiagram{5,4,3,2,1}\]
+Now make a photocopy of the staircase, rotate it $180^\circ$, and put it next to the original staircase:
+\[\ydiagram{5,4,3,2,1} \quad
+\ydiagram{5+1,4+2,3+3,2+4,1+5}\]
+Push the two staircases together.  They form a rectangle with height $n$ and width $n+1$.  By the Fundamental Theorem of Combinatorics\footnote{``If you count a set in two different ways, you get the same answer.''}, the number of squares in the rectangle is
+\[n(n+1)=2\sum_{k=1}^nk\]
+which is equivalent to~\eqref{summation-formula}.
+\end{proof}
+
+\end{document}

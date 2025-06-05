@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Math 821 Problem Set Q&amp;A</title>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+</head>
+<body>
+
+<h2>Math 821 (Algebraic Topology)<br>
+Problem Set Q&amp;A</h2>
+
+<p>This is a list of questions that I think are of general interest.
+All questions are posted with permission of the asker.
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw7"><h3>Problem Set 7 (due 5/2/14)</h3></a>
+
+<p><b>Clarifications:</b>
+<ul>
+<li>We know how to determine \(H_0(X)\) by looking at \(X\), so in general you can interpret &quot;Compute the homology groups&quot; as &quot;Compute \(H_n(X)\) for \(n>0\).&quot;
+<li>#1(c): &quot;All three resulting circles&quot; refers to the boundaries of the subdisks removed and the boundary of the original disk.
+<li>#3: All the twists should be clockwise.  I.e., view each face from outside the cube, and imagine twisting it 90 degrees clockwise and then gluing it to its opposite face.  The key is to do this consistently for every pair of faces.
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw6"><h3>Problem Set 6 (due 4/18/14)</h3></a>
+
+<p><b>Question (Alex):</b> For the snake lemma proof, are we assuming 
+that all of the objects we're dealing with are objects in which addition 
+and subtraction make sense? That is, if b_1 and b_2 are elements of B, 
+is b_1 - b_2 well-defined?
+
+<p><b>Answer:</b> Yes.  Everything in sight is an abelian group.
+
+<p><b>Question (Leonard and Zach):</b> In #2b, aren't there are either 
+missing zeros in the premise of the Snake Lemma or there are extra zeros 
+in the conclusion?
+
+<p><b>Answer:</b> Yes.  I had the two different versions of the Snake 
+Lemma mixed up.  I have fixed the problem set accordingly.  Omitting the 
+dashed arrows in both diagrams gives you a true statement; so does 
+including both sets of dashed arrows (an important special case).  Both 
+results are commonly referred to as the Snake Lemma.  Prove the version 
+without the dashed arrows, then observe how the version with the arrows 
+included follows from the first version (this is not much additional 
+work).
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw5"><h3>Problem Set 5 (due 4/4/14)</h3></a>
+
+<p><b>Question (Logan):</b> In #5, is that the \(n\)-simplex of the simplex with \(n\) vertices?
+
+<p><b>Answer:</b> Oops.  I mess this up about once a week.  Let's make it the \(n\)-simplex \(\Delta^n\),
+that is, the simplex of dimension \(n\) and vertex set \(\{0,1,\dots,n\}\).  I fixed it.
+
+<p><b>Question (multiple people):</b> How do you want us to show you our source code?
+
+<p><b>Answer:</b> Copy and paste a terminal session into your problem set.  The <b>verbatim</b> 
+environment is useful for this -- see the <a 
+href="http://www.jlmartin.faculty.ku.edu/math821/Macaulay2.tex">LaTeX source</a> and <a 
+href="http://www.jlmartin.faculty.ku.edu/math821/Macaulay2.pdf">PDF output</a> of the Macaulay handout for an 
+example of how it works.
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw4"><h3>Problem Set 4 (due 3/14/14)</h3></a>
+
+<p><b>Question (multiple people):</b> How many errors are there in \#2?
+
+<p><b>Answer:</b> Several.  If you fix the first error you find, does 
+the argument still go through?  Pretend you are giving constructive 
+criticism to the person who wrote the failed proof.
+
+<p><b>Question (multiple people):</b> Can you explain that construction 
+in #4 again?
+
+<p><b>Answer:</b> Yes, it's a little unclear.  The complex has one 
+0-cell, one 1-cell (a loop), and \(n\) 2-cells.  If we identify both the 
+1-skeleton and the boundary of each 2-cell with 
+\(S^1\subset\mathbb{C}\), then the \(j\)<sup>th</sup> attaching map is 
+given by \(z\mapsto z^{a_j}\).  For example, letting \(a=(a_1,\dots,a_n)\),
+if \(a=(1)\) then we get \(D^2\); if \(a=(2)\)
+then we get \(\mathbb{R} P^2\); if \(a=(1,1)\) then we get \(S^2\).
+
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw3"><h3>Problem Set 3 (due 2/28/14)</h3></a>
+
+<p><b>Question (Zach):</b> The second part of the first question seems 
+a little vague.  How &quot;natural&quot; a group structure should we be 
+looking for on \(\pi_0(X,p)\)? We could probably finagle out a way to 
+endow any arbitrary set (here, I imagine, using what we could deem 
+&quot;unnatural&quot; ways) with a group structure.
+
+<p><b>Answer:</b> Sure, you can endow any old set with a group structure 
+(this prompted my question a few days ago about whether there existed 
+groups of arbitrary cardinality - the answer is yes).  The homework 
+question was in fact intended to be somewhat open-ended.  Is there some 
+associative multiplication on \(\pi_0(X,p)\) that can be expressed 
+topologically?  What would the identity element or inversion mean?  
+Would it be possible to define induced homomorphisms?  Can you come up 
+with a space for which there is no sensible group structure to impose on 
+\(\pi_0(X,p)\)?
+
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw2"><h3>Problem Set 2 (due 2/14/14)</h3></a>
+
+<p><b>Question (several people):</b>
+What is up with #3b?
+
+<p><b>Answer:</b> Oops.  The n-holed torus is not homotopy-equivalent to \(S^1\times(\bigvee^n S^1)\)$.  My bad.  Take that one off the problem set.
+
+<p><b>Question (Su Chen):</b>
+On #4: Should we solve the problem just for the graph pictured, or for all graphs?
+
+<p><b>Answer:</b> For all graphs.  I included the figure just as an example of how the
+space is constructed.  The answer I'm looking for should be in terms of numerical
+invariants of the graph embedded in the half-plane --- for example, the number of
+vertices on \(e\), the number of vertices off \(e\), etc.
+
+<p><b>Question (Joel):</b>
+On #2: While we say that two spaces have the same homotopy type if they 
+are homotopy equivalent, what does it mean to characterize the exact
+homotopy type of a space?  Does it mean to provide a &quot;natural&quot;
+example of a space which is homotopy equivalent to our original space?
+
+<p><b>Answer:</b> 
+That's right.  I'm looking for a familiar space, or something 
+constructed from simple operations like wedge sum out of familiar
+spaces.  For example, &quot;homotopy equivalent to the 2-holed 
+torus&quot; or &quot;homotopy equivalent to \(S^2\vee S^3\).&quot;
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<a name="hw1"><h3>Problem Set 1 (due 1/31/14)</h3></a>
+
+<p><b>Question (several sources):</b> On #6, do \(v\) and \(f\) have to be
+strictly positive?
+
+<p><b>Answer:</b> Yes, that should have been specified in the problem.  I've fixed it.
+
+<p><b>Question (Alex, Su Chen):</b>
+On #2, graph theorists define a graph as connected if there is a path
+between any two vertices.  So isn't the problem vacuous?
+
+<p><b>Answer:</b> By &quot;connected,&quot; I mean connected in the 
+sense of topology, not in the sense of graph theory.  That is, suppose 
+you have a graph (as defined in the problem) such that no nonempty 
+proper subset as both closed and open; prove that it is path-connected.
+
+<p>Every path-connected space is connected, but not vice versa (the <a 
+href="http://en.wikipedia.org/wiki/Topologist%27s_sine_curve">topologist's 
+sine curve</a> is the standard counterexample).  So the problem is 
+asking you to show that the construction of a graph (as a set of closed 
+line segments modulo some equivalence relation on vertices) does not 
+permit the kind of pathology occurring in the topologist's sine curve. 
+As a hint, what can you say about the local structure of a graph?  In 
+other words, what does a small neighborhood around a point look like?
+
+<p><b>Question (Logan):</b>
+On #6, what do you mean by &quot;a cell structure on \(S^2\)?&quot;
+
+<p><b>Answer:</b> I mean a cell complex that is homeomorphic to \(S^2\).  
+In general, constructing a cell complex on a space means partitioning it 
+into cells (i.e., homeomorphic copies of real vector spaces).  You do 
+not have to write down explicit attaching maps; a picture will suffice.
+
+<p><b>Question (Alex):</b>
+On #5c, you ask us to show that &quot;A map homotopic to a homotopy equivalence is a homotopy equivalence.&quot;
+Do you mean &quot;a map homotopic to a homotopy equivalence of functions&quot;, or &quot;a map homotopic to a homotopy equivalence of spaces&quot;?
+
+<p><b>Answer:</b>
+The latter.  I'll clarify that in the problem set.
+
+<p><b>Question (Leonard):</b>
+On #4, do you want us to describe the deformation retraction in the form 
+of equations, or do you want us to draw a picture? Also, which picture 
+of the torus would you like us to adopt: the donut or the square with 
+sides appropriately identified?
+
+<p><b>Answer:</b>
+The square with sides identified is probably more convenient to work with - with the donut you have to worry about accurately representing a 3-D figure on a 2-D piece of paper.  However, once you've done the construction for the square, it's good practice to think about the corresponding picture for the donut.
+
+<p>See if you can both describe the deformation retraction in terms of equations <i>and</i> draw a picture.  Working purely in terms of Cartesian coordinates will probably get messy (and therefore not very illuminating), but it is possible to specify the deformation retraction precisely without getting too caught up in the coordinates.  This will make more sense after I do an example or two in class on Friday.
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<h3>Questions from class</h3>
+
+<p><b>Question (John):</b> Let \(X,Y\) be spaces and \(f,g:X\to Y\)
+maps. Are the graphs \(\Gamma_f=\{(x,f(x)):\ x\in X\}\) and 
+\(\Gamma_g=\{(x,g(x)):\ x\in X\}\) homotopy-equivalent?
+
+<p><b>Answer (Leonard):</b> In fact they are homeomorphic. The natural 
+maps \(\Gamma_f\to X\) sending \((x,f(x))\mapsto x\) and 
+\(X\to\Gamma_g\) sending \(x\mapsto(x,g(x))\) are continuous.  So their 
+composition is a continuous bijection \(\Gamma_f\to\Gamma_g\).  For the 
+same reason, its inverse is continuous.
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<p>Back to the <a href="index.html">Math 821 home page</a>.
+
+<p>
+
+<img src="../email.jpg"><br>
+Last updated Wed 4/30/14
+
+</body>
+</html>

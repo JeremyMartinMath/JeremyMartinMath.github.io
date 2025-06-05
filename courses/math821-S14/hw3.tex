@@ -1,0 +1,39 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2014\\
+Problem Set \#3\\
+Due date: Friday, February 28}
+
+\prob Recall that for a space $X$ and basepoint $p\in X$, we have defined $\pi_1(X,p)$ to be
+the set of homotopy classes of $p,p$-paths on $X$ --- or equivalently of continuous functions
+$S^1\to X$.  Recall also that $S^0$ consists of two points (let's call them $a$ and $b$) with the discrete topology.
+Accordingly, we could define $\pi_0(X,p)$ to be the set of homotopy classes of continuous functions $f:S^0\to X$
+such that $f(a)=p$.
+
+Describe the set $\pi_0(X,p)$ intrinsically in terms of $X$.  Is there a natural way to endow it with a group structure?
+
+\prob (Hatcher, p.38, \#2) Show that the change-of-basepoint homomorphism $\beta_h$ (see p.28)
+depends only on the homotopy class of the path $h$.
+
+\prob (Hatcher, p.38, \#7) Define $f:S^1\x I\to S^1\x I$ by $f(\theta,s)=(\theta+2\pi s,s)$,
+so $f$ restricts to the identity on the two boundary circles of $S^1\x I$.   Show that $f$ is homotopic
+to the identity by a homotopy $f_t$ that is stationary on \emph{one} of the boundary circles, but not
+by any homotopy $f_t$ that is stationary on \emph{both} boundary circles.
+
+\prob [Hatcher p.38 \#8] Does the Borsuk-Ulam theorem hold for the torus?  In other words, for every map $f:S^1\x S^1\to\Rr^2$ must there exist $(x,y)\in S^1\x S^1$ such that $f(x,y)=f(-x,-y)$?  Why or why not?
+
+\prob{[Hatcher p.39 \#9] Use the 2-dimensional case of the Borsuk-Ulam theorem (Hatcher, Thm.~1.10, p.32) to prove the ``Ham and Cheese Sandwich Theorem:} if $A_1,A_2,A_3$ are compact (hence measurable) sets in $\Rr^3$, then there is a plane in $\Rr^3$ that simultaneously divides each $A_i$ into two pieces of equal measure.
+
+\prob [Hatcher p.39 \#12] Fix $p\in S^1$.  Show that every homomorphism $\pi_1(S^1,p)\to\pi(S^1,p)$ can be realized as the induced homomorphism $\phi_*$ for some $\phi:S^1\to S^1$.
+
+\prob [Hatcher, p.52, \#1]  Recall that the \defterm{center} of a group $G$ is defined as $Z(G)=\{g\in G:\ gh=hg \ \forall h\in G\}$.
+
+\probpart Show that the free product $G*H$ of nontrivial groups $G$ and $H$ has trivial center.
+
+\probpart Show that the only elements of $G*H$ of finite order are the conjugates of finite-order elements in~$G\cup H$.
+
+\end{document}
+
+

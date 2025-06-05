@@ -1,0 +1,51 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2018\\
+Problem Set \#4\\
+Deadline: Friday, March 30, 5:00pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  You are encouraged to use the \hreftext{http://jlmartin.faculty.ku.edu/math821/header.tex}{Math 821 header file}. Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name and the problem set number (e.g., \texttt{Milnor4.pdf}).  Collaboration is encouraged, but each student must write up his or her solutions independently and acknowledge all collaborators.
+\medskip
+\hrule
+
+\prob (a) [Hatcher p.132 \#15] Homological algebra warmup: Prove that if $A\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}D\xrightarrow{j}E$ is exact with $f$ surjective and $j$ injective, then $C=0$.
+
+(b) Prove the \emph{Snake Lemma}: if the commutative diagram
+\[\xymatrix{
+0\ar@{-->}[r] & A\rto^d\dto_f & B\rto^e\dto_g & C\rto\dto_h & 0\\
+0\rto & A'\rto^{d'} & B'\rto^{e'} & C'\ar@{-->}[r] & 0
+}\]
+of abelian groups has exact rows, then there is an exact sequence
+\[0\dashrightarrow \ker f\xrightarrow{\alpha} \ker g\xrightarrow{\beta}
+  \ker h\xrightarrow{\gamma} \coker f\xrightarrow{\delta}
+ \coker g\xrightarrow{\varepsilon}\coker h\dashrightarrow 0.\]
+
+(The four dashed arrows can either all be included, or all omitted.  Both versions of the result are commonly referred to as the Snake Lemma.  In your solution, prove the version without the dashed arrows and then observe what happens if the arrows are included.)
+
+
+\bigskip\prob Consider the matrix
+$$M=\begin{bmatrix} 1&1&0\\1&0&1\\0&1&1\end{bmatrix}.$$
+Describe $\coker M$
+(i) if $M$ is regarded as a linear transformation over $\Qq$;
+(ii) if $M$ is regarded as a linear transformation over $\Zz$;
+(iii) if $M$ is regarded as a linear transformation over $\Ff_q$
+(the finite field with $q$ elements).
+
+\bigskip\prob Let $X$ be a graph (= 1-dimensional cell complex) with $n$ vertices, $e$ edges, and $c$ components.  Calculate the simplicial homology groups $H^\Delta_0(X)$ and $H^\Delta_1(X)$ in terms of $n$, $c$, and $e$.  Having done so, compare the quantities
+\[\rank\big(H^\Delta_0(X)\big)-\rank\big(H^\Delta_1(X)\big) \qqandqq \rank\big(\Delta_0(X)\big)-\rank\big(\Delta_1(X)\big)\]
+where $\rank(M)$ means the rank of $M$ as a (free) $\Zz$-module.
+
+\bigskip\prob [Hatcher \S2.1, \#4]  Compute the simplicial homology groups of the ``triangular parachute'' obtained from $\Delta^2$ by identifying its vertices to a single point.
+
+\bigskip (More problems on p.2.) \pagebreak
+
+\prob [Hatcher \S2.1, \#8] Construct a $3$-dimensional $\Delta$-complex $X$ from $n$ tetrahedra $T_1,\dots,T_n$ by the following two steps. First arrange the tetrahedra in a cyclic pattern, as below (picture taken from Hatcher, p.131 in my edition) so that each $T_i$ shares a common vertical face with its two neighbors $T_{i-1}$ and $T_{i+1}$, subscripts being taken mod~$n$.
+\includefigure{2in}{1.25in}{Hatcher-p131-prob8}
+  Then identify the bottom face of $T_i$ with the top face of $T_{i+1}$ for each $i$. Show that the [unreduced] simplicial homology groups of $X$ in dimensions 0, 1, 2, 3 are $\Zz$, $\Zz_n$, 0, $\Zz$, respectively.  (Hint: Carefully figure out the simplices in $X$ and their boundaries.  Then construct the simplicial chain complex and reduce the problem to linear algebra over~$\Zz$.)
+
+\bigskip\prob Let $X$ be a path-connected space and let $Y$ be the space obtained from $X$ by identifying two of its points.  Determine the (singular) homology groups of $Y$ in terms of those of~$X$.
+
+\bigskip\prob [Hatcher \S2.1, \#20]  Show that $H_n(X)\isom H_{n+1}(SX)$ for all $n$, where $SX$ is the suspension of $X$ (i.e., the union of two cones over $X$ with their bases identified --- for example, the suspension of $S^n$ is $S^{n+1}$).  More generally, for any integer $k\geq 2$, compute the reduced homology groups of the union of~$k$ cones over~$X$ with their bases identified (so the suspension is the case $k=2$).
+
+\end{document}

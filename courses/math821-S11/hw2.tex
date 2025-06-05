@@ -1,0 +1,91 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821 Problem Set \#2\\
+Posted: Friday 2/11/11\\
+Due date: Monday 2/21/11}
+
+\prob (Hatcher, p.18, \#2)
+Construct an explicit deformation retraction of $X=\Rr^n\sm\{0\}$
+onto $S^{n-1}$.  (``Explicit'' means that you should write down an 
+actual formula for the map $f_t:X\to X$, and check that the family of 
+maps you have defined satisfies the conditions of a deformation 
+retraction.)
+
+\prob (Hatcher, p.19, \#12)
+Show that a homotopy equivalence $f:X\to Y$ induces a bijection 
+between the set of path-components of~$X$ and the set of path-components 
+of~$Y$, and that~$f$ restricts to a homotopy equivalence from each 
+path-component of~$X$ to the corresponding path-component of~$Y$. Prove 
+also the corresponding statements with components instead of 
+path-components. Deduce that if the components of a space~$X$ coincide 
+with its path-components, then the same holds for any space~$Y$ homotopy 
+equivalent to $X$.
+
+\prob (Hatcher, p.19, \#17)
+Construct a 2-dimensional cell complex that contains both an
+annulus $S^1\x I$ and a M\"obius band as deformation retracts.
+(This implies that these two spaces are homotopy-equivalent.)
+
+\prob Let $X,Y$ be cell complexes of finite type.  Recall that the
+\emph{$f$-polynomial} of~$X$ is
+$$f(X;q) = \sum_{\text{cells } e_\alpha^i\in X} q^i
+= \sum_{i=0}^{\dim X} f_i q^i$$
+where $f_i$ is the number of $i$-dimensional cells (and recall that ``of finite type'' means that $f_i<\infty$ for each~$i$).
+In terms of $f(X;q)$ and $f(Y;q)$,
+find formulas for
+\begin{enumerate}
+\item[(a)] $f(X\x Y;q)$;
+\item[(b)] $f(X/Y;q)$ (assuming that $(X,Y)$ is a CW-pair);
+\item[(c)] $f(CX;q)$;
+\item[(d)] $f(X*Y;q)$.
+\end{enumerate}
+You don't have to give detailed proofs.
+(See pp.~8--10 of Hatcher for the definitions of these operations.)
+
+\prob Let $0\leq k\leq n$.
+Recall from class that the \emph{Grassmannian} $G(k,n)$
+is defined as the space of $k$-dimensional subspaces $V\subset\Rr^n$,
+so that in particular, $G(1,\Rr^n)=\Rr P^{n-1}$.  (Fact: Everything in
+this problem works the same way if you change $\Rr$ to $\Cc$, except
+that the dimensions of all the cells get doubled.)
+
+\probpart Work out an explicit cell decomposition for $G(2,4)$
+as a finite CW-complex.  That is,
+describe how to decompose the set $G(2,4)$ into pieces, each of which is
+isomorphic to a $\Rr$-vector space.
+If you do this correctly (hint: row-reduced echelon form),
+then the isomorphisms should be straightforward from the construction.
+
+\probpart Describe the attaching poset of $G(2,4)$.  (Recall that this
+is the partially ordered
+set whose elements are the cells $e_\alpha$, and whose order
+relation is given by $e_\alpha\geq e_\beta$ if
+$\overline{e_\alpha}\supseteq e_\beta$).
+
+\probpart A \emph{Ferrers diagram} is a collection of square boxes that
+are top- and right-justified: for instance,
+\begin{center}
+\yng(6,6,4,3,1)
+\end{center}
+Write out the poset $P(2,2)$ of all Ferrers diagrams with at most two 
+rows and at most two columns, ordered by containment (as sets of 
+squares).  Compare it to your previous answer.
+
+\probpart Make as many conjectures as you dare about the cell structure of
+$G(k,n)$.  (In particular, what happens to the attaching poset if you
+reverse all the relations?)
+
+%\prob For $k\geq 1$, let $T_n$ denote the $n$-holed torus.
+%
+%\probpart Construct a cell complex structure on $T_n$.
+%
+%\probpart Show that $T_n$ is homotopy-equivalent to the cell complex
+%$S^1\x(\bigvee_{i=1}^n S^1)$ (that is, take $n$ circles and wedge them together
+%at a point to get a ``bouquet'', then take the product with another circle).
+
+\prob (Extra credit; Hatcher, p.19, \#16)
+Show that $S^\infty$ is contractible.
+
+\end{document}

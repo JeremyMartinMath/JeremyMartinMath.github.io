@@ -1,0 +1,50 @@
+\include{header}
+\setboolean{answers}{false}
+\begin{document}
+\thispagestyle{empty}
+
+\bf Math 724, Fall 2013\\
+Take-Home Test \#2\rm
+
+{\bf Instructions:} Write up your solutions using LaTeX.  
+You may use books and notes, but you are not allowed to collaborate ---
+you may not consult any human other than the instructor.
+Solutions are due at the start of class on {\bf Friday, November 15.}
+\medskip\hrule\bigskip
+
+\prob
+Let $n>0$ be an integer.
+
+\Probpart{10}
+How many labeled trees $T$ on vertex set $[n]$ have the property that the degree of every vertex is either 1 or 3?
+Your answer should be a function of $n$ expressed without summation notation.
+
+\Probpart{10}
+Let $k$ be an integer with $0\leq k\leq n$.  How many labeled trees on vertex set $[n]$ have the property that vertices $1,2,3,\dots,k$ are all leaves
+(i.e., each shares an edge with exactly one other vertex)?  (The tree can have other leaves as well.)  Your answer should be a function of $n$ and $k$ expressed without summation notation.
+
+\vfill\Prob{20}
+Let $S(k,n)$ denote Stirling numbers of the second kind.  Give a combinatorial proof that
+\[S(k,n) = \sum_i \binom{k-1}{i-1} S(k-i,n-1)\]
+for all positive integers $k,n$.  (By ``combinatorial,'' I mean ``explain why both sides of the equation count the same set of objects'' --- do not give a purely algebraic proof using, say, induction.)
+
+\vfill\prob
+Give combinatorial interpretations for the following numbers.  (In other words, describe what they count.)
+
+\Probpart{10} The coefficient of $x^k$ in the infinite product
+\[\prod_{n=1}^\infty (1+x^n+x^{2n}+\cdots+x^{n^2}).\]
+
+\Probpart{10}
+The coefficient of $q^\ell x^k$ in the infinite product
+\[\prod_{n=1}^\infty \frac{1}{1-qx^n}.\]
+
+\vfill\Prob{20}
+Let $p,q$ be positive integers and let $C(p,q)$ denote the set of weak compositions of $p$ with $q$ parts.  Give an explicit bijection $C(p,q)\to C(q-1,p+1)$.
+
+\vfill\Prob{20}
+Recall that 1 Galleon is worth 17 Sickles and 1 Sickle is worth 29 Knuts.  Suppose that the Ministry introduces
+a 3-Sickle and a 6-Knut piece (known respectively as a Trickle and a Hexknut).  With the new coinage,
+how many ways are there of making change for a Galleon?  (If you are not an expert at Arithmancy, I recommend that you use Sage or another
+computer algebra system to do the calculation.)
+
+\end{document}

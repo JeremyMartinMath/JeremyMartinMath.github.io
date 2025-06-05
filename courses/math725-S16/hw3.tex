@@ -1,0 +1,54 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 725, Spring 2016 \hfill Problem Set \#3}
+\smallskip\hrule
+
+{\bf Instructions:} Do all problems and typeset them in \LaTeX.  E-mail the PDF file to Jeremy at \hrefurl{mailto:jlmartin@ku.edu}{\tt jlmartin@ku.edu} under the filename {\tt your-last-name.pdf} by {\bf Friday, February 26, 5:00pm.}
+You are encouraged to use the \hreftext{http://www.jlmartin.faculty.ku.edu/math725/header.tex}{LaTeX header file} and to refer to Jeremy's \hreftext{http://www.jlmartin.faculty.ku.edu/math725/ExtraNotes.pdf}{lecture notes}.
+
+
+\smallskip\hrule
+
+
+\prob Construct a connected simple graph $G$ such that (i) every
+vertex has degree $\geq 2$; (ii) there is a unique vertex $x$
+of maximum degree; (iii) no minimum vertex cover contains $x$.
+
+\prob Let $Y$ be a finite set and let $\mathcal{A}=\{A_1,\dots,A_n\}$
+be a family of subsets of $Y$, not necessarily disjoint.  A \emph{system of distinct
+representatives} (or SDR) for $\mathcal{A}$ is a set of distinct elements $y_1,\dots,y_n\in Y$
+such that $y_i\in A_i$ for all $i$.
+Prove that $\mathcal{A}$ has an SDR if and only if
+$\left\vert\bigcup_{i\in S} A_i\right\vert\geq|S|$ for all $S\subseteq[n]$.\\
+(Hint: Transform this into a graph problem.)
+
+\prob Prove that Tutte's 1-Factor Theorem implies Hall's Marriage Theorem.
+
+\prob Let $G$ be a connected graph and let $p$ be an integer such that $1\leq p\leq\delta(G)$.  Define a \emph{$p$-matching} to be an edge set $M\subseteq E$ such that no vertex belongs to more than $p$ edges in $M$, and define a \emph{$p$-cover} to be an edge set $C\subseteq E$ such that every vertex belongs to at least $p$ edges in $C$.  Let
+\begin{align*}
+\alpha_p=\alpha_p(G) &= \max\{|M|:~ M \text{ is a $p$-matching}\},\\
+\beta_p=\beta_p(G) &= \min\{|C|:~ C \text{ is a $p$-cover}\}.
+\end{align*}
+Prove that $\tilde\alpha+\tilde\beta=pn$.  (Hint: Generalize the proof of Gallai's theorem (which is the $p=1$ case) to 
+show separately that $\tilde\alpha+\tilde\beta\leq pn$ and that
+$\tilde\alpha+\tilde\beta\geq pn$.)
+
+\prob
+In this problem you will prove that the Hungarian Algorithm (HA) terminates for all weight functions $w:E\to\Rr$.  Refer to the description of the HA in \S2.5 of the \href{http://www.jlmartin.faculty.ku.edu/math725/ExtraNotes.pdf}{lecture notes}.
+
+\probpart Show that after adjusting the cover (steps 5 and 6 of the HA), the edges of $M$ remain in the new equality subgraph $H$.  (This justifies a claim made in class, and reduces the problem to showing that $\alpha'(H)$ does eventually increase.)
+
+\probpart Show that if some call to the APA (step 8) does not succeed in finding an $M$-augmenting path, then the next call to the APA will produce a search forest that contains at least one additional vertex of $Y$.  (Hint: Recall that $Q=(X\sm U_X)\cup U_Y$, where $U=U_X\cup U_Y$ is the vertex set of the search forest constructed by the APA.  Figure out how the cover-adjustment step affects the equality subgraph $H$ and the resulting search forest.  You may want to work through the example in the notes in order to convince yourself of the truth of what you are trying to prove.)
+
+\probpart Conclude that the HA terminates in finitely many steps, and determine the best general upper bound you can on the number of steps.
+
+\prob Show that the nondeterministic Gale-Shapley algorithm described in \S2.6 of the lecture notes produces the same result as the deterministic version.  To do this, let $M$ and $M'$ be the matchings constructed in two separate instances of the nondeterministic algorithm.
+
+\probpart Show that if $M\neq M'$, then (up to switching $M$ and $M'$) there must be some pair $x,y$ such that $M(x)=y$, but $y$ rejected $x$ during the construction of $M'$.
+
+\probpart Of all such pairs, let $x,y$ be the pair for whom that rejection occurred \emph{first} during the construction of $M'$.  Suppose that $y$ rejected $x$ in favor of $x'$.  Show that the pair $x,y'$ is unstable in $M$.
+
+\prob {\bf [Extra credit]} Prove that the matching produced by the Gale-Shapley algorithm is universally proposer-optimal and responder-pessimal.  That is, if $M$ is the Gale-Shapley stable matching and $M'$ is any other stable matching, then every proposer $x\in X$ is at least as happy in $M$ as in $M'$, and every responder $y\in Y$ is at least as happy in $M'$ as in $M$.  (Hint: Focus on a component $C$ of $M\sd M'$, and construct an appropriate instance of the nondeterministic Gale-Shapley algorithm.)
+
+\end{document}

@@ -1,0 +1,480 @@
+<html>
+<head>
+<title>Math 141, Fall 2007</title>
+</head>
+<body>
+
+<h2>Math 141 (Honors Calculus I), Fall 2007
+<br>Section 22791</h2>
+
+<p>
+<a href="#announce">Announcements</a> |
+<a href="#info">Basic Information</a> |
+<a href="#hw">Homework Assignments</a> |
+<a href="#honors">Honors Projects</a> |
+<a href="#tests">In-Class Tests</a> | 
+<a href="#gateway">Gateway Exam</a> |
+<a href="#midterm">Midterm Exam</a> |
+<a href="#final">Final Exam</a> |
+<a href="#links">Links</a>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="announce"><h3>Announcements</h3></a>
+
+<ul>
+<li><a href="honors3.pdf">Honors Project #3</a> is now available. (11/13 7:30 AM)
+<li>You can raise your score on the second in-class test by <a 
+  href="http://www.jlmartin.faculty.ku.edu/math141/Rover.pdf">redoing the last problem</a>.
+  Follow the instructions on the linked PDF file.
+  The absolute deadline for handing in the redo is Monday, November 12 at 11:00 AM,
+  and you must not work with or consult any other person as you redo the problem.
+(11/10 12:00 PM)
+<li>Extra problems marked as
+  &quot;Bonus&quot; (which are typically quite challenging) can now
+  be turned in for extra credit at any time during the semester - they don't
+  have to be turned in with the rest of the homework.  (This is to encourage you
+  to work on these problems!)  Here is a <a href="extracredit.pdf">list of bonus
+  problems</a>, which I'll keep up to date throughout the semester. (10/24 8:00 AM)
+<li><a href="honors2.pdf">Honors Project #2</a> is now available. (10/10 10:00 AM)
+<li>I will be leaving town the afternoon of Thursday, October 4, so I 
+  will not be holding my usual office hour on that day.  For class on 
+  Friday, October 5, Mr. Brandon Humpert will be holding a Q&amp;A session.
+  Please prepare a couple of questions relating to midterm review (e.g.,
+  problems from the sample midterm or from the textbook). (10/4 10:00 AM)
+<li><a href="#midterm">Review sessions for the midterm exam</a> have been scheduled. (9/28 9:00 AM)
+<li>A 
+  <a href="http://www.math.ku.edu/classes/math121/121MidtermF07-2.pdf">set of review problems</a>
+  and a <a href="http://www.math.ku.edu/classes/math121/SampleMidterm-F07.pdf">sample midterm exam</a>
+  are now available from the Math 121 website. (9/27 6:45 AM)
+<li>The locations for the midterm exam have been announced.
+  Students in Math 141 will take the exam on Tuesday, October 9, from 5:45-7:45 PM
+  in 1136 Learned Hall. (9/26 2:30 PM)
+<li><a href="honors1.pdf">Honors Project #1</a> is now available. (9/7 10:00 AM)
+<li>The date of the first in-class test has been changed to Friday, September 14. (8/31 9:00 AM)
+<li>The <a href="syllabus.pdf">syllabus</a> and <a href="hw1.pdf">first 
+  homework assignment</a> are now available. (8/16 9:40 AM)
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="info"><h3>Basic Information</h3></a>
+
+<p>
+<ul>
+<li><b>Instructor:</b>
+  Prof. Jeremy Martin<br>
+  <img src="../email.jpg"><br>
+  541 Snow, 864-7114
+<li><b><a href="syllabus.pdf">Syllabus</a></b> (PDF)
+<li><b>Meeting times:</b>
+  MTWRF, 11:00-11:50 AM, 3092 Malott
+<li><b>Office hours:</b>
+  Mon/Tue/Thu 1:00-2:00 PM, 541 Snow, and by appointment
+<li><b>Important dates:</b>
+  <ul>
+  <li>Thu 12/6: Honors Project #3 due; last day of classes
+  <li>Tue 12/11: Math 121/141 common final exam, 4:30-7:00 PM, location TBA
+  </ul>
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="hw"><h3>Homework Assignments</h3></a>
+
+<p>
+<table border=1 cellpadding=2>
+<tr>
+  <th>Assignment #
+  <th>Due date
+  <th>Required problems
+  <th>Practice problems
+  <th>Notes
+</tr>
+</tr><tr>
+  <td align=center>1
+  <td>Tue 8/21
+  <td><a href="hw1.pdf">These problems</a>
+  <td>
+  <td>
+</tr><tr>
+  <td align=center>2
+  <td>Tue 8/28
+  <td>[1.7] 2, 6, 10, 16, 20, 36<br>
+      [2.1] 2, 4, 6<br>
+      [2.2] 2, 4, 6, 10, 14, 16, 26, 28<br>
+      <a href="hw2.pdf">This extra problem</a>
+  <td>[1.7] 1, 5, 7, 9, 11, 33, 34, 37<br>
+      [2.1] 1, 3, 5, 7, 9<br>
+      [2.2] 1, 3, 7, 8, 9, 15, 17, 21, 27<br><br>
+  <td><a href="hw2-solution.pdf">Solution to extra problem</a>
+  <td>
+</tr><tr>
+  <td align=center>3
+  <td>Tue 9/4
+  <td>[2.3] 2, 10, 14, 18, 20, 22, 24, 26, 36<br>
+      [2.4] 4, 6, 8, 14, 20, 34, 44, 48, 49<br>
+      [2.5] 2, 4, 8, 12<br>
+      <a href="hw3.pdf">These extra problems</a>
+  <td>[2.3] 1, 3, 5, 7, 9, 11, 15, 19, 25<br>
+      [2.4] 1, 3, 5, 7, 13, 17, 19, 35, 39, 47<br>
+      [2.5] 1, 3, 5, 9, 11<br><br>
+  <td><a href="hw3-solution.pdf">Solutions to extra problem #1 and bonus</a>
+</tr><tr>
+  <td align=center>4
+  <td>Tue 9/11
+  <td>[2.5] 6, 16, 18, 22, 24, 28, 50<br>
+      [2.6] 4, 6, 10, 12, 18, 22, 24<br>
+      [2.7] 2, 6, 8, 14, 16, 18, 24, 30, 35, 36<br>
+      <a href="hw4.pdf">These extra problems</a>
+  <td>[2.5] 13, 15, 17, 19, 23, 25, 27<br>
+      [2.6] 1, 2, 3, 5, 7, 9, 11, 21, 25<br>
+      [2.7] 1, 3, 5, 9, 11, 13, 15, 17, 19, 21, 27<br><br>
+  <td><a href="hw4-solution.pdf">Solution to extra problems</a>
+  <td>
+</tr><tr>
+  <td align=center>5
+  <td>Tue 9/18
+  <td>[2.8] 6, 8, 10, 12, 20, 24, 26, 34, 38, 46, 48<br>
+      [2.9] 2, 4, 9, 10, 12, 14, 16, 18, 22<br>
+      [3.1] 4, 6, 8, 10, 12, 14, 20, 24, 26, 30, 32, 38, 44, 46, 58, 62<br>
+      <a href="hw5.pdf">These extra problems</a>
+  <td>[2.8] 3, 5, 7, 9, 11, 15, 16, 17, 21, 23, 25, 41, 49<br>
+      [2.9] 1, 3, 11, 13, 15, 17, 19<br>
+      [3.1] 1(b), 5, 7, 9, 11, 13, 15, 19, 21, 25, 37, 43, 45<br><br>
+  <td><a href="hw5-solutions.pdf">Solutions to extra problems</a>
+</tr><tr>
+  <td align=center>6
+  <td>Tue 9/25
+  <td>[3.2] 1, 2, 4, 6, 8, 16, 18, 20, 22, 26, 28, 32, 38, 46<br>
+      [3.3] 2, 12, 15, 18, 33<br>
+      [3.4] 4, 8, 10, 12, 15, 20, 25, 28, 30, 32, 33, 36, 39, 40<br>
+      [3.5] 2, 4, 6, 8, 10, 12, 43, 44
+  <td>[3.2] 3, 5, 7, 9, 15, 17, 25, 27, 35, 45, 47<br>
+      [3.3] 1, 9, 10, 11, 21, 27<br>
+      [3.4] 1, 3, 5, 7, 9, 11, 19, 23, 27, 29, 31, 35, 37, 41<br>
+      [3.5] 1, 3, 5, 7, 9, 11
+  <td>
+</tr><tr>
+  <td align=center>7
+  <td>Tue 10/2
+  <td>[3.5] 14, 16, 20, 22, 24, 26, 32, 50, 52, 58, 68, 70, 72<br>
+      [3.6] 2, 4, 6, 10, 12, 16, 18, 27, 28, 30, 32, 34, 40, 46, 56<br>
+      [3.7] 2, 4, 8, 10, 16, 18, 28, 30, 32, 38<br>
+      <a href="hw7.pdf">This extra problem</a>
+  <td>[3.5] 19, 21, 23, 25, 27, 31, 49, 57, 69, 71, 73<br>
+      [3.6] 1, 3, 5, 7, 9, 11, 17, 19, 29, 31, 33, 35, 39<br>
+      [3.7] 3, 5, 7, 9, 11, 13, 15, 17, 29, 33, 35<br><br>
+  <td><a href="hw7-solution.pdf">Solution to extra problem</a>
+</tr><tr>
+  <td align=center>8
+  <td>Tue 10/9
+  <td>[3.8] 6, 8, 16, 20, 26, 28, 30<br>
+      [4.1] 2, 6, 8, 12, 21, 22, 26<br><br>
+  <td>[3.8] 5, 7, 9, 10, 15, 17, 21, 23, 25, 29<br>
+      [4.1] 1, 3, 9, 11, 15, 17, 19, 25, 27, 33, 35, 36, 37<br>
+      <a href="hw8.pdf">Extra review problems</a>
+  <td>
+</tr><tr>
+  <td align=center>9
+  <td>Tue 10/23
+  <td>[4.1] 14, 16, 18, 30, 38<br>
+      [4.2] 8, 10, 12, 26, 28, 32, 34, 38, 42, 44, 48, 56, 60<br>
+      [4.3] 6, 8, 10, 14, 16, 18, 20, 24, 28, 30, 32, 46, 54, 55<br>
+      [4.4] 2, 4, 12<br>
+      <a href="hw9.pdf">These extra problems</a>
+  <td>[4.1] 23, 24, 28, 29, 31<br>
+      [4.2] 7, 9, 11, 13, 23, 25, 27, 29, 31, 37, 41, 43, 45<br>
+      [4.3] 5, 7, 9, 11, 13, 15, 19, 21, 25, 27, 31, 33, 51<br>
+      [4.4] 1, 3, 5, 11<br><br>
+  <td>
+</tr><tr>
+  <td align=center>10
+  <td>Tue 10/30
+  <td>[4.5] 6, 12, 16, 20, 22, 28, 30, 34, 36, 38, 48, 50, 60<br>
+      [4.6] 2, 7, 8, 14, 16, 20, 22, 24, 32, 34, 39, 42, 44, 45<br>
+      [4.7] 1, 6, 10, 14, 18<br>
+      <a href="hw10.pdf">These extra problems</a>
+  <td>[4.5] 5, 7, 11, 17, 19, 23, 27, 29, 31, 35, 37, 39, 45<br>
+      [4.6] 3, 5, 6, 9, 10, 13, 15, 18, 21, 23, 25, 30, 33, 35, 36<br>
+      [4.7] 3, 5, 7, 9, 11, 13, 17<br><br>
+  <td><a href="hw10-solution.pdf">Solutions to extra problems</a>
+</tr><tr>
+  <td align=center>11
+  <td>Tue 11/6
+  <td>[4.8] 4, 6, 10, 12, 22, 26<br>
+      [4.9] 2, 6, 8, 16, 28, 37, 44, 50, 53<br>
+      [5.1] 2, 6, 12, 14, 18, 19, 20<br>
+      [5.2] 2, 6, 8, 12, 18, 22<font color=red><b>*</b></font>, 24<font color=red><b>*</b></font>, 32, 36, 38, 40, 42, 44
+  <td>[4.8] 3, 5, 7, 9, 11, 21, 25, 27<br>
+      [4.9] 1, 3, 5, 7, 13, 15, 17, 19, 21, 25, 27, 39, 51<br>
+      [5.1] 1, 3, 5, 11, 13, 17<br>
+      [5.2] 1, 3, 5, 7, 11, 17, 19, 21, 23, 25, 31, 33, 35, 37, 39, 41, 43
+  <td><a href="hw11-solution.pdf">Solutions to [5.2] #22 and #24</a>
+</tr><tr>
+  <td align=center>12
+  <td>Tue 11/13
+  <td>[5.3] 2, 6, 8, 12, 14, 20, 22, 26, 30, 38, 42, 44, 46, 56, 60, 67, 68<br>
+      [5.4] 4, 6, 8, 10, 12, 16, 18, 20, 22, 25<br>
+      <a href="hw12.pdf">Bonus problem</a>
+  <td>[5.3] 1-27 odd, 35-49 odd, 55, 59<br>
+      [5.4] 3-21 odd<br><br>
+</tr><tr>
+  <td align=center>13
+  <td>Tue 11/20
+  <td>[5.5] 4, 8, 10, 16, 18, 24, 30, 32, 40, 44, 48, 50, 52, 64, 66<br>
+      [5.6] 2, 4, 12, 14, 18, 20, 22, 38, 46<br>
+      [5.7] 2, 4, 6, 8, 12, 14, 18, 20, 22, 28<br>
+      [5.8] 4, 14, 22, 24<br>
+      [<a href="http://www.math.ku.edu/uploads/gateway/122problems.pdf">Math 122 Gateway Problems</a>] 
+        51, 55, 59, 68, 76, 77, 82, 89, 94, 98<br>
+      <a href="hw13.pdf">Extra problems</a>
+  <td>[5.5] 1-53 odd, 63<br>
+      [5.6] 1-31 odd, 37, 39, 40<br>
+      [5.7] 1-31 odd<br>
+      [5.8] 1, 3, 7, 11, 15, 17<br>
+      [<a href="http://www.math.ku.edu/uploads/gateway/122problems.pdf">Math 122 Gateway Problems</a>] 
+        The other ninety<br><br>
+</tr><tr>
+  <td align=center>14
+  <td>Tue 12/4
+  <td>[5.9] 4, 8, 12, 18, 29, 34, 38<br>
+      [5.10] 2, 4, 8, 14, 16, 20, 28, 34<br>
+      [6.1] 2, 4, 8, 10, 12, 18, 22, 24, 32, 38<br>
+      [6.2] 
+      [6.3] 
+      [6.4] 
+      [6.5] 
+      [6.6] 
+      [6.7] 
+  <td>[5.9] 3, 7, 11, 13, 17, 25, 29<br>
+      [5.10] 1-35 odd<br>
+      [6.1] 1-23 odd, 27-35 odd<br>
+      [6.2] 
+      [6.3] 
+      [6.4] 
+      [6.5] 
+      [6.6] 
+      [6.7] 
+</tr><tr>
+  <td align=center><b>**</b>
+  <td>Tue 12/11
+  <td><a href="extracredit.pdf">Complete list of bonus problems</a><br> (last updated 11/7) 
+<br>
+  <td>These can be turned in for extra credit<br>at any time during the semester.
+</tr>
+</table>
+
+<p><font color=red><b>*</b></font>
+  On problems #22 and #24 from [5.2], your answer should resemble the calculation
+  on p.358.  To evaluate the integral, represent it at a Riemann
+  sum; simplfy it using the laws for sums on p.357; and calculate
+  the limit as the number <i>n</i> of subdivisions tends to infinity.
+
+<hr> <!-- -------------------------------------------------------->
+<a name="honors"><h3>Honors Projects</h3></a>
+
+<p>There will be three Honors Projects over the course of the semester.
+The projects are mathematical writing assignments to be completed in
+small groups (assigned by Prof. Martin).  Your work will be evaluated on 
+the correctness of the mathematics,
+the clarity of the writing, and the overall presentation.  In addition to
+consulting Prof. Martin, you may wish to make an appointment with the
+<a href="http://www.writing.ku.edu/">KU Writing Center</a> to discuss matters
+of style and clarity.
+
+<p><b>Honors Project 1 (due Monday, September 24)</b>
+<ul>
+<li><a href="honors1.pdf">The assignment (PDF)</a>
+</ul>
+
+<p><b>Honors Project 2 (due Tuesday, November 6)</b>
+<ul>
+<li><a href="honors2.pdf">The assignment (PDF)</a>
+</ul>
+
+<p><b>Honors Project 3 (due Thursday, December 6)</b>
+<ul>
+<li><a href="honors3.pdf">The assignment (PDF)</a>
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="tests"><h3>In-Class Tests</h3></a>
+
+<p>The first in-class test was given on Friday, September 14.
+The test covered material from Chapters 1 and 2 of the textbook.
+<ul>
+<li><i>Statistics:</i> The mean score was 76.7% and the median was 80%.
+<li><i>Unofficial letter grades:</i>
+Roughly, 90-100 is an A, 80-89 is a B, 70-79 is a C,
+55-69 is a D, and below that is an F.  Please note that these letter grades are
+purely to give you an idea how you're doing so far, and will have no 
+bearing on the final letter grade you earn.
+<li><i>Problems:</i>
+  <a href="test1-blue.pdf">Blue version</a> | 
+  <a href="test1-green.pdf">Green version</a> | 
+  <a href="test1-white.pdf">White version</a>
+<li><i>Solutions:</i>
+  <a href="test1solutions-blue.pdf">Blue version</a> |
+  <a href="test1solutions-green.pdf">Green version</a> |
+  <a href="test1solutions-white.pdf">White version</a>
+</ul>
+
+<p>The second in-class test was given in class on Friday, November 9.  The test covered 
+material up to and including section 5.2 of the textbook.  The main topics covered were 
+related rates [Section 4.1]; maximum and minimum values [4.2]; graphing with and without 
+silicon assistance [4.3, 4.4]; L'Hopital's Rule [4.5]; optimization problems [4.6]; 
+antiderivatives [4.9]; areas, distances, and the basics of definite integrals [Sections 5.1, 
+5.2]; and whatever material from earlier in the year is necessary for these problems.
+<li><i>Statistics:</i> Before the redo, the mean score was 62% and the median was 63%.
+<li><i>Unofficial letter grades:</i>
+Roughly, 75-100 is an A, 65-74 is a B, 55-74 is a C,
+45-54 is a D, and below that is an F.  Again, these letter grades are
+purely to give you an idea how you're doing so far, and will have no 
+bearing on the final letter grade you earn.
+<li><i>Problems:</i>
+  <a href="test2-blue.pdf">Blue version</a> | 
+  <a href="test2-green.pdf">Green version</a> | 
+<li><i>Solutions:</i>
+  <a href="test2solutions-blue.pdf">Blue version</a> |
+  <a href="test2solutions-green.pdf">Green version</a> |
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="gateway"><h3>Gateway Exam</h3></a>
+
+<p>The Gateway Exam is an online exam that is designed to test (1) your 
+familiarity with the technical rules of differentiation (mostly covered in 
+Chapter 3 of the textbook) and (2) your ability to interact with 
+technology in the context of mathematics.
+
+<p>The exam consists of two parts: an unproctored preliminary exam that 
+you can take from any computer with an Internet connection, and a 
+proctored exam that you must take in the Gateway Lab, 159 Snow.  You must 
+pass the preliminary exam before attempting the proctored exam.
+
+<p>The Gateway Lab opens for all Math 121/141 students on <b>Tuesday, October 2</b>.
+The deadline for passing the preliminary exam by <b>Monday, October 29</b>, and
+the deadline for passing the proctored exam is <b>Monday, November 12</b>.
+
+<ul>
+<li><a href="http://www.math.ku.edu/academics/gateways.html">Gateway Exam homepage</a>
+<li><a href="http://www.math.ku.edu/academics/gateways/gateway-primer-long.html">Complete
+  Gateway Exam instructions</a>
+<li><a href="http://www.math.ku.edu/gateway-lab/">Gateway Lab hours</a>
+</ul>
+
+<p>Questions about the Gateway Exam should be addressed to <a 
+href="mailto:gateway-help@math.ku.edu">gateway-help@math.ku.edu</a>.  
+Prof. Martin and the other Math 121 instructors are not involved 
+with the administration or grading of the Gateway Exam. </p>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="midterm"><h3>Midterm Exam</h3></a>
+
+<p>
+All Math 121/141 students took a common midterm exam on
+Tuesday, October 9.  The exam covered material from sections 1.1-4.1 of the textbook.
+<ul>
+<li><a href="http://www.math.ku.edu/classes/math121/121MidtermF07-2.pdf">Review problems</a>
+<li><a href="http://www.math.ku.edu/classes/math121/SampleMidterm-F07.pdf">Sample exam</a>
+  (with approximately the types and numbers of problems that will be on the actual exam)
+</ul>
+
+<ul>
+<li><i>Statistics:</i> The mean and median scores in Math 141 were both 160/205, or about 78%.
+<li><i>Unofficial letter grades:</i>
+Approximately, 180-205 is an A, 155-179 is a B, 135-154 is a C,
+and below that is a D.  Please note:
+<ul>
+<li>These letter grades are purely to give you an idea how you're doing so far;
+they will have no bearing on the final letter grade you earn.
+<li>While Math 141 and Math 121 share the same midterm exam, the grades are determined
+separately.  The curve announced for Math 121 exam grades does not apply to Math 141 students.
+</ul>
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="final"><h3>Final Exam</h3></a>
+
+<p>
+All Math 121/141 students will take a common final exam on
+<b>Tuesday, December 11, 4:30--7:00 PM</b>, location TBA.  The final
+exam will cover material from sections 1.1-6.7 of the textbook.
+
+<p>
+Review session times and places:
+<ul>
+<li>Q&amp;A session: Monday, December 10, 12:30 - 3:00 PM, 306 Snow
+<li>Office hours: Tuesday, December 11, 10:00 AM - 12:00 PM and 1:00 - 3:00 PM, 541 Snow
+</ul>
+Please note that I'll be out of town, but reachable by e-mail, during the week
+of December 3-7.
+
+<p>
+Sources for review problems:
+<ul>
+<li><a href="http://www.math.ku.edu/uploads/gateway/121problems.pdf">121 Gateway Exam sample 
+problems</a> (for practicing differentiation)
+<li><a href="http://www.math.ku.edu/uploads/gateway/122problems.pdf">122 Gateway Exam sample 
+problems</a> (for practicing integration)
+<li><a href="http://www.collegeboard.com/student/testing/ap/calculus_ab/samp.html">Essay-style 
+problems from AP exams</a> (link courtesy of Tom Enkosky)
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="links"><h3>Links</h3></a>
+
+<h4>KU Mathematics links:</h4>
+<ul>
+<li><a href="../index.html">Prof. Martin's home page</a>
+<li><a href="http://www.math.ku.edu/classes/math121/math121-main.html">Math 121 home page
+  (information pertinent to all sections of Math 121/141)
+<li><a href="http://www.math.ku.edu/">KU Mathematics Department</a>
+<li><a href="http://www.math.ku.edu/undergraduate/">Undergraduate Studies in Mathematics</a>
+<li><a href="http://www.math.ku.edu/undergraduate/calculus.html">Calculus courses at KU</a>
+<li><a href="http://www.math.ku.edu/academics/gateways.html">Gateway Exam homepage</a>
+</ul>
+
+<h4>Other KU links:</h4>
+<ul>
+<li><a href="http://www.registrar.ku.edu">KU Registrar</a>
+<li><a href="http://www.registrar.ku.edu/timetable">Timetable, schedule
+  of courses, and Guide to Enrollment for Fall 2007</a>
+<li><a href="http://www.kubookstore.com">KU Bookstore</a>
+<li><a href="http://www2.ku.edu/~unigov/usrr.html#art2sect6">KU policies on
+  academic honesty</a>
+<li><a href="http://www.ku.edu/~ssdis/">KU Office of Disability Resources</a>
+</ul>
+
+<h4>Mathematical and technical writing information:</h4>
+<ul>
+<li><a href="http://www.writing.ku.edu/">KU Writing Center</a>
+<li><a 
+href="http://www.unc.edu/depts/wcweb/handouts/sciences.html">Writing in 
+the Sciences</a> (UNC Chapel Hill Writing Center)
+<li><a 
+href="http://ems.calumet.purdue.edu/mcss/kevinlee/mathwriting/writingman.pdf"><i>A 
+Guide to Writing Mathematics</i></a> and <a 
+href="http://ems.calumet.purdue.edu/mcss/kevinlee/mathwriting/writingcheck.pdf">Mathematical 
+Writing Checklist</a> (Prof. Kevin Lee, Purdue)
+</ul>
+
+<h4>Outside KU:</h4>
+<ul>
+<li><a href="http://www.adobe.com/products/acrobat/readstep2.html">Get 
+Acrobat Reader</a> (free software, necessary to read PDF files on this page)
+<li>User's guides for the
+<a href="http://education.ti.com/educationportal/appsdelivery/download/download_eula.jsp?applicationId=6124&contentPaneId=17&cid=US">
+TI-83 Plus/ TI-83 Plus Silver Edition</a> and
+<a href="http://education.ti.com/educationportal/appsdelivery/download/download_eula.jsp?applicationId=6125&contentPaneId=17&cid=US">
+TI-84 Plus/ TI-84 Plus Silver Edition</a> graphing calculators
+(from the Texas Instruments website)
+<li><a href="http://www.math.wustl.edu/~freiwald/paraTI83.pdf">How 
+to graph parametric curves on a TI-83</a>
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<img src="../email.jpg"><br>
+Last updated Mon 11/19/07 7:00 AM
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{Math 724, Fall 2017\\
+Take-Home Test \#2\\
+Deadline: Monday, November 13, 5:00pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name, e.g., {\tt HilbertTest2.pdf}.  You may refer to the textbook and your class notes, and you may cite the result of any problem from Chapter 1 assigned on Homeworks \#1--5 or done in class.  You may also use a computer algebra system such as Sage to carry out calculations and test conjectures.  However, \emph{you are not allowed to collaborate}; you may not consult any external resource or any human other than Jeremy.
+\medskip\hrule
+
+\prob
+Let $n>0$ be an integer.
+
+\Probpart{10}
+How many labeled trees $T$ on vertex set $[n]$ have the property that the degree of every vertex is either 1 or 3?
+Your answer should be a function of $n$ expressed without summation notation.
+
+\Probpart{10}
+Let $L\subseteq[n]$ and let $k=|L|$.  How many labeled trees $T$ on vertex set $[n]$ have the property that every element of $L$ is a leaf of $T$?  ($T$ can have other leaves as well.)  Your answer should be a function of $n$ and $k$ expressed without summation notation.
+
+\vfill\Prob{20}
+Let $S(k,n)$ denote Stirling numbers of the second kind.  Give a combinatorial proof that
+\[S(k,n) = \sum_{i=1}^k \binom{k-1}{i-1} S(k-i,n-1)\]
+for all positive integers $k,n$.  (By ``combinatorial,'' I mean ``explain why both sides of the equation count the same set of objects'' --- do not give a purely algebraic proof using, say, induction.)
+
+\vfill\prob
+Give combinatorial interpretations for the following numbers (i.e., describe what they count).
+
+\Probpart{10} The coefficient of $x^k$ in the infinite product
+\[\prod_{n=1}^\infty (1+x^n+x^{2n}+\cdots+x^{n^2}).\]
+
+\Probpart{10}
+The coefficient of $x^k$ in the infinite product
+\[\prod_{n=1}^\infty \frac{1}{1-x^{n^2}}.\]
+
+\Prob{20} Let $k,n$ be positive integers and let $P(k,n)$ denote the number of partitions of $k$ into $n$ parts (as in Bogart, p.~70).  Give a combinatorial proof that
+\[P(k,1)+\cdots+P(k,n)=P(n+k,n).\]
+
+\vfill\Prob{20}
+Recall that 1 Galleon is worth 17 Sickles and 1 Sickle is worth 29 Knuts.  Suppose that the Ministry introduces
+a 3-Sickle and a 6-Knut piece (known respectively as a Trickle and a Hexknut).  With the new coinage,
+how many ways are there of making change for a Galleon?  (If you are not an expert at Arithmancy, I recommend that you use Sage or another
+computer algebra system to do the calculation; if so, include the code you executed.)
+
+\end{document}

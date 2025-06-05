@@ -1,0 +1,57 @@
+\include{header}
+\setboolean{answers}{true}
+\newcounter{exprobno}
+\setcounter{exprobno}{0}
+\newcommand{\exprob}{\vskip10bp\addtocounter{probno}{1}{\bf(E{\arabic{probno}})}\quad}
+\newcommand{\booksection}[1]{\bigskip\hrule\medskip\textbf{#1}}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 724, Fall 2013\\
+Homework \#3
+
+\bf Instructions:} Write up your solutions in LaTeX and hand in a hard copy in class on {\bf Friday, October~4.}  Collaboration is allowed (and in fact encouraged), but each student must write up his or her solutions independently and acknowledge all collaborators.
+
+{\bf(\#1)} Problem \#82.%(p.39)
+
+{\bf(\#2)} Problem \#83.%(p.39)
+
+{\bf(\#3)} Problem \#91.%(p.42) --- Towers of Hanoi
+
+{\bf(\#4)} Problem \#116.%(p.48)
+
+{\bf(\#5)} Let $G=(V,E)$ be a simple graph with $n$ vertices ($n\geq 2$).  (``Simple'' means that every edge has two different vertices as its endpoints, and no two edges have the same pair of endpoints.  So $E$ can be regarded as a set of two-element subsets of $V$.)  Recall that the \emph{degree} of vertex~$i$, written $d_G(i)$,
+is the number of neighbors of~$i$.
+
+Prove that $G$ has two vertices with the same degree.
+
+\bigskip
+\bigskip
+
+{\bf(\#6)} Let $G=(V,E)$ be a simple graph.
+Prove that the following conditions are equivalent.  (Some of the implications
+should follow from problems done in class, but you should still give complete proofs -- i.e., don't cite problems from Bogart in your answers.)
+\begin{enumerate}
+\item $G$ is connected and acyclic.
+\item $G$ is connected and $|E|=|V|-1$.
+\item $G$ is acyclic and $|E|=|V|-1$.
+\item Every two vertices in $G$ are joined by exactly one path.
+\end{enumerate}
+
+\bigskip
+\bigskip
+
+
+{\bf(\#7)} Let $G=(V,E)$ be a connected simple graph, with vertex set $V=\{v_1,\dots,v_n\}$.  The \emph{Laplacian matrix} of $G$ is the $n\x n$ square matrix $L(G)=[\ell_{ij}]_{i,j=1}^n$, with entries
+\[\ell_{ij}=\ThreeCases{d_i}{if $i=j$,}{-1}{if $\{i,j\}\in E$,}{0}{if $\{i,j\}\not\in E$.}\]
+The \emph{reduced Laplacian} $L^i(G)$ is the $(n-1)\x(n-1)$ matrix obtained from $L(G)$ by crossing out the $i^{th}$ row and column.
+\begin{enumerate}
+\item[(a)] Prove that for a given graph $G$, the number $\det L^i(G)$ is independent of the choice of~$i$.  (This part of the problem is really about linear algebra rather than combinatorics.)  Henceforth, call that number $\tau(G)$.  
+\item[(b)] Calculate $\tau(G)$ for several different graphs, including trees, cycles, and complete graphs.  You can use Sage.  What do you notice?  Can you prove your conjecture in any special cases?
+\end{enumerate}
+
+\bigskip
+\bigskip
+
+{\bf Extra credit:} Problem \#86.
+\bigskip
+\end{document}

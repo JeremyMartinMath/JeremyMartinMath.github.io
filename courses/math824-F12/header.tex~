@@ -1,0 +1,209 @@
+\documentclass{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathrsfs,graphics,hyperref,stmaryrd,psfrag,amscd,arcs}
+\usepackage[enableskew]{youngtab}
+\numberwithin{equation}{section}
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=8.8in
+\topmargin=0.25in
+\headheight=0in
+\headsep=0.2in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+
+\newcommand{\excise}[1]{}
+\newcommand{\Latex}[1]{\textbackslash\texttt{#1}}
+
+\newcommand{\bigpad}{\rule[-14mm]{0mm}{30mm}}
+\newcommand{\smallpad}{\rule[-1.5mm]{0mm}{5mm}}
+\newcommand{\pad}{\rule[-3mm]{0mm}{8mm}}
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\paddown}{\rule[-3mm]{0mm}{2mm}}
+\newcommand{\blank}{\rule{1.25in}{0.25mm}}
+\newcommand{\commentout}[1]{}
+\newcommand{\yell}[1]{\fbox{\rule[-1mm]{0mm}{4mm} \large\bf #1 }}
+\newcommand{\bang}{$\bullet$\quad}
+\newcommand{\indnt}{\phantom{.}\qquad}
+\newcommand{\littleline}{\begin{center}\rule{4in}{0.5bp}\end{center}}
+
+\newcommand{\includefigure}[3]{{
+  \begin{center}
+  \resizebox{#1}{#2}{\includegraphics{{figs/#3}}}
+  \end{center}}}
+\newcommand{\includefigurewithinmath}[3]{{
+  \resizebox{#1}{#2}{\includegraphics{{figs/#3}}}}}
+
+%\newcommand{\defterm}[1]{\underline{\textbf{#1}}}
+\newcommand{\defterm}[1]{\textbf{#1}}
+
+\DeclareMathOperator{\ch}{\mathbf{ch}}
+\DeclareMathOperator{\colspace}{colspace}
+\DeclareMathOperator{\corank}{corank}
+\DeclareMathOperator{\CST}{CST}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ess}{ess}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\nullspace}{nullspace}
+\DeclareMathOperator{\Poin}{Poin}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\row}{row}
+\DeclareMathOperator{\rowspace}{rowspace}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\tr}{tr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+
+
+\newcommand{\cor}{{\bf Corollary: }}
+\newcommand{\defn}{{\bf Definition: }}
+\newcommand{\defns}{{\bf Definitions: }}
+\newcommand{\exa}{{\bf Example: }}
+\newcommand{\fact}{{\bf Fact: }}
+\newcommand{\lem}{{\bf Lemma: }}
+\newcommand{\notn}{{\bf Notation: }}
+\newcommand{\obs}{{\bf Observation: }}
+\newcommand{\note}{{\bf Note: }}
+\newcommand{\prop}{{\bf Proposition: }}
+\newcommand{\rmk}{{\bf Remark: }}
+\newcommand{\thm}{{\bf Theorem: }}
+
+\newcommand{\basecase}{\emph{Base case: }}
+\newcommand{\indstep}{\emph{Inductive step: }}
+\newcommand{\skpr}{\emph{Sketch of proof: }}
+
+\newcommand{\0}{\emptyset}
+\newcommand{\Alt}{\mathfrak{A}}
+\newcommand{\Braid}{Br}
+\newcommand{\CHI}{\chi^{\phantom{*}}}
+\newcommand{\Cl}{C\ell}
+\newcommand{\covers}{\gtrdot}
+\newcommand{\coveredby}{\lessdot}
+\newcommand{\dedge}[1]{\overrightarrow{{#1}}}
+\newcommand{\dom}{\rhd}
+\newcommand{\domeq}{\unrhd}
+\newcommand{\domby}{\lhd}
+\newcommand{\dombyeq}{\unlhd}
+\newcommand{\Fspan}{\Ff\text{-span}}
+\newcommand{\isom}{\cong}
+\newcommand{\join}{\vee}
+\renewcommand{\Join}{\bigvee}
+\newcommand{\Laff}{L^{\text{aff}}}
+\newcommand{\lin}[1]{\overleftrightarrow{{#1}}}
+\newcommand{\meet}{\wedge}
+\newcommand{\Meet}{\bigwedge}
+\newcommand{\ov}[1]{\overline{{#1}}}
+\newcommand{\partn}{\vdash}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\qbin}[2]{{\begin{bmatrix}#1\\#2\end{bmatrix}_q}}
+\newcommand{\simK}{\underset{K}{\sim}} % Knuth equivalence
+\newcommand{\simJ}{\underset{J}{\sim}} % jeu de taquin equivalence
+\newcommand{\sm}{\setminus}
+\newcommand{\st}{~|~}
+\newcommand{\soln}{\textit{Solution:\ }}
+\newcommand{\Sym}{\mathfrak{S}}
+\newcommand{\un}[1]{\underset{*}{#1}}
+\newcommand{\unA}{\un{A}}
+\newcommand{\unB}{\un{B}}
+\newcommand{\unw}{\un{w}}
+\newcommand{\unx}{\un{x}}
+\newcommand{\uny}{\un{y}}
+\newcommand{\unz}{\un{z}}
+\newcommand{\x}{\times}
+
+\renewcommand{\aa}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\pp}{\mathbf{p}}
+\newcommand{\qq}{\mathbf{q}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\zz}{\mathbf{z}}
+ 
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\P}{\mathcal{P}}
+
+\newcommand{\BB}{\mathscr{B}}
+\newcommand{\CC}{\mathscr{C}}
+\newcommand{\FF}{\mathscr{F}}
+\newcommand{\II}{\mathscr{I}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\PP}{\mathscr{P}}
+\renewcommand{\SS}{\mathscr{S}}
+\newcommand{\XX}{\mathscr{X}}
+
+\newcommand{\TT}{\tilde{T}}
+
+\newcommand{\Aa}{\mathbb{A}}
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\Ff}{\mathbb{F}}
+\newcommand{\Nn}{\mathbb{N}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Zz}{\mathbb{Z}}
+
+\newcommand{\rhodef}{\rho^{\phantom{*}}_{{\rm def}}}
+\newcommand{\rhotriv}{\rho^{\phantom{*}}_{{\rm triv}}}
+\newcommand{\rhosign}{\rho^{\phantom{*}}_{{\rm sign}}}
+\newcommand{\rhoreg}{\rho^{\phantom{*}}_{{\rm reg}}}
+\newcommand{\chidef}{\chi^{\phantom{*}}_{{\rm def}}}
+\newcommand{\chitriv}{\chi^{\phantom{*}}_{{\rm triv}}}
+\newcommand{\chisign}{\chi^{\phantom{*}}_{{\rm sign}}}
+\newcommand{\chireg}{\chi^{\phantom{*}}_{{\rm reg}}}
+\newcommand{\scp}[2]{\left\langle #1,\:#2\right\rangle_G}
+\newcommand{\scpH}[2]{\left\langle #1,\:#2\right\rangle_H}
+
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+%% versions that don't print the number of points
+\newcommand{\prob}{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}}\quad}
+\newcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\probcont}{%
+  {\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+\newcommand{\probo}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf (\#\arabic{probno})}\ \ }
+%% versions that do print the number of points
+\newcommand{\Prob}[1]{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probpart}[1]{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}

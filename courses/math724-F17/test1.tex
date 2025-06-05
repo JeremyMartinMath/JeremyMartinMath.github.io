@@ -1,0 +1,56 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{Math 724, Fall 2017\\
+Take-Home Test \#1\\
+Deadline: Friday, September 22, 5:00pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name, e.g., {\tt NoetherTest1.pdf}.  You may refer to the textbook and your class notes, and you may cite the result of any problem from Chapter 1 assigned on HW \#1 or \#2 or done in class.  However, unlike the homework, \emph{you are not allowed to collaborate};
+you may not consult any external resource or any human other than Jeremy.
+\medskip\hrule
+
+\prob
+In a bridge deal, each of 4 players (North, South, West and East) is dealt a hand of 13 cards from a standard deck of 52 cards.  
+
+\Probpart{5}
+How many bridge hands contain exactly four spades?
+
+\Probpart{10}
+How many bridge hands contain more spades than hearts?
+
+\Probpart{5}
+How many different possible deals are there?  (The four players are considered distinct.  For example, interchanging North's hand with South's hand results in a different deal.)
+
+\Prob{10}
+Recall from Supplementary Problem 1 that a composition is an expression $n=a_1+\cdots+a_k$,
+where the $a_i$ are positive integers.  A \emph{weak composition}
+is the same thing, except that the $a_i$'s are only required to be
+nonnegative rather than positive.
+Count the weak compositions of $n$ into $k$ parts.
+
+\Prob{20}
+Give a combinatorial proof of the identity
+\[\sum_{k=0}^n k\binom{n}{k} = n2^{n-1} \qquad \forall n\in\Nn.\]
+(Half credit for giving an algebraic proof by induction.)
+
+\Prob{20}
+Let $n$ be an integer not divisible by 2 or 5.  Prove that there is some
+multiple of~$n$ in which every digit is 9.  (For example, $n=239$ is a divisor of 9999999.)
+
+\Prob{10}
+A \emph{standard tableau of shape $2\x n$} is a $2\x n$ grid filled with the numbers
+$1,\dots,2n$, using each number once, so that every row increases left to right and every column increases top to bottom.  For example, there are five standard tableaux\footnote{``Tableau'' is singular; ``tableaux'' is plural.} of shape $2\x3$:
+\[\young(123,456)\qquad
+\young(124,356)\qquad
+\young(125,346)\qquad
+\young(134,256)\qquad
+\young(135,246)\]
+Prove that for all $n>0$, the number of standard tableaux of shape $2\x n$
+is the Catalan number $C_n$.
+
+\Prob{20}
+Let $m\geq n\geq 0$ be integers.  Let $C(m,n)$ be the number of lattice
+paths from $(0,0)$ to $(m,n)$ that do not go above the line $y=x$.  (For example, if $m=n$, then $C(m,n)$ is just the Catalan number~$C_n$.)  Find a simple formula for $C(m,n)$ that generalizes the formula $C_n=\frac{1}{n+1}\binom{2n}{n}$.  (Hint: Generalize the method of problem 51 in the textbook.)
+
+\end{document}

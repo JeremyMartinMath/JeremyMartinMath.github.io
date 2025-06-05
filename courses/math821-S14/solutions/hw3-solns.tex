@@ -1,0 +1,140 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821 Problem Set \#3\\
+Posted: Friday 2/25/11\\
+Due date: Monday 3/7/11}
+
+\yellprob{Recall that for a space $X$ and base point $p\in X$, we have defined $\pi_1(X,p)$ to be
+the set of homotopy classes of $p,p$-paths on $X$ --- or equivalently of continuous functions
+$S^1\to X$.  Recall also that $S^0$ consists of two points (let's call them $a$ and $b$) with the discrete topology.
+Accordingly, we could define $\pi_0(X,p)$ to be the set of homotopy classes of continuous functions $f:S^0\to X$
+such that $f(a)=p$.
+
+Describe the set $\pi_0(X,p)$ intrinsically in terms of $X$.  Is there a natural way to endow it with a group structure?}
+
+\soln The homotopy type of such a thing is determined by the path-connected
+component of~$X$ containing $f(b)$.  Therefore, a reasonable interpretation
+for $\pi_0(X,x)$ is as the set of connected components.  This set cannot naturally be made into a group.
+
+\yellprob{(Hatcher, p.38, \#2) Show that the change-of-basepoint homomorphism $\beta_h$ (see p.28)
+depends only on the homotopy class of the path $h$.}
+
+\soln Recall the setup: $x_0,x_1\in X$; $h$ is a $x_0,x_1$-path in $X$; and $\beta_h$ is the map
+$\pi_1(X,x_1)\to\pi_1(X,x_0)$ given by $[f]\mapsto[h\cdot f\cdot\bar h]$.
+
+Suppose that $h_t$ is a homotopy of $x_0,x_1$-paths.  Then $h_t\cdot f\cdot \overline{h_t}$
+is a homotopy of $x_0$-loops.  In particular, if $h\htop h'$, then $\beta_h[f]\htop\beta_{h'}[f]$.
+
+\yellprob{(Hatcher, p.38, \#7) Define $f:S^1\x I\to S^1\x I$ by $f(\theta,s)=(\theta+2\pi s,s)$,
+so $f$ restricts to the identity on the two boundary circles of $S^1\x I$.   Show that $f$ is homotopic
+to the identity by a homotopy $f_t$ that is stationary on \emph{one} of the boundary circles, but not
+by any homotopy $f_t$ that is stationary on \emph{both} boundary circles.}
+
+\soln Visualize $S^1\x I$ as a cylinder made of rubber, and
+$f$ as a full twist of the cylinder.  (Imagine opening a jar full of extremely old rubber cement.)
+
+(i) Define $f_t:S^1\x I\to S^1\x I$ by
+  $$f_t(\theta,s) = (\theta+2\pi ts,s).$$
+This is evidently a homotopy (it is continuous in each of
+$\theta,s,t$); $f_0$ is the identity map; and $f_1$ is the given map
+$f$.  Moreover, $f_t$ is stationary on the circle $S^1\x\{0\}$, i.e.,
+$f_t(\theta,0)=(\theta_0)$.
+
+(ii) Suppose that $f_t$ is a homotopy that is stationary on both
+boundary circles.  That is, $f_t:S^1\x I\to S^1\x I$ with
+\begin{align*}
+f_0(\theta,s) &= (\theta,s),         & f_t(\theta,0) = (\theta,0),\\
+f_1(\theta,s) &= (\theta+2\pi s, s), & f_t(\theta,1) = (\theta,1).
+\end{align*}
+
+We want to derive a contradiction. The idea is to draw a line down
+the side of the cylinder, so that
+twisting by $f$ wraps the line around the outside in a spiral.
+Projecting
+these two paths from $S^1\x I$ to $S^1$ will give two closed loops in $S^1$,
+one trivial and one that winds once around the circle --- so they cannot
+be homotopic.
+
+Here is a precise argument.
+Fix some basepoint $\theta_0\in S^1$.  Let $g_t$ be the loop at
+$\theta_0$ obtained from $f_t$ by restricting its domain to
+$\{\theta_0\}\x I$, then projecting onto the $S^1$ factor.  That is,
+  $$g_t(s)=p(f_t(\theta_0,s))$$
+where $p$ is the projection map $S^1\x I\to S^1$.  I claim that
+$\{g_t\}$ is a path homotopy.  It certainly is a continuously varying
+family of functions $I\to S^1$, and
+\begin{align*}
+g_t(0) &= p(f_t(\theta_0,0)) = (\theta_0,0) = \theta_0,\\
+g_t(1) &= p(f_t(\theta_0,1)) = (\theta_0,1) = \theta_0,
+\end{align*}
+which says that each $g_t$ defines a closed loop with basepoint $\theta_0$.
+
+We then have
+\begin{align*}
+g_0(s) &= p(f_0(\theta_0,s))\\
+       &= p(\theta_0,s)\\
+       &= \theta_0,\\
+g_1(s) &= p(f_1(\theta_0,s))\\
+       &= p(\theta_0+2\pi s,s))\\
+       &= \theta_0+2\pi s.
+\end{align*}
+But these paths have winding numbers 0 and 1 respectively (since they lift
+to $\widetilde{g_0}(s)=0$ and $\widetilde{g_1}(s)=2\pi s$ respectively;
+recall that the winding number of a loop can be computed from any lift).
+Therefore, by what we
+know about $\pi_1(S^1)$, they cannot be homotopic.  This is a contradiction and says
+that no such homotopy $f_t$ can exist.
+
+\yellprob{[Hatcher p.38 \#8] Does the Borsuk-Ulam theorem hold for the torus?    In other words, for every map $f:S^1\x S^1\to\Rr^2$ must there exist $(x,y)\in S^1\x S^1$ such that $f(x,y)=f(-x,-y)$?  Why or why not?}
+
+No.  If we parametrize the torus $S^1\x S^1$ as $\{f(s,t)=(e^{is},e^{it}):\ s,t\in[0,2\pi]\}$, then the antipode of $f(s,t)$ is the point $f(s+\pi,t+\pi)$.  We can naturally embed the torus in $\Rr^3$ as a donut by, e.g.,
+\[(e^{is},e^{it}) \mapsto (5\cos s+\cos t\cos s,\ 5\sin s+\cos t\sin s,\ \sin t).\]
+Then the map $P:S^1\x S^1\to\Rr^2$ given by projection onto the $xy$-plane satisfies $P(q)=-P(-q)\neq(0,0)$ for all points $q$ on the torus.
+
+\yellprob{[Hatcher p.39 \#9] Use the 2-dimensional case of the Borsuk-Ulam theorem (Hatcher, Thm.~1.10, p.32) to prove the ``Ham and Cheese Sandwich Theorem'': if $A_1,A_2,A_3$ are compact measurable sets in $\Rr^3$, then there is a plane in $\Rr^3$ that simultaneously divides each $A_i$ into two pieces of equal measure.}
+
+\soln WLOG (scaling if necessary), assume that $A_1,A_2,A_3\subset D^3$.
+
+For $\vv\in S^2$, let $L_\vv$ be the line through $\vv$ and $-v$.  For $t\in[-1,1]$, let $P(t,\vv)$ be the plane parallel to $L_\vv$ that meets it at the point $t\vv$.  Let $B_3$ be the part of $A_3$ that is on the same 
+Let $f_\vv(t)$ be the fraction of the volume of $A_3$ that is on the same side of $P(t,\vv)$ as $-2\vv$ is.  Thus $f_\vv(t)$ increases continuously and monotonically from 0 to 1 as $t$ increases from $-1$ to $1$.  Therefore $f_\vv^{-1}(1/2)$ is some nonempty closed connected set, i.e., an interval of the form $[a_\vv,b_\vv]$ (where $a_\vv,b_\vv$ also depend continuously on $\vv$).  Let $Q(\vv)=P((a_\vv+b_\vv)/2,t)$.  Thus $Q_\vv$ is a plane parallel to $L_\vv$ that depends continuously on $\vv$ and, for every $\vv$, splits $A_3$ into two equal-volume pieces.  Note also that $Q(\vv)=Q(-\vv)$.
+
+Now, for $\vv\in S^2$ and $i=1,2$, let $f_i(\vv)$ be the fraction of the volume of $A_i$ that is on the same side of $Q(v)$ as $\vv$ itself is.  By the Borsuk-Ulam theorem, there is some pair of antipodal points $\pm\vv$ such that $f_i(\vv)=f_i(-\vv)$ for $i=1,2$.  Since $f_i(-\vv)=1-f_i(\vv)$, we have $f_i(\vv)=1/2$, so the plane $Q(\vv)$ splits each of $A_1$ and $A_2$ into two equal pieces as well.
+
+\yellprob{[Hatcher p.39 \#12] Fix $p\in S^1$.  Show that every homomorphism $\pi_1(S^1,p)\to\pi(S^1,p)$ can be realized as the induced homomorphism $\phi_*$ for some $\phi:S^1\to S^1$.}
+
+Regard $S^1$ as the unit circle in $\Cc$ and let $p=1$.  The path $f:I\to S^1$ given by $s\mapsto\exp(2\pi is)$ generates the infinite cyclic group $\pi_1(S^1,p)\isom\Zz$.  Every homomorphism $\alpha:\Zz\to\Zz$ is specified by the number $n=\alpha(1)$.
+
+Meanwhile, for any $n\in\Zz$, the complex function $\phi(z)=z^n$ maps $S^1$ to $S^1$, and the path $\phi_* f$ has winding number $n$ because $\phi\circ f(s) = f(s)^n = \exp(2\pi ins)$ lifts to the map $I\to\Rr$ given by $s\mapsto ns$.  
+
+\yellprob{[Hatcher, p.52, \#1]  Recall that the \defterm{center} of a group $G$ is defined as $Z(G)=\{g\in G:\ gh=hg \ \forall h\in G\}$.
+
+\probpart Show that the free product $G*H$ of nontrivial groups $G$ and $H$ has trivial center.}
+
+\soln Any non-identity element $w\in G*H$ can be written uniquely
+as a product $w=w_1\cdots w_n$ of non-identity elements of $G$ and $H$, with
+letters $w_i$ alternating between $G$ and $H$ (p.42).
+If $w_1\in H$ then $w$ does not commute with any non-identity element
+of $G$, while if $w_1\in G$ then $w$ does not commute with any non-identity element
+of $H$.  Therefore, the only element of the center is the word of length 0, namely $e$.
+
+\yellprobpart{Show that the only elements of $G*H$ of finite order are the conjugates of finite-order elements in~$G\cup H$.}
+
+Suppose that $w\in G*H$ and $w^n=e$.
+Write $w$ in reduced form: $w=g_1\cdots g_k$ where the letters alternate between $G$ and $H$.
+$$w^n=(g_1\cdots g_k)(g_1\cdots g_k)\ \cdots\ (g_1\cdots g_k)=e.$$
+We need to be able to somehow cancel this expression using only relations
+within $G$ and $H$.  The only possibility is that $g_k$ and $g_1$ either both belong to $G$ or both to $H$, and that  $g_k=g_1^{-1}$.  Note that this implies that $k$ is odd, say $k=2K+1$.
+Canceling gives
+$$w^n=(g_2\cdots g_{k-1})(g_2\cdots g_{k-1})\ \cdots \ (g_2\cdots g_k)=e.$$
+Now the only possibility for cancellation is that $g_{k-1}=g_2^{-1}$.   Continuing in this way, we eventually
+find that
+  $$g_k=g_1^{-1}, \quad g_{k-1}=g_2^{-1},\quad \dots,\quad g_{K+2}=g_K^{-1}.$$
+But this says that $w=xyx^{-1}$, where $x=g_1\cdots g_K$ and $y=g_{K+1}$.
+Moreover, $y$ belongs to either $G$ or $H$ (because it is a single letter), and
+  $$y^n = (x^{-1}wx)^n = x^{-1}w^nx = x^{-1}x = e$$
+so $y$ has finite order.  So we have shown that every finite-order element of $G*H$
+is a conjugate of a finite-order element of one of $G$ or $H$.
+
+\end{document}

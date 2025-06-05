@@ -1,0 +1,39 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty} % suppress page number at bottom
+{\bf Math 725, Spring 2016 \hfill Problem Set \#2}
+\smallskip\hrule
+
+{\bf Instructions:} Do all problems and typeset them in \LaTeX.  E-mail the PDF file to Jeremy at \hrefurl{mailto:jlmartin@ku.edu}{\tt jlmartin@ku.edu} under the filename {\tt your-last-name.pdf} by {\bf Friday, February 12, 5:00pm.}
+You are encouraged to use the header file at \hrefurl{http://www.jlmartin.faculty.ku.edu/math725/header.tex}{http://www.math.ku.edu/$\sim$jmartin/math725/header.tex}.
+\smallskip\hrule
+
+\prob Let $G=(V,E)$ be a connected graph, let $T,T'\in\TT(G)$, and let $e\in T\sm T'$.  Prove that there exists an edge $e'\in T'\sm T$ such that both $T-e+e'$ and $T'+e-e'$ are spanning trees.  (This is known as the ``symmetric exchange law.'')
+
+\prob\probpart Let $k\geq 2$ and let $G$ be a $k$-regular bipartite graph.  Prove that $G$ has no cut-edge. (Hint: Use the bipartite version of handshaking.)\paddown\\
+\probpart Construct a simple, connected, nonbipartite $3$-regular graph with a cut-edge.  (This shows that the condition ``bipartite'' really
+is necessary in (a).)
+
+\prob Let $L_n$ be the graph obtained from $K_n$ by deleting one edge.  Determine $\tau(L_n)$.  (Hint: Use Cayley's formula as a starting point.)
+
+\prob Let $F_n$ be the graph obtained from $P_n$ by adding a new vertex adjacent to every vertex of~$P_n$.  %(The letter $F$ stands for ``fan.'')
+For example, $F_1\isom P_2$, $F_2\isom K_3$, and $F_3\isom L_4$ (as in the previous problem), and $F_6$ is shown below.
+\includefigure{1.8in}{0.6in}{Fan6}
+Let $a_n=\tau(F_n)$.  Use deletion/contraction to prove that $a_n=3a_{n-1}-a_{n-2}$ for $n\geq 3$.  See if you can recognize the sequence $a_1,a_2,a_3,a_4\dots$
+
+\prob
+Let $K_{p,q}$ denote the complete bipartite graph with partite sets of sizes $p$ and $q$.  Use the Matrix-Tree Theorem to calculate $\tau(K_{p,q})$.  (Suggestion: Find an explicit basis for $\Rr^{p+q}$ consisting of eigenvectors of the Laplacian matrix $L(K_{p,q})$.)
+
+\prob Let $G$ be a connected graph with weight function $w:E(G)\to\Rr_{\geq0}$.\paddown\\
+\probpart  Suppose that $C\subseteq G$ is a cycle and $e\in C$ is an edge of maximum weight (i.e., $w(e)\geq w(e')$ for all $e'\in C$).  Prove
+that $G$ has an MST not containing $e$.\paddown\\
+\probpart Use (a) to show that the following algorithm produces an MST for all $G$ and $w$:
+
+\yellpar{Let $T$ := $G$\\
+while $T$ contains a cycle do:\\
+\indnt\indnt Let $C$ be a cycle\\
+\indnt\indnt Let $e$ be an edge of $C$ of maximum weight\\
+\indnt\indnt Set $T$ := $T-e$\\
+Return $T$}
+
+\end{document}

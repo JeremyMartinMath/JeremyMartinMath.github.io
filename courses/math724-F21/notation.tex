@@ -1,0 +1,61 @@
+\documentclass{amsart}
+\usepackage{hyperref,fullpage}
+\raggedbottom
+\parskip=10bp
+\parindent=0bp
+\newcommand{\commentout}[1]{}
+\newcommand{\yell}[1]{\fbox{\rule[-1mm]{0mm}{4mm} \large\bf #1 }}
+\newcommand{\indnt}{\phantom{\quad}}
+\newcommand{\fallfac}[2]{{#1}^{\underline{#2}}}
+\newcommand{\risefac}[2]{{#1}^{\overline{#2}}}
+\newcommand{\qbin}[2]{\begin{bmatrix}{#1}\\ {#2}\end{bmatrix}_q}
+\DeclareMathOperator{\Fix}{Fix}
+\begin{document}
+
+\bf Math 724, Fall 2021\\
+Notation/LaTeX Reference Sheet \rm (last update: 8/19/21)
+
+{\bf Bogart's problem symbols}
+
+\begin{tabular}{ll}
+$\bullet$ & Essential\\
+$\circ$ & Motivational\\
+$+$ & Summary\\
+$\to$ & Especially interesting\\
+* & Difficult\\
+$\cdot$ & Essential for this or the next section
+\end{tabular}
+
+{\bf Notation list} (starred items are macros from the Math 724 header file)
+
+\def\arraystretch{1.3}
+\begin{tabular}{lllll}
+\bf Symbol & \bf Meaning && \bf LaTeX & \bf Reference\\ \hline
+$[n]$ & The set $\{1,2,\dots,n\}$ \\
+$N^M$ & Functions $m\to N$ &*& \verb+N^M+ & p.7\\
+$\fallfac{n}{k}$ & Falling factorial &*& \verb+\fallfac{n}{k}+ & p.8\\
+$\binom{n}{k}$ & Binomial coefficient &*& \verb+\binom{n}{k}+ & p.11\\
+$\chi_S$ & Characteristic function &*& \verb+\chi_S+ & p.14\\
+$C_n$ & Catalan number &&& p.22\\
+$K_n$ & Complete graph on $n$ vertices &&& p.26\\
+$R(m,n)$ & Ramsey number &&& p.26\\
+$G-e$ & deletion &&& p.47\\
+$G/e$ & contraction &&& p.47\\
+$\risefac{n}{k}$ & Rising factorial &*& \verb+\risefac{n}{k}+ & p.55 \\
+$S(k,n)$ & Stirling number of the second kind &&& p.58\\
+$B(k)$ & Bell number &&& p.59\\
+$\binom{k}{j_1,\dots,j_n}$ & Multinomial coefficient &*& \verb+\binom{k}{j_1,\dots,j_n}+ & p.60\\
+$P(k)$ & Number of partitions of $k$ &&& p.63\\
+$P(k,n)$ & No.\ of part'ns of $k$ into $n$ parts &&& p.63\\
+$Q(k,n)$ & No.\ of part'ns of $k$ into $n$ distinct parts &&& p.69\\
+Fruit symbols &&& I have no idea & p.73\\
+$\qbin{n}{k}$ & $q$-binomial coefficient &*& \verb+\qbin{n}{k}+ & p.84\\
+$S_n$ & Symmetric group on n letters &&& p.106\\
+$D_n$ & Dihedral group of order $2n$ &&& p.108\\
+$C_n$ & Cyclic group of order $n$ &&& p.113\\
+$Gx$ & Orbit of a group action &&& p.119\\
+$Gx_{\textrm{multi}}$ & Multiorbit of a group action &*& \verb+Gx_{\textrm{multi}}+ & p.120\\
+$\Fix(x)$ & Stabilizer of $x$ &*& \verb+\Fix(x)+ & p.121\\
+\end{tabular}
+
+\end{document}

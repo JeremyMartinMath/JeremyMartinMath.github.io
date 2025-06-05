@@ -1,0 +1,115 @@
+\include{header}
+\setboolean{answers}{false}
+\begin{document}
+\thispagestyle{empty}
+
+\bf Math 724, Fall 2013\\
+Take-Home Test \#3\rm
+
+{\bf Instructions:} Write up your solutions using LaTeX.  
+You may use books and notes, but you are not allowed to collaborate ---
+you may not consult any human other than Jeremy.
+Solutions are due by {\bf 1:00 PM on Tuesday, December 17}, either as PDF files or hard copies.
+\medskip\hrule\bigskip
+
+\prob
+Recall that in the game of bridge, each player is dealt  a hand of 13 cards from a standard deck of 52 cards.
+
+\Probpart{10} Bridge players call a hand ``balanced'' if it contains at least 2 cards in every suit, and no more than 8 cards in any two suits.  How many possible bridge hands are balanced?\\
+\Probpart{10} How many possible bridge hands contain at least one card of every suit?
+
+\Prob{10} Give a combinatorial proof of the identity
+\[\sum_{k=0}^n k\binom{n}{k}=n2^{n-1}.\]
+In other words, describe a set that is counted in two different ways by the two sides of this equation.
+
+\Prob{20} How many ways are there of making change for a three-dollar bill with pennies, nickels, dimes, and quarters that use
+at least one, but no more than ten, of each kind of coin?
+(The answer is {\bf not} ``Zero; there is no such thing as a three-dollar bill.''  Pretend there is.)
+
+% -------------- Removed; duplicates a problem on homework
+%\prob Let $G$ and $H$ be graphs on disjoint vertex sets, and let $v$ and $w$ be vertices of $G$ and $H$ respectively.
+%Let $A$ be the graph obtained by identifying vertices $v,w$, and let $B$ be the graph obtained by adding an edge between vertices $v,w$.  For example:
+%\includefigure{5.4in}{0.75in}{gloo} % 9 x 1.25
+%\Probpart{10} What is the chromatic polynomial of $A$ in terms of those of $G$ and $H$?  Does it matter which vertices $v,w$ are chosen?\\
+%\Probpart{10} What is the chromatic polynomial of $B$ in terms of those of $G$ and $H$?  Does it matter which vertices $v,w$ are chosen?
+% ------------------
+
+\prob Let $G$ be a graph in which vertices $v_1,\dots,v_s$ form a clique.  Let $H$ be a graph constructed from $G$ by creating a new vertex $x$ and edges $xv_1,\dots,xv_s$.\\
+\Probpart{10}  Give a formula for the chromatic polynomial $\chi(H,k)$ of $H$ in terms of $\chi(G,k)$.\pad\\
+\Probpart{10} Calculate the chromatic polynomial of the graph shown below.
+\includefigure{1.4in}{0.8in}{agraph} % 1.75 x 1
+
+% -------------- Removed
+%\Prob{20}
+%For a graph $G=(V,E)$, let $\phi(G)$ be the number of forests in $G$ --- that is, subsets of $E$ that contain no cycles.
+%For example, if $G$ is itself a forest then $\phi(G)=2^{|E|}$, and if $G$ is a cycle then $\phi(G)=2^{|E|}-1$.
+%Prove that
+%\[\phi(G)=\begin{cases}
+%\phi(G-e) & \text{ if $e$ is a loop},\\
+%2\phi(G/e) & \text{ if $e$ is a bridge (a.k.a.\ cut-edge, isthmus, coloop)},\\
+%\phi(G-e)+\phi(G/e)& \text{ otherwise.}
+%\end{cases}\]
+% --------------
+
+\Prob{10} Give a combinatorial interpretation for the coefficient of $x^nq^k$ in the power series expansion of the infinite product
+\[\left(\frac{1}{1-x}\right) \left(\frac{1}{1-qx^2}\right)
+\left(\frac{1}{1-x^3}\right) \left(\frac{1}{1-qx^4}\right)
+\left(\frac{1}{1-x^5}\right) \left(\frac{1}{1-qx^6}\right)\cdots.\]
+In other words, describe a set of combinatorial objects whose cardinality is the coefficient of $x^nq^k$.
+
+\Prob{20} A \emph{noncrossing $n$-matching} consists of $2n$ points arranged in a line, together with $n$ arcs linking the points in pairs, such that no two arcs cross.  For example, the noncrossing 3-matchings are shown below.  Prove that for all $n$, the number of noncrossing $n$-matchings is the Catalan number $C_n$.
+\includefigure{6.8in}{0.4in}{ncm3} % 17 x 1
+
+\Prob{20}
+The numbers $1,\dots,n$ are to be placed in the first quadrant in $\Rr^2$ according to the following rules.
+The squares must be left- and bottom-justified, and each row of tiles must be in increasing order left to right.
+Moreover, for every pair of rows of equal length, the leftmost number in the higher row must be greater than the leftmost number in the lower row.
+
+For example, the arrangement on the left below is a valid way to stack the tiles.  The arrangement in the middle is invalid because the bottom row is not in increasing order, and the arrangement on the right is invalid because the last two rows, which have the same length, are in the wrong order.
+
+\[
+\begin{array}{|c|c|c|}
+\cline{1-1}
+3\\\cline{1-1}
+2\\\cline{1-3}
+4&6&7\\\cline{1-3}
+1&5&8\\\hline
+\multicolumn{3}{c}{\text{\pad Right}}
+\end{array}
+\qquad\qquad
+\begin{array}{|c|c|c|}
+\cline{1-1}
+3\\\cline{1-1}
+2\\\cline{1-3}
+4&{\bf7}&{\bf6}\\\cline{1-3}
+1&5&8\\\hline
+\multicolumn{3}{c}{\pad\text{Wrong}}
+\end{array}
+\qquad\qquad
+\begin{array}{|c|c|c|}
+\cline{1-1}
+3\\\cline{1-1}
+2\\\cline{1-3}
+{\bf1}&5&8\\\cline{1-3}
+{\bf4}&6&7\\\hline
+\multicolumn{3}{c}{\pad\text{Wrong}}
+\end{array}
+\]
+How many ways are there to arrange the numbers $1,\dots,10$ in this way with exactly $4$ nonempty rows?
+
+\prob Let $G(n)$ be the set of directed graphs on vertex set $[n]$ in which every component is either a pair of opposite edges, or a 3-cycle with edges oriented cyclically.  For example, an element of $G(10)$ is shown below.
+Let $g(n)=|G(n)|$.  By convention, we will set $g(0)=1$, and $g(n)=0$ for $n<0$.
+\includefigure{3in}{1in}{directed23} % original 5.25 x 1.75
+
+\Probpart{5} What are the numbers $g(1),\dots,g(5)$?
+
+\Probpart{10} Find a recurrence for $g(n)$.  (Hint: Consider the cycle containing vertex $n$ --- there are two cases.)
+
+\Probpart{10} Let $y=\sum_{n=0}^\infty g(x) x^n/n!$.
+Translate the recurrence you just found into a differential equation for $y$.
+
+\Probpart{5} Solve the differential equation (it should not be hard) to obtain a nice closed form for $y$.
+
+\probpart (Extra credit) Show that the e.g.f.\ for the set of directed graphs on vertex set $[n]$ in which every component is an oriented cycle of \emph{odd} length is
+\[\sqrt{\frac{1+x}{1-x}}.\]
+\end{document}

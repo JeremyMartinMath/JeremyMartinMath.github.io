@@ -1,0 +1,150 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821 Problem Set \#6\\
+Posted: Friday 4/15/11\\
+Due date: Monday 4/25/11}
+
+\prob [Hatcher p.131 \#4] Compute the simplicial homology groups of
+the ``triangular parachute'' obtained from the standard 2-simplex $\Delta^2$
+by identifying its three vertices to a single point.
+
+
+\vfill
+
+\prob [Hatcher p.131 \#8]
+Construct a 3-dimensional $\Delta$-complex $X$ from $n$ tetrahedra
+$T_1,\dots,T_n$ by the following two steps.
+
+First, arrange the tetrahedra in a cyclic pattern as in the figure (see p.~131)
+so that each $T_i$ shares a common vertical face with its two neighbors.
+For consistent notation, call the top and bottom vertices
+$x$ and $y$ respectively, and call the side vertices
+$v_1,\dots,v_n$, so the tetrahedra are
+$$T_1=[x,v_1,v_2,y],\ 
+T_2=[x,v_2,v_3,y],\ \dots,
+T_{n-1}=[x,v_{n-1},v_{n},y],\ 
+T_n=[x,v_n,v_1,y].$$
+Second, identify the bottom face of $T_i$ with the top face
+of $T_{i+1}$ for all $i$, that is, $[v_i,v_{i+1},y]=[v_{i+1},v_{i+2},y]$.
+
+Show that the simplicial homology groups of $X$ in dimensions 0, 1, 2, 3
+are $\Zz$, $\Zz_n$ (=$\Zz/n\Zz$), $0$, $\Zz$ respectively.
+(Start by making a complete census of the oriented simplices, including a record of which ones have been identified --- for example, $[x,v_1,v_2]=[y,v_n,v_1]$ is a triangle in $X$.)
+
+\vfill
+
+\prob [Hatcher p.131 \#11] Show that if $A$ is a retract of $X$
+then the map $H_n(A)\to H_n(X)$ induced by the inclusion $A\subset X$ is
+injective.
+
+\vfill
+
+
+\prob
+A [finite] \emph{partially ordered set} or \emph{poset}
+is a finite set $P$ with an order relation $\leq$ such that
+for all $x,y,z\in P$:
+(1) $x\leq x$;
+(2) if $x\leq y$ and $y\leq x$, then $x=y$; and
+(3) if $x\leq y$ and $y\leq z$, then $x\leq z$.
+Of course, $x<z$ means that $z\leq z$ and $x\neq z$.
+If $x\leq z$ or $z\leq x$, we say that $x,z$ are \emph{comparable}.
+A \emph{chain} in $P$ (not to be confused with a simplicial or singular chain!)
+is a subset in which every two elements are comparable.
+
+\probpart Prove that the set $\Delta(P)$ of chains in $P$ is a simplicial complex.
+(This is called the \emph{order complex} of~$P$.)
+
+\probpart Suppose that $P$ has a unique maximal element.  Prove that $\Delta(P)$ is contractible.
+
+\probpart For each $n\geq 1$, construct a poset for which $\Delta(P)$ is homeomorphic to an
+$n$-sphere.
+
+\probpart The \emph{M\"obius function} $\mu$ of $P$ is defined as follows.
+\begin{enumerate}
+\item Adjoin two new elements $\hat0,\hat1$ to $P$ to obtain a poset
+$\hat P$, in which $\hat0<x<\hat1$ for every $x\in P$.
+\item Define $\mu$ recursively as follows: First, if $x$ is minimal
+(i.e., there exists no $y$ such that $x>y$) then $\mu(x)=-1$.
+Second, if $\mu(y)$ has already been defined for all $y<x$, then define
+  $$\mu(x)=-\sum_{y<x}\mu(y).$$
+(So you can work out the values of $\mu$ on all elements of $P$
+by starting at the bottom and working your way up.)
+\end{enumerate}
+Make a conjecture as to how the Euler characteristic
+of $\Delta(P)$ can be obtained from the M\"obius function of~$P$.
+
+
+
+
+
+\pagebreak
+
+\textbf{\Large Some LaTeX tips}
+
+\textbf{1. Matrices with borders}
+
+The $\backslash$\texttt{bordermatrix} command
+can be used for matrices whose columns and rows
+you want to label.  This can be useful for bookkeeping
+in a simplicial homology calculation.
+For example, the boundary map $\bd_2$ of the standard 3-simplex
+is
+$$
+\bordermatrix{
+   & 123 & 124 & 134 & 234 \cr
+12 &  1  &  1  &  0  &  0\cr
+13 & -1  &  0  &  1  &  0\cr
+14 &  0  & -1  & -1  &  0\cr
+23 &  1  &  0  &  0  &  1\cr
+24 &  0  &  1  &  0  & -1\cr
+34 &  0  &  0  &  1  &  1
+}
+$$
+which can be produced as follows:
+\begin{verbatim}
+$$\bordermatrix{
+   & 123 & 124 & 134 & 234 \cr
+12 &  1  &  1  &  0  &  0\cr
+13 & -1  &  0  &  1  &  0\cr
+14 &  0  & -1  & -1  &  0\cr
+23 &  1  &  0  &  0  &  1\cr
+24 &  0  &  1  &  0  & -1\cr
+34 &  0  &  0  &  1  &  1}$$
+\end{verbatim}
+
+\textbf{2. Commutative diagrams}
+
+The \texttt{xypic} package provides a way to typeset commutative diagrams
+in LaTeX.  For instance, consider the following
+diagram, which arises in the proof of Theorem 2.10 in Hatcher:
+$$
+\xymatrix{
+\cdots\ar[r] & C_{n+1}(X) \ar[r]^{\bd}\ar[d]^{i_\#} & C_{n}(X) \ar[r]^{\bd} \ar[d]^{i_\#} \ar[dl]^{P} & C_{n-1}(X) \ar[r] \ar[d]^{i_\#} \ar[dl]^{P} &\cdots\\
+\cdots\ar[r] & C_{n+1}(Y) \ar[r]_{\bd} & C_{n}(Y) \ar[r]_{\bd} & C_{n-1}(Y)\ar[r] &\cdots\\
+}$$
+It can be typeset as follows:
+\begin{verbatim}
+$$\xymatrix{
+\cdots\ar[r]
+  & C_{n+1}(X) \ar[r]^{\bd} \ar[d]^{i_\#}
+  & C_{n}(X)   \ar[r]^{\bd} \ar[d]^{i_\#} \ar[dl]^{P}
+  & C_{n-1}(X) \ar[r]       \ar[d]^{i_\#} \ar[dl]^{P}
+  &\cdots\\
+\cdots\ar[r]
+  & C_{n+1}(Y) \ar[r]_{\bd}
+  & C_{n}(Y)   \ar[r]_{\bd}
+  & C_{n-1}(Y) \ar[r]
+  &\cdots}$$
+\end{verbatim}
+This is like a \texttt{tabular} or \texttt{array} environment:
+the \& symbols are delimiters between columns.  The $\backslash$\texttt{ar}
+commands create arrows emanating from the current cell in the table, with
+the code in [square brackets] specifying where the arrow should point;
+e.g., \texttt{$\backslash$ar[dl]} makes an arrow pointing towards the
+cell one row down and one column left of the current cell.
+
+\end{document}
+

@@ -1,0 +1,248 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsthm,amsmath,amsfonts,mathrsfs,graphicx,mathabx,tcolorbox,color,enumitem,hyperref,cancel,fullpage,multicol,bm}
+\usepackage{tikz,pgfplots,pgfkeys}
+%\pgfplotsset{compat=1.15}
+\usetikzlibrary{arrows}
+\usepackage[color,curve]{xypic}
+
+%%%%%%%%%%%%%%%%%%%%   Page formatting  %%%%%%%%%%%%%%%%%%%%
+
+\parskip=10bp
+\parindent=0bp
+\raggedbottom
+
+%%%%%%%%%%%%%%%%   Colors for TikZ and text  %%%%%%%%%%%%%%%%%
+
+\definecolor{light}{gray}{.75}
+\definecolor{med}{gray}{.5}
+\definecolor{dark}{gray}{.25}
+\newcommand{\Red}[1]{{\color{red}{#1}}}
+\newcommand{\RED}[1]{{\color{red}{\boldmath\textbf{#1}\unboldmath}}}
+\newcommand{\Blue}[1]{{\color{blue}{#1}}}
+\newcommand{\BLUE}[1]{{\color{blue}{\boldmath\textbf{#1}\unboldmath}}}
+
+
+%%%%%%%%%%%%%%%%%%%%   Hyperlinks   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hreftext}[2]{\href{#1}{\Blue{#2}}}
+\newcommand{\hrefurl}[2]{\href{#1}{\Blue{\tt #2}}}
+
+%%%%%%%%%%%%%%%%%%%%   Padding   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\xxxx}{\phantom{XXXX}}
+\newcommand{\pad}{\rule[-3mm]{0mm}{8mm}}
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\paddown}{\rule[-3mm]{0mm}{3mm}}
+\newcommand{\bpad}{\rule[-5mm]{0mm}{12mm}}
+\newcommand{\bpadup}{\rule{0mm}{7mm}}
+\newcommand{\bpaddown}{\rule[-5mm]{0mm}{5mm}}
+\newcommand{\spad}{\rule[-2mm]{0mm}{6mm}}
+\newcommand{\spadup}{\rule{0mm}{5mm}}
+\newcommand{\spaddown}{\rule[-1mm]{0mm}{1mm}}
+
+%%%%%%%%%%%%%%%%%%%%   Essentials   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\NEXTTIME}[1]{\RED{#1}}
+\newcommand{\excise}[1]{}
+%\newcommand{\pagehead}[1]{\Large\begin{center}{\bf #1}\paddown\end{center}\normalsize\hrule\bigskip}
+\newcommand{\includefigure}[3]{\begin{center}\resizebox{#1}{#2}{\includegraphics{figs/#3}}\end{center}}
+\newcommand{\insertfigure}[3]{\resizebox{#1}{#2}{\includegraphics{figs/#3}}}
+\newcommand{\defterm}[1]{\boldmath\textbf{#1}\unboldmath}
+\newcommand{\mainidea}[1]{\begin{tcolorbox}\BLUE{Main Idea:}\ #1\end{tcolorbox}}
+\newcommand{\mainideas}[1]{\begin{tcolorbox}\BLUE{Main Ideas:}\ #1\end{tcolorbox}}
+%\newcommand{\copyrightnotice}{\vfill\hrule \vskip-3bp  {\scriptsize Copyright \copyright\ Jeremy L.\ Martin 2017.  For the exclusive use of students enrolled in Math 147 at the University of Kansas.\\ Distribution without the consent of the author is prohibited.}}
+
+%\renewcommand{\pagehead}[1]{%
+%{\bf Math 147, Honors Calculus III \hfill Fall 2017}
+%\smallskip\hrule\bigskip
+%\begin{center}{\bf\Large #1}\end{center}
+%\bigskip}
+
+% Logical connectors in the middle of display math
+\newcommand{\caseif}{&\text{ if }}
+\newcommand{\IF}{\text{ if }}
+\newcommand{\AND}{\text{ and }}
+\newcommand{\OR}{\text{ or }}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\qorq}{\quad\text{or}\quad}
+\newcommand{\qergoq}{\quad\therefore\quad}
+\newcommand{\qqandqq}{\qquad\text{and}\qquad}
+\newcommand{\qqorqq}{\qquad\text{or}\qquad}
+\newcommand{\qqergoqq}{\qquad\therefore\qquad}
+\newcommand{\qand}{\quad\text{and}}
+
+% "PowerPoint" organizational tools
+\newcommand{\bang}{\noindent $\bullet$ \quad}
+\newcommand{\pbang}{\noindent $\phantom{\bullet}$ \quad}
+\newcommand{\ibang}{\phantom{xxxxx} $\bullet$ \quad}
+\newcommand{\subbang}{\noindent {}${}\quad$ $\circ$ \quad}
+\newcommand{\indnt}{\phantom{\quad}}
+\newcommand{\littleline}{\begin{center}\rule{4in}{0.5bp}\end{center}}
+\newcommand{\doubleline}{\vskip5bp\hrule\vskip2bp\hrule\vskip 10bp}
+
+
+% Word-like operators
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\abs}{abs}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\curl}{curl}
+\renewcommand{\div}{\mathop{\rm div}}
+
+
+% Proclamations
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{exercise}{Exercise}[section]
+
+\newcommand{\qn}{{\bf Question:\ \ \ }}
+\newcommand{\thm}{{\bf Theorem:\ \ \ }}
+\newcommand{\cor}{{\bf Corollary:\ \ \ }}
+\newcommand{\prop}{{\bf Proposition:\ \ \ }}
+\newcommand{\defn}{{\bf Definition:\ \ \ }}
+\newcommand{\warning}{\Red{\bf Warning:\ \ \ }}
+
+% General math symbols
+\newcommand{\Det}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\dlim}{\displaystyle\lim} % for use in displayed equations
+\newcommand{\eqdef}{\overset{\rm def}{=}} % "equals by definition"
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\osubset}{\;\raisebox{0.7ex}{\text{\tiny$\circ$}}\!\!\!\!\text{\Large$\subseteq$}\;} %% "is an open subset of"
+\newcommand{\Rr}{\mathbb{R}} % set of real numbers
+\newcommand{\st}{~|~} % "such that"
+\newcommand{\vect}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\Line}[1]{\overleftrightarrow{{#1}}}
+\newcommand{\Vector}[1]{\overrightarrow{{#1}}}
+\newcommand{\x}{\times} % cross product
+
+% Single letters are calligraphic capitals
+\newcommand{\C}{\mathcal{C}} % used by Rogawski for curves
+\newcommand{\D}{\mathcal{D}} % used by Rogawski for domains
+
+% Double letters are macros for boldface symbols, used for vectors, vector fields, and vector-valued functions.
+\renewcommand{\aa}{\mathbf{a}}
+\renewcommand{\AA}{\mathbf{A}}
+\newcommand{\BB}{\mathbf{B}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\cc}{\mathbf{c}}
+\newcommand{\dd}{\mathbf{d}}
+\newcommand{\ee}{\mathbf{e}}
+\newcommand{\ff}{\mathbf{f}}
+\newcommand{\FF}{\mathbf{F}}
+\newcommand{\GG}{\mathbf{G}}
+\newcommand{\HH}{\mathbf{H}}
+\renewcommand{\gg}{\mathbf{g}}
+\newcommand{\hh}{\mathbf{h}}
+\newcommand{\ii}{\mathbf{i}}
+\newcommand{\jj}{\mathbf{j}}
+\newcommand{\JJ}{\mathbf{J}}
+\newcommand{\kk}{\mathbf{k}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\nn}{\mathbf{n}}
+\newcommand{\NN}{\mathbf{N}}
+\newcommand{\oo}{\mathbf{o}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\pp}{\mathbf{p}}
+\newcommand{\qq}{\mathbf{q}}
+\newcommand{\rr}{\mathbf{r}}
+\renewcommand{\ss}{\mathbf{s}}
+\renewcommand{\SS}{\mathbf{S}}
+\newcommand{\ttt}{\mathbf{t}}  % \tt is taken
+\newcommand{\TT}{\mathbf{T}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\XX}{\mathbf{X}}
+\newcommand{\YY}{\mathbf{Y}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\zz}{\mathbf{z}}
+\newcommand{\0}{\mathbf{0}} % for the zero vector
+
+% Common symbols used for derivatives and partial derivatives
+\newcommand{\del}{\partial}
+\newcommand{\bd}{\partial} % Jeremy uses this macro in a different context and is used to it
+\newcommand{\dzdx}{\frac{dz}{dx}}
+\newcommand{\dzdy}{\frac{dz}{dy}}
+\newcommand{\dxdt}{\frac{dx}{dt}}
+\newcommand{\dydt}{\frac{dy}{dt}}
+\newcommand{\dzdt}{\frac{dz}{dt}}
+\newcommand{\delfx}{\frac{\partial f}{\partial x}}
+\newcommand{\delfy}{\frac{\partial f}{\partial y}}
+\newcommand{\delfz}{\frac{\partial f}{\partial z}}
+\newcommand{\delgx}{\frac{\partial g}{\partial x}}
+\newcommand{\delgy}{\frac{\partial g}{\partial y}}
+\newcommand{\delgz}{\frac{\partial g}{\partial z}}
+\newcommand{\dds}{\frac{\partial}{\partial s}}
+\newcommand{\ddt}{\frac{\partial}{\partial t}}
+\newcommand{\ddx}{\frac{\partial}{\partial x}}
+\newcommand{\ddy}{\frac{\partial}{\partial y}}
+\newcommand{\ddz}{\frac{\partial}{\partial z}}
+\newcommand{\ddX}{\frac{\partial}{\partial X}}
+\newcommand{\ddY}{\frac{\partial}{\partial Y}}
+\newcommand{\ddZ}{\frac{\partial}{\partial Z}}
+\newcommand{\deldx}{\partial/\partial x}
+\newcommand{\deldy}{\partial/\partial y}
+\newcommand{\deldz}{\partial/\partial z}
+\newcommand{\PD}[2]{\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pds}[2]{\partial{#1}/\partial{#2}}
+\newcommand{\PDD}[2]{\dfrac{\partial^2{#1}}{\partial{#2}^2}} % second-order pure partial
+\newcommand{\pdd}[2]{\frac{\partial^2{#1}}{\partial{#2}^2}}
+\newcommand{\pdds}[2]{\partial^2{#1}/\partial{#2}^2}
+\newcommand{\PDM}[3]{\dfrac{\partial^2{#1}}{\partial{#2}\partial{#3}}} % second-order mixed
+\newcommand{\pdm}[3]{\frac{\partial^2{#1}}{\partial{#2}\partial{#3}}}
+\newcommand{\pdms}[3]{\partial^2{#1}/\partial{#2}\partial{#3}}
+
+% Displayed (i.e., large) integral symbols
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\diint}{\displaystyle\iint}
+\newcommand{\diiint}{\displaystyle\iiint}
+\newcommand{\doint}{\displaystyle\oint}
+\newcommand{\doiint}{\displaystyle\oiint}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% macros for automatic numbering of problems on tests;
+%% probably not of much use if you are a student
+
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+
+%% versions that don't print the number of points
+\newcommand{\prob}{\vskip10bp\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}}\quad}
+\newcommand{\probpart}{\addtocounter{partno}{1}{\bf (\#\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\probcont}{{\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+\newcommand{\probns}{\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}}\quad}
+  
+%% versions that do print the number of points
+\newcommand{\Prob}[1]{\vskip10bp\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probns}[1]{%%%% no spacing before problem starts; for solution sets
+  \setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probpart}[1]{%
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }
+
+%% same exact thing for Honors Problems
+
+\newcommand{\hprob}{\vskip10bp\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Honors Problem~\#H{\arabic{probno}}}\quad}
+\newcommand{\hprobpart}{\addtocounter{partno}{1}{\bf (\#H\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\hprobcont}{{\bf Honors Problem~\#H{\arabic{probno}}}~(\emph{continued})}
+  
+%% versions that do print the number of points
+\newcommand{\hProb}[1]{\vskip10bp\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Honors Problem~\#H{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\hProbns}[1]{%%%% no spacing before problem starts; for solution sets
+  \setcounter{partno}{0}\addtocounter{probno}{1}{\bf Honors Problem~\#H{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\hProbpart}[1]{%
+  \addtocounter{partno}{1}%
+  {\bf (\#H\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }

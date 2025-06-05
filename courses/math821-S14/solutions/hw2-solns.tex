@@ -1,0 +1,258 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2014\\
+Solution Set \#2\\
+Due date: Friday, February 14}
+
+\yellprob{
+Show that a homotopy equivalence $f:X\to Y$ induces a bijection 
+between the set of path-components of~$X$ and the set of path-components 
+of~$Y$, and that~$f$ restricts to a homotopy equivalence from each 
+path-component of~$X$ to the corresponding path-component of~$Y$. Prove 
+also the corresponding statements with components instead of 
+path-components. Deduce that if the components of a space~$X$ coincide 
+with its path-components, then the same holds for any space~$Y$ homotopy 
+equivalent to $X$.}
+
+\newcommand{\cpt}[1]{[{#1}]}
+\newcommand{\pcpt}[1]{\langle{#1}\rangle}
+
+\soln In general, if $p$ is a point in a topological space,
+let's write $\cpt{p}$ for the \underline{component} of
+that space containing $p$, and $\pcpt{p}$ for the \underline{path-component} of
+that space containing $p$.
+
+\underline{First,} we want to prove that
+\[\pcpt{x}=\pcpt{x'} \quad\iff\quad \pcpt{f(x)}=\pcpt{f(x')}.\]
+The $\implies$ direction is easy: if $\phi$ is an $x,x'$-path in $X$,
+then $f\circ\phi$ is an $f(x),f(x')$-path in $Y$.
+
+For the reverse direction, if $\psi$ is an $f(x),f(x')$-path in $Y$,
+then $g\circ\psi$  is a $g(f(x)),g(f(x'))$-path in $X$.
+On the other hand, $\pcpt{x}=\pcpt{g(f(x))}$
+because, by definition of homotopy equivalence,
+there is a homotopy $h_t:X\to X$ with $h_0=\IdMap$
+and $h_1=g\circ f$; the function $\gamma:I\to X$
+given by $\gamma(t)=h_t(x)$ therefore defines a path from $x$ to $g(f(x))$.
+Similarly, we can construct a path from $g(f(x'))$ to $x'$.
+Concatenating these paths with $g\circ\psi$ gives an $x,x'$-path
+in $X$ and establishes the $\impliedby$ direction.
+
+\underline{Second,} we want to prove that $\cpt{x}=\cpt{x'}$
+$\iff$ $\cpt{f(x)}=\cpt{f(x')}$.  The $\implies$ direction
+follows from the fact that the continuous image of a connected
+space is connected.
+
+We now want to show that if $\cpt{f(x)}=\cpt{f(x')}$, then
+$\cpt{x}=\cpt{x'}$.
+By the $\implies$ direction, the hypothesis implies that 
+$\cpt{g(f(x))}=\cpt{g(f(x'))}$.  Again, consider the homotopy
+$H:X\x I\to X$ with $H(z,0)=z$ and $H(z,1)=g(f(z))$.
+Let $U=\cpt{H(x,1)}$ and $V=X\sm U$;
+then the clopen decomposition $X=U\dju V$
+pulls back to a clopen decomposition
+$$X\x I = H^{-1}(U) \dju H^{-1}(V)$$
+but both $(x,1)$ and $(x',1)$ lie in the same piece
+of this decomposition because
+$H$ maps them into the same component of~$X$.
+That piece must $H^{-1}(U)$,
+On the other hand, path-components are contained in
+connected components, and $X$ has paths
+from $(x,0)$ to $(x,1)$ and from $(x',0)$ to $(x',1)$, namely
+$$\phi(t)=H(x,t),\qquad \phi'(t)=H(x',t),$$
+so $(x,0)$ and $(x',0)$ belong to $H^{-1}(U)$ as well,
+which is to say that $x,x'\in U$ as desired.
+
+\underline{Third,} once we know that $f$ maps (path-)components to (path-)components, we know that for every component $C$ of $X$, the composition $g\circ f$ maps $C$ to some (path-)component $C'$ of $X$.  On the other hand, if $\{h_t\}$ is a homotopy between $g\circ f$ and $\IdMap_X$, then for every $p\in C$ there is a path $t\mapsto h_t(p)$ from $p$ to $g(f(p))$.  This is only possible if $C'=C$.  Now $\{h_t|_C\}$ is a homotopy between $(g\circ f)|_C = (g|_D)\circ(f|_C)$ (where $D$ is the (path-)component of $Y$ containing $f(C)$) and $\IdMap_C$.
+ 
+The ``deduce that\dots'' part is immediate.  This problem is another
+justification that homotopy equivalence is a sensible thing
+to consider.
+
+Some students (at least in 2011) argued that since the continuous image of a (path-)connected
+space is (path-)connected, the maps $f$ and $g$ induce surjections $P_X\to P_Y$
+and $P_Y\to P_X$ respectively, where $P_X$ means the set of (path-)connected components
+of $X$; therefore, $|P_X|\geq|P_Y|\geq|P(X)|$ and equality holds throughout.  However,
+these numbers may be infinite, when the statement ``$a\leq b\leq a\implies a=b$'' is
+the (highly nontrivial) Bernstein-Schr\"oder-Cantor theorem of set theory.  In the
+context of topology, I think it's more natural to show directly that $f$ and $g$ induce
+bijections.
+
+%------------------------------------------------------------------------------------------------------------------------
+
+\yellprob{Let $p,q$ be distinct points on $S^2$, and let $X$ be the space obtained by gluing
+them together.  Determine the homotopy type of $X$.}
+
+\soln $X\htop S^1\vee S^2$.  This is Example~0.11 in Hatcher (p.13),
+so I only assigned 5 points for it.  But it is helpful to be able to
+see the homotopy equivalence for yourself.  Here is my description of it.
+
+To see this, start with $S^1\vee S^2$, which looks like a sphere glued to a circle
+at a point $p$.  Let's put the circle inside the sphere (figure; left)
+Think of the circle as a closed loop from $p$ to itself.
+Move the other one endpoint of the loop to another point $q\neq p$ (figure; center);
+this move is a homotopy equivalence by
+Proposition 0.18.  Then collapse the resulting non-closed path to a point (figure; right);
+this is a homotopy equivalence by Prop.~0.17, and the resulting space is $X$.
+
+%------------------------------------------------------------------------------------------------------------------------
+
+\yellprob{For $k\geq 1$, let $T_n$ denote the $n$-holed torus.  Construct a cell complex structure on $T_n$.}
+
+\soln Again, this is an example in Hatcher (p.5), so only 5 points.
+There are lots of ways to impose a cell complex structure.  Here's one, which stems from the observation that $T_n=T_1\#T_{n-1}$,
+where $\#$ is the operation of \emph{connected sum}: cut out a small disk from each of the operands,
+then glue their boundaries together.\footnote{This is not a purely topological operation, in the sense that
+you need to know the dimensions of two spaces in order to build their connected sum.}  This basically
+reduces the problem to finding a fine enough cell structure on the torus that is compatible with this operation.
+For example, start with the cell structure on the 1-hole torus shown below.  Make $n$ photocopies, delete the cells
+$X_1,Y_2,X_2,\dots,X_{n-1},Y_n$ (here, e.g., $Y_2$ means ``the cell labeled $Y$ in the 2nd photocopy'')
+and identify the boundaries: $\bd X_1=\bd Y_2$, \dots, $\bd X_{n-1}=\bd Y_n$.
+\includefigure{2in}{2in}{torus4x4}
+
+%------------------------------------------------------------------------------------------------------------------------
+
+\yellprob{Let $X$ be a finite graph lying in a half-plane $P\subset\Rr^3$ and intersecting the
+edge $e$ of $P$ in a subset of its vertices.  Describe the homotopy type of the ``surface of revolution''
+obtained by rotating $X$ about $e$.}
+
+\soln Let $R(X)$ be the surface of revolution thus obtained.
+First, we can assume that $X$ is connected --- if it has multiple connected components $X_\alpha$,
+then $R(X)$ is the disjoint union of the $R(X_\alpha)$.
+
+Second, observe that if $a$ is an edge of $X$ that has at least one endpoint not in $e$,
+then $R(X)\htop R(X/a)$; this corresponds to deformation-retracting an annulus
+(specifically, the piece of $R(X)$ corresponding to $a$) onto a circle.  (We just need to
+make sure that no other point hits the boundary during the contraction process.  For example,
+if such a contraction produces an edge between two vertices on $e$, then that edge needs to
+be some kind of an arc rather than a line segment.)
+
+Let
+\begin{align*}
+n &= \text{total number of vertices of $X$,}\\
+b &= \text{number of vertices of $X$ lying on $e$},\\
+m &= \text{number of edges of $X$.}
+\end{align*}
+
+If $b=0$, then we can eventually replace $X$ with a graph $Y$ with one vertex and $m-n+1$ loops, while preserving the homotopy type of $R(X)$.  We then have
+\[R(X) \htop R(Y) = S^1\x X = S^1 \x (S^1)^{(m-n+1)}\]
+(which is the infamous ``not-a-torus'' space).
+
+If $b>1$, then we will eventually end up with a graph $Y$ all of whose vertices lie on $e$,
+and such that $R(Y)\htop R(X)$.
+Then $Y$ has $b$ vertices and $m-(n-b)$ edges.
+
+Let $T$ be a spanning tree of $R(Y)$.  Then $T$ has $b-1$ edges, each of which gets rotated into
+a 2-sphere, and so $R(T)\htop (S^2)^{\vee(b-1)}$.  (This notation means
+``the wedge sum of $b-1$ copies of $S^2$''.)  For each
+additional edge $a\not\in T$, the revolution $R(a)$ is either a sphere attached to $R(T)$ at two points
+(if $a$ is not a loop) or a sphere with two of its points identified, then attached to $R(T)$ (if $a$
+is a loop).  In either case, the edge $a$ contributes an additional $S^1\vee S^2$ to the homotopy type.
+We conclude that
+\begin{align*}
+R(X) &\htop R(Y) \htop (S^2)^{\vee(b-1)} ~\vee~ (S^1\vee S^2)^{\vee(m-(n-b)-(b-1))}\\
+  &= (S^2)^{\vee(b-1)} ~\vee~ (S^1\vee S^2)^{\vee(m-n+1)}\\
+  &= \boxed{(S^2)^{\vee(m-n+b)} ~\vee~ (S^1)^{\vee(m-n+1)}.}
+\end{align*}
+(The graph pictured has
+ $n=9$, $b=4$, $m=15$, $m-n+b=10$, $m-n+1=7$.)
+
+A comment: I should have required that each component of $X$ have at least one vertex on $e$.  (Otherwise, if for example $X$ consists of one vertex off $e$ and a loop attached to it, then $R(X)$ is a torus rather than a wedge of spheres.)
+
+%------------------------------------------------------------------------------------------------------------------------
+
+\yellprob{Let $0\leq k\leq n$.
+Recall from class that the \emph{Grassmannian} $G(k,n)$
+is defined as the space of $k$-dimensional subspaces $V\subset\Rr^n$,
+so that in particular, $G(1,\Rr^n)=\Rr P^{n-1}$.  (Fact: Everything in
+this problem works the same way if you change $\Rr$ to $\Cc$, except
+that the dimensions of all the cells get doubled.)
+
+\probpart Work out an explicit cell decomposition for $G(2,4)$
+as a finite CW-complex.  That is,
+describe how to decompose the set $G(2,4)$ into pieces, each of which is
+isomorphic to a $\Rr$-vector space.
+If you do this correctly (hint: row-reduced echelon form),
+then the isomorphisms should be straightforward from the construction.}
+
+Any $V\in G(2,4)$ can be expressed as the column span
+of a $k\x n$ matrix $M$.  Performing elementary column operations
+on the matrix doesn't change the span, and we know that
+we can eventually put $M$ into a unique reduced column-echelon form,
+i.e., one of the following things:
+$$
+\begin{bmatrix} 1 & 0\\ 0 & 1\\ * & *\\ * & *\end{bmatrix},\qquad
+\begin{bmatrix} 1 & 0\\ * & 0\\ 0 & 1\\ * & *\end{bmatrix},\qquad
+\begin{bmatrix} 1 & 0\\ * & 0\\ * & 0\\ 0 & 1\end{bmatrix},\qquad
+\begin{bmatrix} 0 & 0\\ 1 & 0\\ 0 & 1\\ * & *\end{bmatrix},\qquad
+\begin{bmatrix} 0 & 0\\ 1 & 0\\ * & 0\\ 0 & 1\end{bmatrix},\qquad
+\begin{bmatrix} 0 & 0\\ 0 & 0\\ 1 & 0\\ 0 & 1\end{bmatrix}
+$$
+This gives a cell structure with $f$-polynomial
+\[f(X,q) := \sum_{e_\alpha\in X} q^{\dim e_\alpha} = q^4+q^3+2q^2+q+1.\]
+Specifically, the cells classify points in $G(2,4)$
+by the locations of the pivots in its reduced column-echelon form.
+Moving the pivots upwards gives a bigger cell; specifically,
+if we write $e_{ij}$ for the cell whose pivots are in rows $i,j$ with $i<j$,
+then $e_{ij}\subseteq\overline{e_{i'j'}}$ iff $i\leq i'$ and $j\leq j'$.
+
+\yellprobpart{Describe the attaching poset of $G(2,4)$.  (Recall that this
+is the partially ordered
+set whose elements are the cells $e_\alpha$, and whose order
+relation is given by $e_\alpha\geq e_\beta$ if
+$\overline{e_\alpha}\supseteq e_\beta$).}
+
+It looks like this:
+\[\xymatrix{
+&e_{12}\ar@{-}[d]\\
+&e_{13}\ar@{-}[dl]\ar@{-}[dr]\\
+e_{14}\ar@{-}[dr]&&e_{23}\ar@{-}[dl]\\
+&e_{24}\ar@{-}[d]\\
+&e_{34}
+}\]
+
+\yellprobpart{Describe the attaching poset of $G(2,5)$.}
+
+The cells can be labeled $\{e_{ij} \st 1\leq i<j\leq 5\}$.
+The order relation is given combinatorially by
+\[\ov{e_{ij}}\supset e_{i'j'}\qquad\iff\qquad i\leq i' \qandq j\leq j'.\]
+Here is the whole partially ordered set:
+\[\xymatrix{
+&&e_{12}\ar@{-}[d]\\
+&&e_{13}\ar@{-}[dl]\ar@{-}[dr]\\
+&e_{14}\ar@{-}[dl]\ar@{-}[dr]&&e_{23}\ar@{-}[dl]\\
+e_{15}\ar@{-}[dr]&&e_{24}\ar@{-}[dl]\ar@{-}[dr]\\
+&e_{25}\ar@{-}[dr]&&e_{34}\ar@{-}[dl]\\
+&&e_{35}\ar@{-}[d]\\
+&&e_{45}
+}\]
+
+\yellprobpart{Write out the poset $P(2,3)$ of all Ferrers diagrams with at most two 
+rows and at most three columns, ordered by containment (as sets of 
+squares).  Compare it to your previous answer.}
+
+\[\xymatrix{
+&&{\yng(3,3)} \ar@{-}[d]\\
+&&{\yng(3,2)}\ar@{-}[dl]\ar@{-}[dr]\\
+&{\yng(2,2)}\ar@{-}[dl]\ar@{-}[dr]&&{\yng(3,1)}\ar@{-}[dl]\\
+{\yng(2,1)}\ar@{-}[dr]&&{\yng(3)}\ar@{-}[dl]\ar@{-}[dr]\\
+&{\yng(1,1)}\ar@{-}[dr]&&{\yng(2)}\ar@{-}[dl]\\
+&&{\yng(1)}\ar@{-}[d]\\
+&&\text{\huge$\0$}
+}\]
+
+The two posets are isomorphic.  This is true in general --- the attaching poset of the Schubert cell decomposition of $G(k,n)$ is isomorphic to the lattice of partitions that fit inside a $(n-k)\x k$ rectangle.  The number of squares in a partition equals the dimension of the corresponding Schubert cell.  By the way, the general formula for the number of Schubert cells of each dimension is very nice:
+
+\[\sum_{e_\alpha\in G(k,n)} q^{\dim e_\alpha} = 
+\frac{(1-q^n)(1-q^{n-1})\cdots(1-q^{n-k+1})}{(1-q^k)(1-q^{k-1})\cdots(1-q)}.\]
+This is called a \emph{$q$-binomial coefficient}.  It isn't even obvious that this expression is a polynomial --- but in fact it is.
+
+\vfill
+
+\yellprob{{\bf [Extra credit; Hatcher p.19, \#20]} Show that the subspace $X\subset\Rr^3$ formed by a Klein bottle intersecting itself in a circle, as shown in the figure on p.19 of Hatcher, is homotopy equivalent to $S^1\vee S^1\vee S^2$.}
+
+\soln I'm not going to try to draw the picture in LaTeX, but here's the idea -- try to see it in your head.  Look at the disk where the cylinder intersects itself.  Squash that to a point --- this is a homotopy equivalence.  What is left looks like a sphere in which three points have been identified.  By an argument just like that of Problem \#2 above, this space is homotopy-equivalent to $S^2\vee S^1\vee S^1$.
+
+\end{document}

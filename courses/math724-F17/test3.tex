@@ -1,0 +1,71 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{Math 724, Fall 2017\\
+Take-Home Test \#3\\
+Deadline: Wednesday, December 13, 10:00am}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name, e.g., {\tt MirzakhaniTest3.pdf}.  You may refer to the textbook and your class notes, and you may cite the result of any problem from previous assignments, or done in class.  You may also use a computer algebra system such as Sage to carry out calculations and test conjectures.  However, \emph{you are not allowed to collaborate}; you may not consult any external resource or any human other than Jeremy.
+\medskip\hrule
+
+\prob
+The game of \emph{bridge} is an advanced version of egdirb.  It uses a standard deck with four suits (spades, hearts, diamonds, clubs), each with 13 cards (ace, king, queen, jack, 10, 9, \dots, 2).  There are four players.  Each player is dealt  a hand of 13 cards.
+
+\Probpart{10} Bridge players call a hand ``balanced'' if it contains at least 2 cards in every suit, and no more than 8 cards in any two suits.  How many possible bridge hands are balanced?\\
+\Probpart{10} How many possible bridge hands contain at least one ace, at least one king, and at least one queen?
+
+\bigskip\hrule
+
+\Prob{20} How many ways are there of making change for a three-dollar bill with pennies, nickels, dimes, and quarters that use
+at least one, but no more than ten, of each kind of coin?
+(The answer is {\bf not} ``Zero; there is no such thing as a three-dollar bill.''  Pretend there is.)
+
+\bigskip\hrule
+
+\Prob{20}
+For a graph $G=(V,E)$, let $\phi(G)$ be the number of forests in $G$ --- that is, subsets of $E$ that contain no cycles.
+For example, if $G$ is itself a forest then $\phi(G)=2^{|E|}$, and if $G$ is a cycle then $\phi(G)=2^{|E|}-1$.
+Prove that
+\[\phi(G)=\begin{cases}
+\phi(G-e) & \text{ if $e$ is a loop},\\
+2\phi(G/e) & \text{ if $e$ is a bridge},\\
+\phi(G-e)+\phi(G/e)& \text{ otherwise.}
+\end{cases}\]
+(A \emph{loop} is an edge whose endpoints are equal; a \emph{bridge} is an edge such that deleting it causes one component to split into two.)
+
+\bigskip\hrule
+
+\Prob{10} Give a combinatorial interpretation for the coefficient of $x^nq^k$ in the power series expansion of the infinite product
+\[\left(\frac{1}{1-x}\right) \left(\frac{1}{1-qx^2}\right)
+\left(\frac{1}{1-x^3}\right) \left(\frac{1}{1-qx^4}\right)
+\left(\frac{1}{1-x^5}\right) \left(\frac{1}{1-qx^6}\right)\cdots.\]
+In other words, describe a set of combinatorial objects whose cardinality is the coefficient of $x^nq^k$.
+
+\pagebreak
+
+\Prob{20} A \emph{noncrossing matching} consists of $2n$ points arranged in a line, together with $n$ arcs linking the points in pairs, such that no two arcs cross.  For example, the noncrossing matchings for $n=3$ are shown below.
+
+\includefigure{6.375in}{0.375in}{ncm3} % 17 x 1
+
+Prove that for all $n$, the number of noncrossing matchings on~$2n$ points is the Catalan number~$C_n$.  (You can do this either by exhibiting a bijection to a set known to be counted by the Catalan numbers, or by verifying that the Catalan recurrence holds.)
+
+\bigskip\hrule
+
+
+\prob Let $G(n)$ be the set of directed graphs on vertex set $[n]$ in which every component is either a pair of opposite edges, or a 3-cycle with edges oriented cyclically.  For example, an element of $G(10)$ is shown below.
+Let $g(n)=|G(n)|$.  By convention, we will set $g(0)=1$, and $g(n)=0$ for $n<0$.
+\includefigure{3in}{1in}{directed23} % original 5.25 x 1.75
+
+\Probpart{10} What are the numbers $g(1),\dots,g(5)$?
+
+\Probpart{10} Find a recurrence for $g(n)$.  (Hint: Consider the cycle containing vertex $n$ --- there are two cases.)
+
+\Probpart{10} Let $y=\sum_{n=0}^\infty g(n) x^n/n!$ be the EGF for $g$.
+Translate the recurrence you just found into a differential equation for $y$.
+
+\Probpart{10} Solve the differential equation (it should not be hard) to obtain a nice closed form for $y$.
+
+\Probpart{20} Show that the EGF for the set of directed graphs on vertex set $[n]$ in which every component is an oriented cycle of \emph{odd} length is
+\[\sqrt{\frac{1+x}{1-x}}.\]
+\end{document}

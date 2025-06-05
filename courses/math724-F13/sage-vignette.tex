@@ -1,0 +1,30 @@
+\include{header}
+\begin{document}
+
+{\bf Math 724\\ Fall 2013}
+
+Here is an easy Sage routine to calculate factorials recursively.
+\bigskip\hrule
+
+\begin{verbatim}
+def facto(n):
+    if n == 0:
+        answer = 1
+    else:
+        answer = n * facto(n-1)
+    return answer
+\end{verbatim}
+
+\bigskip\hrule
+
+Some notes:
+\begin{itemize}
+\item To start using Sage quickly, try the \href{https://cloud.sagemath.com/}{Sage Cloud at {\tt https://cloud.sagemath.com/}}.\\
+\item Sage does have a built-in {\tt factorial} function; this is intended as a quick example.\\
+\item Sage cares about indentation.  If I wanted Sage to do something additional in the {\tt else} case, it would need to be indented eight space (same as {\tt answer = n * facto(n-1)}).  Indenting only four spaces (same as {\tt return answer}) would cause the new line of code to be executed for all $n$.  Indenting a different number of spaces would probably cause a syntax error.\\
+\item Note that = means assignment and == means equality checking.\\
+\item If you know what memoizing is, you know that the code above is theoretically inefficient and could be improved by memoizing.  However, for the purpose of computing small examples in Math 724, don't worry about it.\\
+\item How did I get LaTeX to pay attention to line breaks and indentation?
+With the {\tt verbatim} environment.  Compare the \href{http://www.jlmartin.faculty.ku.edu/math724/sage-vignette.tex}{\fbox{source .tex file}} to the PDF document you are now reading.
+\end{itemize}
+\end{document}

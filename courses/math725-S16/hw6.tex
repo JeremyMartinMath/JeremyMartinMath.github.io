@@ -1,0 +1,31 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 725, Spring 2016 \hfill Problem Set \#6}
+\smallskip\hrule
+
+{\bf Instructions:} Do all problems and typeset them in \LaTeX.  E-mail the PDF file to Jeremy at \hrefurl{mailto:jlmartin@ku.edu}{\tt jlmartin@ku.edu} under the filename {\tt your-last-name.pdf} by {\bf Friday, April 22, 5:00pm.}
+You are encouraged to use the \hreftext{http://www.jlmartin.faculty.ku.edu/math725/header.tex}{LaTeX header file} and to refer to Jeremy's \hreftext{http://www.jlmartin.faculty.ku.edu/math725/notesnew.pdf}{lecture notes}.
+
+\smallskip\hrule
+
+\prob Complete the proof of Theorem 7.8 (connecting the deletion/contraction recurrence and the closed form of the Tutte polynomial) by showing that $\tilde T(G)=x\cdot T(G/e)$ if $e$ is a bridge of $G$.  (Hint: Mimic the proof for the loop case.)
+
+\prob Prove that $T(C_n;x,y)=x^{n-1}+\cdots+x^2+x+y$ in two different ways:\\
+\probpart using the corank/nullity generating function;\\
+\probpart using the deletion/contraction recurrence and induction.
+
+Then, convince yourself that the numbers of spanning trees, acyclic orientations and strong orientations of $C_n$, as well as its chromatic polynomial, are indeed given by the Tutte polynomial specializations we discussed in class.  (For the chromatic polynomial, see Problem Set \#5, Problem \#3.)
+ 
+\prob Denote by $G^{(p)}$ the \emph{$p^{th}$ parallel extension of $G$}, i.e., the graph formed from $G$ by replacing every edge of $G$ with $p$ parallel copies of itself.  Find a formula for the Tutte polynomial of $G$ in terms of that of $G$.  (For example, if $G=K_2$, then $G^{(p)}\isom C_p^*$, the graph with two vertices and $p$ parallel edges between them, so $T(G^{(p)};x,y)=x+y+y^2+\cdots+y^{p-1}$.)  {\bf Hint:} For $A\subseteq E(G^{(p)}$, let $\tilde A$ be the set of edges of $G$ with at least one copy in $A$.  How do $r(\tilde A)$ and $r(A)$ compare?  Write down the corank/nullity generating function for $T(G^{(p)};x,y)$, then break it into pieces depending on what $\tilde A$ is.
+
+\prob Let $\Gamma$ be a plane graph, which you can assume is connected.
+
+\probpart Prove that $(\Gamma-e)^*=\Gamma^*/e^*$ (provided that $e$ is not a bridge) and that $(\Gamma/e)^*=\Gamma^*-e^*$ (provided that $e$ is not a loop).\\
+\probpart We proved in class that $T(\Gamma;\,x,y)=T(\Gamma^*;\,y,x)$ by comparing the rank functions in $\Gamma$ and $\Gamma^*$.  Give another proof, using part (a) and the deletion/contraction recurrence for the Tutte polynomial.
+
+\prob Let $\Gamma$ be a connected plane graph with no loops and let $\Delta$ be an orientation of $\Gamma$.  The \defterm{dual orientation} $\Delta^*$ of $\Gamma^*$ is defined as follows: if you stand at the tail vertex of $e\in E(G)$ and look toward the head, then the dual edge $e^*$ points to the right.
+\includefigure{2.6in}{1.8in}{oriented-dual} % 3.25 x 2.25
+Prove that $\Delta$ is an acyclic orientation of $\Gamma$ if and only $\Delta^*$ is a strong orientation of $\Gamma^*$.  (This explains why the numbers of acyclic and strong orientations are given by $T_G(2,0)$ and $T_G(0,2)$, respectively.)
+
+\end{document}

@@ -1,0 +1,265 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821 Problem Set \#7\\
+Due date: Friday, May 2}
+\bigskip
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.156 \#9abc]  Compute the homology groups of the following spaces:
+
+(a) The quotient of $\Ss^2$ obtained by identifying the north and south poles to a point.
+
+(b) $\Ss^1\x(\Ss^1\vee \Ss^1)$.
+
+(c) The space obtained from $D^2$ by first deleting the interiors of two disjoint subdisks, and then identifying all three resulting circles together via homomorphisms preserving clockwise orientations of these circles.}
+
+\soln (a) Let $A$ consist of the north and south poles in $\Ss^2$ and let $X=\Ss^2/A$.  The pair $(\Ss^2,A)$ is good (because $A$ is a subcomplex in the standard cell structure on $\Ss^2$), so $\HH(X=H(\Ss^2,A)$.  The interesting part of the LES is
+\[\underbrace{\HH_2(A)}_0\to\underbrace{\HH_2(\Ss^2)}_{\Zz}\to\HH_2(X)\to\underbrace{\HH_1(A)}_0\to\underbrace{\HH_1(\Ss^2)}_0\to\HH_1(X)\to\underbrace{\HH_0(A)}_{\Zz}\to\underbrace{\HH_0(\Ss^2)}_0\]
+from which we get
+\[\HH_2(X)=\Zz, \quad \HH_1(X)=\Zz,\quad \HH_0(X)=0\]
+(the last because $X$ is path-connected).
+
+(b) Let's use cellular homology.  The space $Y=\Ss^1\x(\Ss^1\vee\Ss^1)$ can be regarded as two tori joined along their meridional circles, so the cell structure looks like this:
+\includefigure{3in}{1.625in}{two-tori}
+All the cellular chain maps are zero, so the unreduced homology groups are free of order equal to the number of cells of that dimension.  Therefore
+\[\HH_2(Y)=\Zz^2, \quad \HH_1(Y)=\Zz^2,\quad \HH_0(X)=0.\]
+
+(c) Again let's use cellular homology.  Call this space $W$.  It can be endowed with the cell structure below, with $E_2=\{P\}$, $E_1=\{a,b,c,d\}$, $E_0=\{x,y\}$ and orientations as indicated:
+
+\includefigure{6in}{3in}{hatcher-p156no9c}
+
+Starting at the right-hand vertex and moving down, we see that $\bd P=b-c-b-d-b-a+d-a+c+a=-b-a$.
+Thus $\bd P = a+e-a+d-a+c=-a+c+d+e$ and $\bd Q=e+b+d+b+c-b=e+d+c+b$, so the full cellular chain complex $E_\bullet(W)$ is
+\[
+\Zz E^2\xrightarrow[\bordermatrix{&P\cr a&-1\cr b&-1\cr c&0\cr d&0}]{d_2}
+\Zz E^1\xrightarrow[\bordermatrix{&a&b&c&d\cr x&-1&1&0&-1\cr y&1&-1&0&1}]{d_1}
+\Zz E^0 \to 0
+\]
+We can then compute homology in Macaulay2, e.g.:
+\begin{verbatim}
+d2 = matrix {{-1}, {-1}, {0}, {0}};
+d1 = matrix {{-1,1,0,-1}, {1,-1,0,1}};
+C  = chainComplex(d1,d2);
+prune HH C
+\end{verbatim}
+The end result:
+\[\HH_2(W)=\Zz, \qquad \HH_1(W)=\Zz^2, \qquad \HH_0(W)=0.\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.157 \#19] Compute $H_i(\RP^n/\RP^m)$ for $m<n$ by cellular homology, using the standard CW structure on $\RP^n$ with $\RP^m$ as its $m$-skeleton.}
+
+\soln The relative cellular chain complex $E_\bullet(\RP^n,\RP^m)$ is the cokernel of the injection $E_\bullet(\RP^m)\into E_\bullet(\RP^n)$.  Thus its groups are
+
+\[E_k(\RP^n,\RP^m) = \begin{cases} \Zz & \text{ if } m+1\leq k\leq n,\\ 0 & \text{ otherwise.} \end{cases}\]
+
+and its maps are the same as for $\RP^n$: i.e., the map $d_k:E_k\to E_{k-1}$ is multiplication by 2 if $k$ is even, or zero if $k$ is odd.  Therefore,
+
+\[\boxed{H_k(\RP^n,\RP^m) = \begin{cases}
+\Zz & \text{ if $k=n$ and $n$ is odd,} \\
+\Zz_2 & \text{ if $m+1\leq k<n$ and $k$ is odd,}\\
+0 & \text{ otherwise.}
+\end{cases}}\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.156 \#11] Let $K$ be the 3-dimensional cell complex obtained from the cube $I^3$ by identifying each pair of opposite faces via a one-quarter twist.  (See exercise \#14 on p.54.)  Compute the homology groups $\HH_n(K;\Zz)$ and $\HH_n(K;\Zz_2)$ for $n>0$.}
+
+\soln
+Call this complex $K$.  We start with the oriented labeled cube as shown.
+\includefigure{6in}{3in}{twistedcube}
+Identifying opposite faces with the twist brings us down to two vertices $x,y$ (indicated by their colors in the diagram) and forces the edge identifications
+\[(b,-a,-d,c)\sim(k,j,-i,-\ell),\quad (e,-a,-f,i)\sim(-c,-h,k,g),\quad (\ell,f,-d,-h)\sim(e,-b,-g,j).\]
+Calling the top, left and front 2-faces respectively $A,B,C$ and the solid cube $Q$., we get the cellular chain complex
+\[
+\Zz E^3\xrightarrow[\bordermatrix{&Q\cr A&0\cr B&0\cr C&0\cr}]{d_3}
+\Zz E^2\xrightarrow[\bordermatrix{&A&B&C\cr
+a&-1&1&1\cr
+b&1&-1&1\cr
+c&1&1&1\cr
+d&-1&-1&1}]{d_2}
+\Zz E^1\xrightarrow[\bordermatrix{&a&b&c&d\cr 
+x&-1&-1&1&1\cr y&1&1&-1&-1}]{d_1}
+\Zz E^0 \to 0.
+\]
+(It is perhaps not clear geometrically whether the coefficients of $\bd Q$ should be 0, 2 or $-2$, but it is clear from the algebra --- the condition $d_2d_1=0$ says that $d_2$ must be orthogonal to every row of $d_1$, and $d_1$ has full row rank so the only possibility for $d_2$ is the zero vector.)  We can compute the homology groups in Macaulay:
+\begin{verbatim}
+d3 = matrix {{0}, {0}, {0}};
+d2 = matrix {{-1,1,1}, {1,-1,1}, {1,1,1}, {-1,-1,1}};
+d1 = matrix {{-1,-1,1,1},{1,1,-1,-1}};
+C  = chainComplex(d1,d2,d3);
+prune HH C
+\end{verbatim}
+The result is
+\[\boxed{\HH_3(K)=\Zz, \quad \HH_2(K)=0, \quad \HH_1(K)=\Zz_2^2.}\]
+
+Now for homology with $\Zz_2$-coefficients.  Note that it is \textbf{not} sufficient simply to tensor these groups with $\Zz_2$.  Instead, we have to tensor the chain complex with $\Zz_2$ and then recompute homology.  The Macaulay symbol for tensor product is $**$, so all you need to do is this:
+\begin{verbatim}
+C2  = C ** ZZ/2
+prune HH C2
+\end{verbatim}
+The result is
+\[\boxed{\HH_3(K;\Zz_2)=\Zz_2, \quad \HH_2(K;\Zz_2)=\Zz_2^2, \quad \HH_1(K)=\Zz_2^2.}\]
+Indeed, note that $\HH_2(K;\Zz_2)\neq\HH_2(K;\Zz)\otimes\Zz$.
+
+It is also possible to use the Universal Coefficient Theorem for Homology [Hatcher, p.264], which says that
+there are split short exact sequences
+$0\to H_n(K)\otimes_{\Zz}\Zz_2 \to H_n(K;\Zz_2) \to \Tor(H_{n-1}(K),\Zz_2) \to 0$.
+Using general facts about tensor product --- in particular, tensoring a module with itself or the ground ring does nothing to it, and tensor is distributive over direct sum --- we get
+\begin{align*}
+0&\to \Zz_2 \to H_3(K;\Zz_2) \to \Tor(0,\Zz_2) \to 0,\\
+0&\to H_2(K;\Zz_2) \to \Tor(\Zz_2^2,\Zz_2) \to 0,\\
+0&\to \Zz_2^2 \to H_1(K;\Zz_2) \to \Tor(\Zz,\Zz_2) \to 0.
+\end{align*}
+
+Using standard properties of Tor [Hatcher, Prop.~3A.5, p.265], we can rewrite these short exact sequences:
+\begin{align*}
+0&\to \Zz_2 \to H_3(K;\Zz_2) \to 0,\\
+0&\to H_2(K;\Zz_2) \to \Zz_2^2 \to 0,\\
+0&\to \Zz_2^2 \to H_1(K;\Zz_2) \to 0
+\end{align*}
+so the middle maps are all isomorphisms.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.157 \#20,22]  In this problem $\rchi$ denotes Euler characteristic.
+
+(a) Let $X,Y$ be finite CW-complexes.  Show that $\rchi(X\x Y)=\rchi(X)\cdot\rchi(Y)$.
+
+(b) Let $X$ be a finite CW complex and let $\tilde X\xrightarrow{p} X$ be an $n$-sheeted covering space.  Show that
+$\rchi(\tilde X)=n\cdot\rchi(X)$.}
+
+Note: Part (a) is easy, but part (b) is much harder and relies on facts about Lebesgue numbers of coverings, which I pushed under the rug when I talked about subdivision.  So I awarded full credit for doing (a) correctly and saying something intelligent about (b).
+
+\soln
+(a) Define the $f$-polynomial of $X$ to be $f(X,q)=\sum_{e_\alpha\in X} q^{\dim e_\alpha}$.  Then
+$\rchi(X)=f(X,-1)$ and $f(X\x Y,q)=f(X,q)\cdot f(Y,q)$ (because the product of a $k$-cell and an $\ell$-cell is a
+$(k+\ell)$-cell), so
+\[\rchi(X\x Y)=f(X\x Y,-1)=f(X,-1)f(Y,-1)=\rchi(X)\cdot\rchi(Y).\]
+
+(b) Let $\mathcal{U}=\{U_i\}_{i\in\mathscr{I}}$ be an open cover of $X$ such that each $p^{-1}(U_i)$ is a disjoint union of $n$ homeomorphic copies of $U_i$; we may assume that $\mathscr{I}$ is finite, say $\{1,\dots,m\}$, since $X$ is compact.  Also, abbreviate $\tilde U_i=p^{-1}(U_i)$.
+
+Repeatedly barycentrically subdivide the cells of $X$ until every cell is contained in some $U_i$.  (This is possible by a Lebesgue number argument; see p.123 of Hatcher.)  Call the resulting $\Delta$-complex $\Delta$.  We can now endow $\tilde X$ with the structure of a $\Delta$-complex $\tilde\Delta$ whose simplices are the components of the preimages of the simplices in $\Delta$.  We then have $f(\tilde X,q)=n\cdot f(X,q)$ and so
+\[\rchi(\tilde X)=\rchi(\tilde\Delta)=f(\tilde\Delta,-1)=n\cdot f(\Delta,q)=n\cdot\rchi(X).\]
+
+{\bf Note:}
+The reason this subdivision argument is necessary is that there is no guarantee that $p^{-1}(\sigma)$ is homeomorphic to $n$ copies of $\sigma$ for every cell $\sigma$.  Another possible avenue of attack, which I cannot get to work, is as follows.  The covering map $p$ induces a map of chain complexes
+\[
+\xymatrix{
+\cdots\rto&
+\bigoplus_{i=1}^m C_{k+1}(\tilde U_i) \rto^\bd \dto_{p_\sharp}&
+\bigoplus_{i=1}^m C_{k}(\tilde U_i) \rto^\bd \dto_{p_\sharp}&
+\bigoplus_{i=1}^m C_{k-1}(\tilde U_i) \dto_{p_\sharp}\rto&\cdots\\
+\cdots\rto&
+\bigoplus_{i=1}^m C_{k+1}(U_i) \rto^\bd &
+\bigoplus_{i=1}^m C_{k}(U_i) \rto^\bd &
+\bigoplus_{i=1}^m C_{k-1}(U_i)\rto&\cdots\\
+}\]
+where the horizontal maps are the direct sums of the boundary maps on the summands.  Since $\{\tilde U_i\}$ and $\{U_i\}$ are open covers of $\tilde X$ and $X$ respectively, the Subdivision Lemma says that
+the rows compute their homology groups.  Certainly $C_k(\tilde U_i)=C_k(U_i)^{\oplus n}$ and
+$H_k(\tilde U_i)=H_k(U_i)^{\oplus n}$.  However, while the \defterm{groups} in this diagram break as direct sums, the \defterm{chain complexes} don't --- if $U_i\cap U_j\neq\0$ then the map $\bd:C_k(U_i)\to C_{k-1}(U_j)$ is not zero.  Indeed, it is not true that $H_k(\tilde X)\isom H_k(X)$ in general; for example, take $X=\Ss^1$ and $\tilde X$ to be its connected $n$-fold covering space, which is also homeomorphic to $\Ss^1$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.155 \#2, modified] Given a map $f:\Ss^{2n}\to \Ss^{2n}$, show that there is some point $x\in\Ss^{2n}$
+with either $f(x)=x$ or $f(x)=-x$.  Deduce that every map $\RP^{2n}\to\RP^{2n}$ has a fixed point.  (Hint: Use the fact that $\Ss^{2n}$ is a covering space of $\RP^{2n}$.)}
+
+\soln For the first part, suppose that there exists a function~$f$ without the given property.  Then we can construct
+a nonzero tangent vector field $T(x)$ on $\Ss^{2n}$ as follows: let $g(x)$ be the
+projection of $f(x)$ onto the tangent hyperplane to $\Ss^{2n}$ at $x$, and
+let $T(x)$ be the vector from $x$ to $g(x)$.  Note that $f(x)\not\in\{x,-x\}$
+implies that $g(x)\neq x$, so $T(x)\neq 0$.  We have constructed an everywhere-nonzero
+tangent vector field on $\Ss^{2n}$, which is impossible by the Hairy Bowling Ball Theorem.
+
+(An equally good solution is to incorporate the argument of the Hairy Bowling Ball Theorem
+explicitly.  Consider
+$$F(x,t)=\frac{x\cos\,t+f(x)\sin\,t}{\|x\cos\,t+f(x)\sin\,t\|}$$
+which is well-defined because $x$ and $f(x)$ are linearly independent.
+Then $F(x,0)=x/\|x\|=x$ and $F(x,\pi)=-x/\|x\|=-x$, so $F$ is a homotopy 
+between the identity and antipodal maps, a contradiction because their degrees
+are 1 and $-1$ respectively.  This is essentially the argument for property (g) of
+degree (Hatcher, p.134); you could even just cite that property.)
+
+For the second part, let $p:\Ss^{2n}\to\RP^{2n}$ be the usual two-to-one covering space map
+that identifies antipodal points of $\Ss^{2n}$, so that $p(x)=p(-x)$.  For any $g:\RP^{2n}\to\RP^{2n}$, we have a commutative
+diagram
+$$\xymatrix{
+\Ss^{2n} \ar[r]^f\ar[d]^p\ar[dr]^{g\circ p} & \Ss^{2n} \ar[d]^p\\
+\RP^{2n} \ar[r]^g & \RP^{2n}}$$
+where $f$ is obtained by lifting $g\circ p$ (using the Lifting Criterion,
+Prop.~1.33, p.61 of Hatcher).  (Note that we do not have to construct $f$ explicitly!)
+By the first part of the problem, there is a point
+$x\in \Ss^{2n}$ with $f(x)=x$ or $-x$, so $p(x)$ is a fixed point of $g$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.157 \#28(a), modified] (a) Use a Mayer-Vietoris sequence to compute the homology groups of the space $X$ obtained from a torus $T=\Ss^1\x \Ss^1$ by attaching a M\"obius band $M$ via a homeomorphism from the boundary circle $C$ of $M$ to the circle $\Ss^1\x\{x_0\}$ in the torus.
+
+(b) How does the answer change if $C$ is attached to a closed loop that wraps $k$ times around the first circle (i.e., via the path $f:I\to\Ss^1\x\Ss^1$ given by $f(t)=(e^{2\pi i kt},e^{2\pi it})$)?}
+
+{\color{red}{\bf  Mea culpa!} Part (b) is inconsistent.  The formula should be $f(t)=(e^{2\pi kit},1)$ (or replace 1 with any complex number on $\Ss^1\subset\Cc$).  This caused some of you to write $\gamma(1)=(k,1,2)$ in part (b), in which case the value of $k$ is irrelevant --- this vector is always part of a $\Zz$-basis.}
+
+\soln (a)
+Certainly $H_0(X)=\Zz$ because $X$ is path-connected.  We know the homology groups of $T\cap M=\Ss^1$, of $M\htop \Ss^1$, and of $T$, so the nonzero part of the reduced Mayer-Vietoris sequence is
+
+\[0\to \Zz\xrightarrow{~\alpha~} H_2(X)\xrightarrow{~\beta~} \underbrace{H_1(T\cap M)}_\Zz\xrightarrow{~\gamma~} \underbrace{H_1(T)\oplus H_1(M)}_{\Zz^3}\xrightarrow{~\delta~}H_1(X) \to 0.\]
+
+The map $\gamma$ is given by $\gamma(1)=(1,0,2)$ (since $C$ is a double cover of the central circle, which generates $H_1(M)$).  Certainly $\gamma$ is one-to-one,
+so $\beta=0$, hence $\alpha$ is an isomorphism.  That is, $H_2(X)\isom\Zz$.  The rest of the diagram is a short exact sequence
+\[
+ 0\to \underbrace{H_1(T\cap M)}_\Zz\xrightarrow{~\gamma~} \underbrace{H_1(T)\oplus H_1(M)}_{\Zz^3}\xrightarrow{~\delta~}H_1(X)\to 0.\]
+ Evidently $H_1(X)$ has free rank 2.
+The vector $\gamma(1)$ is part of a basis for $\Zz^3$ (say $\{(1,0,2),(0,1,0),(0,0,1)\}$.  Therefore $H_1(X)=\coker \gamma$ is torsion-free and $H_1(X)=\Zz^2$.  In conclusion,
+
+\[\boxed{\pad\quad H_2(X)=\Zz, \quad H_1(X)=\Zz^2.\quad}\]
+
+(b) In this case we have $\gamma(1)=(k,0,2)$.  If $k$ is odd then nothing changes.  If $k$ is even, then $\gamma(1)$ is not part of a basis but $\gamma(1)/2$ is, and we will wind up with $H_1(X)=\Zz^2\oplus\Zz_2$.  In short,
+
+\[\boxed{\pad\quad H_2(X)=\Zz, \qquad H_1(X)=\begin{cases} \Zz^2 & \text{ if $k$ is odd,}\\ \Zz^2\oplus\Zz_2 & \text{ if $k$ is even}.\end{cases}\quad}\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\yellprob{[Hatcher p.158 \#29] The surface $M_g$ of genus $g$, embedded in $\Rr^3$ in the standard way, bounds a compact region $R$.  Two copies of $R$, glued together by the identity map between their boundary surfaces $M_g$, form a compact closed 3-manifold $X$.  Compute the homology groups of $X$ using a Mayer-Vietoris sequence.  Also compute the relative groups  $H_i(R,M_g)$.}
+
+\soln From Example 2.36, we have $\HH_1(M_g)=\Zz^{2g}$,
+$\HH_2(M_g)=\Zz$, and $\HH_n(M_g)=0$ for $n\geq 3$.
+$$
+\HH_2(M_g)=\Zz\{M\},\qquad
+\HH_1(M_g)=\Zz\{a_1,\dots,a_g,b_1,\dots,b_g\}
+$$
+where the $a_i$ are the longitudinal circles and the $b_i$ are the
+meridional circles.
+
+Meanwhile, $R$ is homotopy equivalent to the wedge of the $g$
+longitudinal circles, so $\HH_1(R)=\Zz^g$
+and $\HH_n(R)=0$ for $n\geq 2$.
+
+For $n\geq 3$, the Mayer-Vietoris sequence includes the piece
+$$\HH_n(R)^2 = 0 \to \HH_n(X) \to \HH_{n-1}(M_g) \to 0 = \HH_{n-1}(R)^2$$
+whence $\HH_n(X)\isom \HH_{n-1}(M_g)$; this is zero for $n\geq 4$ and $\Zz$ for $n=3$.
+
+That leaves the end of the sequence, which is
+$$\HH_2(R)^2 = 0 \to \HH_2(X) \to \underbrace{\HH_1(M_g)}_{\Zz^{2g}}
+\xrightarrow{\bd} \underbrace{\HH_1(R)^2}_{\Zz^{2g}} \to\HH_1(X)\to 0$$
+The map $\bd$ kills all the meridional circles and maps
+the longitudinal circles $a_i$ to $(a_i,a_i)\in\HH_1(R)^2$;
+in particular $\HH_2(X)=\ker\bd\isom\Zz^g$ and $\HH_1(X)=\coker\bd\isom\Zz^g$.
+
+In summary:
+\[\boxed{\quad\pad\HH_3(X)=\Zz,\qquad
+\HH_2(X)=\Zz^g,\qquad
+\HH_1(X)=\Zz^g,\qquad
+\HH_0(X)=\Zz\quad}\]
+and $\HH_n(X)=0$ for $n>3$.
+
+\littleline
+
+Now for relative homology.  Observe that $R$ deformation-retracts onto the wedge sum of $g$ circles, so $\HH_1(R)\isom\Zz^g$ and $\HH_k(R)=0$ for $k\neq1$.  Also, the inclusion $M_g\into R$ is good (since we can certainly cellulate in such a way that $M_g$ is a CW-subcomplex of~$R$).  So the long exact sequence of reduced relative homology breaks into pieces
+\[H_3(R)=0 \to H_3(R,M_g) \to H_2(M_g)=\Zz \to 0\]
+and
+\[H_2(R)=0 \to H_2(R,M_g) \to H_1(M_g)=\Zz^{2g} \xrightarrow{~\psi~} \HH_1(R)=\Zz^g \to \HH_1(R,M_g)\to \HH_0(M_g)=0.\]
+The first of these gives immediately $H_3(R,M_g)=\Zz$.
+
+For the second sequence, regard $M_g$ as the connected sum of $g$ tori.  The longitudinal circles of these tori are mapped by $\psi$ to the generators of $H_1(R)$, while their meridional circles are all mapped to 0.  Therefore,
+\[\HH_2(R,M_g) \isom \ker\psi \isom \Zz^g\]
+and since $\psi$ is surjective, the arrow following it is the zero map.  But then the group $\HH_1(R,M_g)$ is pinched by two zero maps, so it itself must be zero.
+
+\end{document}

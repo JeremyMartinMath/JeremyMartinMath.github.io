@@ -1,0 +1,181 @@
+\documentclass[10pt]{amsart}
+%\documentclass[10pt]{article}
+\usepackage{amsthm,amsmath,amssymb,mathrsfs,setspace,graphicx,mathabx,tcolorbox,color,tikz,enumitem,hyperref,cancel,graphics,bm,fullpage,esvect}
+\usepackage[normalem]{ulem}
+%\usepackage[color,curve]{xypic}
+\parskip=10bp
+\parindent=0bp
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%   Essentials   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\excise}[1]{}
+\newcommand{\pagehead}[1]{\pagebreak\Large\begin{center}{\bf #1}\paddown\end{center}\normalsize\hrule\bigskip}
+\newcommand{\defterm}[1]{\boldmath\textbf{#1}\unboldmath}
+\newcommand{\littleline}{\begin{center}\rule{4in}{0.5bp}\end{center}}
+
+%%%%%%%%%%%%%%%%   Colors for TikZ and text  %%%%%%%%%%%%%%%%%
+
+\definecolor{light}{gray}{.75}
+\definecolor{med}{gray}{.5}
+\definecolor{dark}{gray}{.25}
+\newcommand{\Red}[1]{{\color{red}{#1}}}
+\newcommand{\RED}[1]{{\color{red}{\boldmath\textbf{#1}\unboldmath}}}
+\newcommand{\Blue}[1]{{\color{blue}{#1}}}
+\newcommand{\BLUE}[1]{{\color{blue}{\boldmath\textbf{#1}\unboldmath}}}
+\newcommand{\Green}[1]{{\color{green}{#1}}}
+\newcommand{\GREEN}[1]{{\color{green}{\boldmath\textbf{#1}\unboldmath}}}
+
+%%%%%%%%%%%%%%%%%%%%   Hyperlinks   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hreftext}[2]{\href{#1}{\Blue{#2}}}
+\newcommand{\hrefurl}[2]{\href{#1}{\Blue{\tt #2}}}
+
+%%%%%%%%%%%%%%%%%%%%   Figures   %%%%%%%%%%%%%%%%%%%%
+
+%% (Note: I keep my figure files in a separate folder.  If you keep your figure files in the same folder as your .tex files, remove the "figs/" from these macros.)
+\newcommand{\includefigure}[3]{\begin{center}\resizebox{#1}{#2}{\includegraphics{figs/#3}}\end{center}}
+\newcommand{\includefigurewithinmath}[3]{\resizebox{#1}{#2}{\includegraphics{figs/#3}}}
+\newcommand{\insertfigure}[3]{\resizebox{#1}{#2}{\includegraphics{figs/#3}}}
+
+%%%%%%%%%%%%%%%%%%%%   Padding   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\xxxx}{\phantom{XXXX}}
+\newcommand{\indnt}{\rule{0.5cm}{0cm}}
+\newcommand{\doubleindnt}{\rule{1cm}{0cm}}
+\newcommand{\pad}{\rule[-3mm]{0mm}{8mm}}
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\paddown}{\rule[-3mm]{0mm}{3mm}}
+\newcommand{\bpad}{\rule[-5mm]{0mm}{12mm}}
+\newcommand{\bpadup}{\rule{0mm}{7mm}}
+\newcommand{\bpaddown}{\rule[-5mm]{0mm}{5mm}}
+\newcommand{\spad}{\rule[-2mm]{0mm}{6mm}}
+\newcommand{\spadup}{\rule{0mm}{5mm}}
+\newcommand{\spaddown}{\rule[-1mm]{0mm}{1mm}}
+
+%%%%%%%%%%%%%%%%%%%%   Bullets and such   %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\bang}{\noindent $\bullet$ \quad}
+\newcommand{\pbang}{\noindent\phantom{$\bullet$}\quad}
+\newcommand{\ibang}{\phantom{xxxxx} $\bullet$ \quad}
+\newcommand{\subbang}{\noindent {}${}\quad$ $\circ$ \quad}
+\newcommand{\shout}[1]{\fbox{\parbox{6.3in}{{#1}}}}
+\newcommand{\yell}[1]{\fbox{\rule[-1.5mm]{0mm}{5mm}\bf #1 }}
+\newcommand{\yellpar}[1]{\fbox{\parbox{6.3in}{{#1}}}}
+\newcommand{\skpr}{\textit{Sketch of proof:\ }}
+
+%%%%%%%%%%%%%%%%%%%%   Theorem-like environments, invoked with   %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%   \begin{theorem} ... \end{theorem}         %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%   and numbered automatically by LaTeX       %%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}
+\numberwithin{theorem}{section}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{defprop}[theorem]{Definition/Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\exa}{\textbf{Example:} \ \ } %% unnumbered -- use discouraged
+\newcommand{\warning}{\RED{Warning:}\ }
+
+%%%%%%%%%%%%%%%%%%%%   Logical connectors in the   %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%    middle of display math     %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\caseif}{&\text{ if }}
+\newcommand{\caseelse}{&\text{ otherwise.}}
+\newcommand{\IF}{\text{ if }}
+\newcommand{\AND}{\text{ and }}
+\newcommand{\OR}{\text{ or }}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\qorq}{\quad\text{or}\quad}
+\newcommand{\qergoq}{\quad\therefore\quad}
+\newcommand{\qqandqq}{\qquad\text{and}\qquad}
+\newcommand{\qqorqq}{\qquad\text{or}\qquad}
+\newcommand{\qqergoqq}{\qquad\therefore\qquad}
+\newcommand{\qand}{\quad\text{and}}
+
+%%%%%%%%%%%%%%%%%%%%   Fancy letters    %%%%%%%%%%%%%%%%%%%%
+
+%% Sets of numbers
+\newcommand{\Cc}{{\mathbb C}}
+\newcommand{\Nn}{{\mathbb N}}
+\newcommand{\Qq}{{\mathbb Q}}
+\newcommand{\Rr}{{\mathbb R}}
+\newcommand{\Zz}{{\mathbb Z}}
+
+\renewcommand{\AA}{\mathcal{A}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\TT}{\mathscr{T}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\ZZ}{\mathscr{Z}}
+
+\newcommand{\xx}{\mathbf{x}}
+
+%%%%%%%%%%%%%%%%%%%%   Math symbols    %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\0}{\emptyset}				%% empty set symbol
+\newcommand{\adj}{\leftrightarrow}			%% "adjacent to"
+\newcommand{\bd}{\partial}
+\newcommand{\bij}{\longleftrightarrow}			%% bijection
+\newcommand{\dju}{\ensuremath{\mathaccent\cdot\cup}}	%% disjoint union
+\newcommand{\dedge}[1]{\vv{#1}}				%% directed edge -- much better with esvect package!
+\newcommand{\bedge}[1]{\reflectbox{\ensuremath{\vv{\reflectbox{\ensuremath{#1}}}}}}
+	%% backward directed edge
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eqdef}{\overset{{\rm def}}{=}}		%% "defined to be equal to"
+\newcommand{\fin}{f_{\mathrm{in}}}			%% inflow
+\newcommand{\fout}{f_{\mathrm{out}}}			%% outflow
+\newcommand{\isom}{\cong}				%% "isomorphic to"
+\newcommand{\jn}{\vee}					%% join
+\newcommand{\sd}{\triangle}				%% symmetric difference
+\newcommand{\sm}{\setminus}				%% backslash for difference of two sets
+\newcommand{\Sptr}{{\mathscr T}}			%% set of spanning trees
+\newcommand{\st}{~|~}					%% vertical bar for "such that"
+\newcommand{\x}{\times}
+
+%%%%%%%%%%%%%%%%%%%%   Math operators    %%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Aut}{Aut}				%% automorphism group
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\co}{co}
+\DeclareMathOperator{\df}{def}
+\DeclareMathOperator{\diam}{diam} 
+\DeclareMathOperator{\dir}{dir}
+\DeclareMathOperator{\girth}{girth} 
+\DeclareMathOperator{\head}{head}
+\DeclareMathOperator{\indeg}{indeg}
+\DeclareMathOperator{\Inv}{Inv} 
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\nul}{nul}
+\DeclareMathOperator{\outdeg}{outdeg}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rt}{root}
+\DeclareMathOperator{\sign}{sign} 
+\DeclareMathOperator{\tail}{tail}
+\DeclareMathOperator{\ter}{ter}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\wt}{wt}
+
+%%%%%%%%%%%%%%   Automatic numbering of HW/test problems    %%%%%%%%%%%%%%
+
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+%% versions that don't print the number of points
+\newcommand{\solprob}{\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}}\quad}
+\newcommand{\prob}{\vskip10bp\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}}\quad}
+\newcommand{\probpart}{\addtocounter{partno}{1}{\bf (\#\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\probcont}{{\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+%% versions that do print the number of points
+\newcommand{\Prob}[1]{\vskip10bp\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probnospace}[1]{\setcounter{partno}{0}\addtocounter{probno}{1}{\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probpart}[1]{\addtocounter{partno}{1}{\bf (\#\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }

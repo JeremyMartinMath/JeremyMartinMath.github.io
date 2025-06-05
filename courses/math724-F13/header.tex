@@ -1,0 +1,145 @@
+\documentclass{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathrsfs,graphics,hyperref,ifthen,framed,cancel}
+\usepackage[enableskew]{youngtab}
+%\numberwithin{equation}{section}
+\raggedbottom
+% macros to increase the available space per page
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=8.8in
+\topmargin=0.25in
+\headheight=0in
+\headsep=0.2in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+
+\newcommand{\excise}[1]{} % useful for commenting out large chunks of TeX
+
+\newcommand{\bigpad}{\rule[-14mm]{0mm}{30mm}}
+\newcommand{\smallpad}{\rule[-1.5mm]{0mm}{5mm}}
+\newcommand{\pad}{\rule[-3mm]{0mm}{8mm}}
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\paddown}{\rule[-3mm]{0mm}{2mm}}
+\newcommand{\blank}{\rule{1.25in}{0.25mm}}
+\newcommand{\commentout}[1]{}
+\newcommand{\yell}[1]{\fbox{\rule[-1mm]{0mm}{4mm} \large\bf #1 }}
+\newcommand{\bang}{$\bullet$\quad}
+\newcommand{\indnt}{\phantom{.}\qquad}
+\newcommand{\littleline}{\begin{center}\rule{4in}{0.5bp}\end{center}}
+
+% macros for inserting figures: e.g.,
+\newcommand{\includefigure}[3]{\begin{center}\resizebox{#1}{#2}{\includegraphics{#3}}\end{center}}
+\newcommand{\includefigurewithinmath}[3]{\resizebox{#1}{#2}{\includegraphics{#3}}}
+% E.g., to insert a standalone figure of width 3" and height 1.5", use
+% \includefigure{3in}{1.5in}{foo.pdf}
+
+\DeclareMathOperator{\Comp}{Comp}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Par}{Par}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\wt}{wt}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+
+\newcommand{\cor}{{\bf Corollary: }}
+\newcommand{\defn}{{\bf Definition: }}
+\newcommand{\defns}{{\bf Definitions: }}
+\newcommand{\exa}{{\bf Example: }}
+\newcommand{\fact}{{\bf Fact: }}
+\newcommand{\lem}{{\bf Lemma: }}
+\newcommand{\notn}{{\bf Notation: }}
+\newcommand{\obs}{{\bf Observation: }}
+\newcommand{\note}{{\bf Note: }}
+\newcommand{\prop}{{\bf Proposition: }}
+\newcommand{\rmk}{{\bf Remark: }}
+\newcommand{\thm}{{\bf Theorem: }}
+
+\newcommand{\basecase}{\emph{Base case: }}
+\newcommand{\indstep}{\emph{Inductive step: }}
+\newcommand{\skpr}{\emph{Sketch of proof: }}
+\newcommand{\soln}{\textit{Solution:\ }}
+
+\newcommand{\0}{\emptyset}
+\newcommand{\compn}{\models} % compositions
+\newcommand{\dju}{\mathaccent\cdot\cup} % disjoint union
+\newcommand{\fallfac}[2]{{#1}^{\underline{#2}}} % falling factorial
+\newcommand{\isom}{\cong}
+\newcommand{\partn}{\vdash} % partition symbol
+\newcommand{\qqandqq}{\qquad\text{and}\qquad}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\qbin}[2]{{\begin{bmatrix}#1\\#2\end{bmatrix}_q}} % q-binomial coefficient
+\newcommand{\risefac}[2]{{#1}^{\overline{#2}}} % rising factorial
+\newcommand{\sd}{\triangle} % symmetric difference
+\newcommand{\sm}{\setminus}
+\newcommand{\st}{\colon} % "such that"
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\x}{\times}
+
+\newcommand{\TwoCases}[4]{\begin{cases}{#1}&\text{ #2}\\{#3}&\text{ #4}\end{cases}}
+\newcommand{\ThreeCases}[6]{\begin{cases}{#1}&\text{ #2}\\{#3}&\text{ #4}\\{#5}&\text{ #6}\end{cases}}
+
+\newcommand{\bridgehand}[4]{\spadesuit\ {\textsf{#1}}\ \ \heartsuit\ {\textsf{#2}}\ \ \diamondsuit\ {\textsf{#3}}\ \ \clubsuit\ {\textsf{#4}}}
+
+% blackboard bold fonts for sets of numbers
+\newcommand{\Cc}{\mathbb{C}} % complex numbers
+\newcommand{\Ff}{\mathbb{F}} % finite field
+\newcommand{\Nn}{\mathbb{N}} % natural numbers
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Zz}{\mathbb{Z}}
+
+% macros for automatic problem numbering
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+%% versions that don't print the number of points
+\newcommand{\prob}{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}}\quad}
+
+% No initial whitespace to make framing look nicer
+\newcommand{\probn}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}}\quad}
+
+\newcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\probcont}{%
+  {\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+\newcommand{\probo}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf (\#\arabic{probno}}\ \ }
+%% versions that do print the number of points
+\newcommand{\Prob}[1]{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probpart}[1]{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }
+
+\newboolean{answers}
+\newcommand{\Answer}[1]{\ifthenelse{\boolean{answers}}{{\bf Answer:}\ #1}{}\bigskip}

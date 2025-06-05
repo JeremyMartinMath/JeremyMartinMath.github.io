@@ -1,0 +1,174 @@
+%% Header for algebraic topology
+%% JLM 2/7/11
+\documentclass{amsart}
+\usepackage{amssymb,amsmath,amsthm,graphics,hyperref,mathrsfs,stmaryrd,psfrag,dsfont}
+%\usepackage{bbold} -- commented out because there are problems printing with the bbold package
+\usepackage[all]{xy}
+\numberwithin{equation}{section}
+
+%% Set the margins to use as much of the page as possible
+
+\raggedbottom
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.5in
+\textheight=8.8in
+\topmargin=0.25in
+\headheight=0in
+\headsep=0.2in
+\footskip=0in
+\parskip=10bp
+\parindent=0bp
+
+%% Macros
+
+\newcommand{\includefigure}[3]{{
+  \begin{center}
+  \resizebox{#1}{#2}{\includegraphics{{#3}}}
+  \end{center}}}
+\newcommand{\includefigurewithinmath}[3]{{
+  \resizebox{#1}{#2}{\includegraphics{{#3}}}}}
+
+
+\newcommand{\excise}[1]{}
+\newcommand{\Latex}[1]{\textbackslash\texttt{#1}}
+
+\newcommand{\bigpad}{\rule[-14mm]{0mm}{30mm}}
+\newcommand{\smallpad}{\rule[-1.5mm]{0mm}{5mm}}
+\newcommand{\pad}{\rule[-3mm]{0mm}{8mm}}
+\newcommand{\padup}{\rule{0mm}{5mm}}
+\newcommand{\paddown}{\rule[-3mm]{0mm}{2mm}}
+\newcommand{\blank}{\rule{1.25in}{0.25mm}}
+\newcommand{\commentout}[1]{}
+\newcommand{\yell}[1]{\fbox{\rule[-1mm]{0mm}{4mm} \large\bf #1 }}
+\newcommand{\bang}{$\bullet$\quad}
+\newcommand{\indnt}{\phantom{.}\qquad}
+\newcommand{\littleline}{\begin{center}\rule{4in}{0.5bp}\end{center}}
+
+
+%\newcommand{\defterm}[1]{\underline{\textbf{#1}}}
+\newcommand{\defterm}[1]{\textbf{#1}}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\nullspace}{nullspace}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\tr}{tr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+
+\newcommand{\cor}{{\bf Corollary: }}
+\newcommand{\defn}{{\bf Definition: }}
+\newcommand{\defnthm}{{\bf Definition/Theorem: }}
+\newcommand{\defns}{{\bf Definitions: }}
+\newcommand{\exa}{{\bf Example: }}
+\newcommand{\fact}{{\bf Fact: }}
+\newcommand{\lem}{{\bf Lemma: }}
+\newcommand{\notn}{{\bf Notation: }}
+\newcommand{\obs}{{\bf Observation: }}
+\newcommand{\note}{{\bf Note: }}
+\newcommand{\prop}{{\bf Proposition: }}
+\newcommand{\rmk}{{\bf Remark: }}
+\newcommand{\soln}{{\bf Solution: }}
+\newcommand{\thm}{{\bf Theorem: }}
+
+\newcommand{\basecase}{\emph{Base case: }}
+\newcommand{\indstep}{\emph{Inductive step: }}
+\newcommand{\skpr}{\emph{Sketch of proof: }}
+
+\newcommand{\0}{\emptyset}
+\newcommand{\bd}{\partial} %% boundary
+\newcommand{\dju}{\ensuremath{\mathaccent\cdot\cup}} %% disjoint union
+%\DeclareMathOperator{\Dju}{{\bigcup\!\!\!\!\cdot}}
+%\newcommand{\Dju}{\ensuremath{\mathaccent\cdot\bigcup}} %% disjoint union
+\newcommand{\isom}{\cong}  %% homeomorphism
+\newcommand{\htop}{\simeq} %% homotopy equivalence
+\newcommand{\ov}[1]{\overline{{#1}}}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\sm}{\setminus}
+\newcommand{\st}{~|~}      %% ``such that''
+\newcommand{\x}{\times}
+
+%% Arrows
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+
+%% Various kinds of equivalence
+
+%% Boldface letters
+\renewcommand{\aa}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\pp}{\mathbf{p}}
+\newcommand{\qq}{\mathbf{q}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\zz}{\mathbf{z}}
+ 
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\BB}{\mathscr{B}}
+\newcommand{\CC}{\mathscr{C}}
+\newcommand{\FF}{\mathscr{F}}
+\newcommand{\II}{\mathscr{I}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\PP}{\mathscr{P}}
+\renewcommand{\SS}{\mathscr{S}}
+\newcommand{\TT}{\mathscr{T}}
+\newcommand{\XX}{\mathscr{X}}
+
+\newcommand{\Aa}{\mathbb{A}}
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\Ff}{\mathbb{F}}
+\newcommand{\Nn}{\mathbb{N}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Zz}{\mathbb{Z}}
+\newcommand{\IdMap}{\mathds{1}}
+%\newcommand{\IdMap}{\mathbf{1}} %% because mathbb numerals cause printing problems
+
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+%% versions that don't print the number of points
+\newcommand{\prob}{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}}\quad}
+\newcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})}\ \ }
+\newcommand{\probcont}{%
+  {\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+\newcommand{\probo}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf (\#\arabic{probno})}\ \ }
+%% versions that do print the number of points
+\newcommand{\Prob}[1]{
+  \vskip10bp%
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf Problem~\#{\arabic{probno}}~[{#1}~pts]}\quad}
+\newcommand{\Probpart}[1]{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  {\bf (\#\arabic{probno}\alph{partno})~[{#1}~pts]}\ \ }
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}

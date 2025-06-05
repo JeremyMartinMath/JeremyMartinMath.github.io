@@ -1,0 +1,125 @@
+\include{header}
+\begin{document}
+
+\section{The Basics}
+
+\subsection{Graphs}
+
+\begin{definition}
+ A \defterm{graph} $G$ is a pair $(V,E)$, where
+$V$ is a (finite), nonempty set of \defterm{vertices}
+and $E$ is a (finite) set of \defterm{edges}.
+Each edge $e$ is given by an unordered pair of two (possibly equal) vertices
+$v,w$, called its \defterm{endpoints}.
+\end{definition}
+
+%Representing graphs by pictures:
+
+\includefigure{4in}{1.0in}{graph-examples}
+
+Equivalent statements:
+\begin{itemize}
+\item $v,w$ are the \defterm{endpoints} of $e$; or
+\item $v,w$ are \defterm{joined} by the edge $e$; or
+\item $e=vw$.
+\end{itemize}
+Technically, this last notation should only be used when $e$ is the
+\emph{only} edge joining  $v$ and $w$.  Note that $e=wv$ is equivalent.
+
+Sometimes, we don't want to bother to give the edge $e$ a name; it is
+enough to know that there exists \emph{some} edge joining $v$ and $w$.
+Then we might say that $v,w$ are \defterm{adjacent} or are \defterm{neighbors}.
+(It's tempting to say ``connected'' instead, but you should try to make a habit
+of resisting temptation, because that term properly means something else.)
+
+Graphs can have \defterm{loops} (edges that join a vertex to itself) and \defterm{parallel edges} (edges with the same pairs of endpoints).  Sometimes we want to exclude these possibilities, often because they are irrelevant.  A graph with no loops and no parallel edges is called \defterm{simple}.
+
+  When studying graph theory, one quickly learns to be flexible
+  about notation.  For instance, when working with a single graph we want
+  to use the concise symbols $V$ and $E$ for its vertex and edge sets; but
+  if there are several different graphs around then it is clearer to write
+  $V(G)$, $E(H)$, etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Isomorphisms and subgraphs}
+
+As in man fields of mathematics, one of our first orders of business is to say when two of the things we want to study are the same, and when one is a subthing of another thing.
+
+\begin{definition}
+Let $G,H$ be graphs.  An \defterm{isomorphism} is a bijection $f: V(G) \to V(H)$ such that for every $v,w \in V(G)$,
+\[\#\{\text{edges of $G$ joining } v,w\} ~=~ \#\{\text{edges of $H$ joining } f(v),f(w)\}.\]
+``$G \isom H$'' means $G,H$ are isomorphic.
+\end{definition}
+
+Notice that this has nothing to do with what the graph looks like on the paper.  \RED{A drawing of a graph is not the same as the graph itself!}  These three graphs are all isomorphic to each other; the red numbers indicate the isomorphism.
+
+\includefigure{5in}{2in}{q3s}
+
+Think of an isomorphism as a relabeling, which doesn't really change the underlying structure of the graph.
+
+\begin{definition}
+ An \defterm{isomorphism invariant} is a function $\psi$ on graphs such that $\psi(G)=\psi(H)$ whenever $G \isom H$.  (Equivalently, a function on equivalence classes of graphs.)
+\end{definition}
+
+For example, the number of vertices is an invariant, as is the number of edges --- but not the number of crossings when you draw the graph (although the minimum number of crossings among all possible drawings is indeed an invariant).  Nor is a property like ``Every edge has one vertex labeled with an odd number and one vertex labeled with an even number,'' since there's nothing to prevent me from shuffling the numbers to make this false.  On the other hand, ``The graph \emph{can} be labeled so that every edge has one odd and one even label'' is an invariant.
+
+It is always possible to draw a given graph in lots of different ways, many geometrically inequivalent.  It is crucial to remember that \emph{a graph is a combinatorial object, not a geometric one.}  That is, the structure of a graph really is given by its list of vertices, edges and incidences, \emph{not} by a drawing composed of points and lines.
+
+\begin{definition}
+Let $G$ be a graph.  A \defterm{subgraph} of $G$ is a graph $H$ such that $V(H) \subseteq V(G)$ and $E(H) \subseteq E(G)$. For short we write $H \subseteq G$.
+\end{definition}
+
+Note that it is \emph{not} true that for every $X\subseteq V(G)$ and $F\subseteq E(G)$, the pair $(X,F)$ is a subgraph of $G$, because it might not even be a graph---it needs to satisfy the condition that every endpoint of an edge in $F$ belongs to $X$.  (You can't have an edge dangling in the breeze --- there needs to be a vertex on each end of it.)
+
+Every subset $F\subseteq E(G)$ determines a subgraph whose vertex set is the set of all vertices that are endpoints of at least one edge in $F$.  Also, every subset $X\subseteq V(G)$ determines a subgraph $G[X]$, the \defterm{induced subgraph}, whose edge set is the set of \emph{all} edges of $G$ with both endpoints in $X$.  Being an induced subgraph is a stronger property than being a subgraph.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Some applications of graph theory}
+Graph theory has about a zillion applications.  Here are a few.
+
+\emph{Discrete optimization}: a lot of discrete optimization problems can be modeled using graphs.
+For example, the TSP (traveling salesperson problem); the knapsack problem; matchings; cuts and flows.
+
+\emph{Discrete geometry and linear optimization:} the vertices and edges of a polytope $P$ form a graph called its \emph{1-skeleton}; when using the simplex method to solve a linear programming problem whose feasible region (i.e., the set of legal, although perhaps not optimal, solutions) is $P$, the 1-skeleton of $P$ describes exactly the steps of the algorithm.
+
+\emph{Algebra:} the \emph{Cayley graph} of a group $G$ is a graph whose edges correspond to multiplication by one of a given set of generators; basic group-theoretic notions such as relations,
+conjugation, etc.\ now have natural descriptions in terms of the Cayley graph.
+
+\emph{Topology:} you can study an infinite and therefore complicated topological space by replacing it with a finite simplicial complex (a generalized kind of graph) from which you can calculate properties of the original space; also, deep graph-theoretic concepts such as deletion/contraction often have topological analogues.
+
+\emph{Theoretical computer science:} many fundamental constructions such as finite automata are essentially glorified graphs, as are data structures such as binary search trees.
+
+\emph{Chemistry:} A molecule can be regarded as a graph in which vertices are atoms and edges are bonds.  Amazingly, the chemical properties of a substance, such as its boiling point, can sometimes be predicted with great accuracy from the purely mathematical properties of the graph of the molecule!
+
+\emph{Biology:} More complicated structures like proteins can be modeled as graphs.  The theory of rigidity of graphs has been used to understand how proteins fold and unfold.
+
+Not to mention the wonderful applicability of graphs to all manner of subjects including forestry, communications networks, efficient garbage collection, and evolutionary biology.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Some important graphs and basic constructions}
+
+The \defterm{path} $P_n$ (Diestel: $P^n$) has $n$ vertices and $n-1$ edges, connected sequentially.
+The \defterm{cycle} $C_n$ (Diestel: $C^n$)has $n$ vertices and $n$ edges and can be drawn as a polygon.
+
+\includefigure{5in}{2in}{psandcs}
+
+The \defterm{complete graph} $K_n$ (Diestel: $K^n$) has $n$ vertices and one edge between each pair of vertices.  Thus there are $\binom{n}{2}=\frac{n(n-1)}{2}$ edges in total.  Often we assume that the vertex set is $[n]=\{1,2,\dots,n\}$.  (This notation is standard in combinatorics.)  A complete graph is also called a \defterm{clique}, particularly
+when it occurs inside another graph.
+
+The \defterm{complete bipartite graph} $K_{p,q}$ has $p+q$ vertices, with $p$ of them painted red and $q$ painted blue, and an edge between each pair of differently colored vertices, for a total of $pq$ edges.
+
+\includefigure{6in}{1.2in}{ksandkks}
+
+The \defterm{empty graph} or $\bar K_n$ consists of $n$ vertices and no edges.  A copy of $\bar K_n$ appearing as an induced subgraph of a graph $G$ is the same as a set of vertices of $G$ of which no two are adjacent.  Such a set is called a \defterm{coclique} (or \defterm{independent set} or \defterm{stable set}).
+
+A few operations on graphs.
+\begin{itemize}
+\item If $G$ is a simple graph, its \defterm{complement} $\bar G$ is the graph obtained by toggling adjacency and non-adjacency.
+\item The \defterm{underlying simple graph} $G^{\text{s}}$ of any graph $G$ is obtained by deleting all loops and all but one element of each parallel class of edges.  Note that the connectivity relation on $G^{\text{s}}$ is the same as that on~$G$.
+\item The \defterm{disjoint union} $G+H$ is the union of $G$ and $H$, assuming that the vertex sets are disjoint.
+For example, $\bar K_n+\bar K_m=\overline{K_{m+n}}$ and $\overline{K_{m,n}}=K_m+K_n$.
+\item The \defterm{join} $G*H$ also has vertex set $V(G)\dju V(H)$, but this time we add every possible edge between a vertex of $G$ and a vertex of $H$.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,170 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2014\\
+Solution Set \#1\\
+Due date: Friday, January 31}
+\bigskip
+
+\yellprob{Let $X$ be a path-connected topological space.
+Prove that $X$ is connected.  (Recall that the
+converse is not true --- the topologists' sine curve
+is a counterexample.)}
+
+\soln We need to show that $X$ has no subset $U$ that is ``clopen'' (i.e., both closed
+and open) other than $\0$ or $X$.  Suppose $U$ is such a clopen subset,
+so that its complement $V=X\sm U$ is also clopen.
+Suppose that $p\in U$ and that $q\in X\sm U$.
+Let $P$ be a $p,q$-path in $X$ parametrized by $f:I=[0,1]\to X$.
+Then $P=(P\cap U)\dju(P\cap V)$.  Let
+$A=f^{-1}(P\cap U)$ and $B=f^{-1}(P\cap V)$.  Then
+\begin{itemize}
+\item $A\cup B=I$ (because $f(I)=P$);
+\item $A\cap B=\0$ (because $f(A)\cap f(B)=\0$);
+\item $A,B$ are open in $I$ (by continuity);
+\item $\0\subsetneq A,B\subsetneq I$ (because $0\in A\sm B$
+and $1\in B\sm A$).
+\end{itemize}
+But this is a contradiction because $I$ is connected.
+Therefore, no such pair $p,q$ can exist, which says that one 
+of $U,X\sm U$ is empty.  It follows that $X$ is connected.
+(In principle, this argument uses the continuity of~$f$
+to reduce the ``path-connected implies connected'' statement
+about an arbitrary topological space to the same statement about
+the familiar topological space~$I$.)\hfill\qed
+
+\altsoln Fix $x\in X$.
+For every $y\in X$, choose a path $f_y:I\to X$ with
+$f_y(0)=x$ and $f_y(1)=y$, and let $P_y=f_y(I)\subseteq X$.
+Then each $P_y$ is connected (because it is the continuous
+image of the connected space $I$) and $\bigcap_{y\in X}P_y\neq\0$
+(because it contains $x$), so $\bigcup_{y\in X}P_y=X$ is connected.
+
+%------------------------------------------------------------
+\yellprob{Let $\Gamma$ be a finite graph.  Prove that if $\Gamma$
+is connected, then it is path-connected.}
+
+\soln I'll prove something more general: every space $X$ that is both
+connected and locally path-connected is path-connected.
+(``Locally path-connected'' means that every point $x$ has a connected open
+neighborhood $U_x$.)
+A graph is locally path-connected because every vertex has a neighborhood that
+looks like the vertex itself plus $d$ rays sticking out (where $d$ is the degree
+of the vertex --- the number of edges attached to it, possibly infinite, counting a loop as two edges)
+and every point on the interior of an edge has a neighborhood that looks like
+an open interval.
+
+Let $x\in X$ and let $Y$ be the set of all points that are joined
+to $x$ by a path. For every $y\in Y$ and $q\in U_y$, we
+have an $x,y$-path and a $y,q$-path; concatenating them produces
+an $x,q$-path.  Therefore $Y=\bigcup_{y\in Y} U_y$ is open.
+
+On the other hand, let $Z=X\sm Y$.
+For every $z\in Z$ and $q\in U_z$, we
+cannot have an $q,x$-path, since we certainly have
+a $z,q$-path and concatenating the two would produce an
+$z,x$-path, which cannot exist.  Therefore,
+$Z=\bigcup_{z\in Z} U_z$ is open.
+
+We have constructed a clopen decomposition $X=Y\dju Z$
+with $Y\neq\0$ (because $x\in Y$).
+Since $X$ is connected, we must have $Y=X$ and $Z=\0$.
+This is precisely the statement that $X$ is path-connected.
+
+In fact, we don't even need the assumption of
+finiteness --- any cell complex will work.
+What this tells us, among other things, is that the topologists' sine curve cannot be
+realized as a cell complex.
+
+\pagebreak
+%------------------------------------------------------------
+\yellprob{Let $X$ and $Y$ be topological spaces and
+let $f:X\surj Y$ be a continuous function that is onto.
+Prove that if $X$ is compact, then so is $Y$.}
+
+\soln Let $\{U_\alpha\st\alpha\in A\}$ be an open cover
+of $Y$.  Then $\{f^{-1}(U_\alpha)\st\alpha\in A\}$ is an open cover
+of $X$ (because every point in $X$ gets mapped to
+a point in at least one $U_\alpha$, hence belongs to $f^{-1}(U_\alpha)$).
+By compactness, it has a finite subcover:
+$\{f^{-1}(U_\alpha)\st\alpha\in A'\}$, where $A'\subseteq A$ is finite.
+I.e., $X=\bigcup_{\alpha\in A'}f^{-1}(U_\alpha)$.
+This implies set-theoretically that $Y=\bigcup_{\alpha\in A'}U_\alpha$,
+so there we have the desired finite subcover.
+
+%------------------------------------------------------------
+\yellprob{[Hatcher p.18 \#1] Construct an explicit deformation retraction of the torus with one point deleted onto a graph consisting of two circles intersecting in a point.}
+
+Solution: Draw a square $Q$ from which the center point $c$ has been deleted.  For each point $p\in Q\sm c$, draw the ray $\ray{cp}$ and let $f(p)$ be the point where that ray hits the boundary $\bd Q$.  Define $F:Q\x I\to Q$ by
+\[F(p,t) = (1-t)p + t f(p)\]
+(where the arithmetic is vector arithmetic in $\Rr^2$).  Note that $F(0,p)=p$ and $F(1,p)=f(p)$.  Moreover, if $p\in\bd Q$ then $F(p,t)=p$ for all $t$.  So $F$ is a deformation retraction.
+
+\includefigure{3in}{3in}{torusDR}
+
+If we pass from $Q$ to the torus $T$ by identifying opposite sides, the map $F$ is still well-defined and is a deformation retraction.  Note that $\bd Q$ maps onto the union of two circles that meet in a point --- one longitudinal and one meridional circle.
+
+{\bf Note:} Many of you found the explicit formula for $f$.  Specifically, if $p=(x,y)$ in Cartesian coordinates, then
+\[f(p) = \frac{1}{\max(|x|,|y|}p\]
+which is well-defined precisely because $p\neq(0,0)$.  However, the geometric description above is sufficient.
+
+One solver (Billy) found another way to say this: build the torus by starting with the closed unit \textbf{disk}, partitioning its boundary circle into four $90^\circ$ arcs (say, the intersections with the four quadrants in $\Rr^2$), and identifying them.  Then the deformation retraction can be expressed very naturally in polar coordinates: $F((r,\theta),t)=((1-t)r+t,\theta)$.
+
+
+
+\pagebreak
+%------------------------------------------------------------
+\yellprob{[Hatcher p.18 \#3, more or less]  (a) Show that homotopy equivalence of spaces is an equivalence relation.}
+
+For reflexivity, the identity map is a homotopy equivalence, and symmetry is immediate from the definition.  For transitivity,  suppose we have maps as shown that are all homotopy equivalences.
+\[\xymatrix{
+X \ar@/^/[r]^f & Y\ar@/^/[l]^g\ar@/^/[r]^h & Z \ar@/^/[l]^k
+}\]
+Let $p=g\circ k\circ h\circ f$.  We need to construct a homotopy $\alpha\htop\IdMap_X$.  By hypothesis, suppose we have a homotopy
+\[q_t:Y\to Y, \qquad q_0=\IdMap_Y,\quad q_1=k\circ h.\]
+Then $g\circ q_t\circ f$ is a homotopy
+with  $g\circ q_1\circ f=p$ and $g\circ q_t\circ f=g\circ f$.  Therefore
+\[p =  g\circ k\circ h\circ f \htop g\circ f \htop \IdMap_X.\]
+
+{\bf (b) Fix spaces $X,Y$ and let $f,g$ be maps $X\to Y$.  Show that the relation ``$f$ is homotopic to $g$'' is an equivalence relation.}
+
+Reflexivity: $f\htop f$ by the homotopy $F(x,t)=f(x)$.
+
+Symmetry: If $F(x,t)$ is a homotopy between $f$ and $g$ then $F(x,1-t)$ is a homotopy between $g$ and $f$.
+
+Transitivity: If $F(x,t),G(x,t)$ realize homotopies $f\htop g$ and $g\htop h$, then define $H(x,t)=F(x,2t)$ for $0\leq t\leq 1/2$ and $H(x,t)=G(x,2t-1)$ for $1/2\leq t\leq 1$.
+
+{\bf (c) Show that a map homotopic to a homotopy equivalence is a homotopy equivalence.}
+
+Lemma: Let $f_0,f_1$ be homotopic maps $X\to Y$.  Let $a:W\to X$ and $b:Y\to Z$ be maps.  Then $f_0\circ a\htop f_1\circ a$
+and $b\circ f_0\htop b\circ f_1$.
+
+Proof: If $F:X\to I$ is a homotopy between $f_0$ and $f_1$, then  $F\circ(a\x\IdMap)$ is a homotopy between $f_0\circ a$ and $f_1\circ a$ and $b\circ F$ is a homotopy between $b\circ f_0$ and $b\circ f_1$.
+
+Corollary: If $f_0\htop f_1$ and $g$ is a homotopy inverse for $f_0$, then by the lemma we have
+$f_1\circ g\htop f_0\circ g\htop\IdMap_Y$ and $g\circ f_1\htop g\circ f_1\htop\IdMap_X$.  So something even stronger is true: if $g$ is a homotopy inverse for $f$ then it is a homotopy inverse for any map to which $F$ is homotopic.
+
+\pagebreak
+%------------------------------------------------------------
+\yellprob{[Hatcher p.19 \#14] Given nonnegative integers $v,e,f$ with $v-e+f=2$ (and $v,f>0$), construct a cell structure on $S^2$ having $v$ 0-cells, $e$ 1-cells, and $f$ 2-cells.  (Do not use any facts about spanning trees or Euler characteristic.)}
+
+\soln First, a terminological note.  The following phrases are all synonyms:
+\begin{itemize}
+\item ``cell structure on $S^2$'';
+\item ``cell complex homeomorphic to $S^2$'';
+\item ``cellular 2-sphere'';
+\item ``cellular $S^2$'';
+\item ``cellulation of $S^2$''.
+\end{itemize}
+
+There is only one cellular $S^2$ with $(v,e,f)=(1,0,1)$: take a 2-cell and squash its boundary to a point.  Equivalently, this is the one-point compactification of $\Rr^2$.
+
+For the case $e>0$, there are several constructions; here is one.  Draw a sphere with an equator, and put $v$ vertices on the equator, making $v$ edges between them.  (If $e=1$ this means that the equator is a loop; that's okay.)
+Then pick one of the vertices and draw $f-2$ nested loops at it, all reaching into the southern hemisphere.  We end up with a cell structure with $v$ vertices and $v+f-2=e$ edges.  The number of faces is $f$ because the equator separates the globe into two 2-cells (the northern and southern hemispheres), and each loop adds one more to the count of 2-cells.  For example, here is a picture with $(v,e,f)=(5,7,4)$:
+
+\includefigure{3in}{3in}{vef-sphere}
+
+Note 1:  In order to have a \emph{regular} cellular 2-sphere, I believe it is necessary and sufficient to have at least two cells of each dimension.
+
+Note 2: Many of you broke the problem into several cases depending on the value of $e$.  This is OK as a means of solving the problem, but when you write it up, you should see if you can find a simpler solution that does not require case analysis.
+
+\end{document}

@@ -1,0 +1,38 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 725, Spring 2016 \hfill Problem Set \#5}
+\smallskip\hrule
+
+{\bf Instructions:} Do all problems and typeset them in \LaTeX.  E-mail the PDF file to Jeremy at \hrefurl{mailto:jlmartin@ku.edu}{\tt jlmartin@ku.edu} under the filename {\tt your-last-name.pdf} by {\bf Friday, April 1, 5:00pm.}
+You are encouraged to use the \hreftext{http://www.jlmartin.faculty.ku.edu/math725/header.tex}{LaTeX header file} and to refer to Jeremy's \hreftext{http://www.jlmartin.faculty.ku.edu/math725/notesnew.pdf}{lecture notes}.
+
+\smallskip\hrule
+
+\prob Complete the proof that $a(G)=|p_G(-1)|$ for all graphs $G$, where $a(G)$ is the number of acyclic orientations and $p_G$ is the chromatic polynomial.  (The proof is sketched in the lecture notes.  Your main task is to prove the deletion/contraction recurrence for $a(G)$.)
+
+\prob Let $\II=\{I_1,\dots,I_n\}$, where each $I_i$ is an interval $[a_i,b_i]\subseteq\Rr^n$.  The corresponding \defterm{interval graph} is defined as the graph $G_\II$ with vertices $1,2,\dots,n$ and edges $ij$ whenever $I_i\cap I_j\neq\0$.  Prove that~$G_\II$ is always a chordal graph.
+
+\prob
+Find and prove a formula for $p_{C_n}(k)$ that holds for all $n\geq 3$.   You may want to start by gathering data.  To do this using Sage, go to \hrefurl{http://aleph.sagemath.org}{http://aleph.sagemath.org} and type this into the box:
+\begin{verbatim}
+G = graphs.CycleGraph(3)
+G.chromatic_polynomial()
+\end{verbatim}
+You can change the value of 3 to gather data on other cycle graphs (to do this most efficiently, use a \verb+for+ loop).  If you want to see the polynomial in factored form, change the second line to
+\begin{verbatim}
+G.chromatic_polynomial().factor()
+\end{verbatim}
+In either case, the coefficients you see should look familiar, enabling you to make a conjecture about what $p_{C_n}(k)$ is for general $n$.  By the way, does the formula work for $n<3$?
+
+\prob A \defterm{regular polyhedron} (or \defterm{Platonic solid}) is a polyhedron in which all vertices have the same number of neighbors, all edges have the same length, all edge-edge angles are equal, and all face-face angles are equal---in other words, as symmetric as it can possibly be.  The graph $G$ of any regular polyhedron is planar (embed $G$ on the surface of a sphere, then puncture the sphere to obtain a plane drawing).  Moreover, $G$ is $k$-regular for some $k\geq 3$, and $G^*$ is $\ell$-regular for some $\ell \geq 3$.
+
+Using handshaking, the length-sum formula, and Euler's formula, determine all possibilities for $k$ and $\ell$, and thus for the numbers of vertices, edges and faces of $P$.  For at least three of these possibilities (preferably all of them), show that there is only one planar graph (up to isomorphism) with these parameters, and determine what graph it is.
+
+\prob A graph is \defterm{outerplanar} if it has a drawing in which every vertex lies on the unbounded face.
+
+\probpart Show that $K_4$ and $K_{3,2}$ are planar but not outerplanar.  (Hint: Mimic the proof that $K_5$ and $K_{3,3}$ are not planar.)
+
+\probpart Use Kuratowski's theorem to prove that $G$ is outerplanar if and only if it has neither $K_4$ or $K_{3,2}$ as a minor.  (Hint: One direction follows from part (a).  For the converse, find an appropriate modification of $G$ to which you can apply Kuratowski's theorem.
+
+\end{document}

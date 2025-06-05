@@ -1,0 +1,38 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2018\\
+Problem Set \#5\\
+Deadline: Thursday, May 3, 11:59pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  You are encouraged to use the \hreftext{http://jlmartin.faculty.ku.edu/math821/header.tex}{Math 821 header file}. Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name and the problem set number (e.g., \texttt{Mirzakhani5.pdf}).  Collaboration is encouraged, but each student must write up his or her solutions independently and acknowledge all collaborators.
+\medskip\hrule
+
+\prob Let $n\leq d\geq 0$ and let $X=\Delta^{n,d}$ denote the $d$-skeleton of the $n$-dimensional simplex (with $n+1$ vertices $v_0,v_1,\dots,v_n$).  
+\emph{Without writing down any explicit simplicial boundary matrices}, prove that the reduced homology groups of $X$ are given by
+\[\HH_k(X) = \begin{cases}
+\Zz^{\binom{n}{d+1}} & \text{ if $k=d$,}\\
+0 & \text{ if $k<d$}.
+\end{cases}\]
+(You may want to first use a computer to convince yourself that the result is correct.)
+
+\vfill\prob [Hatcher p.156 \#9bc]  Compute the homology groups of the following spaces:
+
+\probpart $\Ss^1\x(\Ss^1\vee \Ss^1)$.\\
+\padup\probpart The space obtained from $D^2$ by first deleting the interiors of two disjoint subdisks, then identifying all three resulting circles together via homomorphisms preserving clockwise orientations of the circles.
+
+\vfill\prob [Hatcher p.156 \#11] Let $K$ be the 3-dimensional cell complex obtained from the cube $I^3$ by identifying each pair of opposite faces via a one-quarter twist.  (See exercise \#14 on p.54.)  Compute the homology groups $\HH_n(K;\Zz)$ and $\HH_n(K;\Zz_2)$ for $n>0$.
+
+\vfill\prob [Hatcher p.157 \#28(a), modified] (a) Use a Mayer-Vietoris sequence to compute the homology groups of the space $X$ obtained from a torus $T=\Ss^1\x \Ss^1$ by attaching a M\"obius band $M$ via a homeomorphism from the boundary circle $C$ of $M$ to the circle $\Ss^1\x\{x_0\}$ in the torus.
+
+(b) How does the answer change if $C$ is attached to a closed loop that wraps $k$ times around the first circle (i.e., via the path $f:I\to\Ss^1\x\Ss^1\subset\Cc\x\Cc$ given by $f(t)=(e^{2\pi i kt},1)$)?
+
+\vfill\prob [Hatcher p.205 \#8(a)] Many basic homology arguments work equally well for cohomology, with maps in the opposite direction.  In particular, for all coefficient rings $R$ and numbers $i\leq n$, compute $H^i(S^n;R)$ by induction on $n$ in two ways: using the long exact sequence of a pair, and using the Mayer-Vietoris sequence.
+(We didn't explicitly talk about these sequences, but they are essentially the same as the homology versions with the arrows reversed; see \S3.1 of Hatcher for details if you are not confident about reversing the arrows yourself.)
+
+\vfill\prob Let $X$ and $Y$ be connected spaces, so that $H^0(X;R)\isom H^0(Y;R)\isom H^0(X\vee Y;R)\isom R$.
+
+\probpart  Show that $H^k(X\vee Y;R)\isom H^k(X;R)\oplus H^k(Y;R)$ for all $k>0$.\\
+\probpart Show that if $\alpha\in H^k(X;R)$ and $\beta\in H^\ell(Y;R)$ with $k,\ell>0$, then $\alpha\smile\beta=0$ in $H^*(X\vee Y;R)$.\pad\\
+\probpart Conclude that $\Ss^1\x\Ss^1$ is not homeomorphic to $\Ss^2\vee\Ss^1\vee\Ss^1$, even though their homology and cohomology groups are equal in all dimensions.
+\vfill\end{document}

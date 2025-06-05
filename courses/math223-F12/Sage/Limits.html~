@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:8000/home/pub/1/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Limits -- Sage</title>
+        
+        
+        <link type="text/css" rel="stylesheet" href="./Limits -- Sage_files/main.css">
+        
+        
+        <script type="text/javascript" src="./Limits -- Sage_files/jquery-1.3.2.min.js"></script>
+        
+<!-- jQuery UI - interacts, widgets, drag-drop, etc. -->
+<link rel="stylesheet" href="http://localhost:8000/javascript/jqueryui/css/sage/jquery-ui-1.7.2.custom.css">
+<script type="text/javascript" src="./Limits -- Sage_files/jquery-ui-1.7.2.custom.min.js"></script>
+
+<!-- jQuery plugins - color pickers, shift-click, AJAX forms, IE fixes, notifications -->
+<link rel="stylesheet" href="./Limits -- Sage_files/farbtastic.css" type="text/css">
+<script type="text/javascript" src="./Limits -- Sage_files/farbtastic.min.js"></script>
+<script type="text/javascript" src="./Limits -- Sage_files/jquery.event.extendedclick.min.js"></script>
+<script type="text/javascript" src="./Limits -- Sage_files/jquery.form.min.js"></script>
+<script type="text/javascript" src="./Limits -- Sage_files/jquery.bgiframe.min.js"></script>
+<link rel="stylesheet" href="./Limits -- Sage_files/jPicker-1.0.11.css" type="text/css">
+<script type="text/javascript" src="./Limits -- Sage_files/jpicker-1.0.11.min.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="./Limits -- Sage_files/colorpicker.css">
+<script type="text/javascript" src="./Limits -- Sage_files/colorpicker.min.js"></script>
+<script type="text/javascript" src="./Limits -- Sage_files/ui.achtung-mod.min.js"></script>
+
+<script type="text/javascript" src="./Limits -- Sage_files/main.js"></script>
+
+
+<!-- jsMath - typeset mathematics -->
+<script type="text/javascript" src="./Limits -- Sage_files/jsmath.js"></script><script src="./Limits -- Sage_files/jsMath-easy-load.js"></script><script src="./Limits -- Sage_files/jsMath.js"></script>
+
+
+
+<!-- Sage3d - accelerated 3D graphics -->
+<script type="text/javascript" src="./Limits -- Sage_files/sage3d.js"></script>
+
+<!-- Jmol - embedded 3D graphics -->
+<script type="text/javascript" src="./Limits -- Sage_files/Jmol.js"></script>
+<!-- This must stay in head -->
+<script>jmolInitialize("/java/jmol");jmolSetCallback("menuFile","/java/jmol/appletweb/SageMenu.mnu");</script>
+
+
+
+<script type="text/javascript">user_name= "admin";</script>
+
+<script type="text/javascript">
+    worksheet_filename = "pub/1";
+    worksheet_name = 'Limits';
+    server_ping_while_alive();
+</script>
+
+
+
+        
+        
+        
+        <script type="text/javascript" src="./Limits -- Sage_files/master.js"></script>
+    <style type="text/css">#jsMath_test {font-size:200%}
+</style><style type="text/css">.math {font-family: serif; font-style: normal; font-weight: normal}
+.typeset {font-family: serif; font-style: normal; font-weight: normal; line-height: normal; text-indent: 0px; white-space: normal}
+.typeset .normal {font-family: serif; font-style: normal; font-weight: normal}
+div.typeset {text-align: center; margin: 1em 0px}
+span.typeset {text-align: left}
+.typeset span {text-align: left; border: 0px; margin: 0px; padding: 0px}
+a .typeset img, .typeset a img {border: 0px; border-bottom: 1px solid blue;}
+.typeset .size0 {font-size: 50%}
+.typeset .size1 {font-size: 60%}
+.typeset .size2 {font-size: 70%}
+.typeset .size3 {font-size: 85%}
+.typeset .size4 {font-size: 100%}
+.typeset .size5 {font-size: 120%}
+.typeset .size6 {font-size: 144%}
+.typeset .size7 {font-size: 173%}
+.typeset .size8 {font-size: 207%}
+.typeset .size9 {font-size: 249%}
+.typeset .cmr10 {font-family: jsMath-cmr10, serif}
+.typeset .cmbx10 {font-family: jsMath-cmbx10, jsMath-cmr10}
+.typeset .cmti10 {font-family: jsMath-cmti10, jsMath-cmr10}
+.typeset .cmmi10 {font-family: jsMath-cmmi10}
+.typeset .cmsy10 {font-family: jsMath-cmsy10}
+.typeset .cmex10 {font-family: jsMath-cmex10}
+.typeset .textit {font-family: serif; font-style: italic}
+.typeset .textbf {font-family: serif; font-weight: bold}
+.typeset .link {text-decoration: none}
+.typeset .error {font-size: 90%; font-style: italic; background-color: #FFFFCC; padding: 1px; border: 1px solid #CC0000}
+.typeset .blank {display: inline-block; overflow: hidden; border: 0px none; width: 0px; height: 0px}
+.typeset .spacer {display: inline-block}
+#jsMath_hiddenSpan {visibility: hidden; position: absolute; top: 0px; left: 0px; line-height: normal; text-indent: 0px}
+#jsMath_message {position: fixed; bottom: 1px; left: 2px; background-color: #E6E6E6; border: solid 1px #959595; margin: 0px; padding: 1px 8px; z-index: 102; color: black; font-size: small; width: auto}
+#jsMath_panel {position: fixed; bottom: 1.75em; right: 1.5em; padding: .8em 1.6em; background-color: #DDDDDD; border: outset 2px; z-index: 103; width: auto; color: black; font-size: 10pt; font-style: normal}
+#jsMath_panel .disabled {color: #888888}
+#jsMath_panel .infoLink {font-size: 85%}
+#jsMath_panel * {font-size: inherit; font-style: inherit; font-family: inherit; line-height: normal}
+#jsMath_panel div {background-color: inherit; color: inherit}
+#jsMath_panel span {background-color: inherit; color: inherit}
+#jsMath_panel td {border: 0px; padding: 0px; margin: 0px; background-color: inherit; color: inherit}
+#jsMath_panel tr {border: 0px; padding: 0px; margin: 0px; background-color: inherit; color: inherit}
+#jsMath_panel table {border: 0px; padding: 0px; margin: 0px; background-color: inherit; color: inherit; height: auto; width: auto}
+#jsMath_button {position:fixed; bottom:1px; right:20px; background-color:white; border: solid 1px #959595; margin:0px; padding: 0px 3px 1px 3px; z-index:102; color:black; text-decoration:none; font-size:x-small; width:auto; cursor:hand;}
+#jsMath_button * {padding: 0px; border: 0px; margin: 0px; line-height: normal; font-size: inherit; font-style: inherit; font-family: inherit}
+#jsMath_global {font-style: italic}
+#jsMath_noFont .message {text-align: center; padding: .8em 1.6em; border: 3px solid #DD0000; background-color: #FFF8F8; color: #AA0000; font-size: small; width: auto}
+#jsMath_noFont .link {padding: 0px 5px 2px 5px; border: 2px outset; background-color: #E8E8E8; color: black; font-size: 80%; width: auto; cursor: hand}
+#jsMath_PrintWarning .message {text-align: center; padding: .8em 1.6em; border: 3px solid #DD0000; background-color: #FFF8F8; color: #AA0000; font-size: x-small; width: auto}
+@media print {#jsMath_button {display: none}
+#jsMath_Warning {display: none}
+}
+@media screen {#jsMath_PrintWarning {display: none}
+}
+.typeset .scale {font-size: 115%}
+</style></head>
+    <body id="guest-worksheet-page" class=""><div id="jsMath_message" style="visibility: hidden; " title=""></div><div id="jsMath_button" title=" Open jsMath Control Panel "><span onclick="jsMath.Controls.Panel()">jsMath</span></div><div id="jsMath_panel" style="display: none; "></div><div id="jsMath_Hidden" style="visibility: hidden; position: absolute; top: 0px; left: 0px; border: 0px; padding: 0px; margin: 0px; "></div>
+        
+<ul class="controls">
+    <li><a href="http://localhost:8000/home/pub/1/edit_published_page">Edit this.</a></li>
+    <li><a href="http://localhost:8000/home/pub/1/download/Limits.sws">Download.</a></li>
+    
+    <li><a href="http://localhost:8000/pub/">Other published documents...</a></li>
+</ul>
+<hr class="usercontrol">
+<h1 class="title">Limits</h1>
+<h2 class="lastedit">
+<span class="lastedit">41 seconds ago by admin</span></h2>
+
+
+
+
+
+<div class="cell_input_active" id="cell_resizer"></div>
+
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_3" class="cell_visible">
+    <div id="cell_3" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">var('x,y,z')&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_3" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_3">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_3">
+                            <div class="cell_output_print_wrap" id="cell_output_3">
+                                
+                                    <pre class="shrunk">(x, y, z)</pre>
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_3">
+                                    
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_8" class="cell_visible">
+    <div id="cell_8" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">S = (sin(x)^2+sin(y)^2)/(x^2+y^2)
+SinPlot = lambda r: plot3d( S, (x,-r,r), (y,-r,r), mesh=True, plot_points=200)
+SinPlot(1)&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_8" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_8">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_8">
+                            <div class="cell_output_print_wrap" id="cell_output_8">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_8">
+                                    <div><script>jmol_applet(500, "/home/pub/1/cells/8/sage0-size500.jmol?1345574424");</script><applet name="jmolApplet0" id="jmolApplet0" class="jmol_applet" code="JmolApplet" archive="JmolApplet0.jar" codebase="http://localhost:8000/java/jmol" width="500" height="500" mayscript="true">
+  <param name="syncId" value="7257107645273209">
+  <param name="progressbar" value="true">
+  <param name="progresscolor" value="blue">
+  <param name="boxbgcolor" value="black">
+  <param name="boxfgcolor" value="white">
+  <param name="boxmessage" value="Downloading JmolApplet ...">
+  <param name="menuFile" value="/java/jmol/appletweb/SageMenu.mnu">
+  <param name="script" value="script /home/pub/1/cells/8/sage0-size500.jmol?1345574424">
+<table bgcolor="yellow"><tbody><tr><td align="center" valign="middle" width="500" height="500"><font color="black">
+You do not have the<br>
+Java Runtime Environment<br>
+installed for applet support.<br>
+Visit <a href="http://www.java.com/">www.java.com</a></font></td></tr></tbody></table></applet> <a href="http://localhost:8000/home/pub/1/#" onclick="jmol_image(0);return false;">Get Image</a></div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_9" class="cell_visible">
+    <div id="cell_9" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">SinPlot(0.1)&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_9" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_9">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_9">
+                            <div class="cell_output_print_wrap" id="cell_output_9">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_9">
+                                    <div><script>jmol_applet(500, "/home/pub/1/cells/9/sage0-size500.jmol?1345574424");</script><applet name="jmolApplet1" id="jmolApplet1" class="jmol_applet" code="JmolApplet" archive="JmolApplet0.jar" codebase="http://localhost:8000/java/jmol" width="500" height="500" mayscript="true">
+  <param name="syncId" value="7257107645273209">
+  <param name="progressbar" value="true">
+  <param name="progresscolor" value="blue">
+  <param name="boxbgcolor" value="black">
+  <param name="boxfgcolor" value="white">
+  <param name="boxmessage" value="Downloading JmolApplet ...">
+  <param name="menuFile" value="/java/jmol/appletweb/SageMenu.mnu">
+  <param name="script" value="script /home/pub/1/cells/9/sage0-size500.jmol?1345574424">
+<table bgcolor="yellow"><tbody><tr><td align="center" valign="middle" width="500" height="500"><font color="black">
+You do not have the<br>
+Java Runtime Environment<br>
+installed for applet support.<br>
+Visit <a href="http://www.java.com/">www.java.com</a></font></td></tr></tbody></table></applet> <a href="http://localhost:8000/home/pub/1/#" onclick="jmol_image(1);return false;">Get Image</a></div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_10" class="cell_visible">
+    <div id="cell_10" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">SinPlot(0.01)&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_10" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_10">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_10">
+                            <div class="cell_output_print_wrap" id="cell_output_10">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_10">
+                                    <div><script>jmol_applet(500, "/home/pub/1/cells/10/sage0-size500.jmol?1345574424");</script><applet name="jmolApplet2" id="jmolApplet2" class="jmol_applet" code="JmolApplet" archive="JmolApplet0.jar" codebase="http://localhost:8000/java/jmol" width="500" height="500" mayscript="true">
+  <param name="syncId" value="7257107645273209">
+  <param name="progressbar" value="true">
+  <param name="progresscolor" value="blue">
+  <param name="boxbgcolor" value="black">
+  <param name="boxfgcolor" value="white">
+  <param name="boxmessage" value="Downloading JmolApplet ...">
+  <param name="menuFile" value="/java/jmol/appletweb/SageMenu.mnu">
+  <param name="script" value="script /home/pub/1/cells/10/sage0-size500.jmol?1345574424">
+<table bgcolor="yellow"><tbody><tr><td align="center" valign="middle" width="500" height="500"><font color="black">
+You do not have the<br>
+Java Runtime Environment<br>
+installed for applet support.<br>
+Visit <a href="http://www.java.com/">www.java.com</a></font></td></tr></tbody></table></applet> <a href="http://localhost:8000/home/pub/1/#" onclick="jmol_image(2);return false;">Get Image</a></div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_1" class="cell_visible">
+    <div id="cell_1" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">PinchPlot = lambda r: plot3d( (x^2-y^2)/(x^2+y^2), (x,-r,r), (y,-r,r), mesh=True, plot_points=200)
+PinchPlot(1)&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_1" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_1">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_1">
+                            <div class="cell_output_print_wrap" id="cell_output_1">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_1">
+                                    <div><script>jmol_applet(500, "/home/pub/1/cells/1/sage0-size500.jmol?1345574424");</script><applet name="jmolApplet3" id="jmolApplet3" class="jmol_applet" code="JmolApplet" archive="JmolApplet0.jar" codebase="http://localhost:8000/java/jmol" width="500" height="500" mayscript="true">
+  <param name="syncId" value="7257107645273209">
+  <param name="progressbar" value="true">
+  <param name="progresscolor" value="blue">
+  <param name="boxbgcolor" value="black">
+  <param name="boxfgcolor" value="white">
+  <param name="boxmessage" value="Downloading JmolApplet ...">
+  <param name="menuFile" value="/java/jmol/appletweb/SageMenu.mnu">
+  <param name="script" value="script /home/pub/1/cells/1/sage0-size500.jmol?1345574424">
+<table bgcolor="yellow"><tbody><tr><td align="center" valign="middle" width="500" height="500"><font color="black">
+You do not have the<br>
+Java Runtime Environment<br>
+installed for applet support.<br>
+Visit <a href="http://www.java.com/">www.java.com</a></font></td></tr></tbody></table></applet> <a href="http://localhost:8000/home/pub/1/#" onclick="jmol_image(3);return false;">Get Image</a></div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_11" class="cell_visible">
+    <div id="cell_11" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_11" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_11">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_11">
+                            <div class="cell_output_print_wrap" id="cell_output_11">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_11">
+                                    
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_7" class="cell_visible">
+    <div id="cell_7" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">PinchPlot(0.1)&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_7" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_7">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_7">
+                            <div class="cell_output_print_wrap" id="cell_output_7">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_7">
+                                    <div><script>jmol_applet(500, "/home/pub/1/cells/7/sage0-size500.jmol?1345574424");</script><applet name="jmolApplet4" id="jmolApplet4" class="jmol_applet" code="JmolApplet" archive="JmolApplet0.jar" codebase="http://localhost:8000/java/jmol" width="500" height="500" mayscript="true">
+  <param name="syncId" value="7257107645273209">
+  <param name="progressbar" value="true">
+  <param name="progresscolor" value="blue">
+  <param name="boxbgcolor" value="black">
+  <param name="boxfgcolor" value="white">
+  <param name="boxmessage" value="Downloading JmolApplet ...">
+  <param name="menuFile" value="/java/jmol/appletweb/SageMenu.mnu">
+  <param name="script" value="script /home/pub/1/cells/7/sage0-size500.jmol?1345574424">
+<table bgcolor="yellow"><tbody><tr><td align="center" valign="middle" width="500" height="500"><font color="black">
+You do not have the<br>
+Java Runtime Environment<br>
+installed for applet support.<br>
+Visit <a href="http://www.java.com/">www.java.com</a></font></td></tr></tbody></table></applet> <a href="http://localhost:8000/home/pub/1/#" onclick="jmol_image(4);return false;">Get Image</a></div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_2" class="cell_visible">
+    <div id="cell_2" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">PinchPlot + implicit_plot3d(y==0, (x,-1,1), (y,-1,1), (z,-2,2), color='red')&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_2" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_2">
+                            <div class="cell_output_print_wrap" id="cell_output_2">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_2">
+                                    <div><script>jmol_applet(500, "/home/pub/1/cells/2/sage0-size500.jmol?1345574424");</script><applet name="jmolApplet5" id="jmolApplet5" class="jmol_applet" code="JmolApplet" archive="JmolApplet0.jar" codebase="http://localhost:8000/java/jmol" width="500" height="500" mayscript="true">
+  <param name="syncId" value="7257107645273209">
+  <param name="progressbar" value="true">
+  <param name="progresscolor" value="blue">
+  <param name="boxbgcolor" value="black">
+  <param name="boxfgcolor" value="white">
+  <param name="boxmessage" value="Downloading JmolApplet ...">
+  <param name="menuFile" value="/java/jmol/appletweb/SageMenu.mnu">
+  <param name="script" value="script /home/pub/1/cells/2/sage0-size500.jmol?1345574424">
+<table bgcolor="yellow"><tbody><tr><td align="center" valign="middle" width="500" height="500"><font color="black">
+You do not have the<br>
+Java Runtime Environment<br>
+installed for applet support.<br>
+Visit <a href="http://www.java.com/">www.java.com</a></font></td></tr></tbody></table></applet> <a href="http://localhost:8000/home/pub/1/#" onclick="jmol_image(5);return false;">Get Image</a></div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_5" class="cell_visible">
+    <div id="cell_5" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">plot3d?&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_5" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_5">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_5">
+                            <div class="cell_output_print_wrap" id="cell_output_5">
+                                
+                                    <!--notruncate-->
+<div class="docstring">
+    
+  <p><strong>File:</strong> /usr/local/sage-4.5.2-linux-32bit-ubuntu_10.04_lts-i686-Linux/local/lib/python2.6/site-packages/sage/plot/plot3d/plot3d.py</p>
+<p><strong>Type:</strong> &lt;type ‘function’&gt;</p>
+<p><strong>Definition:</strong> plot3d(f, urange, vrange, adaptive=False, transformation=None, **kwds)</p>
+<p><strong>Docstring:</strong></p>
+<blockquote>
+<p>INPUT:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">f</span></tt> - a symbolic expression or function of 2
+variables</li>
+<li><tt class="docutils literal"><span class="pre">urange</span></tt> - a 2-tuple (u_min, u_max) or a 3-tuple
+(u, u_min, u_max)</li>
+<li><tt class="docutils literal"><span class="pre">vrange</span></tt> - a 2-tuple (v_min, v_max) or a 3-tuple
+(v, v_min, v_max)</li>
+<li><tt class="docutils literal"><span class="pre">adaptive</span></tt> - (default: False) whether to use
+adaptive refinement to draw the plot (slower, but may look better).
+This option does NOT work in conjuction with a transformation
+(see below).</li>
+<li><tt class="docutils literal"><span class="pre">mesh</span></tt> - bool (default: False) whether to display
+mesh grid lines</li>
+<li><tt class="docutils literal"><span class="pre">dots</span></tt> - bool (default: False) whether to display
+dots at mesh grid points</li>
+<li><tt class="docutils literal"><span class="pre">plot_points</span></tt> - (default: “automatic”) initial number of sample
+points in each direction; an integer or a pair of integers</li>
+<li><tt class="docutils literal"><span class="pre">transformation</span></tt> - (default: None) a transformation to
+apply. May be a 3 or 4-tuple (x_func, y_func, z_func,
+independent_vars) where the first 3 items indicate a
+transformation to cartesian coordinates (from your coordinate
+system) in terms of u, v, and the function variable fvar (for
+which the value of f will be substituted). If a 3-tuple is
+specified, the independent variables are chosen from the range
+variables.  If a 4-tuple is specified, the 4th element is a list
+of independent variables.  <tt class="docutils literal"><span class="pre">transformation</span></tt> may also be a
+predefined coordinate system transformation like Spherical or
+Cylindrical.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">mesh</span></tt> and <tt class="docutils literal"><span class="pre">dots</span></tt> are not supported when using the Tachyon
+raytracer renderer.</p>
+</div>
+<p>EXAMPLES: We plot a 3d function defined as a Python function:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">^</span><span class="mf">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We plot the same 3d function but using adaptive refinement:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">^</span><span class="mf">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="n">adaptive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Adaptive refinement but with more points:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">^</span><span class="mf">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="n">adaptive</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">initial_depth</span><span class="o">=</span><span class="mf">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We plot some 3d symbolic functions:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">var</span><span class="p">(</span><span class="s">'x,y'</span><span class="p">)</span>
+<span class="go">(x, y)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">))</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We give a plot with extra sample points:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">var</span><span class="p">(</span><span class="s">'x,y'</span><span class="p">)</span>
+<span class="go">(x, y)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">5</span><span class="p">,</span><span class="mf">5</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">5</span><span class="p">,</span><span class="mf">5</span><span class="p">),</span> <span class="n">plot_points</span><span class="o">=</span><span class="mf">200</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">5</span><span class="p">,</span><span class="mf">5</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">5</span><span class="p">,</span><span class="mf">5</span><span class="p">),</span> <span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">10</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>A 3d plot with a mesh:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">var</span><span class="p">(</span><span class="s">'x,y'</span><span class="p">)</span>
+<span class="go">(x, y)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">3</span><span class="p">,</span><span class="mf">3</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">3</span><span class="p">,</span><span class="mf">3</span><span class="p">),</span> <span class="n">mesh</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Two wobby translucent planes:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s">'x,y'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">P</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">10</span><span class="p">,</span><span class="mf">10</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">10</span><span class="p">,</span><span class="mf">10</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.87</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">Q</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">2</span><span class="o">*</span><span class="n">y</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">10</span><span class="p">,</span><span class="mf">10</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">10</span><span class="p">,</span><span class="mf">10</span><span class="p">),</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">P</span> <span class="o">+</span> <span class="n">Q</span>
+</pre></div>
+</div>
+<p>We draw two parametric surfaces and a transparent plane:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">L</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="mf">0</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">,</span><span class="mf">5</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">,</span><span class="mf">5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">"lightblue"</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">P</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="mf">4</span> <span class="o">-</span> <span class="n">x</span><span class="o">^</span><span class="mf">3</span> <span class="o">-</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">Q</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">^</span><span class="mf">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span> <span class="o">-</span> <span class="mf">4</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">'orange'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">L</span> <span class="o">+</span> <span class="n">P</span> <span class="o">+</span> <span class="n">Q</span>
+</pre></div>
+</div>
+<p>We draw the “Sinus” function (water ripple-like surface):</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s">'x y'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">))</span><span class="o">/</span><span class="mf">2</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">1</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Hill and valley (flat surface with a bump and a dent):</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s">'x y'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span> <span class="mf">4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span><span class="o">-</span><span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>An example of a transformation:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s">'r phi z'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">trans</span><span class="o">=</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span><span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span><span class="n">z</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">r</span><span class="p">),(</span><span class="n">r</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">17</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">2</span><span class="p">),(</span><span class="n">phi</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">2</span><span class="o">*</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">trans</span><span class="p">,</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.87</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">aspect_ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span><span class="n">frame</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Many more examples of transformations:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s">'u v w'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">rectangular</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">spherical</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">),</span><span class="n">w</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">),</span><span class="n">w</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="gp">sage: </span><span class="n">cylindric_radial</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="n">w</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">cylindric_axial</span><span class="o">=</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="n">v</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="n">w</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">parabolic_cylindrical</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">v</span><span class="p">,(</span><span class="n">v</span><span class="o">^</span><span class="mf">2</span><span class="o">-</span><span class="n">w</span><span class="o">^</span><span class="mf">2</span><span class="p">)</span><span class="o">/</span><span class="mf">2</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Plot a constant function of each of these to get an idea of what it does:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">A</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="mf">2</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">rectangular</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">B</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="mf">2</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">spherical</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">C</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="mf">2</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">cylindric_radial</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">D</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="mf">2</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">cylindric_axial</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="mf">2</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">parabolic_cylindrical</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="nd">@interact</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">which_plot</span><span class="o">=</span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">E</span><span class="p">]):</span>
+<span class="gp">... </span>      <span class="n">show</span><span class="p">(</span><span class="n">which_plot</span><span class="p">)</span>
+<span class="go">&lt;html&gt;...</span>
+</pre></div>
+</div>
+<p>Now plot a function:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">g</span><span class="o">=</span><span class="mf">3</span><span class="o">+</span><span class="n">sin</span><span class="p">(</span><span class="mf">4</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="mf">2</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="mf">4</span><span class="o">*</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="mf">2</span>
+<span class="gp">sage: </span><span class="n">F</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">g</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">rectangular</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">G</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">g</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">spherical</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">H</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">g</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">cylindric_radial</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">I</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">g</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">cylindric_axial</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">J</span> <span class="o">=</span> <span class="n">plot3d</span><span class="p">(</span><span class="n">g</span><span class="p">,(</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="n">pi</span><span class="p">),</span><span class="n">transformation</span><span class="o">=</span><span class="n">parabolic_cylindrical</span><span class="p">,</span><span class="n">plot_points</span><span class="o">=</span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="nd">@interact</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">which_plot</span><span class="o">=</span><span class="p">[</span><span class="n">F</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">J</span><span class="p">]):</span>
+<span class="gp">... </span>      <span class="n">show</span><span class="p">(</span><span class="n">which_plot</span><span class="p">)</span>
+<span class="go">&lt;html&gt;...</span>
+</pre></div>
+</div>
+<p>TESTS:</p>
+<p>Make sure the transformation plots work:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">show</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span> <span class="o">+</span> <span class="n">D</span> <span class="o">+</span> <span class="n">E</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">show</span><span class="p">(</span><span class="n">F</span> <span class="o">+</span> <span class="n">G</span> <span class="o">+</span> <span class="n">H</span> <span class="o">+</span> <span class="n">I</span> <span class="o">+</span> <span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Listing the same plot variable twice gives an error:</p>
+<div class="highlight-python"><div class="highlight"><pre class="literal-block"><span class="gp">sage: </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s">'x y'</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">plot3d</span><span class="p">(</span> <span class="mf">4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span><span class="o">-</span><span class="n">y</span><span class="o">^</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">2</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">ValueError: range variables should be distinct, but there are duplicates</span>
+</pre></div>
+</div>
+</blockquote>
+
+
+</div>
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_5">
+                                    
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+
+
+
+<div id="cell_outer_6" class="cell_visible">
+    <div id="cell_6" class="cell_evaluated">
+
+        
+        
+        
+            
+                
+            
+            
+                <div class="cell_input_print">&nbsp;</div>
+            
+            
+
+            <div id="introspect_div_6" class="introspection"></div>
+        
+
+        
+        
+        <div class="cell_output_div">
+            <table class="cell_output_box">
+                <tbody><tr>
+                    <td class="cell_number" id="cell_number_6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td class="output_cell">
+                        <div class="cell_div_output_wrap" id="cell_div_output_6">
+                            <div class="cell_output_print_wrap" id="cell_output_6">
+                                
+                                    
+                                
+                            </div>
+                            
+                                <div class="cell_output_html_wrap" id="cell_output_html_6">
+                                    
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+
+
+    </div>
+</div>
+
+
+
+
+<hr class="usercontrol">
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+
+    
+</body></html>

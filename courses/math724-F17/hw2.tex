@@ -1,0 +1,49 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+
+\textbf{Math 724, Fall 2017\\
+Homework \#2\\
+Deadline: Friday, September 15, 5:00pm}
+
+\textbf{Instructions:} Typeset your solutions in LaTeX.  Email your solutions to Jeremy (jlmartin@ku.edu) as a PDF file named with your last name and the problem set number (e.g., {\tt Abel2.pdf}).  Collaboration is encouraged, but each student must write up his or her solutions independently and acknowledge all collaborators.
+
+\medskip\hrule
+
+\prob Bogart, Problem \#37.  (This is not supposed to be hard!)
+
+\vfill\prob   Bogart, Problem \#56.
+
+\vfill\prob   Bogart, Problem \#58.
+
+\vfill\prob Bogart, Chapter 1 Supplementary Problem \#5.
+
+\vfill\prob Bogart, Chapter 1 Supplementary Problem \#11.
+
+\vfill\prob Call a set $S$ of numbers \emph{special} if no two pairs of numbers in $S$ have the same sum.  For example, $\{1,2,5,10,20\}$ is special, but $\{2,3,5,7,11,13\}$ is not special because $3+13=5+11$.
+
+\probpart  Prove that if $S\subseteq\{1,2,\dots,100\}$ and $|S|\geq40$, then $S$ is not special.
+
+\probpart  Can you tighten the bound of the previous problem?  In other words, find the smallest value $N$ for which your argument remains true upon replacing 40 with $N$.
+
+\vfill\prob A \emph{plane tree} is a rooted tree in which the children of every vertex are ordered from oldest to youngest.  We conventionally draw plane trees by placing the root vertex at the top and placing the children of every vertex on a horizontal line below it, ordered left to right according to age.  This ordering matters; for example, the two trees below are considered to be different (on the left, the grandchild of the root is the child of its oldest child, while on the right, the grandchild is the child of its youngest child).
+
+\begin{center}
+\begin{tikzpicture}
+\draw[fill=black] (2,2) circle (0.1);
+\foreach \x in {1.4,2,2.6} { \draw[fill=black] (\x,1) circle (0.1); \draw (2,2) -- (\x,1); }
+\draw[fill=black] (1.4,0) circle (0.1); \draw (1.4,0) -- (1.4,1); 
+\begin{scope}[shift={(4,0)}]
+\draw[fill=black] (2,2) circle (0.1);
+\foreach \x in {1.4,2,2.6} { \draw[fill=black] (\x,1) circle (0.1); \draw (2,2) -- (\x,1); }
+\draw[fill=black] (2.6,0) circle (0.1); \draw (2.6,0) -- (2.6,1); 
+\end{scope}
+\end{tikzpicture}
+\end{center}
+Prove that the number of plane trees with $n+1$ vertices is the Catalan number $\frac{1}{n+1}\binom{2n}{n}$.  (Hint: Consider walking through the tree via ``depth-first search'': start at the root, and visit all the vertices, making sure to visit the children of each vertex in left to right order.  Stop when you return to the root; you should have crossed every edge twice.  Use this walk to construct a bijection between plane trees and Catalan paths.)
+
+\vfill
+{\bf Extra credit:} Let $P<Q$ be positive integers.  The students in a class are assigned to $P$ groups for in-class group work.  (Each group has at least one student in it.)  One day a substitute teacher comes in and rearranges the students into $Q$ groups.  Prove that at least $Q-P+1$ students end up in smaller groups.
+
+
+\end{document}

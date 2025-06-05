@@ -1,0 +1,105 @@
+-------------------
+Simplicial complexes
+-------------------
+
+MR0971798 (89m:52009)
+Björner, Anders(S-RIT); Kalai, Gil(IL-HEBR)
+An extended Euler-Poincaré theorem.
+Acta Math. 161 (1988), no. 3-4, 279–303. 
+
+MR2191645 (2006h:05239)
+Nevo, Eran(IL-HEBR-IM)
+Algebraic shifting and basic constructions on simplicial complexes.
+J. Algebraic Combin. 22 (2005), no. 4, 411–433. 
+
+MR1926878 (2003j:15017)
+Duval, Art M.(1-TXEP); Reiner, Victor(1-MN-SM)
+Shifted simplicial complexes are Laplacian integral.
+Trans. Amer. Math. Soc. 354 (2002), no. 11, 4313–4344 (electronic).
+15A42 (05C50)
+
+MR0690055 (84f:06004)
+Björner, Anders; Wachs, Michelle
+On lexicographically shellable posets.
+Trans. Amer. Math. Soc. 277 (1983), no. 1, 323–341. 
+
+---------------------
+Cellular resolutions
+---------------------
+
+MR1647559 (99g:13018)
+Bayer, Dave(1-CLMBBN); Sturmfels, Bernd(1-CA)
+Cellular resolutions of monomial modules.
+J. Reine Angew. Math. 502 (1998), 123--140.
+13D02 (13D25)
+
+---------------------
+Gr\"obner bases
+---------------------
+
+MR1185786 (94a:13012)
+Herzog, Jürgen(D-ESSN); Trung, Ngô Viêt(VN-HMI)
+Gröbner bases and multiplicity of determinantal and Pfaffian ideals.
+Adv. Math. 96 (1992), no. 1, 1--37.
+13D40 (06A08 14M12)
+
+---------------------
+Free resolutions
+---------------------
+
+MR1856984 (2003a:13016)
+Reiner, V.(1-MN-SM); Welker, V.(D-TUB)
+Linear syzygies of Stanley-Reisner ideals.
+Math. Scand. 89 (2001), no. 1, 117--132.
+13D02 (13F55)
+
+MR1932716 (2004c:13020)
+Peeva, Irena(1-MIT)
+Hyperplane arrangements and linear strands in resolutions.
+Trans. Amer. Math. Soc. 355 (2003), no. 2, 609--618 (electronic).
+13D02 (52C35)
+
+MR1911210 (2003d:05055)
+Miller, Ezra(1-MIT)
+Planar graphs as minimal resolutions of trivariate monomial ideals.
+Doc. Math. 7 (2002), 43--90 (electronic).
+05C10 (13D02)
+
+MR1882136 (2003b:13023)
+Novik, Isabella(1-WA); Postnikov, Alexander(1-MIT); Sturmfels, Bernd(1-CA)
+Syzygies of oriented matroids.
+Duke Math. J. 111 (2002), no. 2, 287–317.
+13D02 (05B35 52C40)
+
+---------------------
+Schubert varieties
+---------------------
+
+MR1051089 (91c:14061)
+Lakshmibai, V.(1-NORE); Sandhya, B.(6-MATSCI)
+Criterion for smoothness of Schubert varieties in ${\rm Sl}(n)/B$.
+Proc. Indian Acad. Sci. Math. Sci. 100 (1990), no. 1, 45--52.
+14M15 (14L35)
+
+---------------------
+Binomial ideals in combinatorics
+---------------------
+
+MR3047017
+Manjunath, Madhusudan(D-SAAR); Sturmfels, Bernd(1-CA)
+Monomials, binomials and Riemann-Roch.
+J. Algebraic Combin. 37 (2013), no. 4, 737–756. 
+
+MR1896344 (2003b:13041)
+Cori, Robert(F-BORD-LB); Rossin, Dominique(F-POLY-LI); Salvy, Bruno(F-INRIA-AG)
+Polynomial ideals for sandpiles and their Gröbner bases.
+Theoret. Comput. Sci. 276 (2002), no. 1-2, 1–15.
+
+MR2052943 (2005a:05066)
+Postnikov, Alexander(1-MIT); Shapiro, Boris(S-STOC)
+Trees, parking functions, syzygies, and deformations of monomial ideals.
+Trans. Amer. Math. Soc. 356 (2004), no. 8, 3109–3142 (electronic). 
+
+Laplacian ideals, arrangements, and resolutions
+Anton Dochtermann, Raman Sanyal
+http://arxiv.org/abs/1212.6244

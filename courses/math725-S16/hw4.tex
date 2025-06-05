@@ -1,0 +1,34 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 725, Spring 2016 \hfill Problem Set \#4}
+\smallskip\hrule
+
+{\bf Instructions:} Do all problems and typeset them in \LaTeX.  E-mail the PDF file to Jeremy at \hrefurl{mailto:jlmartin@ku.edu}{\tt jlmartin@ku.edu} under the filename {\tt your-last-name.pdf} by {\bf Friday, March 11, 5:00pm.}
+You are encouraged to use the \hreftext{http://www.jlmartin.faculty.ku.edu/math725/header.tex}{LaTeX header file} and to refer to Jeremy's \hreftext{http://www.jlmartin.faculty.ku.edu/math725/notesnew.pdf}{lecture notes}.
+
+\smallskip\hrule
+
+\prob Let $G$ be a $k$-regular graph of even order that is $(k-1)$-edge-connected (i.e., $G-A$ is connected for any edge set $A$ of size $k-2$ or less). Prove that $G$ has a perfect matching.  (Hint: Adapt the proof of Petersen's theorem, Thm.~3.26 in the lecture notes.)
+
+\prob Let $G$ be a simple graph.\\
+\probpart Let $C,C'\subseteq G$ be cycles.  Prove that $C\sd C'$ is the (edge-)disjoint union of cycles.\\
+\probpart Let $B,B'\subseteq G$ be cuts.  Prove that $B\sd B'$ is the (edge-)disjoint union of bonds.
+
+\prob Let $G$ be a connected simple graph, and let $F\subseteq E(G)$ be a nonempty set of edges.  Prove that $F$ is an edge cut if and only if $|F\cap C|$ is even for every cycle $C\subseteq G$.
+
+\prob Derive the K\"onig-Egerv\'ary Theorem from the Max-Flow/Min-Cut Theorem.  (Hint: Given an arbitrary $X,Y$-bipartite graph $G$, transform it into a source-sink network $N$ in such a way that flows and cuts in $N$ correspond respectively to matchings and vertex covers in $G$.)
+
+\prob Prove Dilworth's Theorem by the following steps:
+
+\probpart Prove that if $\PP=\{P_1,\dots,P_n\}$ is any path cover of a digraph $D$ and $I=\{v_1,\dots,v_m\}$ is an independent set in $D$, then $n\geq m$.  (This is weak duality, and it is the easier part.)
+
+\probpart Given a digraph $D$, define its \emph{split} as the undirected, bipartite graph $G=S(D)$ with two vertices $v^+,v^-$
+for each vertex $v\in V(D)$, and an edge $u^+v^-$ for each edge $\dedge{uv}$ in $D$.
+(This is a similar construction to the one used to derive vertex-Menger from MFMC.)
+
+\includefigure{6in}{2in}{split1} % If  you use this .tex file as a template, you don't have to include the figure - just comment this line out.
+
+Now apply the K\"onig-Egerv\'ary Theorem to $S(D)$  and translate the result into Dilworth's Theorem for $D$.
+
+\end{document}

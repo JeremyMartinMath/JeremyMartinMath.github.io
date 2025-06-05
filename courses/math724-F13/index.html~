@@ -1,0 +1,247 @@
+<html>
+<head>
+<title>Math 409, Spring 2013</title>
+</head>
+<body>
+
+<h2>Math 409 (Topics in Geometry for Secondary and Middle School Teachers)<br>
+Spring 2013</h2>
+
+<p>
+<a href="#info">General Information</a> | 
+<a href="#hw">Homework Assignments</a> |
+<a href="#exam">Midterm and Final Exam Information</a> | 
+<a href="#links">Links</a>
+
+<p>Now available: <a href="finalreview.pdf">Final Exam review sheet</a>.
+
+<p>Pre-final exam office hours:
+<ul>
+<li>Friday 5/10 (Stop Day): 2-4 PM
+<li>Monday 5/13 (Exam day): 10 AM-noon
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="info"><h3>General Information</h3></a>
+
+<h4>The Basics</h4>
+<ul>
+<li><b>Meeting times:</b> Tue/Thu, 1:00-1:50 PM, 301 Snow
+<li><b>KU course line number:</b> 53481
+<li><b>Instructor:</b>
+  Prof. Jeremy Martin<br>
+  <img src="http://jlmartin.faculty.ku.edu/email.jpg"><br>
+  623 Snow, 864-7114<br>
+  (The best way to contact me: send me e-mail!)
+<li><b>Office hours:</b> Tue/Wed, 2-3 PM or by appointment
+<br>
+<li><a href="syllabus.pdf"><b>Syllabus (1/18/13)</b></a>
+<li><b>Prerequisites:</b> Math 122.  Students in 409 should enroll simultaneously in <a 
+href="../math410/">Math 410</a> (Mathematics History for Secondary and Middle 
+School Teachers).
+</ul>
+
+<h4>Important Dates</h4>
+<ul>
+<li>Monday 1/28: Last day to add/change sections
+<li>Monday 2/11: First Period Drop ends
+<li>Thursday 3/14: Pi Day; Midterm exam
+<li>Monday 3/18-Friday 3/22: Spring Break
+<li>Monday 4/22: Second Period Drop ends
+<li>Friday 5/10: Stop Day
+<li>Monday 5/13: Final Exam (1:30-4:00, 301 Snow)
+</ul>
+
+<h4>Required Materials</h4>
+
+<ul>
+<li>Bring a ruler and compass to class.
+<li>All students should purchase a copy of the
+software <a href="https://www.mheonline.com/program/view/2/16/2647/00000SPAD#program"><i>Geometer's
+Sketchpad</i></a>.  The cost is $60 for the full version, or
+$10 for a one-year license.
+<li>If possible, install <i>Sketchpad</i> on your laptop or tablet and bring
+it to class every day.
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="hw"><h3>Homework Assignments</h3></a>
+
+<p>Here is the <a href="hw409.pdf">master problem list</a>,
+which I will update frequently <b>(last update: (May 1)</b>.
+I'll assign some of these as homework, and you'll work on some of them
+in groups in class.  You can use the other ones for review.
+I will be adding problems to the list as the semester progresses.
+
+<p>Homework is due every Tuesday at 5:00 PM.  <b>No late homework will be accepted.</b>
+If you have a conflict which prevents you from turning the homework in on time, let
+me know <i>before the deadline</i>.
+
+<p><u>Written assignments</u> should be submitted to me in class, left in my mailbox in
+the Math Department office (405 Snow) or brought to my office (623 Snow).
+When you write proofs, you should refer to the <a href="axioms.pdf">
+master list of axioms,
+definitions and theorems</a> (last updated 2/12/13), and cite (by
+ number) every fact or
+definition that you use.  Here is a  <a href="axioms-short.pdf">short list</a> with the same numbering, but no proofs --- just axioms and theorems.
+
+<p><u><i>Sketchpad</i> assignments</u> should be e-mailed to me as attachments.  If you submit them early,
+I will try to respond as quickly as possible so that you can fix mistakes.  You can
+keep re-submitting sketches until the weekly deadline of Tuesday at 5 PM.
+Here is the grading scale for <i>Sketchpad</i> assignments:
+<ul>
+<li>5/5: Construction works, and I can't mess it up no matter how hard I try
+<li>4/5: Construction works in most cases, but after some effort, I found a way to mess it up
+<li>3/5: Construction works in some cases, but I found an easy way to mess it up
+<li>2/5: Construction doesn't work, but I think you've made partial progress toward a solution
+<li>1/5: Construction doesn't work, and I don't see any partial progress
+<li>0/5: No construction submitted
+</ul>
+<p>Re-submitting a sketch (before the deadline) can only increase your grade on it.
+
+<p><b>Homework #1</b> (due Tuesday, January 29):
+<ul>
+<li>Purchase and install <a href="https://www.mheonline.com/program/view/2/16/2647/00000SPAD#program"><i>Geometer's
+Sketchpad</i></a>.  Work through the <a href="GSPintro.pdf">introduction handout</a> to become familiar with what the software does.  (You don't need to turn anything in.)
+<li>Ruler/compass constructions: RC 3, RC 9, RC 10.  Each construction
+should be accompanied by an explanation of the steps you have
+taken and why the construction works.
+<li><i>Sketchpad</i> problems: SA 2, SA 3, SA 4.  For SA 2 and SA 3,
+use only the Point, Circle and Line tools---do not use 
+any of the shortcuts from the <b>Construct</b> or other menus.
+</ul>
+
+<p><b>Homework #2</b> (due Tuesday, February 5):
+<ul>
+<li>Read <a href="AxiomIntro.pdf">these notes on axiom systems</a>.
+<li>Ruler/compass constructions: RC 6, RC 7, RC 8.  Each construction
+should be accompanied by an explanation of the steps you have
+taken and why the construction works.
+<li><i>Sketchpad</i> problems: SA 6, SA 7, SA 8.  Do not use any of
+the circle or arc constructions from the <b>Construct</b> menu.
+
+</ul>
+<p><b>Homework #3</b> (due Tuesday, February 12):
+<ul>
+<li>Euclidean geometry proofs: EG 6, EG 11.
+When you write proofs, you should refer to the <a href="axioms.pdf">
+master list of axioms,
+definitions and theorems</a>, and cite (by number) every fact or
+definition that you use.
+<li><i>Sketchpad</i> constructions: SA 10, SA 11, SA 12.
+It is now officially OK to use the <b>Construct</b> menu.
+</ul>
+
+<p><b>Homework #4</b> (due Tuesday, February 19):
+<ul>
+<li>Euclidean geometry proofs: EG 8, EG 14.
+Again, you should refer to the <a href="axioms.pdf">
+master list of axioms,
+definitions and theorems</a>, and cite (by number) every fact or
+definition that you use.
+<li><i>Sketchpad</i> constructions: SA 18, SA 20.<br>
+<b><a href="sa18.txt">Note on SA18 (2/17/13)</a></b>
+</ul>
+
+<p><b>Homework #5</b> (due Tuesday, February 26):
+<ul>
+<li><s>Euclidean geometry proofs: EG 19, EG 20.</s> (<i>Postponed until 3/5</i>)<br>
+<li><i>Sketchpad</i> constructions: SA 21, SA 24.
+</ul>
+
+<p><b>Homework #6</b> (due Tuesday, March 5):
+<ul>
+<li>Euclidean geometry proofs: EG 19, EG 20.<br>
+(Be sure to obtain the <b>new versions</b> of the axioms and homework
+problems, updated 2/18/13.)
+</ul>
+
+<p><b>Homework #7</b> (due Tuesday, March 12):
+<ul>
+<li>Euclidean geometry proofs: EG 21, EG 22, EG 23.  (This last one should look familiar!  This is the promised redo --- if you write a careful proof with all steps justified and earn full credit, then you'll also get retroactive full credit on SA11.)
+<li><i>Sketchpad</i> construction: SA 22.  (This doesn't have much to do with things we've been talking about --- but it is really neat.)
+</ul>
+
+<p>Homework #8 (due Tuesday, April 2):
+<ul>
+<li>Written problems: TG 1, TG 2, TG 3, TG 4, TG 5.
+Be sure to obtain the <a href="hw409.pdf">latest revision of the master problem list</a>.
+The <a href="trans.pdf">notes on transformational geometry</a> will be 
+helpful.  For TG 3 and TG 4, your answer should use the
+<a href="quickref.pdf">standard  notation for transformations</a>.<br>
+<i>Clarification on TG 1 and TG 2:</i> You only have to list
+transformations that are isometries.
+</ul>
+
+<p>Homework #9 (due Tuesday, April 9):
+<ul>
+<li>Written problems: TG 6, TG 8, TG 9.
+</ul>
+
+<p>Homework #10 (due Thursday, April 18):
+<ul>
+<li>Written problems: TG 11, TG 12, TG 13.
+</ul>
+
+<p>Homework #11 (due Tuesday, April 30):
+<ul>
+<li>Written problems: TG 20, PH 1, PH 2.  Extra credit: TG 17.
+You may want to consult the <a href="polyhedra.pdf">notes on polyhedra</a>.
+</ul>
+
+<p><b>Homework #12 (due Thursday, May 9):</b>
+<ul>
+<li><b>Written problems: TG 21, PH 3, PH 4.</b>
+(Note that PH4 has been updated as of May 1.)
+</ul>
+
+<hr> <!-- -------------------------------------------------------->
+<a name="exam"><h3>Midterm and Final Exam Information</h3></a>
+
+<p>The midterm exam took place in class on <b>Thursday, March 14</b>.
+Here is <a href="midterm-review.pdf">midterm review information</a>
+and the <a href="axioms-short.pdf">short list of 
+axioms and theorems</a>.
+
+<p>The final exam will take place on <b>Monday, May 13</b>, from 
+1:30-4:00 PM in Snow 301.
+Here is <a href="finalreview.pdf">exam review information</a>.
+
+<hr> <!-- -------------------------------------------------------->
+<a name="info"><h3>Resources</h3></a>
+
+<h4>Course materials</h4>
+Many of these materials are adapted from those used
+by Prof. Judy Roitman.
+<ul>
+<li><a href="GSPintro.pdf">Introduction to <i>Geometer's
+Sketchpad</i></a>
+<li><a href="AxiomIntro.pdf">Notes on axiom systems</i></a>
+<li><a href="axioms.pdf">Axioms, definitions and theorems for Euclidean
+geometry</a> (with
+proofs and comments)
+<li><a href="axioms-short.pdf">Axioms and theorems</a>
+(no proofs, just statements)
+<li><a href="trans.pdf">Notes on transformational geometry</a> (3/25/13)
+<li><a href="quickref.pdf">Quick reference: Notation for transformations</a>
+<li><a href="polyhedra.pdf">Notes on polyhedra</a>
+</ul>
+
+<h4>KU links</h4>
+<ul>
+<li><a href="../math410/">Math 410</a>
+<li><a href="../index.html">Jeremy Martin's home page</a>
+<li><a href="http://www.math.ku.edu/">KU Mathematics Department</a>
+<li><a href="http://ukanteach.ku.edu/">UKanTeach</a>
+<li><a href="http://www.registrar.ku.edu">KU Registrar</a>
+<li><a href="http://documents.ku.edu/policies/governance/USRR.htm#art2sect6">KU policies on
+  academic honesty</a>
+<li><a href="http://www.disability.ku.edu/">Academic Achievement and Access Center (resources for students with disabilities)</a>
+</ul>
+
+<p><hr> <!-- ------------------------------------------------------------------------->
+
+<img src="../email.jpg"><br>
+Last updated Mon 5/6/13 2:00 PM
+</body>
+</html>

@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Enter the username and password.  Username is the first word of the course title, all lowercase.  Password is the second word."
+AuthUserFile /home/jmartin/www/math821/solutions/.htpasswd
+require valid-user

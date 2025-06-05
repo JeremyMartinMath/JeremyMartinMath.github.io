@@ -1,0 +1,88 @@
+\include{header}
+\begin{document}
+\bf Math 824, Fall 2012\\
+Problem Set \#3\rm
+
+{\bf Instructions:} Type up your solutions using LaTeX.  There is a
+header file at\\
+\href{http://www.jlmartin.faculty.ku.edu/math824/header.tex}{\tt http://www.math.ku.edu/$\sim$jmartin/math824/header.tex} with macros that may be useful.
+E-mail me (\texttt{jmartin@math.ku.edu}) the PDF file under the name \textsl{$\{$your-name$\}$3.pdf}.
+
+Deadline: {\bf 3:00 PM on Friday, October 5.}
+\smallskip\hrule
+
+
+\prob Determine, with proof, all pairs of integers $k\leq n$ such
+that there exists a graph $G$ with $M(G)\isom U_k(n)$.  (Recall
+that $U_k(n)$ is the matroid on $E=[n]$ such that every
+subset of~$E$ of cardinality~$k$ is a basis.)
+
+\prob Let $X$ and $Y$ be disjoint sets of vertices, and let $B$ be an $X,Y$-bipartite
+graph: that is, every edge of $B$ has one endpoint in each of $X$ and $Y$.
+For $V=\{x_1,\dots,x_n\}\subset X$, a \emph{transversal} of $V$ is a set $W=\{y_1,\dots,y_n\}\subset Y$
+such that $x_iy_i$ is an edge of $B$.  (The set of all edges $x_iy_i$ is called a \emph{matching}.)
+Let $\II$ be the family of all subsets of $X$
+that have a transversal; it is immediate that $\II$ is a simplicial complex.
+
+Prove that $\II$ is in fact a matroid independence system by verifying that the donation condition
+holds.  (Suggestion: Write down an example
+or two of a pair of independent sets $I,J$ with $|I|<|J|$, and use the corresponding matchings
+to find a systematic way of choosing a vertex that $J$ can donate to $I$.)
+These matroids are called \emph{transversal matroids}; along with linear and graphic matroids,
+they are the other ``classical'' examples of matroids in combinatorics.)
+
+\prob Let $G=(V,E)$ be a graph with $n$ vertices and $c$ components.
+For a vertex coloring $f:V\to\Nn$, let $i(f)$ denote the number of ``improper'' edges,
+i.e., whose endpoints are assigned the same color.
+\emph{Crapo's coboundary polynomial} of $G$ is
+  $$\bar\chi_G(q;t) ~=~ q^{-c}\sum_{f:V\to[q]} t^{i(f)}.$$
+This is evidently a stronger invariant than the chromatic polynomial of $G$, which can be obtained as $q\bar\chi_G(q,0)$.
+In fact, the coboundary polynomial provides the same information as the Tutte polynomial.
+
+Prove that 
+  $$\bar\chi_G(q;t) ~=~ (t-1)^{n-c} T_G\left(\frac{q+t-1}{t-1},t\right)$$
+by finding a deletion/contraction recurrence for the coboundary polynomial.
+
+\prob
+Let $P$ be a chain-finite poset.
+The \emph{kappa function} of $P$ is the element
+of the incidence algebra $I(P)$ defined by $\kappa(x,y) = 1$
+if $x\coveredby y$, $\kappa(x,y) = 0$ otherwise.
+
+\probpart Give a condition on $\kappa$ that is equivalent   
+to $P$ being ranked.
+
+\probpart Give combinatorial interpretations of
+$\kappa*\zeta$ and $\zeta*\kappa$.
+
+(See next page for Problem \#5.)
+\pagebreak
+
+\prob
+Let~$\Pi_n$ be the lattice of set partitions of~$[n]$.  Recall that the
+order relation on~$\Pi_n$ is given as follows: if~$\pi,\sigma\in\Pi_n$,
+then $\pi\leq\sigma$
+if every block of~$\pi$ is contained in some block of~$\sigma$ (for short,
+``$\pi$ refines~$\sigma$'').
+In this problem,
+you're going to calculate the number $\mu_n:=\mu_{\Pi_n}(\hat0,\hat1)$.
+
+\probpart Calculate~$\mu_n$ by brute force for~$n=1,2,3,4$.
+Make a conjecture about the value of~$\mu_n$ in general.    
+
+\probpart Define a function~$f:\Pi_n\to\Qq[x]$ as follows: if~$X$
+is a finite set of cardinality~$x$, then
+  $$f(\pi) = \#\big\{h:[n]\to X \quad\big\vert\quad h(s)=h(s') \iff s,s'
+    \text{ belong to the same block of }\pi\big\}.$$
+For example, if~$\pi=\hat 1=\{\{1,2,\dots,n\}\}$ is the one-block
+partition, then~$f(\pi)$ counts the constant functions from~$[n]$ to~$X$,
+so~$f(\pi)=x$.  Find a formula for $f(\pi)$ in general.
+
+\probpart Let~$g(\pi)=\sum_{\sigma\geq\pi} f(\sigma)$.  Prove that
+$g(\pi) = x^{|\pi|}$ for all~$\pi\in\Pi_n$.  (Hint: What kinds of
+functions are counted by the sum?)
+
+\probpart Apply M\"obius inversion and
+an appropriate substitution for~$x$ to calculate~$\mu_n$.
+
+\end{document}

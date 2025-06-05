@@ -1,0 +1,111 @@
+\include{header}
+\usepackage{youngtab}
+\begin{document}
+\thispagestyle{empty}
+{\bf Math 821, Spring 2014\\
+Problem Set \#5\\
+Due date: Friday, April 18}
+
+\prob [Hatcher p.131 \#11] Show that if $A$ is a retract of $X$
+then the map $H_n(A)\to H_n(X)$ induced by the inclusion $A\subset X$ is
+injective.
+
+\prob (a) [Hatcher p.132 \#15] Homological algebra warmup: Prove that if $A\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}D\xrightarrow{j}E$ is exact with $f$ surjective and $j$ injective, then $C=0$.
+
+(b) Prove the \emph{Snake Lemma}: if the commutative diagram
+\[\xymatrix{
+0\ar@{-->}[r] & A\rto^d\dto_f & B\rto^e\dto_g & C\rto\dto_h & 0\\
+0\rto & A'\rto^{d'} & B'\rto^{e'} & C'\ar@{-->}[r] & 0
+}\]
+of abelian groups has exact rows, then there is an exact sequence
+\[0\dashrightarrow \ker f\xrightarrow{\alpha} \ker g\xrightarrow{\beta}
+  \ker h\xrightarrow{\gamma} \coker f\xrightarrow{\delta}
+ \coker g\xrightarrow{\varepsilon}\coker h\dashrightarrow 0.\]
+
+(The dashed arrows can be either included or omitted from both
+ diagrams.  Both versions of the result are commonly referred to as
+ the Snake Lemma.  In your solution, prove the version without the
+ dashed arrows and then observe what happens if the arrows are
+ included.)
+
+\excise{
+(b) Prove the \emph{snake lemma}: if the commutative diagram
+\[\xymatrix{
+& A\rto^d\dto_f & B\rto^e\dto_g & C\rto\dto_h & 0\\
+0\rto & A'\rto^{d'} & B'\rto^{e'} & C'
+}\]
+has exact rows, then there is an exact sequence
+\[0\to \ker f\to \ker g\to \ker h\to \coker f\to\coker g\to\coker h\to 0.\]
+}
+
+\prob Recall that the \emph{torsion subgroup} $T(G)$ of an abelian group is the subgroup consisting of all elements of finite order.  Let $0\to A\xrightarrow{f} B\xrightarrow{g} C\to 0$ be a short exact sequence of finitely generated $\Zz$-modules.
+
+(a) Show that if $C$ is free abelian, then $T(A)\isom T(B)$.
+
+(b) Show that $A$ free abelian does not necessarily imply that $T(B)=T(C)$.
+
+\bigskip
+
+\bigskip
+
+\yell{\bf\boldmath In the following problems, you may use the result of Proposition 2.22, namely that $H_n(X,A)\isom\HH_n(X/A)$ for all $n$ and all good pairs $(X,A)$.\unboldmath}
+
+\bigskip
+
+\prob [Hatcher p.132 \#17] (a) Compute the homology groups $H_n(X,A)$ when $X$ is $S^2$ or $S^1\x S^1$, and~$A$ is a set of $k$ points in $X$ with $k<\infty$.  You may use the computation of the homology groups of $X$ from \S2.1.
+
+(b) Compute the groups $H_n(X,A)$ and $H_n(X,B)$, where $X$ is a closed orientable surface of genus two with $A$ and $B$ the circles shown.  (What are $X/A$ and $X/B$?)
+\includefigure{2in}{0.75in}{Hatcher-p132-prob17.pdf}
+
+\pagebreak
+
+\prob [Hatcher p.132 \#20] The \textbf{suspension} $SX$ of a space $X$ is obtained by taking two copies of the cone
+$CX=X\x[0,1]/X\x\{1\}$ and attaching them along their bases.  Equivalently, take a prism over $X$ and successively contract each of the top and bottom faces to points:
+\[SX = X \x [0,1] ~/~ X\x\{0\} ~/~ X\x\{1\}.\]
+For example, the suspension of $S^n$ is $S^{n+1}$.
+
+Prove that $\HH_n(SX)\isom \HH_{n-1}(X)$ for all $n>0$.  More generally, for any integer $k$, compute the reduced homology groups of the union of $k$ copies of $CX$ with their bases identified.  (The suspension is the case $k=2$.)
+
+\prob Let $n\leq d\geq 0$ and let $X=\Delta^{n,d}$ denote the $d$-skeleton of the $n$-dimensional simplex (whose vertices are $v_0,v_1,\dots,v_n$).  Most of you conjectured last time that the reduced homology groups of $X$ are given by
+\[\HH_k(X) = \begin{cases}
+\Zz^{\raisebox{3.5bp}{$\binom{n}{d+1}$}} & \text{ if $k=d$,}\\
+0 & \text{ if $k<d$}.
+\end{cases}\]
+This conjecture is correct.  Prove it without writing down any explicit simplicial boundary matrices.
+
+\vfill\hrule\vfill
+
+\textbf{\Large Appendix: Making commutative diagrams in LaTeX}
+
+The \texttt{xypic} package provides a way to typeset commutative diagrams
+in LaTeX.  For instance, consider the following
+diagram, which arises in the proof of Theorem 2.10 in Hatcher:
+$$
+\xymatrix{
+\cdots\ar[r] & C_{n+1}(X) \ar[r]^{\bd}\ar[d]^{i_\#} & C_{n}(X) \ar[r]^{\bd} \ar[d]^{i_\#} \ar[dl]^{P} & C_{n-1}(X) \ar[r] \ar[d]^{i_\#} \ar[dl]^{P} &\cdots\\
+\cdots\ar[r] & C_{n+1}(Y) \ar[r]_{\bd} & C_{n}(Y) \ar[r]_{\bd} & C_{n-1}(Y)\ar[r] &\cdots\\
+}$$
+It can be typeset as follows:
+\begin{verbatim}
+$$\xymatrix{
+\cdots\ar[r]
+  & C_{n+1}(X) \ar[r]^{\bd} \ar[d]^{i_\#}
+  & C_{n}(X)   \ar[r]^{\bd} \ar[d]^{i_\#} \ar[dl]^{P}
+  & C_{n-1}(X) \ar[r]       \ar[d]^{i_\#} \ar[dl]^{P}
+  &\cdots\\
+\cdots\ar[r]
+  & C_{n+1}(Y) \ar[r]_{\bd}
+  & C_{n}(Y)   \ar[r]_{\bd}
+  & C_{n-1}(Y) \ar[r]
+  &\cdots}$$
+\end{verbatim}
+This is like a \texttt{tabular} or \texttt{array} environment:
+the \& symbols are delimiters between columns.  The $\backslash$\texttt{ar}
+commands create arrows emanating from the current cell in the table, with
+the code in [square brackets] specifying where the arrow should point;
+e.g., \texttt{$\backslash$ar[dl]} makes an arrow pointing towards the
+cell one row down and one column left of the current cell.
+
+For more details, here are hyperlinks to the \fbox{\href{www.jlmartin.faculty.ku.edu/math821/xyguide.pdf}{XY User's Guide}} and the \fbox{\href{http://xy-pic.sourceforge.net/}{website.}}
+\end{document}
+

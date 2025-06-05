@@ -1,0 +1,55 @@
+\include{header}
+\begin{document}
+\thispagestyle{empty}
+
+\bf Math 724, Fall 2013\\
+Take-Home Test \#1\rm
+
+{\bf Instructions:} Write up your solutions using LaTeX.
+You may use books and notes, but you are not allowed to collaborate ---
+you may not consult any human other than the instructor.
+Solutions are due at the start of class on {\bf Friday, September 13.}
+\medskip\hrule\bigskip
+
+\prob
+In a bridge deal, each of 4 players (North, South, West and East) is dealt a hand of 13 cards from a standard deck of 52 cards.  
+
+\Probpart{5}
+How many bridge hands contain exactly four spades?
+
+\Probpart{10}
+How many bridge hands contain more spades than hearts?
+
+\Probpart{5}
+How many different possible deals are there?
+
+\Prob{10}
+Recall from Supplementary Problem 1 that a composition is an expression $n=a_1+\cdots+a_k$,
+where the $a_i$ are positive integers.  A \emph{weak composition}
+is the same thing, except that the $a_i$'s are only required to be
+nonnegative feather than positive.
+Count the weak compositions of $n$ into $k$ parts.
+
+\Prob{20}
+Call a 3-digit number (in base 10) \emph{purple} if its digits are in strictly increasing order.  E.g., 314 and 288 are not purple, but 159 is purple.  In order to solve the problem, give a bijection between the set of purple 3-digit numbers and something easily counted.  You do not have to spend a lot of time proving that the bijection you construct is a bijection.
+
+\Prob{20}
+Let $n$ be an integer not divisible by 2 or 5.  Prove that there is some
+multiple of~$n$ whose decimal expansion consists of all 9's.
+
+\Prob{10}
+A \emph{standard tableau of shape $2\x n$} is a $2\x n$ grid filled with the numbers
+$1,\dots,2n$, using each number once, so that every row increases left to right and every column increases top to bottom.  For example, there are five standard tableaux of shape $2\x3$:
+\[\young(123,456)\qquad
+\young(124,356)\qquad
+\young(125,346)\qquad
+\young(134,256)\qquad
+\young(135,246)\]
+Prove that for all $n>0$, the number of standard tableaux of shape $2\x n$
+is the Catalan number $C_n$.
+
+\Prob{20}
+Let $m\geq n\geq 0$ be integers.  Let $C(m,n)$ be the number of lattice
+paths from $(0,0)$ to $(m,n)$ that do not go above the line $y=x$.  (So if $m=n$, then $C(m,n)$ is just the Catalan number~$C_n$.  Find a simple formula for $C(m,n)$ that generalizes the formula $C_n=\frac{1}{n+1}\binom{2n}{n}$.  (Hint: Generalize the method of problem 51 in the textbook.)
+
+\end{document}

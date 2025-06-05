@@ -1,0 +1,81 @@
+\include{header}
+\begin{document}
+\pdfoutput=1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% copyright page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\begin{center}
+\vfill
+\Huge\bf
+Lecture Notes on Algebraic Combinatorics\rm
+\vfill
+Jeremy L. Martin
+\medskip
+
+{\tt jlmartin@ku.edu}
+\medskip
+
+\today
+\vfill
+\normalsize
+Copyright \copyright 2015 by Jeremy L.\ Martin.  These notes are
+licensed under
+a \href{http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US}
+{Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License}.
+\end{center}
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Foreword}
+The starting point for these lecture notes was my notes from Vic
+Reiner's Algebraic Combinatorics course at the University of Minnesota
+in Fall 2003.  I currently use them for graduate courses at the
+University of Kansas.  They will always be a work in
+progress.  Please use them and share them freely for any research
+purpose.  I have added and subtracted some material from Vic's course
+to suit my tastes, but any mistakes are my own; if you find one,
+please contact me at {\tt jlmartin@ku.edu} so I can fix it.
+Thanks to those who have suggested additions and pointed out errors,
+including but not limited to: Logan Godkin, Alex Lazar, Nick Packauskas, Billy Sanders,
+and Tony Se.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Fundamentals: Posets, Simplicial Complexes, and Polytopes}
+
+\subsection{Posets}
+
+\begin{definition}
+A \defterm{partially ordered set} or \defterm{poset} is a set~$P$ equipped with a relation~$\leq$ that is reflexive, antisymmetric, and transitive.  That is, for all $x,y,z\in P$:
+\begin{enumerate}
+\item $x\leq x$ (reflexivity).
+\item If $x\leq y$ and $y\leq x$, then $x=y$ (antisymmetry).
+\item If $x\leq y$ and $y\leq z$, then $x\leq z$ (transitivity).
+\end{enumerate}
+We say that $x$ is \defterm{covered} by $y$, written $x\coveredby y$, if $x<y$
+and there exists no $z$ such that $x<z<y$.  Two posets $P,Q$ are \defterm{isomorphic} if there is a bijection $\phi:P\to Q$ that is order-preserving; that is, $x\leq y$ in $P$ iff $\phi(x)\leq\phi(y)$ in $Q$.
+\end{definition}
+
+We'll usually assume that $P$ is finite.
+
+
+\begin{definition} A poset $L$ is a \defterm{lattice} if every pair $x,y\in L$
+has a unique \defterm{meet} $x\meet y$ and \defterm{join} $x\join y$.  That is,
+  \begin{align*}
+  x\meet y &= \max\{z\in L ~|~ z\leq x,y\},\\
+  x\join y &= \min\{z\in L ~|~ z\geq x,y\}.
+  \end{align*}
+\end{definition}
+We'll have a lot more to say about lattices in Section~\ref{lattice-section}.
+
+\begin{example}[\textbf{Boolean algebras}]
+Let $[n]=\{1,2,\dots,n\}$ (a standard piece of notation in combinatorics)
+and let $2^{[n]}$ be the power set of $[n]$.  We can partially order $2^{[n]}$ by
+writing $S\leq T$ if $S\subseteq T$.  A poset isomorphic to $2^{[n]}$ is called a \defterm{Boolean algebra of rank~$n$.}
+
+Note that $2^{[n]}$ is a lattice, with meet and join given by intersection and union respectively.
+\end{example}
+
+\end{document}
