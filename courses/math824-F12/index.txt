@@ -1,0 +1,164 @@
+Math 824 (Algebraic Combinatorics) Fall 2012
+General Information | Lecture Notes | Problem Sets | Textbooks | Links | Final Project
+
+General Information
+
+	•	Instructor: Jeremy Martin
+	•	E-mail:  (the best way to contact me)
+	•	Office: 623 Snow Hall, (785) 864-7114
+	•	Office hours: Tue/Wed, 1-2 PM, or by appointment
+	•	Lectures: MWF, 11:00-11:50 AM, 564 Snow
+	•	Prerequisite: Math 724 (Enumerative Combinatorics) or permission of the instructor.
+	•	KU course number: 25696 
+
+Lecture Notes
+Lecture notes (one big PDF file; last update 12/3/12)
+These notes are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. In short, use them freely but do not sell them or anything derived from them.
+If you are a KU graduate student (or for that matter, if you aren't), do not print out the full set of notes on the department's printer.
+Material covered day by day, with approximate page numbers
+	•	Mon 8/20: Posets (definitions, terminology, basic examples)
+	•	Wed 8/22: Lattices (definitions, terminology, basic examples)
+	•	Fri 8/24: Distributive lattices and Birkhoff's theorem
+	•	Mon 8/27: Proof of Birkhoff's theorem
+	•	Wed 8/29: Modular lattices
+	•	Fri 8/31: Semimodular lattices
+	•	Wed 9/5: Geometric lattices; matroid closure operators
+	•	Fri 9/7: Matroid rank functions; graphic matroids
+	•	Mon 9/10: Matroid bases, independence systems, and circuits
+	•	Wed 9/12: Representability
+	•	Fri 9/14: Duality
+	•	Mon 9/17: Deletion/contraction
+	•	Wed 9/19: Tutte polynomial: recursion, closed form
+	•	Fri 9/21: Tutte polynomial: colorings, acyclic orientations
+	•	Mon 9/24: Tutte polynomial: basis activities, linear codes
+	•	Wed 9/26: The incidence algebra
+	•	Fri 9/28: Möbius function; characteristic polynomial; Möbius inversion
+	•	Mon 10/1: Char. poly. from Tutte; Philip Hall's theorem; Möbius algebra
+	•	Wed 10/3: Möbius functions of lattices (via Möbius algebra and thecrosscut theorem)
+	•	Fri 10/5: Hyperplane arrangements: basic definition, examples (braid, graphic), intersection poset
+	•	Wed 10/10: Hyperplane arrangements: Zaslavsky's theorems
+	•	Fri 10/12: Oriented matroids (Prof. Marge Bayer)
+	•	Mon 10/15: Characteristic polynomials of hyperplane arrangements via counting points over a finite field
+	•	Wed 10/17: Graphic arrangements; factoring the chromatic polynomial
+	•	Fri 10/19: Supersolvable lattices
+	•	Mon 10/22: Representation theory: the basics
+	•	Wed 10/24: Maschke's theorem; characters
+	•	Fri 10/26: New characters from old; the scalar product
+	•	Mon 10/29: Schur's lemma and the orthogonality relations
+	•	Wed 10/31: Explicit calculations for \(\mathfrak{S}_3\) and \(\mathfrak{S}_4\); characters of abelian groups
+	•	Fri 11/2: Characters of the symmetric group via tabloids
+	•	Mon 11/5: Restricted and induced representations
+	•	Wed 11/7: Symmetric functions: m's, h's, e's, Jacobi-Trudi relations
+	•	Fri 11/9: Schur functions
+	•	Mon 11/12: The Cauchy kernel and the Hall inner product
+	•	Wed 11/14: The RSK correspondence
+	•	Fri 11/16: Consequences of RSK
+	•	Mon 11/19: The Frobenius characteristic
+	•	Mon 11/26: The Jacobi-Trudi formula for Schur functions
+	•	Wed 11/28: The hook-length formula
+	•	Fri 11/30: Quasisymmetric functions (including Billera-Jia-Reiner)
+	•	Mon 12/3: Hopf algebras
+	•	Wed 12/5: Grassmannians and flag varieties
+
+Problem Sets
+All solutions must be typeset using LaTeX.
+	•	Here is a header file with macros that may be useful.
+	•	It is OK to draw figures by hand, although even better is to use something like xfig. I do not recommend the LaTeX "picture" environment.
+E-mail me the PDF file under the name {your-last-name}{number-of-problem-set}.pdf.
+Problem Set #1 (due Wed 9/3/12): PDF | LaTeX  Problem Set #2 (due Fri 9/21/12): PDF | LaTeX  Problem Set #3 (due Fri 10/5/12): PDF | LaTeX  Problem Set #4 (due Fri 10/26/12): PDF | LaTeX  Problem Set #5 (due Mon 12/3/12): PDF | LaTeX
+
+Textbooks
+We will follow the lecture notes rather than any one specific textbook and all of the homework assignments will be self-contained. However, the following books may be helpful (and you should definitely obtain the free downloads). All these books can be perused in Jeremy's office.
+	1	R.P. Stanley, Enumerative Combinatorics, volume 1, 2nd ed. (Cambridge, 1997) (Enumeration; posets and lattices; generating functions) You can buy it from the publisher or use the free preprint version on Stanley's website.
+	2	R.P. Stanley, Enumerative Combinatorics, volume 2 (Cambridge, 1999) (More enumeration, including exponential generating functions; symmetric functions) Amazon | Google Books
+	3	M. Aigner, A Course in Enumeration (Springer, 2007) (Enumeration; posets, lattices, and matroids)
+	4	M. Aigner, Combinatorial Theory (Springer, 1997) (Enumerative combinatorics, symmetric functions, and matroids)
+	5	R.P. Stanley, Hyperplane Arrangements (lecture notes available free online)
+	6	A. Schrijver, A Course in Combinatorial Optimization (lecture notes available free online)
+	7	T. Brylawski and J. Oxley, The Tutte polynomial and its applications, Chapter 6 of Matroid applications, N. White, ed. (Cambridge Univ. Press, 1992)
+	8	M. Beck and R. Sanyal, Combinatorial Reciprocity Theorems: A Snapshot of Enumerative Combinatorics from a Geometric Viewpoint (manuscript available free online)
+	9	B. Sagan, The Symmetric Group, 2nd edn. (Springer, 2001)
+
+Final Project
+The final project is to read a current research article in combinatorics, give a short talk on it (20 minutes, like an AMS special session talk) to an audience of fellow graduate students, and provide constructive criticism on another student's talk. Here are full details and some suggestions for articles to read.
+The presentations will take place on Thursday 12/13 and Friday 12/14. Here is the schedule (subject to change):
+
+
+Thursday 12/13, 1:30-4:00 PM, Snow 456
+Time
+Presenter
+Paper
+Reviewer
+1:30-1:50
+Billy Sanders
+J. Eagon and V. Reiner, Resolutions of Stanley-Reisner rings and Alexander duality
+Nick
+2:00-2:20
+Tony Se
+A. Van Tuyl and R. Villarreal, Shellable graphs and sequentially Cohen-Macaulay bipartite graphs
+Alex
+2:30-2:50
+Alex Lazar
+W. Schmitt, Incidence Hopf algebras
+Ilya
+3:00-3:20
+Nick Packauskas
+M. d'Adderio and L. Moci, Arithmetic matroids, the Tutte polynomial and toric arrangements
+Billy
+3:30-3:50
+Khoa Le
+Y. Chan, J.-F. Marckert and T. Selig, A natural stochastic extension of the sandpile model on a graph
+Tony
+
+
+
+Friday 12/14, 10:30-1:00 PM, Snow 564
+Time
+Presenter
+Paper
+Reviewer
+10:30-10:50
+Logan Godkin
+F. Ardila, Computing the Tutte polynomial of a hyperplane arrangement
+Khoa
+11:00-11:20
+Ilya Smirnov
+C. Klivans and E. Swartz, Projection volumes of hyperplane arrangements
+Rob
+11:30-11:50
+Rob Bradford
+C. Athanasiadis, A combinatorial reciprocity theorem for hyperplane arrangements
+Logan
+12:00-12:20
+C.J. Harries
+S. Chestnut and D. Fishkind, Counting spanning trees of threshold graphs
+John
+12:30-12:50
+John Reynolds
+S. Hopkins and M. Weiler, Pattern avoidance in permutations on the Boolean lattice
+C.J.
+
+Links
+KU links
+	•	Jeremy's home page
+	•	KU Mathematics Department
+	•	KU Registrar
+	•	KU Bookstore
+	•	KU policies on academic misconduct
+	•	KU Office of Disability Resources
+Software and online resources
+	•	LaTeX:
+	◦	KU Math Department LaTeX page
+	◦	Header file for lecture notes, problem sets, etc., including lots of macros. Feel free to use and/or modify.
+	◦	Detexify (great way to find out LaTeX symbols)
+	•	Sage (free, open-source mathematical software), including:
+	◦	Quick Tour [HTML | PDF]; Tutorial [HTML | PDF]
+	◦	Run one command at a time on the cell server
+	◦	Create your own notebooks
+	◦	Sometimes the servers can be slow, so I suggest that you install Sage on your own computer.
+	•	The On-Line Encyclopedia of Integer Sequences
+	•	Acrobat Reader (to read PDF files on this page)
+
+
+
+Last updated Wed 12/5/12 3:30 PM
