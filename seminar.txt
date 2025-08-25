@@ -1,0 +1,30 @@
+KU Combinatorics Seminar Spring 2025
+	•	The Combinatorics Seminar meets on Fridays, 4-5pm, in Snow 306 (including talks on Zoom). There will be cookies!
+	•	Organizers: Jeremy Martin, Reuven Hodges, and Marge Bayer.
+	•	Good general seminar-attending advice, especially for graduate students: The "Three Things" Exercise for getting things out of talks by Ravi Vakil
+	•	Also consider attending the Graduate Online Combinatorics Colloquium.
+
+
+Friday 1/24 Organizational meeting
+Friday 1/31 Jeremy Martin Hyperplane Arrangements I
+Friday 2/7 Jeremy Martin Hyperplane Arrangements II
+Friday 2/14 Marge Bayer Polytopes
+Friday 2/21 Teerapat Saengsubin The Lattice Butterfly
+Friday 2/28 May Trist Chromatic MacMahon Functions
+Friday 3/7 Han Yin A Non-Iterative Rule for Straightening Fillings and Orthonormality
+Friday 3/14 No seminar (Spring Break)
+Friday 3/21 No seminar (Spring Break)
+Friday 3/28 Dania Morales (Willamette University) Matroids and Shellable Simplicial Complexes
+Abstract: While any simplicial complex can be assembled one facet at a time, shellable simplicial complexes can be assembled with nice topology at each step. In this talk, we focus on simplicial complexes that arise from a given matroid. After reviewing matroids and related simplicial complexes that are known to be shellable, we define a new simplicial complex. We call our complex the augmented external activity complex and we describe a family of shelling orders. This talk is based on joint work with Andrew Berget.
+Friday 4/4 No seminar
+Friday 4/11 Tian-Xiao He (Illinois Western University) Some Topics on Riordan Arrays and the Riordan Group
+Abstract: In this talk, we present double almost-Riordan arrays and the double almost-Riordan group. We also give the sequence characteristics of double almost-Riordan arrays and the production matrices of two types for double almost-Riordan arrays. In addition, we discuss the algebraic properties of the double almost-Riordan group, and finally give the compression of double almost-Riordan arrays and their total positivity. If time permits, we will present some recent results on the Riordan semigroup and embeddability of Coxeter groups into the Riordan group.
+Friday 4/18 No seminar -- please attend the Distinguished Lecture by David Eisenbud (4:00pm, Snow 120).
+Friday 4/25 Chris Uchizono Restricted quiver mutation and n-face urban renewal in dimer models
+Abstract: Quivers that arise from triangulations of surfaces have been extensively studied by Fomin, Shapiro, and Thurston in the context of flips of triangulations. In this talk, we introduce restricted quiver mutation as a mild generalization of flips of triangulations and how this generalization can be connected to a variant of urban renewal in dimer models via Derksen, Weyman, and Zelevinsky's mutation of quivers with potential.
+Friday 5/2 Reuven Hodges Orbit structures in Schubert and Richardson varieties
+Friday 5/9 (Stop Day) TBA
+
+
+For seminars from previous semesters, please see the KU Combinatorics Group page.
+ Last updated Fri 4/25/25
