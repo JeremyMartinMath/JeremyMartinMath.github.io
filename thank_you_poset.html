@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Thank You Poset Animation</title>
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    height: 100vh;
+  }
+  #left { position: relative; background: white; overflow: hidden; }
+  #svg { width: 100%; height: 100%; display: block; background: white; cursor: grab; }
+  #svg.dragging { cursor: grabbing; }
+  #right { border-left: 1px solid #ddd; padding: 14px; overflow-y: auto; font-size: 14px; }
+  h3 { margin-top: 0; }
+  button, input[type="range"] { width: 100%; margin: 6px 0; padding: 7px; font-size: 14px; box-sizing: border-box; }
+  .row { display: flex; gap: 8px; }
+  .row button { flex: 1; }
+  .small { font-size: 12px; color: #555; }
+  .stat { margin: 6px 0; }
+  label { display: block; margin: 8px 0 4px; }
+  .edge-bg { stroke: #e8e8e8; stroke-width: 0.8; stroke-opacity: 0.55; fill: none; vector-effect: non-scaling-stroke; pointer-events: none; }
+  .edge-selected { stroke: #8f73d9; stroke-width: 5.0; stroke-linecap: round; stroke-opacity: 0.98; fill: none; vector-effect: non-scaling-stroke; pointer-events: none; }
+  .vertex { fill: #777; stroke: none; opacity: 0.62; vector-effect: non-scaling-stroke; pointer-events: none; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div id="left">
+  <svg id="svg"></svg>
+</div>
+
+<div id="right">
+  <h3>Thank you poset</h3>
+  <div class="row">
+    <button id="fit-btn">Fit view</button>
+    <button id="reset-btn">Reset</button>
+  </div>
+  <div class="row">
+    <button id="play-btn">Play</button>
+    <button id="pause-btn">Pause</button>
+  </div>
+  <div class="row">
+    <button id="step-back-btn">Step back</button>
+    <button id="step-forward-btn">Step forward</button>
+  </div>
+  <label>Speed: <span id="speed-readout">200</span> ms / edge</label>
+  <input type="range" id="speed-slider" min="10" max="500" value="200">
+  <label>Selected edge thickness: <span id="thickness-readout">5.5</span></label>
+  <input type="range" id="thickness-slider" min="1" max="10" step="0.25" value="5.5">
+  <label>Background edge opacity: <span id="bg-opacity-readout">0.55</span></label>
+  <input type="range" id="bg-opacity-slider" min="0" max="1" step="0.05" value="0.55">
+  <label>Vertex opacity: <span id="vertex-opacity-readout">0.62</span></label>
+  <input type="range" id="vertex-opacity-slider" min="0" max="1" step="0.05" value="0.62">
+  <label><input type="checkbox" id="show-vertices" checked> Show vertices</label>
+  <label><input type="checkbox" id="show-background" checked> Show background edges</label>
+  <div class="stat"><b>Graph edges:</b> <span id="graph-edge-count">0</span></div>
+  <div class="stat"><b>Selected edges:</b> <span id="selected-count">0</span></div>
+  <div class="stat"><b>Revealed:</b> <span id="revealed-count">0</span></div>
+  <div class="stat"><b>Zoom:</b> <span id="zoom-readout">1.00</span></div>
+  <p class="small">
+    Mouse:
+    <br>• drag to pan
+    <br>• wheel to zoom
+    <br><br>
+    The animation reveals selected edges in the order stored in the embedded JSON.
+  </p>
+</div>
+
+<script>
+const EMBEDDED_GRAPH = {"vertices":[{"id":"12345","x":0.0,"y":0.0},{"id":"12354","x":-1.5,"y":1.55},{"id":"12435","x":-0.5,"y":1.55},{"id":"12453","x":-4.0,"y":3.1},{"id":"12534","x":-3.0,"y":3.1},{"id":"12543","x":-7.0,"y":4.65},{"id":"13245","x":0.5,"y":1.55},{"id":"13254","x":-2.0,"y":3.1},{"id":"13425","x":-1.0,"y":3.1},{"id":"13452","x":-6.0,"y":4.65},{"id":"13524","x":-5.0,"y":4.65},{"id":"13542","x":-9.5,"y":6.2},{"id":"14235","x":0.0,"y":3.1},{"id":"14253","x":-4.0,"y":4.65},{"id":"14325","x":-3.0,"y":4.65},{"id":"14352","x":-8.5,"y":6.2},{"id":"14523","x":-7.5,"y":6.2},{"id":"14532","x":-10.5,"y":7.75},{"id":"15234","x":-2.0,"y":4.65},{"id":"15243","x":-6.5,"y":6.2},{"id":"15324","x":-5.5,"y":6.2},{"id":"15342","x":-9.5,"y":7.75},{"id":"15423","x":-8.5,"y":7.75},{"id":"15432","x":-9.5,"y":9.3},{"id":"21345","x":1.5,"y":1.55},{"id":"21354","x":1.0,"y":3.1},{"id":"21435","x":2.0,"y":3.1},{"id":"21453","x":-1.0,"y":4.65},{"id":"21534","x":0.0,"y":4.65},{"id":"21543","x":-4.5,"y":6.2},{"id":"23145","x":3.0,"y":3.1},{"id":"23154","x":1.0,"y":4.65},{"id":"23415","x":2.0,"y":4.65},{"id":"23451","x":-3.5,"y":6.2},{"id":"23514","x":-2.5,"y":6.2},{"id":"23541","x":-7.5,"y":7.75},{"id":"24135","x":3.0,"y":4.65},{"id":"24153","x":-1.5,"y":6.2},{"id":"24315","x":-0.5,"y":6.2},{"id":"24351","x":-6.5,"y":7.75},{"id":"24513","x":-5.5,"y":7.75},{"id":"24531","x":-8.5,"y":9.3},{"id":"25134","x":0.5,"y":6.2},{"id":"25143","x":-4.5,"y":7.75},{"id":"25314","x":-3.5,"y":7.75},{"id":"25341","x":-7.5,"y":9.3},{"id":"25413","x":-6.5,"y":9.3},{"id":"25431","x":-7.0,"y":10.85},{"id":"31245","x":4.0,"y":3.1},{"id":"31254","x":4.0,"y":4.65},{"id":"31425","x":5.0,"y":4.65},{"id":"31452","x":1.5,"y":6.2},{"id":"31524","x":2.5,"y":6.2},{"id":"31542","x":-2.5,"y":7.75},{"id":"32145","x":6.0,"y":4.65},{"id":"32154","x":3.5,"y":6.2},{"id":"32415","x":4.5,"y":6.2},{"id":"32451","x":-1.5,"y":7.75},{"id":"32514","x":-0.5,"y":7.75},{"id":"32541","x":-5.5,"y":9.3},{"id":"34125","x":5.5,"y":6.2},{"id":"34152","x":0.5,"y":7.75},{"id":"34215","x":1.5,"y":7.75},{"id":"34251","x":-4.5,"y":9.3},{"id":"34512","x":-3.5,"y":9.3},{"id":"34521","x":-6.0,"y":10.85},{"id":"35124","x":2.5,"y":7.75},{"id":"35142","x":-2.5,"y":9.3},{"id":"35214","x":-1.5,"y":9.3},{"id":"35241","x":-5.0,"y":10.85},{"id":"35412","x":-4.0,"y":10.85},{"id":"35421","x":-4.0,"y":12.4},{"id":"41235","x":7.0,"y":4.65},{"id":"41253","x":6.5,"y":6.2},{"id":"41325","x":7.5,"y":6.2},{"id":"41352","x":3.5,"y":7.75},{"id":"41523","x":4.5,"y":7.75},{"id":"41532","x":-0.5,"y":9.3},{"id":"42135","x":8.5,"y":6.2},{"id":"42153","x":5.5,"y":7.75},{"id":"42315","x":6.5,"y":7.75},{"id":"42351","x":0.5,"y":9.3},{"id":"42513","x":1.5,"y":9.3},{"id":"42531","x":-3.0,"y":10.85},{"id":"43125","x":7.5,"y":7.75},{"id":"43152","x":2.5,"y":9.3},{"id":"43215","x":3.5,"y":9.3},{"id":"43251","x":-2.0,"y":10.85},{"id":"43512","x":-1.0,"y":10.85},{"id":"43521","x":-3.0,"y":12.4},{"id":"45123","x":4.5,"y":9.3},{"id":"45132","x":0.0,"y":10.85},{"id":"45213","x":1.0,"y":10.85},{"id":"45231","x":-2.0,"y":12.4},{"id":"45312","x":-1.0,"y":12.4},{"id":"45321","x":-1.5,"y":13.950000000000001},{"id":"51234","x":9.5,"y":6.2},{"id":"51243","x":8.5,"y":7.75},{"id":"51324","x":9.5,"y":7.75},{"id":"51342","x":5.5,"y":9.3},{"id":"51423","x":6.5,"y":9.3},{"id":"51432","x":2.0,"y":10.85},{"id":"52134","x":10.5,"y":7.75},{"id":"52143","x":7.5,"y":9.3},{"id":"52314","x":8.5,"y":9.3},{"id":"52341","x":3.0,"y":10.85},{"id":"52413","x":4.0,"y":10.85},{"id":"52431","x":0.0,"y":12.4},{"id":"53124","x":9.5,"y":9.3},{"id":"53142","x":5.0,"y":10.85},{"id":"53214","x":6.0,"y":10.85},{"id":"53241","x":1.0,"y":12.4},{"id":"53412","x":2.0,"y":12.4},{"id":"53421","x":-0.5,"y":13.950000000000001},{"id":"54123","x":7.0,"y":10.85},{"id":"54132","x":3.0,"y":12.4},{"id":"54213","x":4.0,"y":12.4},{"id":"54231","x":0.5,"y":13.950000000000001},{"id":"54312","x":1.5,"y":13.950000000000001},{"id":"54321","x":0.0,"y":15.5}],"edges":[{"id":"12345->12354","source":"12345","target":"12354"},{"id":"12345->12435","source":"12345","target":"12435"},{"id":"12345->13245","source":"12345","target":"13245"},{"id":"12345->21345","source":"12345","target":"21345"},{"id":"12354->12453","source":"12354","target":"12453"},{"id":"12354->12534","source":"12354","target":"12534"},{"id":"12354->13254","source":"12354","target":"13254"},{"id":"12354->21354","source":"12354","target":"21354"},{"id":"12435->12453","source":"12435","target":"12453"},{"id":"12435->12534","source":"12435","target":"12534"},{"id":"12435->13425","source":"12435","target":"13425"},{"id":"12435->14235","source":"12435","target":"14235"},{"id":"12435->21435","source":"12435","target":"21435"},{"id":"12453->12543","source":"12453","target":"12543"},{"id":"12453->13452","source":"12453","target":"13452"},{"id":"12453->14253","source":"12453","target":"14253"},{"id":"12453->21453","source":"12453","target":"21453"},{"id":"12534->12543","source":"12534","target":"12543"},{"id":"12534->13524","source":"12534","target":"13524"},{"id":"12534->15234","source":"12534","target":"15234"},{"id":"12534->21534","source":"12534","target":"21534"},{"id":"12543->13542","source":"12543","target":"13542"},{"id":"12543->14523","source":"12543","target":"14523"},{"id":"12543->15243","source":"12543","target":"15243"},{"id":"12543->21543","source":"12543","target":"21543"},{"id":"13245->13254","source":"13245","target":"13254"},{"id":"13245->13425","source":"13245","target":"13425"},{"id":"13245->14235","source":"13245","target":"14235"},{"id":"13245->23145","source":"13245","target":"23145"},{"id":"13245->31245","source":"13245","target":"31245"},{"id":"13254->13452","source":"13254","target":"13452"},{"id":"13254->13524","source":"13254","target":"13524"},{"id":"13254->14253","source":"13254","target":"14253"},{"id":"13254->15234","source":"13254","target":"15234"},{"id":"13254->23154","source":"13254","target":"23154"},{"id":"13254->31254","source":"13254","target":"31254"},{"id":"13425->13452","source":"13425","target":"13452"},{"id":"13425->13524","source":"13425","target":"13524"},{"id":"13425->14325","source":"13425","target":"14325"},{"id":"13425->23415","source":"13425","target":"23415"},{"id":"13425->31425","source":"13425","target":"31425"},{"id":"13452->13542","source":"13452","target":"13542"},{"id":"13452->14352","source":"13452","target":"14352"},{"id":"13452->23451","source":"13452","target":"23451"},{"id":"13452->31452","source":"13452","target":"31452"},{"id":"13524->13542","source":"13524","target":"13542"},{"id":"13524->14523","source":"13524","target":"14523"},{"id":"13524->15324","source":"13524","target":"15324"},{"id":"13524->23514","source":"13524","target":"23514"},{"id":"13524->31524","source":"13524","target":"31524"},{"id":"13542->14532","source":"13542","target":"14532"},{"id":"13542->15342","source":"13542","target":"15342"},{"id":"13542->23541","source":"13542","target":"23541"},{"id":"13542->31542","source":"13542","target":"31542"},{"id":"14235->14253","source":"14235","target":"14253"},{"id":"14235->14325","source":"14235","target":"14325"},{"id":"14235->15234","source":"14235","target":"15234"},{"id":"14235->24135","source":"14235","target":"24135"},{"id":"14235->41235","source":"14235","target":"41235"},{"id":"14253->14352","source":"14253","target":"14352"},{"id":"14253->14523","source":"14253","target":"14523"},{"id":"14253->15243","source":"14253","target":"15243"},{"id":"14253->24153","source":"14253","target":"24153"},{"id":"14253->41253","source":"14253","target":"41253"},{"id":"14325->14352","source":"14325","target":"14352"},{"id":"14325->14523","source":"14325","target":"14523"},{"id":"14325->15324","source":"14325","target":"15324"},{"id":"14325->24315","source":"14325","target":"24315"},{"id":"14325->34125","source":"14325","target":"34125"},{"id":"14325->41325","source":"14325","target":"41325"},{"id":"14352->14532","source":"14352","target":"14532"},{"id":"14352->15342","source":"14352","target":"15342"},{"id":"14352->24351","source":"14352","target":"24351"},{"id":"14352->34152","source":"14352","target":"34152"},{"id":"14352->41352","source":"14352","target":"41352"},{"id":"14523->14532","source":"14523","target":"14532"},{"id":"14523->15423","source":"14523","target":"15423"},{"id":"14523->24513","source":"14523","target":"24513"},{"id":"14523->41523","source":"14523","target":"41523"},{"id":"14532->15432","source":"14532","target":"15432"},{"id":"14532->24531","source":"14532","target":"24531"},{"id":"14532->34512","source":"14532","target":"34512"},{"id":"14532->41532","source":"14532","target":"41532"},{"id":"15234->15243","source":"15234","target":"15243"},{"id":"15234->15324","source":"15234","target":"15324"},{"id":"15234->25134","source":"15234","target":"25134"},{"id":"15234->51234","source":"15234","target":"51234"},{"id":"15243->15342","source":"15243","target":"15342"},{"id":"15243->15423","source":"15243","target":"15423"},{"id":"15243->25143","source":"15243","target":"25143"},{"id":"15243->51243","source":"15243","target":"51243"},{"id":"15324->15342","source":"15324","target":"15342"},{"id":"15324->15423","source":"15324","target":"15423"},{"id":"15324->25314","source":"15324","target":"25314"},{"id":"15324->35124","source":"15324","target":"35124"},{"id":"15324->51324","source":"15324","target":"51324"},{"id":"15342->15432","source":"15342","target":"15432"},{"id":"15342->25341","source":"15342","target":"25341"},{"id":"15342->35142","source":"15342","target":"35142"},{"id":"15342->51342","source":"15342","target":"51342"},{"id":"15423->15432","source":"15423","target":"15432"},{"id":"15423->25413","source":"15423","target":"25413"},{"id":"15423->45123","source":"15423","target":"45123"},{"id":"15423->51423","source":"15423","target":"51423"},{"id":"15432->25431","source":"15432","target":"25431"},{"id":"15432->35412","source":"15432","target":"35412"},{"id":"15432->45132","source":"15432","target":"45132"},{"id":"15432->51432","source":"15432","target":"51432"},{"id":"21345->21354","source":"21345","target":"21354"},{"id":"21345->21435","source":"21345","target":"21435"},{"id":"21345->23145","source":"21345","target":"23145"},{"id":"21345->31245","source":"21345","target":"31245"},{"id":"21354->21453","source":"21354","target":"21453"},{"id":"21354->21534","source":"21354","target":"21534"},{"id":"21354->23154","source":"21354","target":"23154"},{"id":"21354->31254","source":"21354","target":"31254"},{"id":"21435->21453","source":"21435","target":"21453"},{"id":"21435->21534","source":"21435","target":"21534"},{"id":"21435->23415","source":"21435","target":"23415"},{"id":"21435->24135","source":"21435","target":"24135"},{"id":"21435->31425","source":"21435","target":"31425"},{"id":"21435->41235","source":"21435","target":"41235"},{"id":"21453->21543","source":"21453","target":"21543"},{"id":"21453->23451","source":"21453","target":"23451"},{"id":"21453->24153","source":"21453","target":"24153"},{"id":"21453->31452","source":"21453","target":"31452"},{"id":"21453->41253","source":"21453","target":"41253"},{"id":"21534->21543","source":"21534","target":"21543"},{"id":"21534->23514","source":"21534","target":"23514"},{"id":"21534->25134","source":"21534","target":"25134"},{"id":"21534->31524","source":"21534","target":"31524"},{"id":"21534->51234","source":"21534","target":"51234"},{"id":"21543->23541","source":"21543","target":"23541"},{"id":"21543->24513","source":"21543","target":"24513"},{"id":"21543->25143","source":"21543","target":"25143"},{"id":"21543->31542","source":"21543","target":"31542"},{"id":"21543->41523","source":"21543","target":"41523"},{"id":"21543->51243","source":"21543","target":"51243"},{"id":"23145->23154","source":"23145","target":"23154"},{"id":"23145->23415","source":"23145","target":"23415"},{"id":"23145->24135","source":"23145","target":"24135"},{"id":"23145->32145","source":"23145","target":"32145"},{"id":"23154->23451","source":"23154","target":"23451"},{"id":"23154->23514","source":"23154","target":"23514"},{"id":"23154->24153","source":"23154","target":"24153"},{"id":"23154->25134","source":"23154","target":"25134"},{"id":"23154->32154","source":"23154","target":"32154"},{"id":"23415->23451","source":"23415","target":"23451"},{"id":"23415->23514","source":"23415","target":"23514"},{"id":"23415->24315","source":"23415","target":"24315"},{"id":"23415->32415","source":"23415","target":"32415"},{"id":"23451->23541","source":"23451","target":"23541"},{"id":"23451->24351","source":"23451","target":"24351"},{"id":"23451->32451","source":"23451","target":"32451"},{"id":"23514->23541","source":"23514","target":"23541"},{"id":"23514->24513","source":"23514","target":"24513"},{"id":"23514->25314","source":"23514","target":"25314"},{"id":"23514->32514","source":"23514","target":"32514"},{"id":"23541->24531","source":"23541","target":"24531"},{"id":"23541->25341","source":"23541","target":"25341"},{"id":"23541->32541","source":"23541","target":"32541"},{"id":"24135->24153","source":"24135","target":"24153"},{"id":"24135->24315","source":"24135","target":"24315"},{"id":"24135->25134","source":"24135","target":"25134"},{"id":"24135->34125","source":"24135","target":"34125"},{"id":"24135->42135","source":"24135","target":"42135"},{"id":"24153->24351","source":"24153","target":"24351"},{"id":"24153->24513","source":"24153","target":"24513"},{"id":"24153->25143","source":"24153","target":"25143"},{"id":"24153->34152","source":"24153","target":"34152"},{"id":"24153->42153","source":"24153","target":"42153"},{"id":"24315->24351","source":"24315","target":"24351"},{"id":"24315->24513","source":"24315","target":"24513"},{"id":"24315->25314","source":"24315","target":"25314"},{"id":"24315->34215","source":"24315","target":"34215"},{"id":"24315->42315","source":"24315","target":"42315"},{"id":"24351->24531","source":"24351","target":"24531"},{"id":"24351->25341","source":"24351","target":"25341"},{"id":"24351->34251","source":"24351","target":"34251"},{"id":"24351->42351","source":"24351","target":"42351"},{"id":"24513->24531","source":"24513","target":"24531"},{"id":"24513->25413","source":"24513","target":"25413"},{"id":"24513->34512","source":"24513","target":"34512"},{"id":"24513->42513","source":"24513","target":"42513"},{"id":"24531->25431","source":"24531","target":"25431"},{"id":"24531->34521","source":"24531","target":"34521"},{"id":"24531->42531","source":"24531","target":"42531"},{"id":"25134->25143","source":"25134","target":"25143"},{"id":"25134->25314","source":"25134","target":"25314"},{"id":"25134->35124","source":"25134","target":"35124"},{"id":"25134->52134","source":"25134","target":"52134"},{"id":"25143->25341","source":"25143","target":"25341"},{"id":"25143->25413","source":"25143","target":"25413"},{"id":"25143->35142","source":"25143","target":"35142"},{"id":"25143->45123","source":"25143","target":"45123"},{"id":"25143->52143","source":"25143","target":"52143"},{"id":"25314->25341","source":"25314","target":"25341"},{"id":"25314->25413","source":"25314","target":"25413"},{"id":"25314->35214","source":"25314","target":"35214"},{"id":"25314->52314","source":"25314","target":"52314"},{"id":"25341->25431","source":"25341","target":"25431"},{"id":"25341->35241","source":"25341","target":"35241"},{"id":"25341->52341","source":"25341","target":"52341"},{"id":"25413->25431","source":"25413","target":"25431"},{"id":"25413->35412","source":"25413","target":"35412"},{"id":"25413->45213","source":"25413","target":"45213"},{"id":"25413->52413","source":"25413","target":"52413"},{"id":"25431->35421","source":"25431","target":"35421"},{"id":"25431->45231","source":"25431","target":"45231"},{"id":"25431->52431","source":"25431","target":"52431"},{"id":"31245->31254","source":"31245","target":"31254"},{"id":"31245->31425","source":"31245","target":"31425"},{"id":"31245->32145","source":"31245","target":"32145"},{"id":"31245->41235","source":"31245","target":"41235"},{"id":"31254->31452","source":"31254","target":"31452"},{"id":"31254->31524","source":"31254","target":"31524"},{"id":"31254->32154","source":"31254","target":"32154"},{"id":"31254->41253","source":"31254","target":"41253"},{"id":"31254->51234","source":"31254","target":"51234"},{"id":"31425->31452","source":"31425","target":"31452"},{"id":"31425->31524","source":"31425","target":"31524"},{"id":"31425->32415","source":"31425","target":"32415"},{"id":"31425->34125","source":"31425","target":"34125"},{"id":"31425->41325","source":"31425","target":"41325"},{"id":"31452->31542","source":"31452","target":"31542"},{"id":"31452->32451","source":"31452","target":"32451"},{"id":"31452->34152","source":"31452","target":"34152"},{"id":"31452->41352","source":"31452","target":"41352"},{"id":"31524->31542","source":"31524","target":"31542"},{"id":"31524->32514","source":"31524","target":"32514"},{"id":"31524->35124","source":"31524","target":"35124"},{"id":"31524->41523","source":"31524","target":"41523"},{"id":"31524->51324","source":"31524","target":"51324"},{"id":"31542->32541","source":"31542","target":"32541"},{"id":"31542->34512","source":"31542","target":"34512"},{"id":"31542->35142","source":"31542","target":"35142"},{"id":"31542->41532","source":"31542","target":"41532"},{"id":"31542->51342","source":"31542","target":"51342"},{"id":"32145->32154","source":"32145","target":"32154"},{"id":"32145->32415","source":"32145","target":"32415"},{"id":"32145->34125","source":"32145","target":"34125"},{"id":"32145->42135","source":"32145","target":"42135"},{"id":"32154->32451","source":"32154","target":"32451"},{"id":"32154->32514","source":"32154","target":"32514"},{"id":"32154->34152","source":"32154","target":"34152"},{"id":"32154->35124","source":"32154","target":"35124"},{"id":"32154->42153","source":"32154","target":"42153"},{"id":"32154->52134","source":"32154","target":"52134"},{"id":"32415->32451","source":"32415","target":"32451"},{"id":"32415->32514","source":"32415","target":"32514"},{"id":"32415->34215","source":"32415","target":"34215"},{"id":"32415->42315","source":"32415","target":"42315"},{"id":"32451->32541","source":"32451","target":"32541"},{"id":"32451->34251","source":"32451","target":"34251"},{"id":"32451->42351","source":"32451","target":"42351"},{"id":"32514->32541","source":"32514","target":"32541"},{"id":"32514->34512","source":"32514","target":"34512"},{"id":"32514->35214","source":"32514","target":"35214"},{"id":"32514->42513","source":"32514","target":"42513"},{"id":"32514->52314","source":"32514","target":"52314"},{"id":"32541->34521","source":"32541","target":"34521"},{"id":"32541->35241","source":"32541","target":"35241"},{"id":"32541->42531","source":"32541","target":"42531"},{"id":"32541->52341","source":"32541","target":"52341"},{"id":"34125->34152","source":"34125","target":"34152"},{"id":"34125->34215","source":"34125","target":"34215"},{"id":"34125->35124","source":"34125","target":"35124"},{"id":"34125->43125","source":"34125","target":"43125"},{"id":"34152->34251","source":"34152","target":"34251"},{"id":"34152->34512","source":"34152","target":"34512"},{"id":"34152->35142","source":"34152","target":"35142"},{"id":"34152->43152","source":"34152","target":"43152"},{"id":"34215->34251","source":"34215","target":"34251"},{"id":"34215->34512","source":"34215","target":"34512"},{"id":"34215->35214","source":"34215","target":"35214"},{"id":"34215->43215","source":"34215","target":"43215"},{"id":"34251->34521","source":"34251","target":"34521"},{"id":"34251->35241","source":"34251","target":"35241"},{"id":"34251->43251","source":"34251","target":"43251"},{"id":"34512->34521","source":"34512","target":"34521"},{"id":"34512->35412","source":"34512","target":"35412"},{"id":"34512->43512","source":"34512","target":"43512"},{"id":"34521->35421","source":"34521","target":"35421"},{"id":"34521->43521","source":"34521","target":"43521"},{"id":"35124->35142","source":"35124","target":"35142"},{"id":"35124->35214","source":"35124","target":"35214"},{"id":"35124->45123","source":"35124","target":"45123"},{"id":"35124->53124","source":"35124","target":"53124"},{"id":"35142->35241","source":"35142","target":"35241"},{"id":"35142->35412","source":"35142","target":"35412"},{"id":"35142->45132","source":"35142","target":"45132"},{"id":"35142->53142","source":"35142","target":"53142"},{"id":"35214->35241","source":"35214","target":"35241"},{"id":"35214->35412","source":"35214","target":"35412"},{"id":"35214->45213","source":"35214","target":"45213"},{"id":"35214->53214","source":"35214","target":"53214"},{"id":"35241->35421","source":"35241","target":"35421"},{"id":"35241->45231","source":"35241","target":"45231"},{"id":"35241->53241","source":"35241","target":"53241"},{"id":"35412->35421","source":"35412","target":"35421"},{"id":"35412->45312","source":"35412","target":"45312"},{"id":"35412->53412","source":"35412","target":"53412"},{"id":"35421->45321","source":"35421","target":"45321"},{"id":"35421->53421","source":"35421","target":"53421"},{"id":"41235->41253","source":"41235","target":"41253"},{"id":"41235->41325","source":"41235","target":"41325"},{"id":"41235->42135","source":"41235","target":"42135"},{"id":"41235->51234","source":"41235","target":"51234"},{"id":"41253->41352","source":"41253","target":"41352"},{"id":"41253->41523","source":"41253","target":"41523"},{"id":"41253->42153","source":"41253","target":"42153"},{"id":"41253->51243","source":"41253","target":"51243"},{"id":"41325->41352","source":"41325","target":"41352"},{"id":"41325->41523","source":"41325","target":"41523"},{"id":"41325->42315","source":"41325","target":"42315"},{"id":"41325->43125","source":"41325","target":"43125"},{"id":"41325->51324","source":"41325","target":"51324"},{"id":"41352->41532","source":"41352","target":"41532"},{"id":"41352->42351","source":"41352","target":"42351"},{"id":"41352->43152","source":"41352","target":"43152"},{"id":"41352->51342","source":"41352","target":"51342"},{"id":"41523->41532","source":"41523","target":"41532"},{"id":"41523->42513","source":"41523","target":"42513"},{"id":"41523->45123","source":"41523","target":"45123"},{"id":"41523->51423","source":"41523","target":"51423"},{"id":"41532->42531","source":"41532","target":"42531"},{"id":"41532->43512","source":"41532","target":"43512"},{"id":"41532->45132","source":"41532","target":"45132"},{"id":"41532->51432","source":"41532","target":"51432"},{"id":"42135->42153","source":"42135","target":"42153"},{"id":"42135->42315","source":"42135","target":"42315"},{"id":"42135->43125","source":"42135","target":"43125"},{"id":"42135->52134","source":"42135","target":"52134"},{"id":"42153->42351","source":"42153","target":"42351"},{"id":"42153->42513","source":"42153","target":"42513"},{"id":"42153->43152","source":"42153","target":"43152"},{"id":"42153->45123","source":"42153","target":"45123"},{"id":"42153->52143","source":"42153","target":"52143"},{"id":"42315->42351","source":"42315","target":"42351"},{"id":"42315->42513","source":"42315","target":"42513"},{"id":"42315->43215","source":"42315","target":"43215"},{"id":"42315->52314","source":"42315","target":"52314"},{"id":"42351->42531","source":"42351","target":"42531"},{"id":"42351->43251","source":"42351","target":"43251"},{"id":"42351->52341","source":"42351","target":"52341"},{"id":"42513->42531","source":"42513","target":"42531"},{"id":"42513->43512","source":"42513","target":"43512"},{"id":"42513->45213","source":"42513","target":"45213"},{"id":"42513->52413","source":"42513","target":"52413"},{"id":"42531->43521","source":"42531","target":"43521"},{"id":"42531->45231","source":"42531","target":"45231"},{"id":"42531->52431","source":"42531","target":"52431"},{"id":"43125->43152","source":"43125","target":"43152"},{"id":"43125->43215","source":"43125","target":"43215"},{"id":"43125->45123","source":"43125","target":"45123"},{"id":"43125->53124","source":"43125","target":"53124"},{"id":"43152->43251","source":"43152","target":"43251"},{"id":"43152->43512","source":"43152","target":"43512"},{"id":"43152->45132","source":"43152","target":"45132"},{"id":"43152->53142","source":"43152","target":"53142"},{"id":"43215->43251","source":"43215","target":"43251"},{"id":"43215->43512","source":"43215","target":"43512"},{"id":"43215->45213","source":"43215","target":"45213"},{"id":"43215->53214","source":"43215","target":"53214"},{"id":"43251->43521","source":"43251","target":"43521"},{"id":"43251->45231","source":"43251","target":"45231"},{"id":"43251->53241","source":"43251","target":"53241"},{"id":"43512->43521","source":"43512","target":"43521"},{"id":"43512->45312","source":"43512","target":"45312"},{"id":"43512->53412","source":"43512","target":"53412"},{"id":"43521->45321","source":"43521","target":"45321"},{"id":"43521->53421","source":"43521","target":"53421"},{"id":"45123->45132","source":"45123","target":"45132"},{"id":"45123->45213","source":"45123","target":"45213"},{"id":"45123->54123","source":"45123","target":"54123"},{"id":"45132->45231","source":"45132","target":"45231"},{"id":"45132->45312","source":"45132","target":"45312"},{"id":"45132->54132","source":"45132","target":"54132"},{"id":"45213->45231","source":"45213","target":"45231"},{"id":"45213->45312","source":"45213","target":"45312"},{"id":"45213->54213","source":"45213","target":"54213"},{"id":"45231->45321","source":"45231","target":"45321"},{"id":"45231->54231","source":"45231","target":"54231"},{"id":"45312->45321","source":"45312","target":"45321"},{"id":"45312->54312","source":"45312","target":"54312"},{"id":"45321->54321","source":"45321","target":"54321"},{"id":"51234->51243","source":"51234","target":"51243"},{"id":"51234->51324","source":"51234","target":"51324"},{"id":"51234->52134","source":"51234","target":"52134"},{"id":"51243->51342","source":"51243","target":"51342"},{"id":"51243->51423","source":"51243","target":"51423"},{"id":"51243->52143","source":"51243","target":"52143"},{"id":"51324->51342","source":"51324","target":"51342"},{"id":"51324->51423","source":"51324","target":"51423"},{"id":"51324->52314","source":"51324","target":"52314"},{"id":"51324->53124","source":"51324","target":"53124"},{"id":"51342->51432","source":"51342","target":"51432"},{"id":"51342->52341","source":"51342","target":"52341"},{"id":"51342->53142","source":"51342","target":"53142"},{"id":"51423->51432","source":"51423","target":"51432"},{"id":"51423->52413","source":"51423","target":"52413"},{"id":"51423->54123","source":"51423","target":"54123"},{"id":"51432->52431","source":"51432","target":"52431"},{"id":"51432->53412","source":"51432","target":"53412"},{"id":"51432->54132","source":"51432","target":"54132"},{"id":"52134->52143","source":"52134","target":"52143"},{"id":"52134->52314","source":"52134","target":"52314"},{"id":"52134->53124","source":"52134","target":"53124"},{"id":"52143->52341","source":"52143","target":"52341"},{"id":"52143->52413","source":"52143","target":"52413"},{"id":"52143->53142","source":"52143","target":"53142"},{"id":"52143->54123","source":"52143","target":"54123"},{"id":"52314->52341","source":"52314","target":"52341"},{"id":"52314->52413","source":"52314","target":"52413"},{"id":"52314->53214","source":"52314","target":"53214"},{"id":"52341->52431","source":"52341","target":"52431"},{"id":"52341->53241","source":"52341","target":"53241"},{"id":"52413->52431","source":"52413","target":"52431"},{"id":"52413->53412","source":"52413","target":"53412"},{"id":"52413->54213","source":"52413","target":"54213"},{"id":"52431->53421","source":"52431","target":"53421"},{"id":"52431->54231","source":"52431","target":"54231"},{"id":"53124->53142","source":"53124","target":"53142"},{"id":"53124->53214","source":"53124","target":"53214"},{"id":"53124->54123","source":"53124","target":"54123"},{"id":"53142->53241","source":"53142","target":"53241"},{"id":"53142->53412","source":"53142","target":"53412"},{"id":"53142->54132","source":"53142","target":"54132"},{"id":"53214->53241","source":"53214","target":"53241"},{"id":"53214->53412","source":"53214","target":"53412"},{"id":"53214->54213","source":"53214","target":"54213"},{"id":"53241->53421","source":"53241","target":"53421"},{"id":"53241->54231","source":"53241","target":"54231"},{"id":"53412->53421","source":"53412","target":"53421"},{"id":"53412->54312","source":"53412","target":"54312"},{"id":"53421->54321","source":"53421","target":"54321"},{"id":"54123->54132","source":"54123","target":"54132"},{"id":"54123->54213","source":"54123","target":"54213"},{"id":"54132->54231","source":"54132","target":"54231"},{"id":"54132->54312","source":"54132","target":"54312"},{"id":"54213->54231","source":"54213","target":"54231"},{"id":"54213->54312","source":"54213","target":"54312"},{"id":"54231->54321","source":"54231","target":"54321"},{"id":"54312->54321","source":"54312","target":"54321"}]};
+const EMBEDDED_SELECTION = {"selected_edge_ids":["14532->15432","15432->25431","15423->15432","14523->15423","21543->23541","23541->24531","23541->32541","32541->34521","31542->32541","34512->35412","35412->35421","35421->45321","45312->45321","35412->45312","43512->45312","52431->53421","53412->53421","53412->54312","42513->45213","42513->52413","42315->42513","41523->42513","12534->13524","12534->15234","12354->12534","21354->21453","21453->24153","24135->24153","21435->24135","21345->21435","21345->21354","31245->31254","31245->31425","31254->32154","31425->32415"],"selected_edges":[{"id":"14532->15432","source":"14532","target":"15432"},{"id":"15432->25431","source":"15432","target":"25431"},{"id":"15423->15432","source":"15423","target":"15432"},{"id":"14523->15423","source":"14523","target":"15423"},{"id":"21543->23541","source":"21543","target":"23541"},{"id":"23541->24531","source":"23541","target":"24531"},{"id":"23541->32541","source":"23541","target":"32541"},{"id":"32541->34521","source":"32541","target":"34521"},{"id":"31542->32541","source":"31542","target":"32541"},{"id":"34512->35412","source":"34512","target":"35412"},{"id":"35412->35421","source":"35412","target":"35421"},{"id":"35421->45321","source":"35421","target":"45321"},{"id":"45312->45321","source":"45312","target":"45321"},{"id":"35412->45312","source":"35412","target":"45312"},{"id":"43512->45312","source":"43512","target":"45312"},{"id":"52431->53421","source":"52431","target":"53421"},{"id":"53412->53421","source":"53412","target":"53421"},{"id":"53412->54312","source":"53412","target":"54312"},{"id":"42513->45213","source":"42513","target":"45213"},{"id":"42513->52413","source":"42513","target":"52413"},{"id":"42315->42513","source":"42315","target":"42513"},{"id":"41523->42513","source":"41523","target":"42513"},{"id":"12534->13524","source":"12534","target":"13524"},{"id":"12534->15234","source":"12534","target":"15234"},{"id":"12354->12534","source":"12354","target":"12534"},{"id":"21354->21453","source":"21354","target":"21453"},{"id":"21453->24153","source":"21453","target":"24153"},{"id":"24135->24153","source":"24135","target":"24153"},{"id":"21435->24135","source":"21435","target":"24135"},{"id":"21345->21435","source":"21345","target":"21435"},{"id":"21345->21354","source":"21345","target":"21354"},{"id":"31245->31254","source":"31245","target":"31254"},{"id":"31245->31425","source":"31245","target":"31425"},{"id":"31254->32154","source":"31254","target":"32154"},{"id":"31425->32415","source":"31425","target":"32415"}],"selection_order":[{"order":1,"id":"14532->15432","source":"14532","target":"15432"},{"order":2,"id":"15432->25431","source":"15432","target":"25431"},{"order":3,"id":"15423->15432","source":"15423","target":"15432"},{"order":4,"id":"14523->15423","source":"14523","target":"15423"},{"order":5,"id":"21543->23541","source":"21543","target":"23541"},{"order":6,"id":"23541->24531","source":"23541","target":"24531"},{"order":7,"id":"23541->32541","source":"23541","target":"32541"},{"order":8,"id":"32541->34521","source":"32541","target":"34521"},{"order":9,"id":"31542->32541","source":"31542","target":"32541"},{"order":10,"id":"34512->35412","source":"34512","target":"35412"},{"order":11,"id":"35412->35421","source":"35412","target":"35421"},{"order":12,"id":"35421->45321","source":"35421","target":"45321"},{"order":13,"id":"45312->45321","source":"45312","target":"45321"},{"order":14,"id":"35412->45312","source":"35412","target":"45312"},{"order":15,"id":"43512->45312","source":"43512","target":"45312"},{"order":16,"id":"52431->53421","source":"52431","target":"53421"},{"order":17,"id":"53412->53421","source":"53412","target":"53421"},{"order":18,"id":"53412->54312","source":"53412","target":"54312"},{"order":19,"id":"42513->45213","source":"42513","target":"45213"},{"order":20,"id":"42513->52413","source":"42513","target":"52413"},{"order":21,"id":"42315->42513","source":"42315","target":"42513"},{"order":22,"id":"41523->42513","source":"41523","target":"42513"},{"order":23,"id":"12534->13524","source":"12534","target":"13524"},{"order":24,"id":"12534->15234","source":"12534","target":"15234"},{"order":25,"id":"12354->12534","source":"12354","target":"12534"},{"order":26,"id":"21354->21453","source":"21354","target":"21453"},{"order":27,"id":"21453->24153","source":"21453","target":"24153"},{"order":28,"id":"24135->24153","source":"24135","target":"24153"},{"order":29,"id":"21435->24135","source":"21435","target":"24135"},{"order":30,"id":"21345->21435","source":"21345","target":"21435"},{"order":31,"id":"21345->21354","source":"21345","target":"21354"},{"order":32,"id":"31245->31254","source":"31245","target":"31254"},{"order":33,"id":"31245->31425","source":"31245","target":"31425"},{"order":34,"id":"31254->32154","source":"31254","target":"32154"},{"order":35,"id":"31425->32415","source":"31425","target":"32415"}]};
+
+const svg = document.getElementById("svg");
+const speedSlider = document.getElementById("speed-slider");
+const speedReadout = document.getElementById("speed-readout");
+const thicknessSlider = document.getElementById("thickness-slider");
+const thicknessReadout = document.getElementById("thickness-readout");
+const bgOpacitySlider = document.getElementById("bg-opacity-slider");
+const bgOpacityReadout = document.getElementById("bg-opacity-readout");
+const vertexOpacitySlider = document.getElementById("vertex-opacity-slider");
+const vertexOpacityReadout = document.getElementById("vertex-opacity-readout");
+const showVerticesCheckbox = document.getElementById("show-vertices");
+const showBackgroundCheckbox = document.getElementById("show-background");
+const graphEdgeCount = document.getElementById("graph-edge-count");
+const selectedCount = document.getElementById("selected-count");
+const revealedCount = document.getElementById("revealed-count");
+const zoomReadout = document.getElementById("zoom-readout");
+
+let graph = EMBEDDED_GRAPH;
+let selection = EMBEDDED_SELECTION;
+let selectedIds = [];
+let revealedIndex = 0;
+let timer = null;
+let viewport, bgLayer, selectedLayer, vertexLayer;
+let selectedLineMap = new Map();
+let bounds = null;
+let view = { scale: 1, tx: 0, ty: 0 };
+let dragging = false;
+let dragStart = null;
+
+function svgEl(tag, attrs = {}) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  return el;
+}
+function updateZoomReadout() { zoomReadout.textContent = view.scale.toFixed(2); }
+function updateStats() {
+  graphEdgeCount.textContent = graph ? graph.edges.length : 0;
+  selectedCount.textContent = selectedIds.length;
+  revealedCount.textContent = revealedIndex;
+}
+function applyTransform() {
+  if (!viewport) return;
+  viewport.setAttribute("transform", `translate(${view.tx} ${view.ty}) scale(${view.scale})`);
+  updateZoomReadout();
+}
+function fitView() {
+  if (!bounds) return;
+  const w = svg.clientWidth, h = svg.clientHeight, pad = 40;
+  const bw = bounds.xmax - bounds.xmin || 1;
+  const bh = bounds.ymax - bounds.ymin || 1;
+  const sx = (w - 2 * pad) / bw;
+  const sy = (h - 2 * pad) / bh;
+  const scale = Math.min(sx, sy);
+  const cx = 0.5 * (bounds.xmin + bounds.xmax);
+  const cy = 0.5 * (bounds.ymin + bounds.ymax);
+  view.scale = scale;
+  view.tx = w / 2 - scale * cx;
+  view.ty = h / 2 - scale * cy;
+  applyTransform();
+}
+function makeLayers() {
+  svg.innerHTML = "";
+  svg.setAttribute("viewBox", `0 0 ${svg.clientWidth} ${svg.clientHeight}`);
+  viewport = svgEl("g");
+  bgLayer = svgEl("g");
+  selectedLayer = svgEl("g");
+  vertexLayer = svgEl("g");
+  viewport.appendChild(bgLayer);
+  viewport.appendChild(selectedLayer);
+  viewport.appendChild(vertexLayer);
+  svg.appendChild(viewport);
+}
+function getOrderedSelectedIds(selectionData) {
+  if (!selectionData) return [];
+  if (Array.isArray(selectionData.selected_edge_ids)) return selectionData.selected_edge_ids.slice();
+  if (Array.isArray(selectionData.selection_order)) return selectionData.selection_order.map(e => e.id);
+  if (Array.isArray(selectionData.selected_edges)) return selectionData.selected_edges.map(e => e.id);
+  return [];
+}
+function renderGraph() {
+  if (!graph) return;
+  makeLayers();
+  selectedLineMap = new Map();
+  const vertexMap = new Map();
+  for (const v of graph.vertices) vertexMap.set(v.id, { x: v.x, y: -v.y });
+  const xs = [...vertexMap.values()].map(v => v.x);
+  const ys = [...vertexMap.values()].map(v => v.y);
+  bounds = { xmin: Math.min(...xs), xmax: Math.max(...xs), ymin: Math.min(...ys), ymax: Math.max(...ys) };
+  for (const e of graph.edges) {
+    const a = vertexMap.get(e.source), b = vertexMap.get(e.target);
+    if (!a || !b) continue;
+    bgLayer.appendChild(svgEl("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: "edge-bg" }));
+    const sel = svgEl("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: "edge-selected hidden" });
+    selectedLayer.appendChild(sel);
+    selectedLineMap.set(e.id, sel);
+  }
+  for (const v of graph.vertices) {
+    const p = vertexMap.get(v.id);
+    vertexLayer.appendChild(svgEl("circle", { cx: p.x, cy: p.y, r: 0.11, class: "vertex" }));
+  }
+  applyStyleControls();
+  fitView();
+  updateRevealedEdges();
+  updateStats();
+}
+function loadSelection(selectionData) {
+  selection = selectionData;
+  selectedIds = getOrderedSelectedIds(selectionData).filter(id => selectedLineMap.has(id));
+  revealedIndex = 0;
+  updateRevealedEdges();
+  updateStats();
+}
+function updateRevealedEdges() {
+  for (const line of selectedLineMap.values()) line.classList.add("hidden");
+  for (let i = 0; i < revealedIndex; i++) {
+    const line = selectedLineMap.get(selectedIds[i]);
+    if (line) line.classList.remove("hidden");
+  }
+  updateStats();
+}
+const AUTOPLAY_START_DELAY_MS = 3000;
+const AUTOPLAY_REPEAT_DELAY_MS = 7500;
+let repeatTimer = null;
+
+function resetAnimation() { pauseAnimation(); revealedIndex = 0; updateRevealedEdges(); }
+function stepForward() {
+  if (revealedIndex < selectedIds.length) { revealedIndex += 1; updateRevealedEdges(); }
+  else pauseAnimation();
+}
+function stepBack() { if (revealedIndex > 0) { revealedIndex -= 1; updateRevealedEdges(); } }
+function playAnimation() {
+  if (timer) return;
+  if (revealedIndex >= selectedIds.length) {
+    revealedIndex = 0;
+    updateRevealedEdges();
+  }
+  timer = setInterval(() => {
+    stepForward();
+    if (revealedIndex >= selectedIds.length) {
+      pauseAnimation();
+      repeatTimer = setTimeout(() => {
+        revealedIndex = 0;
+        updateRevealedEdges();
+        playAnimation();
+      }, AUTOPLAY_REPEAT_DELAY_MS);
+    }
+  }, Number(speedSlider.value));
+}
+function pauseAnimation() {
+  if (timer) { clearInterval(timer); timer = null; }
+  if (repeatTimer) { clearTimeout(repeatTimer); repeatTimer = null; }
+}
+function applyStyleControls() {
+  const thickness = Number(thicknessSlider.value);
+  const bgOpacity = Number(bgOpacitySlider.value);
+  const vertexOpacity = Number(vertexOpacitySlider.value);
+  thicknessReadout.textContent = thickness.toFixed(1);
+  bgOpacityReadout.textContent = bgOpacity.toFixed(2);
+  vertexOpacityReadout.textContent = vertexOpacity.toFixed(2);
+  speedReadout.textContent = speedSlider.value;
+  document.querySelectorAll(".edge-selected").forEach(el => { el.style.strokeWidth = thickness; });
+  document.querySelectorAll(".edge-bg").forEach(el => { el.style.strokeOpacity = bgOpacity; });
+  document.querySelectorAll(".vertex").forEach(el => { el.style.opacity = vertexOpacity; });
+  if (vertexLayer) vertexLayer.style.display = showVerticesCheckbox.checked ? "block" : "none";
+  if (bgLayer) bgLayer.style.display = showBackgroundCheckbox.checked ? "block" : "none";
+}
+
+document.getElementById("fit-btn").addEventListener("click", fitView);
+document.getElementById("reset-btn").addEventListener("click", resetAnimation);
+document.getElementById("play-btn").addEventListener("click", playAnimation);
+document.getElementById("pause-btn").addEventListener("click", pauseAnimation);
+document.getElementById("step-forward-btn").addEventListener("click", stepForward);
+document.getElementById("step-back-btn").addEventListener("click", stepBack);
+speedSlider.addEventListener("input", () => { speedReadout.textContent = speedSlider.value; if (timer) { pauseAnimation(); playAnimation(); } });
+thicknessSlider.addEventListener("input", applyStyleControls);
+bgOpacitySlider.addEventListener("input", applyStyleControls);
+vertexOpacitySlider.addEventListener("input", applyStyleControls);
+showVerticesCheckbox.addEventListener("change", applyStyleControls);
+showBackgroundCheckbox.addEventListener("change", applyStyleControls);
+
+svg.addEventListener("mousedown", evt => {
+  dragging = true;
+  dragStart = { x: evt.clientX, y: evt.clientY, tx: view.tx, ty: view.ty };
+  svg.classList.add("dragging");
+});
+window.addEventListener("mousemove", evt => {
+  if (!dragging) return;
+  view.tx = dragStart.tx + (evt.clientX - dragStart.x);
+  view.ty = dragStart.ty + (evt.clientY - dragStart.y);
+  applyTransform();
+});
+window.addEventListener("mouseup", () => { dragging = false; svg.classList.remove("dragging"); });
+svg.addEventListener("wheel", evt => {
+  evt.preventDefault();
+  const rect = svg.getBoundingClientRect();
+  const px = evt.clientX - rect.left;
+  const py = evt.clientY - rect.top;
+  const factor = evt.deltaY < 0 ? 1.12 : 1 / 1.12;
+  const newScale = Math.max(0.2, Math.min(80, view.scale * factor));
+  view.tx = px - (newScale / view.scale) * (px - view.tx);
+  view.ty = py - (newScale / view.scale) * (py - view.ty);
+  view.scale = newScale;
+  applyTransform();
+}, { passive: false });
+window.addEventListener("resize", () => {
+  if (graph) svg.setAttribute("viewBox", `0 0 ${svg.clientWidth} ${svg.clientHeight}`);
+});
+window.addEventListener("DOMContentLoaded", () => {
+  speedSlider.value = "200";
+  thicknessSlider.value = "5.5";
+  renderGraph();
+  loadSelection(EMBEDDED_SELECTION);
+  applyStyleControls();
+  setTimeout(playAnimation, AUTOPLAY_START_DELAY_MS);
+});
+</script>
+</body>
+</html>
